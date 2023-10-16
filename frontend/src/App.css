@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar {
+  position: fixed;
+  height: 54px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: white;
+  margin-top: 0.5%;
+  border-top: 1px solid #bfbfbf;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.navbar-left {
+  display: flex;
+  margin-left: 2%;
+}
+
+.navbar-right {
+  display: flex;
+  margin-right: 2%;
+}
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  margin: 0 15px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.dimepiece-logo {
+  color: blue;
+}

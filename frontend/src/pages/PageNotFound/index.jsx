@@ -8,7 +8,7 @@ function PageNotFound() {
       alignItems={'center'}
       justifyContent={'center'}
       display={'flex'}
-      minHeight={'100vh'}
+      // minHeight={'100vh'}
     >
       <div>
         <Typography variant="h3">404 Page not found</Typography>

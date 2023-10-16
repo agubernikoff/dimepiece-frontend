@@ -1,36 +1,53 @@
-import { Add, Edit } from '@mui/icons-material';
-import { AppBar, IconButton, Toolbar, Tooltip, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { selectPost, setPreEditPost } from '../../redux/actions';
+// import { useDispatch } from 'react-redux';
+// import { selectPost, setPreEditPost } from '../../redux/actions';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleAddClick = () => {
-    dispatch(selectPost({}));
-  };
+  // const handleAddClick = () => {
+  //   dispatch(selectPost({}));
+  // };
 
-  const handleEditClick = () => {
-    dispatch(setPreEditPost(true));
-  };
+  // const handleEditClick = () => {
+  //   dispatch(setPreEditPost(true));
+  // };
+
+  const activeStyle = ({ isActive }) =>
+    isActive
+      ? {
+          textDecoration: 'underline'
+        }
+      : null;
+
   return (
-    <AppBar component="nav">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Post Manager Tool
-        </Typography>
-        <Tooltip title="Search and edit post">
-          <IconButton onClick={handleEditClick} aria-label="Search and edit post">
-            <Edit sx={{ color: '#fff' }} />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Create new post">
-          <IconButton onClick={handleAddClick} aria-label="Create new post">
-            <Add sx={{ color: '#fff' }} />
-          </IconButton>
-        </Tooltip>
-      </Toolbar>
-    </AppBar>
+    <div className="navbar">
+      <div className="navbar-left">
+        <NavLink to="/stories" style={activeStyle} className="navbar-link">
+          Stories
+        </NavLink>
+        <NavLink to="/shop" style={activeStyle} className="navbar-link">
+          Shop
+        </NavLink>
+        <NavLink to="/about" style={activeStyle} className="navbar-link">
+          About
+        </NavLink>
+      </div>
+      <div className="navbar-center">
+        <h2 className="dimepiece-logo">Dimepiece</h2>
+      </div>
+      <div className="navbar-right">
+        <NavLink to="/newsletter" style={activeStyle} className="navbar-link">
+          Newsletter
+        </NavLink>
+        <NavLink to="/search" style={activeStyle} className="navbar-link">
+          Search
+        </NavLink>
+        <NavLink to="/cart" style={activeStyle} className="navbar-link">
+          Cart
+        </NavLink>
+      </div>
+    </div>
   );
 }
 
