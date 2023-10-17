@@ -13,7 +13,12 @@ function WatchPreview() {
   const mapped = products.map((product) => (
     <WatchPreviewCard key={product._id} watch={product.store} />
   ));
-  return <div className="watch-preview-container">{mapped}</div>;
+  return (
+    <div className="latest-watches">
+      <h3 className="section-title-home">LATEST WATCHES</h3>
+      <div className="watch-preview-container">{mapped}</div>
+    </div>
+  );
 }
 
 export default WatchPreview;
