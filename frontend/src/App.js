@@ -10,7 +10,7 @@ import {client} from './sanity/SanityClient';
 // const Posts = lazy(() => import('./pages/Posts'));
 
 function App() {
-useEffect(() =>{client.fetch(`*[_type == "product"]`).then((response) =>console.log(response))});
+useEffect(() =>{client.fetch(`*[_type == "product"]`).then((response) =>console.log(response))},[]);
   return (
     <Suspense
       fallback={

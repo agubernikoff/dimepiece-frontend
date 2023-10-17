@@ -1,6 +1,7 @@
 // import { useDispatch } from 'react-redux';
 // import { selectPost, setPreEditPost } from '../../redux/actions';
 import { NavLink } from 'react-router-dom';
+import logo from '../../assets/logo_purple.png'
 
 function Header() {
   // const dispatch = useDispatch();
@@ -19,32 +20,34 @@ function Header() {
           textDecoration: 'underline'
         }
       : null;
+      
+        console.log(logo);
 
   return (
     <div className="navbar">
       <div className="navbar-left">
         <NavLink to="/stories" style={activeStyle} className="navbar-link">
-          Stories
+          STORIES
         </NavLink>
         <NavLink to="/shop" style={activeStyle} className="navbar-link">
-          Shop
+          SHOP
         </NavLink>
         <NavLink to="/about" style={activeStyle} className="navbar-link">
-          About
+          ABOUT
         </NavLink>
       </div>
       <div className="navbar-center">
-        <h2 className="dimepiece-logo">Dimepiece</h2>
+        <img src={logo} className="navbar-image" />
       </div>
       <div className="navbar-right">
         <NavLink to="/newsletter" style={activeStyle} className="navbar-link">
-          Newsletter
+          NEWSLETTER
         </NavLink>
         <NavLink to="/search" style={activeStyle} className="navbar-link">
-          Search
+          SEARCH
         </NavLink>
         <NavLink to="/cart" style={activeStyle} className="navbar-link">
-          Cart
+          CART
         </NavLink>
       </div>
     </div>

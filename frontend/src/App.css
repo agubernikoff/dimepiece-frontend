@@ -1,3 +1,15 @@
+/* fonts */
+
+@font-face {
+  font-family: 'tobias-regular';
+  src: url('./fonts/Tobias-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'swall-diatype';
+  src: url('./fonts/SwallStudiosDiatype-Regular.otf') format('opentype');
+}
+
 .App {
   text-align: center;
 }
@@ -50,6 +62,7 @@
   top: 0.5%;
   border-top: 1px solid #bfbfbf;
   border-bottom: 1px solid #bfbfbf;
+  font-family: 'swall-diatype';
 }
 
 .navbar-left {
@@ -65,6 +78,12 @@
 .navbar-center {
   display: flex;
   align-items: center;
+  justify-items: center;
+}
+
+.navbar-image {
+  width: 35%;
+  margin: auto;
 }
 
 .navbar-link {
