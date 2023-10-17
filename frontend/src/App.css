@@ -10,6 +10,13 @@
   src: url("./fonts/SwallStudiosDiatype-Regular.otf") format("opentype");
 }
 
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
 /* 
 insert repetitve variables like font sizes and colors
 so if we need to fix them we can fix across the board
