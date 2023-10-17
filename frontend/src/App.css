@@ -1,13 +1,13 @@
 /* fonts */
 
 @font-face {
-  font-family: 'tobias-regular';
-  src: url('./fonts/Tobias-Regular.otf') format('opentype');
+  font-family: "tobias-regular";
+  src: url("./fonts/Tobias-Regular.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'swall-diatype';
-  src: url('./fonts/SwallStudiosDiatype-Regular.otf') format('opentype');
+  font-family: "swall-diatype";
+  src: url("./fonts/SwallStudiosDiatype-Regular.otf") format("opentype");
 }
 
 .App {
@@ -62,7 +62,7 @@
   top: 0.5%;
   border-top: 1px solid #bfbfbf;
   border-bottom: 1px solid #bfbfbf;
-  font-family: 'swall-diatype';
+  font-family: "swall-diatype";
 }
 
 .navbar-left {
@@ -116,4 +116,17 @@
 
 .featured-story-preview-title {
   font-size: xx-large;
+}
+.watch-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+.watch-preview-card {
+  width: 20%;
+  text-align: center;
+}
+.watch-preview-card > img {
+  width: 100%;
 }
