@@ -4,9 +4,7 @@ import Cobey from '../../assets/Cobey.png'
 function FeaturedArticle() {
   return (
     <div className="featured-story">
-      <div className="featured-story-img-container">
-        <img className="featured-story-img" alt="***TO BE FIXED***" src={Cobey}/>
-      </div>
+      <img className="featured-story-img" alt="***TO BE FIXED***" src={Cobey}/>
       <div className="featured-story-blurb-container">
         <div className="featured-story-blurb-container-inside">
           <h2 className="featured-story-preview-title">Ginny Wright Makes Every Minute Count</h2>

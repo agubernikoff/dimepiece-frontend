@@ -128,9 +128,8 @@ instead of tweaking each class */
   flex-direction: row-reverse;
   height: calc(100vh - 54px);
   margin-bottom: 3%;
-  overflow: hidden;
 }
-.featured-story-img-container {
+.featured-story-img {
   width: 50%;
 }
 
