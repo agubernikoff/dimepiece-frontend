@@ -17,13 +17,13 @@ button {
   text-decoration: underline;
 }
 
-/* 
-insert repetitve variables like font sizes and colors
-so if we need to fix them we can fix across the board
-instead of tweaking each class
-:root{
 
-} */
+/* insert repetitve variables like font sizes and colors 
+so if we need to fix them we can fix across the board
+instead of tweaking each class */
+:root{
+  --medium-text-size: 1.3vw;
+}
 
 .App {
   text-align: center;
@@ -120,7 +120,7 @@ instead of tweaking each class
 .featured-story {
   display: flex;
   flex-direction: row-reverse;
-  height: 92vh;
+  height: calc(100vh - 54px);
   margin-bottom: 5%;
 }
 .featured-story > img {
@@ -137,7 +137,7 @@ instead of tweaking each class
 }
 
 .featured-story-blurb-container-inside {
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,7 +147,8 @@ instead of tweaking each class
 }
 
 .featured-story-preview-title {
-  font-size: 64px;
+  font-size: 5.2em;
+  line-height: 100%;
   font-family: swall-dialtype;
   font-weight: normal;
   margin: 0;
@@ -155,6 +156,11 @@ instead of tweaking each class
 
 .featured-story-preview-description {
   margin: 0;
+  font-size: var(--medium-text-size);
+}
+
+.read-story-btn {
+  font-size: 1.2em;
 }
 
 .latest-watches {
