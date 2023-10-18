@@ -25,6 +25,7 @@ module.exports = {
     // In React - 17.0.0, importing react to a file is optional
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "no-unused-vars": "off",
   },
   settings: {
     react: {
