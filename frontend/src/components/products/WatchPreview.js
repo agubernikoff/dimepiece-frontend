@@ -6,7 +6,9 @@ function WatchPreview() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     client
-      .fetch(`*[_type == "product"][0..9]`)
+      .fetch(
+        `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id][0..9]`
+      )
       .then((response) => setProducts(response));
   }, []);
   const mapped = products.map((product) => (
