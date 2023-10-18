@@ -1,7 +1,6 @@
 import React from "react";
 
 function WatchPreviewCard({ watch }) {
-  console.log(watch);
   return (
     <div className="watch-preview-card">
       <img src={watch.previewImageUrl} alt={watch.title} />

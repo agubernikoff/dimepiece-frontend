@@ -11,18 +11,24 @@
 }
 
 button {
+  /* cursor: url("./assets/watch-cursor.png"), pointer; */
+
   cursor: pointer;
   background: none;
   border: none;
   text-decoration: underline;
 }
 
+img {
+  width: 100%;
+}
 
 /* insert repetitve variables like font sizes and colors 
 so if we need to fix them we can fix across the board
 instead of tweaking each class */
-:root{
+:root {
   --medium-text-size: 1.3vw;
+  --blue: #431cec;
 }
 
 .App {
@@ -121,9 +127,10 @@ instead of tweaking each class */
   display: flex;
   flex-direction: row-reverse;
   height: calc(100vh - 54px);
-  margin-bottom: 5%;
+  margin-bottom: 3%;
+  overflow: hidden;
 }
-.featured-story > img {
+.featured-story-img-container {
   width: 50%;
 }
 
@@ -163,14 +170,58 @@ instead of tweaking each class */
   font-size: 1.2em;
 }
 
-.latest-watches {
-  text-align: center;
-  margin-bottom: 3%;
-}
-
 .section-title-home {
   margin: auto;
   font-family: "swall-diatype";
+  text-align: center;
+}
+
+.latest-stories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  row-gap: 1em;
+  margin: 3% auto 3%;
+}
+.latest-story-card {
+  width: 24%;
+}
+.latest-story-card-top {
+  width: 100%;
+}
+.latest-story-card-bottom {
+  display: flex;
+  gap: 0.8rem;
+}
+.latest-story-card-bottom-left {
+  display: flex;
+  flex-direction: column;
+  font: "swall-diatype";
+  font-size: 0.4rem;
+  width: 20%;
+}
+.latest-story-card-bottom-left > p {
+  margin-top: 0.2rem;
+}
+.latest-story-card-category {
+  color: var(--blue);
+}
+.latest-story-card-date {
+}
+.latest-story-card-bottom-right {
+  font-family: "tobias-regular";
+  display: flex;
+  flex-direction: column;
+}
+.latest-story-card-title {
+  margin: 0;
+}
+
+.latest-watches {
+  text-align: center;
+  margin-bottom: 3%;
 }
 
 .watch-preview-container {
@@ -185,9 +236,6 @@ instead of tweaking each class */
   text-align: center;
   font-family: "swall-diatype";
   margin-top: 3%;
-}
-.watch-preview-card > img {
-  width: 100%;
 }
 
 .watch-preview-card > p {
