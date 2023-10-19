@@ -226,7 +226,7 @@ instead of tweaking each class */
   font-size: 1.2rem;
 }
 .most-discussed {
-  width: 24%;
+  width: 30%;
 }
 .most-discussed-card {
   width: 100%;
@@ -315,4 +315,21 @@ instead of tweaking each class */
 .three-column-homepage-container {
   width: 90%;
   margin: auto;
+}
+
+/* brynns basics */
+.brynns-basics {
+  width: 30%;
+}
+.brynns-basics-cards-container,
+.brynns-basics-card {
+  width: 100%;
+}
+.brynns-basics-card {
+  display: flex;
+  flex-direction: row;
+}
+.brynns-basics-card-right,
+.brynns-basics-card-left {
+  width: 50%;
 }

@@ -4,6 +4,7 @@ import WatchPreview from "../../components/products/WatchPreview";
 import LatestsStories from "../../components/stories/LatestsStories";
 import BrynnsPick from "../../components/products/BrynnsPick";
 import MostDiscussed from "../../components/stories/MostDiscussed";
+import BrynnsBasics from "../../components/products/BrynnsBasics";
 
 function Homepage() {
   return (
@@ -12,7 +13,7 @@ function Homepage() {
       <LatestsStories />
       <WatchPreview />
       <BrynnsPick />
-      <div className="three-column-homepage-container"><MostDiscussed/></div>
+      <div className="three-column-homepage-container"><MostDiscussed/><BrynnsBasics/></div>
     </div>
   );
 }
