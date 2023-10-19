@@ -50,6 +50,16 @@ export default defineType({
       type: 'proxyString',
       options: {field: 'store.title'},
     }),
+    {
+      title: 'Brand',
+      name: 'brand',
+      type: 'string',
+    },
+    {
+      title: 'Title',
+      name: 'title',
+      type: 'string',
+    },
     // Slug (proxy)
     defineField({
       name: 'slugProxy',
@@ -88,6 +98,51 @@ export default defineType({
       title: 'Featured',
       name: 'isFeatured',
       type: 'boolean',
+    },
+    {
+      title: 'Featured Headline',
+      name: 'featuredHeadline',
+      type: 'string',
+    },
+    {
+      title: 'Description',
+      name: 'description',
+      type: 'text',
+    },
+    {
+      title: 'Date of Birth',
+      name: 'dateOfBirth',
+      type: 'string',
+    },
+    {
+      title: 'Material',
+      name: 'material',
+      type: 'string',
+    },
+    {
+      title: 'Size',
+      name: 'size',
+      type: 'string',
+    },
+    {
+      title: 'Movement',
+      name: 'movement',
+      type: 'string',
+    },
+    {
+      title: 'Condition',
+      name: 'condition',
+      type: 'string',
+    },
+    {
+      title: 'Box/Papers',
+      name: 'boxPapers',
+      type: 'string',
+    },
+    {
+      title: 'Nitty Gritty',
+      name: 'nittyGritty',
+      type: 'text',
     },
   ],
   orderings: [
