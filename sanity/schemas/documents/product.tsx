@@ -84,6 +84,11 @@ export default defineType({
       type: 'seo.shopify',
       group: 'seo',
     }),
+    {
+      title: 'Featured',
+      name: 'isFeatured',
+      type: 'boolean',
+    },
   ],
   orderings: [
     {
