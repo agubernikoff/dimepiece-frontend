@@ -17,6 +17,7 @@ button {
   background: none;
   border: none;
   text-decoration: underline;
+  padding: 0%;
 }
 
 img {
@@ -123,6 +124,8 @@ instead of tweaking each class */
   color: blue;
 }
 
+/* Featured Story / Top of Homepage Section */
+
 .featured-story {
   display: flex;
   flex-direction: row-reverse;
@@ -175,6 +178,8 @@ instead of tweaking each class */
   text-align: center;
 }
 
+/* Latest Stories Section */
+
 .latest-stories {
   display: flex;
   flex-wrap: wrap;
@@ -218,6 +223,8 @@ instead of tweaking each class */
   margin: 0;
 }
 
+/* Latest Watches Section */
+
 .latest-watches {
   text-align: center;
   margin-bottom: 3%;
@@ -227,7 +234,7 @@ instead of tweaking each class */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 80%;
+  width: 65%;
   margin: auto;
 }
 .watch-preview-card {
@@ -240,3 +247,50 @@ instead of tweaking each class */
 .watch-preview-card > p {
   margin: 2%;
 }
+
+/* Featured Watch Section */
+
+.featured-watch-headline {
+  text-align: center;
+  font-size: 2.5em;
+  font-family: "tobias-regular";
+  width: 50%;
+  margin: 2% auto 2%;
+}
+
+.featured-watch-content-container{
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  width: 65%;
+  margin: auto;
+}
+
+.featured-watch-description{
+  width: 30%;
+  font-family: "swall-diatype";
+  font-size: .75em;
+}
+
+.featured-watch-description > p{
+  margin-top: 0%;
+}
+
+.featured-watch-image{
+  width: 40%;
+}
+
+.featured-watch-details{
+  width: 30%;
+  font-family: "swall-diatype";
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: .75em;
+}
+
+.featured-watch-detail-container > h5, .featured-watch-detail-container > p{
+  margin: 0%;
+  width: 50%;
+  line-height: 120%;
+}
+
