@@ -144,6 +144,11 @@ export default defineType({
       name: 'nittyGritty',
       type: 'text',
     },
+    {
+      title: 'Brynn\'s Basics',
+      name: 'brynnsBasics',
+      type: 'boolean'
+    }
   ],
   orderings: [
     {

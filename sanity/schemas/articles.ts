@@ -39,6 +39,11 @@ export default {
         title: 'Featured',
         name: 'isFeatured',
         type: 'boolean'
+      },
+      {
+        title: 'Most Discussed',
+        name: 'mostDiscussed',
+        type: 'boolean'
       }
     ]
   }
