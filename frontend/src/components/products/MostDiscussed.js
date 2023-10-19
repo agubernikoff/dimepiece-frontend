@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
+import LatestStoriesCard from "../stories/LatestStoriesCard";
 
 function MostDiscussed() {
   const [mostDiscussed, setMostDiscussed] = useState([]);
+
   useEffect(() => {
     client
-      .fetch(`*[_type == "product" && mostDiscussed == true][0]`)
+      .fetch(
+        `*[_type == "articles" && mostDiscussed == true][0]{_id,title,category,mostDiscussed,_createdAt,coverImage{asset->{url}}}`
+      )
       .then((response) => setMostDiscussed(response));
   }, []);
-  console.log(mostDiscussed);
-  if (mostDiscussed) return <div>MostDiscussed</div>;
+
+  if (mostDiscussed.coverImage)
+    return (
+      <div className="most-discussed">
+        <h3 className="section-title-home">MOST DISCUSSED</h3>
+        <LatestStoriesCard story={mostDiscussed} />
+      </div>
+    );
 }
 
 export default MostDiscussed;
