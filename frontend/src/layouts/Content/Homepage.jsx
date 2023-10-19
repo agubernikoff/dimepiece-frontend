@@ -3,7 +3,7 @@ import FeaturedArticle from "./FeaturedArticle";
 import WatchPreview from "../../components/products/WatchPreview";
 import LatestsStories from "../../components/stories/LatestsStories";
 import BrynnsPick from "../../components/products/BrynnsPick";
-import MostDiscussed from "../../components/products/MostDiscussed";
+import MostDiscussed from "../../components/stories/MostDiscussed";
 
 function Homepage() {
   return (
