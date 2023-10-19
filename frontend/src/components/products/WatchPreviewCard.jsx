@@ -1,7 +1,6 @@
 import React from "react";
 
 function WatchPreviewCard({ watch }) {
-  console.log(watch)
   const options = {style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0}
   return (
     <div className="watch-preview-card">

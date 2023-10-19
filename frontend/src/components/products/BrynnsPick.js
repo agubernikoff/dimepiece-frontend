@@ -9,7 +9,6 @@ function BrynnsPick() {
       .then((response) => setFeatured(response));
   }, []);
 
-  console.log(featured);
   if (featured.store) {
     return (
       <div className="featured-watch">
