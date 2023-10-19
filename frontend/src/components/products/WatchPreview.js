@@ -12,7 +12,7 @@ function WatchPreview() {
       .then((response) => setProducts(response));
   }, []);
   const mapped = products.map((product) => (
-    <WatchPreviewCard key={product._id} watch={product.store} />
+    <WatchPreviewCard key={product._id} watch={product} />
   ));
   return (
     <div className="latest-watches">
