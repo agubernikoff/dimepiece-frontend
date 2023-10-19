@@ -259,8 +259,10 @@ instead of tweaking each class */
   margin-top: 3%;
 }
 
-.watch-preview-card > p {
-  margin: 2%;
+.watch-preview-card-details > p{
+  font-size: .8rem;
+  line-height: 125%;
+  margin: 0%;
 }
 
 /* Featured Watch Section */
@@ -332,4 +334,16 @@ instead of tweaking each class */
 .brynns-basics-card-right,
 .brynns-basics-card-left {
   width: 50%;
+}
+.brynns-basics-card-description{
+  font-size: 0.75rem;
+}
+
+.brynns-basics-card-right-details > p{
+  font-size: .85rem;
+  margin: 1%;
+}
+
+.brynns-basics-card-button{
+  font-size: .75rem;
 }

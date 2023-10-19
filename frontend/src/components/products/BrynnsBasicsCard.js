@@ -7,7 +7,7 @@ function BrynnsBasicsCard({ watch }) {
         <img src={watch.store.previewImageUrl} alt={watch.store.title} />
       </div>
       <div className="brynns-basics-card-right">
-        <div className="featured-watch-detail-container">
+        <div className="brynns-basics-card-right-details">
           <p>{watch.brand}</p>
           <p>{watch.title}</p>
           <p>${watch.store.priceRange.minVariantPrice}</p>
@@ -18,7 +18,7 @@ function BrynnsBasicsCard({ watch }) {
           important, nonetheless. We love this watch for her color and size, but
           also because you rarely see this out and about.{" "}
         </p>
-        <button>View Product</button>
+        <button className="brynns-basics-card-button">View Product</button>
       </div>
     </div>
   );
