@@ -18,6 +18,8 @@ button {
   border: none;
   text-decoration: underline;
   padding: 0%;
+  width: fit-content;
+  font-family: "swall-diatype";
 }
 
 img {
@@ -221,8 +223,21 @@ instead of tweaking each class */
 }
 .latest-story-card-title {
   margin: 0;
+  font-size: 1.2rem;
 }
-
+.most-discussed {
+  width: 24%;
+}
+.most-discussed-card {
+  width: 100%;
+}
+.most-discussed-preview {
+  font-size: 0.6rem;
+  font-family: "swall-diatype";
+}
+.most-discussed-preview-button {
+  font-size: 0.6rem;
+}
 /* Latest Watches Section */
 
 .latest-watches {
@@ -258,39 +273,46 @@ instead of tweaking each class */
   margin: 2% auto 2%;
 }
 
-.featured-watch-content-container{
+.featured-watch-content-container {
   display: flex;
   flex-direction: row; /* Horizontal layout */
   width: 65%;
   margin: auto;
 }
 
-.featured-watch-description{
+.featured-watch-description {
   width: 30%;
   font-family: "swall-diatype";
-  font-size: .75em;
+  font-size: 0.75em;
 }
 
-.featured-watch-description > p{
+.featured-watch-description > p {
   margin-top: 0%;
 }
 
-.featured-watch-image{
+.featured-watch-image {
   width: 40%;
 }
 
-.featured-watch-details{
+.featured-watch-details {
   width: 30%;
   font-family: "swall-diatype";
   display: flex;
   flex-direction: column;
   gap: 1em;
-  font-size: .75em;
+  font-size: 0.75em;
 }
 
-.featured-watch-detail-container > h5, .featured-watch-detail-container > p{
+.featured-watch-detail-container > h5,
+.featured-watch-detail-container > p {
   margin: 0%;
   width: 50%;
   line-height: 120%;
 }
 
+/* bottom homepage section */
+
+.three-column-homepage-container {
+  width: 90%;
+  margin: auto;
+}
