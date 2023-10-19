@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
-import LatestStoriesCard from "../stories/LatestStoriesCard";
+import LatestStoriesCard from "./LatestStoriesCard";
 
 function MostDiscussed() {
   const [mostDiscussed, setMostDiscussed] = useState([]);
