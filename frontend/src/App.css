@@ -79,7 +79,8 @@ instead of tweaking each class */
 .navbar {
   position: sticky;
   height: 54px;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,18 +91,15 @@ instead of tweaking each class */
   border-top: 1px solid #bfbfbf;
   border-bottom: 1px solid #bfbfbf;
   font-family: "swall-diatype";
+  padding: 0 5%;
 }
 
-.navbar-left {
-  display: flex;
-  width: 20%;
-  justify-content: center;
-}
-
+.navbar-left,
 .navbar-right {
   display: flex;
-  width: 20%;
-  justify-content: center;
+  width: fit-content;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
 .navbar-center {
@@ -116,7 +114,7 @@ instead of tweaking each class */
 }
 
 .navbar-link {
-  margin: 0 15px;
+  margin: 0;
   background-color: transparent;
   border: none;
   color: black;
@@ -436,7 +434,7 @@ instead of tweaking each class */
 .footer {
   background-color: #d7ceff;
   font-size: 12px;
-  padding: 2% 4%;
+  padding: 2% 5%;
   display: flex;
   justify-content: space-between;
 }
