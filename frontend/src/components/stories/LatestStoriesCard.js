@@ -15,9 +15,7 @@ function LatestStoriesCard({ story }) {
       </div>
       <div className="latest-story-card-bottom">
         <div className="latest-story-card-bottom-left">
-          <p className="latest-story-card-category">
-            {story.category.toUpperCase()}
-          </p>
+          <p className="blue">{story.category.toUpperCase()}</p>
           <p className="latest-story-card-date">{formattedDate}</p>
         </div>
         <div className="latest-story-card-bottom-right">

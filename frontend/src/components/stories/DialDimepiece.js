@@ -15,7 +15,7 @@ function DialDimepiece() {
     <DialDimepieceCard key={bb._id} story={bb} />
   ));
   return (
-    <div>
+    <div className="dial-dimepiece">
       <h3 className="section-title-home">DIAL DIMEPIECE</h3>
       <div className="dial-dimepiece-cards-container">{mapped}</div>
     </div>

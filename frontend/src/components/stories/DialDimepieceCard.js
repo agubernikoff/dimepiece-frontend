@@ -10,7 +10,9 @@ function DialDimepieceCard({ story }) {
         <img src={story.coverImage.asset.url} alt={story.title} />
       </div>
       <div className="dial-dimepiece-card-right">
-        <p>{formattedDate}</p>
+        <p className="blue dial-dimepiece-card-date">
+          {formattedDate.toUpperCase()}
+        </p>
         <div className="dial-dimepiece-card-headers">
           <p>Fave watch under $1k to start out a higher-tier collection?</p>
           <p>Mary-Kate or Ashley?</p>

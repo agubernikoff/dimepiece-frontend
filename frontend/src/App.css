@@ -33,6 +33,9 @@ instead of tweaking each class */
   --medium-text-size: 1.3vw;
   --blue: #431cec;
 }
+.blue {
+  color: var(--blue);
+}
 
 .App {
   text-align: center;
@@ -123,7 +126,7 @@ instead of tweaking each class */
 }
 
 .dimepiece-logo {
-  color: blue;
+  color: var(--blue);
 }
 
 /* Featured Story / Top of Homepage Section */
@@ -211,9 +214,6 @@ instead of tweaking each class */
 .latest-story-card-bottom-left > p {
   margin-top: 0.2rem;
 }
-.latest-story-card-category {
-  color: var(--blue);
-}
 .latest-story-card-date {
 }
 .latest-story-card-bottom-right {
@@ -259,8 +259,8 @@ instead of tweaking each class */
   margin-top: 3%;
 }
 
-.watch-preview-card-details > p{
-  font-size: .8rem;
+.watch-preview-card-details > p {
+  font-size: 0.8rem;
   line-height: 125%;
   margin: 0%;
 }
@@ -317,6 +317,41 @@ instead of tweaking each class */
 .three-column-homepage-container {
   width: 90%;
   margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* dial dimepieces */
+.dial-dimepiece {
+  width: 30%;
+}
+.dial-dimepiece-cards-container {
+  width: 100%;
+}
+.dial-dimepiece-card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.dial-dimepiece-card-left {
+  width: 60%;
+}
+.dial-dimepiece-card-right {
+  width: 40%;
+  font-size: 0.75rem;
+}
+.dial-dimepiece-card-date {
+  font-family: "swall-diatype";
+  margin: 0;
+}
+.dial-dimepiece-card-headers > p {
+  margin: 0;
+  border-bottom: 1px solid black;
+  padding: 0.5rem 0;
+}
+.dial-dimepiece-card-headers > p:last-of-type {
+  border: none;
 }
 
 /* brynns basics */
@@ -335,15 +370,15 @@ instead of tweaking each class */
 .brynns-basics-card-left {
   width: 50%;
 }
-.brynns-basics-card-description{
+.brynns-basics-card-description {
   font-size: 0.75rem;
 }
 
-.brynns-basics-card-right-details > p{
-  font-size: .85rem;
+.brynns-basics-card-right-details > p {
+  font-size: 0.85rem;
   margin: 1%;
 }
 
-.brynns-basics-card-button{
-  font-size: .75rem;
+.brynns-basics-card-button {
+  font-size: 0.75rem;
 }
