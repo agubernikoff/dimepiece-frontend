@@ -4,49 +4,48 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footer-left-container">
-        <div>
-          <p>© DIMEPIECE LLC 2023, All Rights Reserved.</p>
+        <div className="footer-left-column">
+          <p>© DIMEPIECE LLC 2023,</p><p>All Rights Reserved.</p>
+          <br/>
           <div>
             <p>LA: </p>
             <p>NY: </p>
             <p>LON: </p>
           </div>
+          <br/>
           <a>Site Credit</a>
         </div>
-        <div>
+        <div className="footer-links">
           <p>
             <strong>LINKS</strong>
           </p>
-          <div>
-            <p>Story</p>
-            <p>Shop</p>
-            <p>About</p>
-            <p>Newsletter</p>
-            <p>Search</p>
-            <p>Cart (0)</p>
-          </div>
+          <br/>
+          <p>Story</p>
+          <p>Shop</p>
+          <p>About</p>
+          <p>Newsletter</p>
+          <p>Search</p>
+          <p>Cart (0)</p>
         </div>
-        <div>
+        <div className="footer-left-column">
           <p>
             <strong>CUSTOMER CARE</strong>
           </p>
-          <div>
-            <p>Shipping & Returns</p>
-            <p>FAQ</p>
-            <p>Terms & Conditions</p>
-            <p>Warranty</p>
-          </div>
+          <br/>
+          <p>Shipping & Returns</p>
+          <p>FAQ</p>
+          <p>Terms & Conditions</p>
+          <p>Warranty</p>
         </div>
-        <div>
+        <div className="footer-left-column">
           <p>
             <strong>GET IN TOUCH</strong>
           </p>
-          <div>
-            <p>Shipping & Returns</p>
-            <p>FAQ</p>
-            <p>Terms & Conditions</p>
-            <p>Warranty</p>
-          </div>
+          <br/>
+          <p>Shipping & Returns</p>
+          <p>FAQ</p>
+          <p>Terms & Conditions</p>
+          <p>Warranty</p>
         </div>
       </div>
       <div className="footer-right-container">

@@ -237,12 +237,12 @@ instead of tweaking each class */
   width: 100%;
 }
 .most-discussed-preview {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-family: "swall-diatype";
   line-height: 110%;
 }
 .most-discussed-preview-button {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 /* Latest Watches Section */
 
@@ -273,7 +273,7 @@ instead of tweaking each class */
 
 /* Featured Watch Section */
 
-.featured-watch{
+.featured-watch {
   margin-bottom: 7%;
 }
 
@@ -331,7 +331,7 @@ instead of tweaking each class */
   justify-content: space-between;
   margin-bottom: 7%;
 }
-.three-column-homepage-container .section-title-home{
+.three-column-homepage-container .section-title-home {
   margin-bottom: 7%;
 }
 /* dial dimepieces */
@@ -364,7 +364,7 @@ instead of tweaking each class */
 .dial-dimepiece-card-headers > p {
   margin: 0;
   border-bottom: 1px solid black;
-  padding: .7rem 0;
+  padding: 0.7rem 0;
 }
 .dial-dimepiece-card-headers > p:last-of-type {
   border: none;
@@ -403,11 +403,11 @@ instead of tweaking each class */
 /* newsletter */
 .newsletter {
   text-align: center;
-  margin: 0 auto 7% ;
+  margin: 0 auto 7%;
   width: 30%;
   font-size: 1.4rem;
 }
-.newsletter > p{
+.newsletter > p {
   margin: 5% auto;
 }
 .newsletter-input-container {
@@ -426,13 +426,35 @@ instead of tweaking each class */
 .newsletter-input-container > input::placeholder {
   color: black;
 }
-.newsletter-input-container > button{
+.newsletter-input-container > button {
   font-size: 1.4rem;
 }
 
 /* FOOTER */
 
-.footer{
-  background-color: #D7CEFF;
+.footer {
+  background-color: #d7ceff;
   font-size: 12px;
+  padding: 2% 4%;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-left-container {
+  display: flex;
+  gap: 4rem;
+  width: 50%;
+  font-family: "swall-diatype";
+}
+.footer-left-container > div > p,
+.footer-left-container > div > div > p {
+  margin: 0;
+}
+.footer-links {
+  width: 10%;
+}
+.footer-left-column {
+  width: 25%;
+}
+.footer > div > button {
+  text-decoration: none;
 }
