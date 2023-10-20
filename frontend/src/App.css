@@ -98,7 +98,11 @@ instead of tweaking each class */
 .navbar-right {
   display: flex;
   width: 50%;
-  justify-content: space-between;
+  gap: 10%;
+}
+.navbar-left:nth-child(2),
+.navbar-right:nth-child(2) {
+  margin: auto 2%;
 }
 
 .navbar-center {
