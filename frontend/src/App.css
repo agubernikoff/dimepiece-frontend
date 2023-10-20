@@ -303,7 +303,8 @@ instead of tweaking each class */
 }
 
 .featured-watch-image {
-  width: 40%;
+  width: 50%;
+  margin: auto 5%;
 }
 
 .featured-watch-details {

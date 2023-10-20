@@ -12,7 +12,9 @@ function BrynnsPick() {
   const [featured, setFeatured] = useState([]);
   useEffect(() => {
     client
-      .fetch(`*[_type == "product" && isFeatured == true][0]`)
+      .fetch(
+        `*[_type == "product" && isFeatured == true][0]{...,brynnPickImage{asset->{url}}}`
+      )
       .then((response) => setFeatured(response));
   }, []);
 
@@ -29,7 +31,7 @@ function BrynnsPick() {
             <button>View Product</button>
           </div>
           <div className="featured-watch-image">
-            <img src={featured.store.previewImageUrl} />
+            <img src={featured.brynnPickImage.asset.url} />
           </div>
           <div className="featured-watch-details">
             <div className="featured-watch-detail-container">

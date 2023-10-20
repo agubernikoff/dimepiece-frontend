@@ -95,9 +95,14 @@ export default defineType({
       group: 'seo',
     }),
     {
-      title: 'Featured',
+      title: "Brynn's Pick",
       name: 'isFeatured',
       type: 'boolean',
+    },
+    {
+      title: "Brynn's Pick Image - Grey",
+      name: 'brynnPickImage',
+      type: 'image',
     },
     {
       title: 'Featured Headline',
