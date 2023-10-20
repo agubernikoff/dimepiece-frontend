@@ -6,6 +6,7 @@ import BrynnsPick from "../../components/products/BrynnsPick";
 import MostDiscussed from "../../components/stories/MostDiscussed";
 import BrynnsBasics from "../../components/products/BrynnsBasics";
 import DialDimepiece from "../../components/stories/DialDimepiece";
+import Newsletter from "./Newsletter";
 
 function Homepage() {
   return (
@@ -19,6 +20,7 @@ function Homepage() {
         <MostDiscussed />
         <BrynnsBasics />
       </div>
+      <Newsletter/>
     </div>
   );
 }

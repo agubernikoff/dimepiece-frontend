@@ -382,3 +382,24 @@ instead of tweaking each class */
 .brynns-basics-card-button {
   font-size: 0.75rem;
 }
+
+/* newsletter */
+.newsletter {
+  text-align: center;
+  margin: auto;
+  width: 30%;
+}
+.newsletter-input-container {
+  width: 95%;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.newsletter-input-container > input {
+  width: 80%;
+}
+.newsletter-input-container > input::placeholder {
+  color: black;
+}
