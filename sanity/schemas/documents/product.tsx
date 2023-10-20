@@ -76,8 +76,8 @@ export default defineType({
       group: 'editorial',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'description',
+      title: 'Description',
       type: 'body',
       group: 'editorial',
     }),
@@ -103,11 +103,6 @@ export default defineType({
       title: 'Featured Headline',
       name: 'featuredHeadline',
       type: 'string',
-    },
-    {
-      title: 'Description',
-      name: 'description',
-      type: 'text',
     },
     {
       title: 'Date of Birth',
@@ -145,10 +140,10 @@ export default defineType({
       type: 'text',
     },
     {
-      title: 'Brynn\'s Basics',
+      title: "Brynn's Basics",
       name: 'brynnsBasics',
-      type: 'boolean'
-    }
+      type: 'boolean',
+    },
   ],
   orderings: [
     {
