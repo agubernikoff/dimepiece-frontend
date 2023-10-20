@@ -39,6 +39,12 @@ function Footer() {
     };
   }, []); // Empty dependency array ensures the effect runs only once after initial render
 
+  const scrollToTop = () => {
+    window.scrollTo({
+    top: 0,
+    behavior: 'smooth'// Adds smooth scrolling animation
+    });
+    };
   return (
     <div className="footer">
       <div className="footer-left-container">
@@ -88,7 +94,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-right-container">
-        <button>BACK TO TOP {String.fromCharCode(8593)}</button>
+        <button onClick={scrollToTop}>BACK TO TOP {String.fromCharCode(8593)}</button>
       </div>
     </div>
   );
