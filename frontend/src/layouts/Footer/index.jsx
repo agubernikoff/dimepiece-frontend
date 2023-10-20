@@ -1,25 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Footer() {
+  const [times, setTimes] = useState({
+    London: new Date().toLocaleTimeString("en-US", {
+      timeZone: "Europe/London",
+      hour12: false,
+    }),
+    LosAngeles: new Date().toLocaleTimeString("en-US", {
+      timeZone: "America/Los_Angeles",
+      hour12: false,
+    }),
+    NewYork: new Date().toLocaleTimeString("en-US", {
+      timeZone: "America/New_York",
+      hour12: false,
+    }),
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimes({
+        London: new Date().toLocaleTimeString("en-US", {
+          timeZone: "Europe/London",
+          hour12: false,
+        }),
+        LosAngeles: new Date().toLocaleTimeString("en-US", {
+          timeZone: "America/Los_Angeles",
+          hour12: false,
+        }),
+        NewYork: new Date().toLocaleTimeString("en-US", {
+          timeZone: "America/New_York",
+          hour12: false,
+        }),
+      });
+    }, 1000); // Update every second
+
+    return () => {
+      clearInterval(interval); // Cleanup the interval on component unmount
+    };
+  }, []); // Empty dependency array ensures the effect runs only once after initial render
+
   return (
     <div className="footer">
       <div className="footer-left-container">
         <div className="footer-left-column">
-          <p>© DIMEPIECE LLC 2023,</p><p>All Rights Reserved.</p>
-          <br/>
+          <p>© DIMEPIECE LLC 2023,</p>
+          <p>All Rights Reserved.</p>
+          <br />
           <div>
-            <p>LA: </p>
-            <p>NY: </p>
-            <p>LON: </p>
+            <p>LA: {times.LosAngeles}</p>
+            <p>NY: {times.NewYork}</p>
+            <p>LON: {times.London} </p>
           </div>
-          <br/>
+          <br />
           <a>Site Credit</a>
         </div>
         <div className="footer-links">
           <p>
             <strong>LINKS</strong>
           </p>
-          <br/>
+          <br />
           <p>Story</p>
           <p>Shop</p>
           <p>About</p>
@@ -31,7 +70,7 @@ function Footer() {
           <p>
             <strong>CUSTOMER CARE</strong>
           </p>
-          <br/>
+          <br />
           <p>Shipping & Returns</p>
           <p>FAQ</p>
           <p>Terms & Conditions</p>
@@ -41,7 +80,7 @@ function Footer() {
           <p>
             <strong>GET IN TOUCH</strong>
           </p>
-          <br/>
+          <br />
           <p>Shipping & Returns</p>
           <p>FAQ</p>
           <p>Terms & Conditions</p>
