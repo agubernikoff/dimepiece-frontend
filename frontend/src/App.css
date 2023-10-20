@@ -85,8 +85,8 @@ instead of tweaking each class */
   align-items: center;
   background-color: white;
   color: white;
-  margin-top: 0.5%;
-  top: 0.5%;
+  /* margin-top: 0.5%; */
+  top: 0;
   border-top: 1px solid #bfbfbf;
   border-bottom: 1px solid #bfbfbf;
   font-family: "swall-diatype";
@@ -135,7 +135,7 @@ instead of tweaking each class */
   display: flex;
   flex-direction: row-reverse;
   height: calc(100vh - 54px);
-  margin-bottom: 3%;
+  margin-bottom: 7%;
 }
 .featured-story-img {
   width: 50%;
@@ -181,6 +181,7 @@ instead of tweaking each class */
   margin: auto;
   font-family: "swall-diatype";
   text-align: center;
+  font-size: 1.4rem;
 }
 
 /* Latest Stories Section */
@@ -191,8 +192,8 @@ instead of tweaking each class */
   justify-content: space-between;
   width: 90%;
   margin: auto;
-  row-gap: 1em;
-  margin: 3% auto 3%;
+  row-gap: 3em;
+  margin: 2% auto 7%;
 }
 .latest-story-card {
   width: 24%;
@@ -208,11 +209,14 @@ instead of tweaking each class */
   display: flex;
   flex-direction: column;
   font: "swall-diatype";
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   width: 20%;
 }
 .latest-story-card-bottom-left > p {
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
+}
+.latest-story-card-bottom-left > p:last-of-type {
+  margin-top: 0rem;
 }
 .latest-story-card-date {
 }
@@ -223,7 +227,8 @@ instead of tweaking each class */
 }
 .latest-story-card-title {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
+  line-height: 110%;
 }
 .most-discussed {
   width: 30%;
@@ -232,24 +237,25 @@ instead of tweaking each class */
   width: 100%;
 }
 .most-discussed-preview {
-  font-size: 0.6rem;
+  font-size: .9rem;
   font-family: "swall-diatype";
+  line-height: 110%;
 }
 .most-discussed-preview-button {
-  font-size: 0.6rem;
+  font-size: .9rem;
 }
 /* Latest Watches Section */
 
 .latest-watches {
   text-align: center;
-  margin-bottom: 3%;
+  margin-bottom: 7%;
 }
 
 .watch-preview-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 65%;
+  width: 75%;
   margin: auto;
 }
 .watch-preview-card {
@@ -267,11 +273,15 @@ instead of tweaking each class */
 
 /* Featured Watch Section */
 
+.featured-watch{
+  margin-bottom: 7%;
+}
+
 .featured-watch-headline {
   text-align: center;
   font-size: 2.5em;
   font-family: "tobias-regular";
-  width: 50%;
+  width: 40%;
   margin: 2% auto 2%;
 }
 
@@ -319,11 +329,14 @@ instead of tweaking each class */
   margin: auto;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 7%;
 }
-
+.three-column-homepage-container .section-title-home{
+  margin-bottom: 7%;
+}
 /* dial dimepieces */
 .dial-dimepiece {
-  width: 30%;
+  width: 25%;
 }
 .dial-dimepiece-cards-container {
   width: 100%;
@@ -333,13 +346,16 @@ instead of tweaking each class */
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  margin-bottom: 7%;
 }
 .dial-dimepiece-card-left {
-  width: 60%;
+  width: 50%;
 }
+
 .dial-dimepiece-card-right {
-  width: 40%;
+  width: 50%;
   font-size: 0.75rem;
+  font-family: "tobias-regular";
 }
 .dial-dimepiece-card-date {
   font-family: "swall-diatype";
@@ -348,7 +364,7 @@ instead of tweaking each class */
 .dial-dimepiece-card-headers > p {
   margin: 0;
   border-bottom: 1px solid black;
-  padding: 0.5rem 0;
+  padding: .7rem 0;
 }
 .dial-dimepiece-card-headers > p:last-of-type {
   border: none;
@@ -356,7 +372,7 @@ instead of tweaking each class */
 
 /* brynns basics */
 .brynns-basics {
-  width: 30%;
+  width: 25%;
 }
 .brynns-basics-cards-container,
 .brynns-basics-card {
@@ -365,6 +381,7 @@ instead of tweaking each class */
 .brynns-basics-card {
   display: flex;
   flex-direction: row;
+  margin-bottom: 8%;
 }
 .brynns-basics-card-right,
 .brynns-basics-card-left {
@@ -386,20 +403,36 @@ instead of tweaking each class */
 /* newsletter */
 .newsletter {
   text-align: center;
-  margin: auto;
+  margin: 0 auto 7% ;
   width: 30%;
+  font-size: 1.4rem;
+}
+.newsletter > p{
+  margin: 5% auto;
 }
 .newsletter-input-container {
-  width: 95%;
+  width: 100%;
   border-bottom: 1px solid black;
   padding-bottom: 0.5rem;
-  margin: auto;
+  margin: 12% auto;
   display: flex;
   justify-content: space-around;
 }
 .newsletter-input-container > input {
   width: 80%;
+  border: none;
+  font-size: 1.4rem;
 }
 .newsletter-input-container > input::placeholder {
   color: black;
+}
+.newsletter-input-container > button{
+  font-size: 1.4rem;
+}
+
+/* FOOTER */
+
+.footer{
+  background-color: #D7CEFF;
+  font-size: 12px;
 }

@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import PageNotFound from './pages/PageNotFound';
 import Header from './layouts/Header';
 import Homepage from './layouts/Content/Homepage';
+import Footer from './layouts/Footer';
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
+      <Footer />
     </Suspense>
   );
 }
