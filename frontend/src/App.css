@@ -458,7 +458,7 @@ instead of tweaking each class */
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin-bottom: 5%;
+  margin-bottom: 20%;
 }
 .stories-page-index-list > ol {
   padding: 0;
