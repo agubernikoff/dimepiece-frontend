@@ -7,7 +7,7 @@ function LatestsStories() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && isFeatured != true && mostDiscussed != true][0..7]{_id,title,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)`
+        `*[_type == "articles" && isFeatured != true && mostDiscussed != true]{_id,title,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)[0..7]`
       )
       .then((response) => setStories(response));
   }, []);
