@@ -480,6 +480,7 @@ instead of tweaking each class */
   text-decoration: none;
   font-size: .65rem;
   line-height: 140%;
+  font-family: "swall-diatype";
 }
 .index-link:first-of-type {
   margin-top: 5%;
@@ -499,9 +500,11 @@ li{
   margin-bottom: 10%;
   margin-top: 10%;
   line-height: 125%;
+  font-family: "tobias-regular";
 }
 .stories-page-index-brynns-pick{
   line-height: 125%;
+  font-family: "tobias-regular";
 }
 .stories-page-content {
   width: 82.5%;
