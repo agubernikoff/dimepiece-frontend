@@ -41,10 +41,10 @@ function Footer() {
 
   const scrollToTop = () => {
     window.scrollTo({
-    top: 0,
-    behavior: 'smooth'// Adds smooth scrolling animation
+      top: 0,
+      behavior: "smooth", // Adds smooth scrolling animation
     });
-    };
+  };
   return (
     <div className="footer">
       <div className="footer-left-container">
@@ -65,7 +65,7 @@ function Footer() {
             <strong>LINKS</strong>
           </p>
           <br />
-          <p>Story</p>
+          <p>Stories</p>
           <p>Shop</p>
           <p>About</p>
           <p>Newsletter</p>
@@ -94,7 +94,9 @@ function Footer() {
         </div>
       </div>
       <div className="footer-right-container">
-        <button onClick={scrollToTop}>BACK TO TOP {String.fromCharCode(8593)}</button>
+        <button onClick={scrollToTop}>
+          BACK TO TOP {String.fromCharCode(8593)}
+        </button>
       </div>
     </div>
   );

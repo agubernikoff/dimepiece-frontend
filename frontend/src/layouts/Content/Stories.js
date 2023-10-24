@@ -9,6 +9,7 @@ function Stories() {
   let filteredStories = [];
   const [category, setCategory] = useState("All");
   const categoryURLParam = useParams();
+  const [types, setTypes] = useState();
   const nav = useNavigate();
   useEffect(() => {
     client
@@ -19,9 +20,15 @@ function Stories() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles"]{_id,title,isFeatured,category,_createdAt,coverImage{asset->{url}}} | order(_createdAt desc)`
+        `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)`
       )
       .then((response) => setStories(response));
+  }, []);
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
+      .then((response) => setTypes(response));
   }, []);
 
   function capitalizeWords(inputString) {
@@ -62,7 +69,7 @@ function Stories() {
       : null;
   const mappedCategories = categories.map((c, i) => (
     <NavLink
-      className="navbar-link"
+      className="index-link"
       style={activeStyle}
       key={i}
       to={`/stories/${c.replaceAll(" ", "-")}`}
@@ -89,41 +96,45 @@ function Stories() {
   const mappedFeaturedTitles = [...stories]
     .filter((s) => s.isFeatured)
     .map((fs, i) => <li key={i}>{fs.title}</li>);
-  return (
-    <div className="stories-page">
-      <div className="stories-page-index">
-        <div className="stories-page-index-list">
-          <p>
-            <strong>CATEGORIES</strong>
-          </p>
-          {mappedCategories}
+  if (brynnsPick) {
+    return (
+      <div className="stories-page">
+        <div className="stories-page-index">
+          <div className="stories-page-index-list">
+            <p className="stories-page-index-category-header">
+              <strong>CATEGORIES</strong>
+            </p>
+            {mappedCategories}
+          </div>
+          <div className="stories-page-index-list">
+            <p className="stories-page-index-category-header">
+              <strong>FEATURED</strong>
+            </p>
+            <ol>{mappedFeaturedTitles}</ol>
+          </div>
+          <div className="stories-page-index-list">
+            <p className="stories-page-index-category-header">
+              <strong>{"BRYNN'S PICK"}</strong>
+            </p>
+            <p className="stories-page-index-brynns-pick">
+              {brynnsPick.featuredHeadline}
+            </p>
+          </div>
         </div>
-        <div className="stories-page-index-list">
+        <div className="stories-page-content">
+          <h3 className="section-title-home">
+            {category === "All" ? "LATEST STORIES" : category.toUpperCase()}
+          </h3>
           <p>
-            <strong>FEATURED</strong>
+            {category === "All"
+              ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
+              : types.find((t) => t.title === category).descriptor}
           </p>
-          <ol>{mappedFeaturedTitles}</ol>
-        </div>
-        <div className="stories-page-index-list">
-          <p>
-            <strong>{"BRYNN'S PICK"}</strong>
-          </p>
-          <p className="stories-page-index-brynns-pick">
-            {brynnsPick.featuredHeadline}
-          </p>
+          <div className="stories-page-card-container">{mappedStories}</div>
         </div>
       </div>
-      <div className="stories-page-content">
-        <h3 className="section-title-home">LATEST STORIES</h3>
-        <p>
-          {
-            'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
-          }
-        </p>
-        <div className="stories-page-card-container">{mappedStories}</div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Stories;

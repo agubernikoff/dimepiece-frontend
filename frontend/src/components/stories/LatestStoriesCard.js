@@ -1,9 +1,11 @@
 import React from "react";
 
 function LatestStoriesCard({ story }) {
-  const dateObject = new Date(story._createdAt);
+  const dateObject = new Date(story.datePublished);
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
+
+  console.log(story.datePublished);
   return (
     <div
       className={
