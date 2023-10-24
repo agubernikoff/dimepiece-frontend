@@ -140,6 +140,7 @@ instead of tweaking each class */
 }
 .featured-story-img {
   width: 50%;
+  object-fit: cover;
 }
 
 .featured-story-blurb-container {
