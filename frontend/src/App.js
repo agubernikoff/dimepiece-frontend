@@ -6,6 +6,7 @@ import PageNotFound from './pages/PageNotFound';
 import Header from './layouts/Header';
 import Homepage from './layouts/Content/Homepage';
 import Footer from './layouts/Footer';
+import Stories from './layouts/Content/Stories';
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -21,6 +22,8 @@ function App() {
       <Routes>
         <Route path="" element={<Homepage />} />
         <Route path="/" element={<Homepage />} />
+        <Route path="/stories/:category" element={<Stories/>}/>
+        <Route path="/stories" element={<Stories/>}/>
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
