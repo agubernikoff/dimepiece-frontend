@@ -59,7 +59,7 @@ function Stories() {
     "First Dimers",
     "Brynn's Tips",
     "In The Field",
-    "Interviews",
+    "Interview",
   ];
   const activeStyle = ({ isActive }) =>
     isActive

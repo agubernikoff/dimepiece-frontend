@@ -448,6 +448,7 @@ instead of tweaking each class */
   padding-left: 5%;
   padding-right: 5%;
   min-height: 56vh;
+  margin-bottom: 10%;
 }
 .stories-page .latest-story-card{
   width: 32.46%;
@@ -489,6 +490,18 @@ instead of tweaking each class */
 .stories-page-index-list > ol,
 .stories-page-index-brynns-pick {
   font-family: "tobias-regular";
+}
+.stories-page-index-list > ol{
+  list-style-position: outside;
+  padding-left: 20px;
+}
+li{
+  margin-bottom: 10%;
+  margin-top: 10%;
+  line-height: 125%;
+}
+.stories-page-index-brynns-pick{
+  line-height: 125%;
 }
 .stories-page-content {
   width: 82.5%;
