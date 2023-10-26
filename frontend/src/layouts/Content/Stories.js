@@ -93,9 +93,20 @@ function Stories() {
     category === "All"
       ? stories.map((s) => <LatestStoriesCard key={s._id} story={s} />)
       : filteredStories.map((s) => <LatestStoriesCard key={s._id} story={s} />);
+
   const mappedFeaturedTitles = [...stories]
     .filter((s) => s.isFeatured)
-    .map((fs, i) => <li key={i}>{fs.title}</li>);
+    .map((fs, i) => (
+      <li
+        key={i}
+        onClick={() =>
+          nav(`/stories/${fs.category.replaceAll(" ", "-")}/${fs._id}`)
+        }
+      >
+        {fs.title}
+      </li>
+    ));
+
   if (brynnsPick) {
     return (
       <div className="stories-page">

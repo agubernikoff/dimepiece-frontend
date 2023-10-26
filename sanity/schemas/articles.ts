@@ -1,3 +1,4 @@
+import {defineField} from 'sanity'
 export default {
   name: 'articles',
   type: 'document',
@@ -9,10 +10,25 @@ export default {
       type: 'string',
     },
     {
+      title: 'Author',
+      name: 'author',
+      type: 'string',
+    },
+    {
+      title: 'Photographer',
+      name: 'photographer',
+      type: 'string',
+    },
+    {
       title: 'Cover Image',
       name: 'coverImage',
       type: 'image',
     },
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'body',
+    }),
     {
       title: 'Date Published',
       name: 'datePublished',

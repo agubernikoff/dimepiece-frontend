@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
-import Cobey from "../../assets/Cobey.png";
 
 function FeaturedArticle() {
   const [featured, setFeatured] = useState();
+  const nav = useNavigate();
 
   useEffect(() => {
     client
@@ -30,7 +31,9 @@ function FeaturedArticle() {
               AP House, the new(ish) appointment only concept space by Audemars
               Piguet.
             </p>
-            <button className="read-story-btn">READ STORY</button>
+            <button className="read-story-btn" onClick={() =>
+          nav(`/stories/${featured.category.replaceAll(" ", "-")}/${featured._id}`)
+        }>READ STORY</button>
           </div>
         </div>
       </div>

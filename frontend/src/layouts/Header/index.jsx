@@ -26,7 +26,7 @@ function Header() {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <NavLink to="/stories" style={activeStyle} className="navbar-link">
+        <NavLink to="/stories/All" style={activeStyle} className="navbar-link">
           STORIES
         </NavLink>
         <NavLink to="/shop" style={activeStyle} className="navbar-link">

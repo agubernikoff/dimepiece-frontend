@@ -1,11 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function DialDimepieceCard({ story }) {
   const dateObject = new Date(story._createdAt);
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
+  const nav = useNavigate();
+
   return (
-    <div className="dial-dimepiece-card">
+    <div
+      className="dial-dimepiece-card"
+      onClick={() =>
+        nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`)
+      }
+    >
       <div className="dial-dimepiece-card-left">
         <img src={story.coverImage.asset.url} alt={story.title} />
       </div>

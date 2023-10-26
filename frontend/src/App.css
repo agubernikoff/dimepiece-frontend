@@ -200,6 +200,7 @@ instead of tweaking each class */
 }
 .latest-story-card {
   width: 24%;
+  cursor: pointer;
 }
 .latest-story-card-top {
   width: 100%;
@@ -245,6 +246,7 @@ instead of tweaking each class */
 }
 .most-discussed-card {
   width: 100%;
+  cursor: pointer;
 }
 .most-discussed-preview {
   font-size: 0.9rem;
@@ -359,6 +361,7 @@ instead of tweaking each class */
   flex-direction: row;
   gap: 1rem;
   margin-bottom: 7%;
+  cursor: pointer;
 }
 .dial-dimepiece-card-left {
   width: 50%;
@@ -450,14 +453,14 @@ instead of tweaking each class */
   min-height: 56vh;
   margin-bottom: 10%;
 }
-.stories-page .latest-story-card{
+.stories-page .latest-story-card {
   width: 32.46%;
 }
 .stories-page-index {
   display: flex;
   flex-direction: column;
   width: 9%;
-  font-size: .65rem;
+  font-size: 0.65rem;
 }
 .stories-page-index-list {
   display: flex;
@@ -478,31 +481,32 @@ instead of tweaking each class */
   color: black;
   cursor: pointer;
   text-decoration: none;
-  font-size: .65rem;
+  font-size: 0.65rem;
   line-height: 140%;
   font-family: "swall-diatype";
 }
 .index-link:first-of-type {
   margin-top: 5%;
 }
-.stories-page-index-category-header{
+.stories-page-index-category-header {
   margin: 0%;
 }
 .stories-page-index-list > ol,
 .stories-page-index-brynns-pick {
   font-family: "tobias-regular";
 }
-.stories-page-index-list > ol{
+.stories-page-index-list > ol {
   list-style-position: outside;
   padding-left: 20px;
 }
-li{
+.stories-page-index-list > ol > li {
   margin-bottom: 10%;
   margin-top: 10%;
   line-height: 125%;
   font-family: "tobias-regular";
+  cursor: pointer;
 }
-.stories-page-index-brynns-pick{
+.stories-page-index-brynns-pick {
   line-height: 125%;
   font-family: "tobias-regular";
 }
@@ -529,11 +533,49 @@ li{
   font-size: 1.5em;
 }
 
+/* article */
+.article {
+  text-align: center;
+  padding: 2%;
+}
+.author-photog-container > p:first-of-type {
+  margin-bottom: 0;
+}
+.author-photog-container > p:last-of-type {
+  margin-top: 0;
+}
+.article > p:first-of-type {
+  font-family: "tobias-regular";
+  font-size: 6rem;
+  width: 75%;
+  margin: auto;
+}
+.article-cover-img {
+  width: 50%;
+  margin: auto;
+}
+.article-sanity-content > p {
+  width: 50%;
+  margin: 2% auto;
+  text-align: left;
+}
+.article-images-container {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.article-button-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: fit-content;
+  align-items: center;
+}
 /* FOOTER */
 
 .footer {
   background-color: #d7ceff;
-  font-size: .75rem;
+  font-size: 0.75rem;
   padding: 2% 5%;
   display: flex;
   justify-content: space-between;

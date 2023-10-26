@@ -1,16 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LatestStoriesCard({ story }) {
   const dateObject = new Date(story.datePublished);
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
+  const nav = useNavigate();
 
+  console.log(story);
   console.log(story.datePublished);
   return (
     <div
       className={
         story.mostDiscussed ? "most-discussed-card" : "latest-story-card"
       }
+      onClick={() => {
+        if (!story.mostDiscussed)
+          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+      }}
     >
       <div className="latest-story-card-top">
         <img className="" src={story.coverImage.asset.url} alt={story.title} />
@@ -34,7 +41,16 @@ function LatestStoriesCard({ story }) {
                 instantly struck at how someone could look so chic after a
                 cross-country flight...
               </p>
-              <button className="most-discussed-preview-button">
+              <button
+                className="most-discussed-preview-button"
+                onClick={() =>
+                  nav(
+                    `/stories/${story.category.replaceAll(" ", "-")}/${
+                      story._id
+                    }`
+                  )
+                }
+              >
                 Read More
               </button>
             </>
