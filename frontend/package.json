@@ -19,6 +19,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.10",
+    "@portabletext/react": "^3.0.11",
     "@reduxjs/toolkit": "^1.9.5",
     "@sanity/client": "^6.6.0",
     "@testing-library/jest-dom": "^5.17.0",

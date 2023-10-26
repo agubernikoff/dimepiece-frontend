@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
+import { PortableText } from "@portabletext/react";
 
 function BrynnsPick() {
   const options = {
@@ -18,12 +19,6 @@ function BrynnsPick() {
       .then((response) => setFeatured(response));
   }, []);
 
-  console.log(featured);
-
-  const formattedDescription = featured.description
-    ? featured.description.map((d) => <p key={d._key}>{d.children[0].text}</p>)
-    : null;
-  console.log(formattedDescription);
   if (featured.store) {
     return (
       <div className="featured-watch">
@@ -31,7 +26,7 @@ function BrynnsPick() {
         <p className="featured-watch-headline">{featured.featuredHeadline}</p>
         <div className="featured-watch-content-container">
           <div className="featured-watch-description">
-            {formattedDescription}
+            <PortableText value={featured.description} />
             <button>View Product</button>
           </div>
           <div className="featured-watch-image">
