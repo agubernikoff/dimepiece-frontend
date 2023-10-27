@@ -457,7 +457,6 @@ instead of tweaking each class */
   height: 100%;
   margin-bottom: 10%;
   position: relative;
-  justify-content: center;
 }
 .stories-page .latest-story-card {
   width: 32.46%;
@@ -522,7 +521,7 @@ instead of tweaking each class */
 }
 .stories-page-content {
   /* flex: 1; */
-  width: 84%;
+  width: 82%;
   overflow-y: auto;
 }
 .stories-page-content > p {
