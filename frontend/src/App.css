@@ -78,6 +78,7 @@ instead of tweaking each class */
 
 .navbar {
   position: sticky;
+  position: -webkit-sticky;
   height: 54px;
   width: 90%;
   margin: auto;
@@ -464,8 +465,8 @@ instead of tweaking each class */
 .stories-page-index {
   width: 9%; /* Set a fixed width for the index */
   height: 100vh;
-  overflow-y: auto;
-  position: fixed;
+  position: sticky;
+  position: -webkit-sticky;
   top: 13%;
   left: 5%;
 }
@@ -475,7 +476,7 @@ instead of tweaking each class */
   flex-direction: column;
   width: 80%;
   margin-bottom: 20%;
-  font-size: .65rem;
+  font-size: 0.65rem;
 }
 .stories-page-index-list > ol {
   padding: 0;
