@@ -1,9 +1,11 @@
 // import { useDispatch } from 'react-redux';
 // import { selectPost, setPreEditPost } from '../../redux/actions';
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import logo from '../../assets/logo_purple.png'
 
 function Header() {
+  const nav = useNavigate();
   // const dispatch = useDispatch();
 
   // const handleAddClick = () => {
@@ -37,7 +39,9 @@ function Header() {
         </NavLink>
       </div>
       <div className="navbar-center">
-        <img src={logo} className="navbar-image" />
+        <img src={logo} className="navbar-image" onClick={() =>
+          nav(`/`)
+        }/>
       </div>
       <div className="navbar-right">
         <NavLink to="/newsletter" style={activeStyle} className="navbar-link">
