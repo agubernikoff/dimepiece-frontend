@@ -497,7 +497,7 @@ instead of tweaking each class */
   margin-top: 5%;
 }
 .stories-page-index-category-header {
-  margin: 0%;
+  margin: auto 0% 8%;
 }
 .stories-page-index-list > ol,
 .stories-page-index-brynns-pick {
@@ -580,6 +580,16 @@ instead of tweaking each class */
   margin: auto;
   width: fit-content;
   align-items: center;
+}
+/* WATCHES PAGE */
+
+.watches-page-card-container{
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1em;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
 }
 /* FOOTER */
 

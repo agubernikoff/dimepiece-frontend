@@ -115,7 +115,7 @@ function Watches() {
             ? brands.find((b) => b.title === brand).descriptor
             : null}
         </p>
-        <div className="stories-page-card-container">{mappedWatches}</div>
+        <div className="watches-page-card-container">{mappedWatches}</div>
       </div>
     </div>
   );
