@@ -8,6 +8,7 @@ import Homepage from './layouts/Content/Homepage';
 import Footer from './layouts/Footer';
 import Stories from './layouts/Content/Stories';
 import Article from './layouts/Content/Article';
+import Watches from './layouts/Content/Watches';
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -26,6 +27,8 @@ function App() {
         <Route path="/stories" element={<Stories/>}/>
         <Route path="/stories/:category" element={<Stories/>}/>
         <Route path="/stories/:category/:id" element={<Article/>}/>
+        <Route path="/shop" element={<Watches/>}/>
+        <Route path="/shop/:brand" element={<Watches/>}/>
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>

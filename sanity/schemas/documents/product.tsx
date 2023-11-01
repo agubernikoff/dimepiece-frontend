@@ -135,9 +135,14 @@ export default defineType({
       type: 'string',
     },
     {
-      title: 'Box/Papers',
-      name: 'boxPapers',
-      type: 'string',
+      title: 'Box',
+      name: 'box',
+      type: 'boolean',
+    },
+    {
+      title: 'Papers',
+      name: 'Papers',
+      type: 'boolean',
     },
     {
       title: 'Nitty Gritty',

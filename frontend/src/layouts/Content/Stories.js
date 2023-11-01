@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import LatestStoriesCard from "../../components/stories/LatestStoriesCard";
 import { client } from "../../sanity/SanityClient";
+import IndexSubSection from "./IndexSubSection";
 
 function Stories() {
   const [stories, setStories] = useState([]);
@@ -9,7 +10,7 @@ function Stories() {
   let filteredStories = [];
   const [category, setCategory] = useState("All");
   const categoryURLParam = useParams();
-  const [types, setTypes] = useState();
+  const [types, setTypes] = useState([]);
   const nav = useNavigate();
   useEffect(() => {
     client
@@ -51,32 +52,8 @@ function Stories() {
     return resultString;
   }
 
-  const categories = [
-    "All",
-    "Dial Dimepiece",
-    "Digital Dimes",
-    "Dream Watch",
-    "First Dimers",
-    "Brynn's Tips",
-    "In The Field",
-    "Interview",
-  ];
-  const activeStyle = ({ isActive }) =>
-    isActive
-      ? {
-          textDecoration: "underline",
-        }
-      : null;
-  const mappedCategories = categories.map((c, i) => (
-    <NavLink
-      className="index-link"
-      style={activeStyle}
-      key={i}
-      to={`/stories/${c.replaceAll(" ", "-")}`}
-    >
-      {c}
-    </NavLink>
-  ));
+  const categories = types[0] ? types.map((t) => t.title) : null;
+
   useEffect(() => {
     if (categoryURLParam.category)
       setCategory(
@@ -85,7 +62,6 @@ function Stories() {
   }, [categoryURLParam]);
 
   filteredStories = [...stories].filter((s) => {
-    console.log(s.category === category);
     return s.category === category;
   });
 
@@ -111,12 +87,12 @@ function Stories() {
     return (
       <div className="stories-page">
         <div className="stories-page-index">
-          <div className="stories-page-index-list">
-            <p className="stories-page-index-category-header">
-              <strong>CATEGORIES</strong>
-            </p>
-            {mappedCategories}
-          </div>
+          <IndexSubSection
+            title={"categories"}
+            options={categories}
+            includeAll={true}
+            urlPrefix={"stories"}
+          />
           <div className="stories-page-index-list">
             <p className="stories-page-index-category-header">
               <strong>FEATURED</strong>
