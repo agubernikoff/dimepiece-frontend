@@ -278,6 +278,7 @@ instead of tweaking each class */
   text-align: center;
   font-family: "swall-diatype";
   margin-top: 3%;
+  cursor: pointer;
 }
 
 .watch-preview-card-details > p {
@@ -517,6 +518,7 @@ instead of tweaking each class */
 .stories-page-index-brynns-pick {
   line-height: 125%;
   font-family: "tobias-regular";
+  cursor: pointer;
 }
 .stories-page-content {
   /* flex: 1; */
@@ -583,7 +585,7 @@ instead of tweaking each class */
 }
 /* WATCHES PAGE */
 
-.watches-page-card-container{
+.watches-page-card-container {
   display: flex;
   flex-wrap: wrap;
   row-gap: 1em;
