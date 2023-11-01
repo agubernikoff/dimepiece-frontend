@@ -77,7 +77,7 @@ export default defineType({
     }),
     defineField({
       name: 'description',
-      title: 'Description',
+      title: 'Brynn\'s Description',
       type: 'body',
       group: 'editorial',
     }),
@@ -149,6 +149,33 @@ export default defineType({
       name: 'brynnsBasics',
       type: 'boolean',
     },
+    {
+      title: 'Case Size',
+      name: 'caseSize',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Small', value: 'small'},
+          {title: 'Medium', value: 'medium'},
+          {title: 'Large', value: 'large'}
+        ],
+      },
+    },
+    {
+      title: 'Style',
+      name: 'style',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {
+        list: [
+          {title: 'Gold', value: 'gold'},
+          {title: 'Steel', value: 'steel'},
+          {title: 'Gem-Set', value: 'gemSet'},
+          {title: 'Leather Strap', value: 'leatherStrap'},
+          {title: 'Colored Dial', value: 'coloredDial'}
+        ]
+      }
+    }
   ],
   orderings: [
     {
