@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import LatestStoriesCard from "../../components/stories/LatestStoriesCard";
 import { client } from "../../sanity/SanityClient";
 import IndexSubSection from "./IndexSubSection";
+import { capitalizeWords } from "../../helpers/CapitalizeWords";
 
 function Stories() {
   const [stories, setStories] = useState([]);
@@ -31,26 +32,6 @@ function Stories() {
       .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
       .then((response) => setTypes(response));
   }, []);
-
-  function capitalizeWords(inputString) {
-    // Split the input string into an array of words
-    const words = inputString.split(" ");
-
-    // Map over the words array and capitalize the first letter of each word
-    const capitalizedWords = words.map((word) => {
-      if (word.length === 0) {
-        return ""; // Handle empty words gracefully
-      }
-      const firstLetter = word[0].toUpperCase();
-      const restOfWord = word.slice(1).toLowerCase();
-      return firstLetter + restOfWord;
-    });
-
-    // Join the capitalized words back into a single string
-    const resultString = capitalizedWords.join(" ");
-
-    return resultString;
-  }
 
   const categories = types[0] ? types.map((t) => t.title) : null;
 
@@ -103,7 +84,16 @@ function Stories() {
             <p className="stories-page-index-category-header">
               <strong>{"BRYNN'S PICK"}</strong>
             </p>
-            <p className="stories-page-index-brynns-pick">
+            <p
+              className="stories-page-index-brynns-pick"
+              onClick={() =>
+                nav(
+                  `/shop/${brynnsPick.brand.replaceAll(" ", "-")}/${
+                    brynnsPick._id
+                  }`
+                )
+              }
+            >
               {brynnsPick.featuredHeadline}
             </p>
           </div>
