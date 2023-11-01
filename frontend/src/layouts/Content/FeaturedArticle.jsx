@@ -13,7 +13,7 @@ function FeaturedArticle() {
       )
       .then((response) => setFeatured(response));
   }, []);
-  console.log(featured);
+
   if (featured)
     return (
       <div className="featured-story">

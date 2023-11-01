@@ -14,15 +14,15 @@ function Article() {
     category: "",
   });
 
-  const titleURLParam = useParams();
+  const URLParam = useParams();
 
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && _id == "${titleURLParam.id}"][0]{...,coverImage{asset->{url}}}`
+        `*[_type == "articles" && _id == "${URLParam.id}"][0]{...,coverImage{asset->{url}}}`
       )
       .then((response) => setArticle(response));
-  }, [titleURLParam.title]);
+  }, [URLParam.title]);
 
   const dateObject = article.datePublished
     ? new Date(article.datePublished)
@@ -37,7 +37,6 @@ function Article() {
     });
   };
 
-  console.log(article);
   return (
     <div className="article">
       <p>{article.title}</p>

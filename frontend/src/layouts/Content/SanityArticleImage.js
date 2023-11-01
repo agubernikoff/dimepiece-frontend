@@ -4,7 +4,6 @@ import { client } from "../../sanity/SanityClient";
 
 // Barebones lazy-loaded image component
 function SanityArticleImage({ value }) {
-  console.log(value);
   const builder = imageUrlBuilder(client);
 
   function urlFor(source) {
@@ -12,7 +11,6 @@ function SanityArticleImage({ value }) {
   }
 
   const mappedImages = value.modules.map((m) => {
-    console.log(m);
     const { width, height } = getImageDimensions(m.image);
     return (
       <img
@@ -29,7 +27,6 @@ function SanityArticleImage({ value }) {
       />
     );
   });
-  console.log(mappedImages);
   return <div className="article-images-container">{mappedImages}</div>;
 }
 
