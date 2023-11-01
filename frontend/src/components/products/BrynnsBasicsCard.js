@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function BrynnsBasicsCard({ watch }) {
+  const nav = useNavigate();
   const options = {
     style: "currency",
     currency: "USD",
@@ -29,7 +31,14 @@ function BrynnsBasicsCard({ watch }) {
           important, nonetheless. We love this watch for her color and size, but
           also because you rarely see this out and about.{" "}
         </p>
-        <button className="brynns-basics-card-button">View Product</button>
+        <button
+          className="brynns-basics-card-button"
+          onClick={() =>
+            nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`)
+          }
+        >
+          View Product
+        </button>
       </div>
     </div>
   );

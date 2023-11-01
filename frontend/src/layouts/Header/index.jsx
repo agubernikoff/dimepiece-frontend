@@ -31,7 +31,7 @@ function Header() {
         <NavLink to="/stories/All"  className="navbar-link">
           STORIES
         </NavLink>
-        <NavLink to="/shop"  className="navbar-link">
+        <NavLink to="/shop/All"  className="navbar-link">
           SHOP
         </NavLink>
         <NavLink to="/about"  className="navbar-link">

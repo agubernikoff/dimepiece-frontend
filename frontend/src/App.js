@@ -29,6 +29,7 @@ function App() {
         <Route path="/stories/:category/:id" element={<Article/>}/>
         <Route path="/shop" element={<Watches/>}/>
         <Route path="/shop/:brand" element={<Watches/>}/>
+        <Route path="/shop/:brand/:id" element={<Watches/>}/>
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>

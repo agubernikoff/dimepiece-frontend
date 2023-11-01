@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
+import { useNavigate } from "react-router-dom";
 
 function BrynnsPick() {
+  const nav = useNavigate();
   const options = {
     style: "currency",
     currency: "USD",
@@ -27,7 +29,15 @@ function BrynnsPick() {
         <div className="featured-watch-content-container">
           <div className="featured-watch-description">
             <PortableText value={featured.description} />
-            <button>View Product</button>
+            <button
+              onClick={() =>
+                nav(
+                  `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
+                )
+              }
+            >
+              View Product
+            </button>
           </div>
           <div className="featured-watch-image">
             <img src={featured.brynnPickImage.asset.url} />
@@ -65,7 +75,9 @@ function BrynnsPick() {
             </div>
             <div className="featured-watch-detail-container">
               <h5>BOX/PAPERS</h5>
-              <p>{featured.boxPapers}</p>
+              <p>
+                {featured.box ? "Yes" : "No"}/{featured.papers ? "Yes" : "No"}
+              </p>
             </div>
           </div>
         </div>

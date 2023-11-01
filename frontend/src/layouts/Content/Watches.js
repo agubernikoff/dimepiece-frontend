@@ -3,12 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
 import { client } from "../../sanity/SanityClient";
 import IndexSubSection from "./IndexSubSection";
+import { capitalizeWords } from "../../helpers/CapitalizeWords";
+import Watch from "./Watch";
 
 function Watches() {
   const [watches, setWatches] = useState([]);
   let filteredWatches = [];
   const [brand, setBrand] = useState("All");
-  const brandURLParam = useParams();
+  const URLParam = useParams();
   const [brands, setBrands] = useState([]);
   const nav = useNavigate();
 
@@ -26,35 +28,15 @@ function Watches() {
       .then((response) => setBrands(response));
   }, []);
 
-  function capitalizeWords(inputString) {
-    // Split the input string into an array of words
-    const words = inputString.split(" ");
-
-    // Map over the words array and capitalize the first letter of each word
-    const capitalizedWords = words.map((word) => {
-      if (word.length === 0) {
-        return ""; // Handle empty words gracefully
-      }
-      const firstLetter = word[0].toUpperCase();
-      const restOfWord = word.slice(1).toLowerCase();
-      return firstLetter + restOfWord;
-    });
-
-    // Join the capitalized words back into a single string
-    const resultString = capitalizedWords.join(" ");
-
-    return resultString;
-  }
-
   const brandTitles = brands[0] ? brands.map((b) => b.title) : null;
 
   useEffect(() => {
-    if (brandURLParam.brand) {
-      if (brands.find((b) => b.title === brandURLParam.brand))
-        setBrand(brandURLParam.brand);
-      else setBrand(capitalizeWords(brandURLParam.brand.replaceAll("-", " ")));
+    if (URLParam.brand) {
+      if (brands.find((b) => b.title === URLParam.brand))
+        setBrand(URLParam.brand);
+      else setBrand(capitalizeWords(URLParam.brand.replaceAll("-", " ")));
     }
-  }, [brandURLParam]);
+  }, [URLParam]);
 
   filteredWatches = [...watches].filter((w) => {
     return w.brand === brand;
@@ -64,7 +46,7 @@ function Watches() {
     brand === "All"
       ? watches.map((w) => <WatchPreviewCard key={w._id} watch={w} />)
       : filteredWatches.map((w) => <WatchPreviewCard key={w._id} watch={w} />);
-  console.log(watches);
+
   return (
     <div className="stories-page">
       <div className="stories-page-index">
@@ -104,19 +86,24 @@ function Watches() {
           urlPrefix={"shop"}
         />
       </div>
-      <div className="stories-page-content">
-        <h3 className="section-title-home">
-          {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
-        </h3>
-        <p>
-          {brand === "All"
-            ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."
-            : brands[0]
-            ? brands.find((b) => b.title === brand).descriptor
-            : null}
-        </p>
-        <div className="watches-page-card-container">{mappedWatches}</div>
-      </div>
+      {URLParam.id ? (
+        <Watch />
+      ) : (
+        <div className="stories-page-content">
+          <h3 className="section-title-home">
+            {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
+          </h3>
+          <p>
+            {brand === "All"
+              ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."
+              : brands[0]
+              ? brands.find((b) => b.title === brand).descriptor
+              : null}
+          </p>
+
+          <div className="watches-page-card-container">{mappedWatches}</div>
+        </div>
+      )}
     </div>
   );
 }
