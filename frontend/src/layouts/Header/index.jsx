@@ -16,25 +16,25 @@ function Header() {
   //   dispatch(setPreEditPost(true));
   // };
 
-  const activeStyle = ({ isActive }) =>
-    isActive
-      ? {
-          textDecoration: 'underline'
-        }
-      : null;
+  // const activeStyle = ({ isActive }) =>
+  //   isActive
+  //     ? {
+  //         textDecoration: 'none'
+  //       }
+  //     : null;
       
-        console.log(logo);
+  //       console.log(logo);
 
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <NavLink to="/stories/All" style={activeStyle} className="navbar-link">
+        <NavLink to="/stories/All"  className="navbar-link">
           STORIES
         </NavLink>
-        <NavLink to="/shop" style={activeStyle} className="navbar-link">
+        <NavLink to="/shop"  className="navbar-link">
           SHOP
         </NavLink>
-        <NavLink to="/about" style={activeStyle} className="navbar-link">
+        <NavLink to="/about"  className="navbar-link">
           ABOUT
         </NavLink>
       </div>
@@ -44,13 +44,13 @@ function Header() {
         }/>
       </div>
       <div className="navbar-right">
-        <NavLink to="/newsletter" style={activeStyle} className="navbar-link">
+        <NavLink to="/newsletter"  className="navbar-link">
           NEWSLETTER
         </NavLink>
-        <NavLink to="/search" style={activeStyle} className="navbar-link">
+        <NavLink to="/search"  className="navbar-link">
           SEARCH
         </NavLink>
-        <NavLink to="/cart" style={activeStyle} className="navbar-link">
+        <NavLink to="/cart"  className="navbar-link">
           CART
         </NavLink>
       </div>
