@@ -4,6 +4,7 @@ import LatestStoriesCard from "../../components/stories/LatestStoriesCard";
 import { client } from "../../sanity/SanityClient";
 import IndexSubSection from "./IndexSubSection";
 import { capitalizeWords } from "../../helpers/CapitalizeWords";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Stories() {
   const [stories, setStories] = useState([]);
@@ -98,17 +99,26 @@ function Stories() {
             </p>
           </div>
         </div>
-        <div className="stories-page-content">
-          <h3 className="section-title-home">
-            {category === "All" ? "LATEST STORIES" : category.toUpperCase()}
-          </h3>
-          <p>
-            {category === "All"
-              ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
-              : types.find((t) => t.title === category).descriptor}
-          </p>
-          <div className="stories-page-card-container">{mappedStories}</div>
-        </div>
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            className="stories-page-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: "backInOut" }}
+            key={category}
+          >
+            <h3 className="section-title-home">
+              {category === "All" ? "LATEST STORIES" : category.toUpperCase()}
+            </h3>
+            <p>
+              {category === "All"
+                ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
+                : types.find((t) => t.title === category).descriptor}
+            </p>
+            <div className="stories-page-card-container">{mappedStories}</div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     );
   }
