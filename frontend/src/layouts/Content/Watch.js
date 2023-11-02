@@ -26,7 +26,12 @@ function Watch() {
   const mappedImages =
     watch && watch.productImages
       ? watch.productImages.map((i) => (
-          <img key={i._key} src={i.asset.url} alt={watch.title} />
+          <img
+            loading="lazy"
+            key={i._key}
+            src={i.asset.url}
+            alt={watch.title}
+          />
         ))
       : null;
   console.log(watch);

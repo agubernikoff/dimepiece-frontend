@@ -17,7 +17,7 @@ function FeaturedArticle() {
   if (featured)
     return (
       <div className="featured-story">
-        <img
+        <img loading="lazy"
           className="featured-story-img"
           alt="***TO BE FIXED***"
           src={featured.coverImage.asset.url}

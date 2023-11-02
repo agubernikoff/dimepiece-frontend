@@ -12,7 +12,11 @@ function BrynnsBasicsCard({ watch }) {
   return (
     <div className="brynns-basics-card">
       <div className="brynns-basics-card-left">
-        <img src={watch.store.previewImageUrl} alt={watch.store.title} />
+        <img
+          loading="lazy"
+          src={watch.store.previewImageUrl}
+          alt={watch.store.title}
+        />
       </div>
       <div className="brynns-basics-card-right">
         <div className="brynns-basics-card-right-details">

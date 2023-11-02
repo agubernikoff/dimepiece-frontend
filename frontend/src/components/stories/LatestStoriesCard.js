@@ -18,7 +18,12 @@ function LatestStoriesCard({ story }) {
       }}
     >
       <div className="latest-story-card-top">
-        <img className="" src={story.coverImage.asset.url} alt={story.title} />
+        <img
+          loading="lazy"
+          className=""
+          src={story.coverImage.asset.url}
+          alt={story.title}
+        />
       </div>
       <div className="latest-story-card-bottom">
         <div className="latest-story-card-bottom-left">

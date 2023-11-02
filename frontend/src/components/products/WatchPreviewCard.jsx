@@ -11,7 +11,7 @@ function WatchPreviewCard({ watch }) {
   };
   return (
     <div className="watch-preview-card" onClick={()=>nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`)}>
-      <img src={watch.store.previewImageUrl} alt={watch.title} />
+      <img loading="lazy" src={watch.store.previewImageUrl} alt={watch.title} />
       <div className="watch-preview-card-details">
         <p>{watch.brand.toUpperCase()}</p>
         <p>{watch.title}</p>

@@ -46,6 +46,7 @@ function Article() {
         <p>Photos: {article.photographer}</p>
       </div>
       <img
+        loading="lazy"
         className="article-cover-img"
         src={article.coverImage.asset.url}
         alt={article.title}

@@ -15,7 +15,11 @@ function DialDimepieceCard({ story }) {
       }
     >
       <div className="dial-dimepiece-card-left">
-        <img src={story.coverImage.asset.url} alt={story.title} />
+        <img
+          loading="lazy"
+          src={story.coverImage.asset.url}
+          alt={story.title}
+        />
       </div>
       <div className="dial-dimepiece-card-right">
         <p className="blue dial-dimepiece-card-date">

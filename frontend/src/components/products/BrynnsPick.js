@@ -40,7 +40,7 @@ function BrynnsPick() {
             </button>
           </div>
           <div className="featured-watch-image">
-            <img src={featured.brynnPickImage.asset.url} />
+            <img loading="lazy" src={featured.brynnPickImage.asset.url} />
           </div>
           <div className="featured-watch-details">
             <div className="featured-watch-detail-container">
