@@ -463,11 +463,11 @@ instead of tweaking each class */
 }
 .stories-page-index {
   width: 9%; /* Set a fixed width for the index */
-  height: 100vh;
+  height: fit-content;
   position: sticky;
   position: -webkit-sticky;
-  top: 13%;
-  left: 5%;
+  top: 11%;
+  /* left: 5%; */
 }
 
 .stories-page-index-list {
