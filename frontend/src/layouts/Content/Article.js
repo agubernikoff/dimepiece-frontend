@@ -40,8 +40,6 @@ function Article() {
 
   const { scrollYProgress } = useScroll();
 
-  console.log(article.body);
-
   return (
     <div className="article">
       <motion.div

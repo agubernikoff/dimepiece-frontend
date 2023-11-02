@@ -34,7 +34,6 @@ function Watch() {
           />
         ))
       : null;
-  console.log(watch);
 
   if (watch)
     return (
