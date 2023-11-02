@@ -95,6 +95,12 @@ export default defineType({
       group: 'seo',
     }),
     {
+      title: 'Product Images',
+      name: 'productImages',
+      type: 'array',
+      of: [{type: 'image'}],
+    },
+    {
       title: "Brynn's Pick",
       name: 'isFeatured',
       type: 'boolean',
@@ -147,7 +153,7 @@ export default defineType({
     {
       title: 'Nitty Gritty',
       name: 'nittyGritty',
-      type: 'text',
+      type: 'body',
     },
     {
       title: "Brynn's Basics",
