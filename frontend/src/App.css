@@ -451,11 +451,11 @@ instead of tweaking each class */
 .stories-page {
   display: flex;
   padding-top: 3%;
+  padding-bottom: 3%;
   padding-left: 5%;
   padding-right: 5%;
-  min-height: 56vh;
-  height: 100%;
-  margin-bottom: 10%;
+  min-height: 100vh;
+  margin-bottom: 5%;
   position: relative;
 }
 .stories-page .latest-story-card {
@@ -467,7 +467,6 @@ instead of tweaking each class */
   position: sticky;
   position: -webkit-sticky;
   top: 11%;
-  /* left: 5%; */
 }
 
 .stories-page-index-list {
