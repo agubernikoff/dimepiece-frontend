@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityArticleImage from "./SanityArticleImage";
+import { useScroll, motion } from "framer-motion";
 
 function Article() {
   const [article, setArticle] = useState({
@@ -37,8 +38,18 @@ function Article() {
     });
   };
 
+  const { scrollYProgress } = useScroll();
+
+  console.log(article.body);
+
   return (
     <div className="article">
+      <motion.div
+        className="scroll-progress-bar"
+        style={{
+          scaleX: scrollYProgress,
+        }}
+      />
       <p>{article.title}</p>
       <p>{formattedDate.toUpperCase()}</p>
       <div className="author-photog-container">

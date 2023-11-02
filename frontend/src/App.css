@@ -549,6 +549,17 @@ instead of tweaking each class */
 .article {
   text-align: center;
   padding: 2%;
+  min-height: 100vh;
+}
+.scroll-progress-bar {
+  position: fixed;
+  top: 54px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  width: 100%;
+  background: var(--blue);
+  transform-origin: 0%;
 }
 .author-photog-container > p:first-of-type {
   margin-bottom: 0;
