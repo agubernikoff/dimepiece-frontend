@@ -65,26 +65,26 @@ function Stories() {
       </li>
     ));
 
-  if (brynnsPick) {
-    return (
-      <div className="stories-page">
-        <div className="stories-page-index">
-          <IndexSubSection
-            title={"categories"}
-            options={categories}
-            includeAll={true}
-            urlPrefix={"stories"}
-          />
-          <div className="stories-page-index-list">
-            <p className="stories-page-index-category-header">
-              <strong>FEATURED</strong>
-            </p>
-            <ol>{mappedFeaturedTitles}</ol>
-          </div>
-          <div className="stories-page-index-list">
-            <p className="stories-page-index-category-header">
-              <strong>{"BRYNN'S PICK"}</strong>
-            </p>
+  return (
+    <div className="stories-page">
+      <div className="stories-page-index">
+        <IndexSubSection
+          title={"categories"}
+          options={categories}
+          includeAll={true}
+          urlPrefix={"stories"}
+        />
+        <div className="stories-page-index-list">
+          <p className="stories-page-index-category-header">
+            <strong>FEATURED</strong>
+          </p>
+          <ol>{mappedFeaturedTitles}</ol>
+        </div>
+        <div className="stories-page-index-list">
+          <p className="stories-page-index-category-header">
+            <strong>{"BRYNN'S PICK"}</strong>
+          </p>
+          {brynnsPick ? (
             <p
               className="stories-page-index-brynns-pick"
               onClick={() =>
@@ -97,31 +97,31 @@ function Stories() {
             >
               {brynnsPick.featuredHeadline}
             </p>
-          </div>
+          ) : null}
         </div>
-        <AnimatePresence mode="popLayout">
-          <motion.div
-            className="stories-page-content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
-            key={category}
-          >
-            <h3 className="section-title-home">
-              {category === "All" ? "LATEST STORIES" : category.toUpperCase()}
-            </h3>
-            <p>
-              {category === "All"
-                ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
-                : types.find((t) => t.title === category).descriptor}
-            </p>
-            <div className="stories-page-card-container">{mappedStories}</div>
-          </motion.div>
-        </AnimatePresence>
       </div>
-    );
-  }
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          className="stories-page-content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "backInOut" }}
+          key={category}
+        >
+          <h3 className="section-title-home">
+            {category === "All" ? "LATEST STORIES" : category.toUpperCase()}
+          </h3>
+          <p>
+            {category === "All"
+              ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
+              : types.find((t) => t.title === category).descriptor}
+          </p>
+          <div className="stories-page-card-container">{mappedStories}</div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
 }
 
 export default Stories;
