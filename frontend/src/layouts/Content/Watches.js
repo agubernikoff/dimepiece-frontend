@@ -5,6 +5,7 @@ import { client } from "../../sanity/SanityClient";
 import IndexSubSection from "./IndexSubSection";
 import { capitalizeWords } from "../../helpers/CapitalizeWords";
 import Watch from "./Watch";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Watches() {
   const [watches, setWatches] = useState([]);
@@ -86,24 +87,32 @@ function Watches() {
           urlPrefix={"shop"}
         />
       </div>
-      {URLParam.id ? (
-        <Watch />
-      ) : (
-        <div className="stories-page-content">
-          <h3 className="section-title-home">
-            {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
-          </h3>
-          <p>
-            {brand === "All"
-              ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."
-              : brands[0]
-              ? brands.find((b) => b.title === brand).descriptor
-              : null}
-          </p>
+      {URLParam.id ? <Watch /> : null}
+      <AnimatePresence mode="popLayout">
+        {!URLParam.id && (
+          <motion.div
+            className="stories-page-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: "backInOut" }}
+            key={`${brand}${URLParam.id}`}
+          >
+            <h3 className="section-title-home">
+              {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
+            </h3>
+            <p>
+              {brand === "All"
+                ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."
+                : brands[0]
+                ? brands.find((b) => b.title === brand).descriptor
+                : null}
+            </p>
 
-          <div className="watches-page-card-container">{mappedWatches}</div>
-        </div>
-      )}
+            <div className="watches-page-card-container">{mappedWatches}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
