@@ -594,7 +594,9 @@ instead of tweaking each class */
   align-items: center;
 }
 /* WATCHES PAGE */
-
+.watch-modifier {
+  width: 100%;
+}
 .watches-page-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -622,10 +624,10 @@ instead of tweaking each class */
 .product-images-container::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
-.product-image{
+.product-image {
   margin-bottom: 4%;
 }
-.product-image:last-of-type{
+.product-image:last-of-type {
   margin: 0;
 }
 .product-description-container {
@@ -656,21 +658,21 @@ instead of tweaking each class */
   justify-content: space-between;
 }
 .product-description-container .watch-preview-card-details > p {
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-family: "swall-diatype";
 }
 .watch-description-table-row > p {
   font-family: "swall-diatype";
   margin: 0%;
 }
-.watch-description-table-row-key{
-  font-size: .5rem;
+.watch-description-table-row-key {
+  font-size: 0.5rem;
   /* padding-left: 1%; */
 }
 .watch-description-table-row-value {
   margin: 0;
   width: 20%;
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-align: right;
   /* padding-right: 1%; */
   line-height: 120%;
@@ -681,15 +683,15 @@ instead of tweaking each class */
   border: 1px solid black;
   /* background: transparent; */
   text-decoration: none;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 .watch-description-buttons-container > button:last-of-type {
   background: black;
   color: white;
   margin-top: 1.5%;
 }
-.watch-description-summary{
-  font-size: .75rem;
+.watch-description-summary {
+  font-size: 0.75rem;
   font-family: "swall-diatype";
 }
 /* FOOTER */

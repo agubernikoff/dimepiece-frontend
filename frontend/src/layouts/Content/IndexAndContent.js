@@ -179,7 +179,7 @@ function IndexAndContent() {
       <AnimatePresence mode="popLayout">
         {brand && URLParam.id && (
           <motion.div
-            className="stories-page-content"
+            className="stories-page-content watch-modifier"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
