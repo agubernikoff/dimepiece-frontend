@@ -12,14 +12,14 @@ function IndexSubSection({ title, options, includeAll, urlPrefix }) {
   if (includeAll && options) options.unshift("All");
 
   const mappedOptions = options
-    ? options.map((c, i) => (
+    ? options.map((o, i) => (
         <NavLink
           className="index-link"
           style={activeStyle}
           key={i}
-          to={`/${urlPrefix}/${c.replaceAll(" ", "-")}`}
+          to={`/${urlPrefix}/${o.replaceAll(" ", "-")}`}
         >
-          {c}
+          {o}
         </NavLink>
       ))
     : null;

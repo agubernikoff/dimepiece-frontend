@@ -29,7 +29,7 @@ function Watches() {
       .then((response) => setBrands(response));
   }, []);
 
-  const brandTitles = brands[0] ? brands.map((b) => b.title) : null;
+  const brandTitles = brands[0] ? brands.map((b) => b.title).sort() : null;
 
   useEffect(() => {
     if (URLParam.brand) {
