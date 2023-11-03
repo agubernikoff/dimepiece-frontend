@@ -608,15 +608,42 @@ instead of tweaking each class */
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 100vh;
 }
 .product-images-container {
   width: 60%;
+  overflow: auto;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+}
+.product-images-container::-webkit-scrollbar {
+  width: 0px;
+}
+.product-images-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.product-image{
+  margin-bottom: 4%;
+}
+.product-image:last-of-type{
+  margin: 0;
 }
 .product-description-container {
   width: 35%;
   display: flex;
   flex-direction: column;
-  gap: 1%;
+  gap: 4%;
+  padding-left: 1%;
+  padding-right: 1%;
+  overflow: auto;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+}
+.product-description-container::-webkit-scrollbar {
+  width: 0px;
+}
+.product-description-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 .watch-description-table {
   outline: 1px solid black;
@@ -624,16 +651,29 @@ instead of tweaking each class */
 .watch-description-table-row {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  padding: 1%;
+  padding: 2%;
   display: flex;
   justify-content: space-between;
 }
+.product-description-container .watch-preview-card-details > p {
+  font-size: .75rem;
+  font-family: "swall-diatype";
+}
 .watch-description-table-row > p {
   font-family: "swall-diatype";
+  margin: 0%;
+}
+.watch-description-table-row-key{
+  font-size: .5rem;
+  /* padding-left: 1%; */
 }
 .watch-description-table-row-value {
   margin: 0;
   width: 20%;
+  font-size: .75rem;
+  text-align: right;
+  /* padding-right: 1%; */
+  line-height: 120%;
 }
 .watch-description-buttons-container > button {
   width: 100%;
@@ -641,11 +681,16 @@ instead of tweaking each class */
   border: 1px solid black;
   /* background: transparent; */
   text-decoration: none;
+  font-size: .75rem;
 }
 .watch-description-buttons-container > button:last-of-type {
   background: black;
   color: white;
-  margin-top: 2%;
+  margin-top: 1.5%;
+}
+.watch-description-summary{
+  font-size: .75rem;
+  font-family: "swall-diatype";
 }
 /* FOOTER */
 

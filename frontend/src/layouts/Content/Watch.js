@@ -26,6 +26,7 @@ function Watch() {
     watch && watch.productImages
       ? watch.productImages.map((i) => (
           <img
+            className="product-image"
             loading="lazy"
             key={i._key}
             src={i.asset.url}
@@ -98,7 +99,7 @@ function Watch() {
               <button>ADD TO CART</button>
               <button>BUY NOW</button>
             </div>
-            <div>
+            <div className="watch-description-summary">
               <p>{"BRYNN'S DESCRIPTION:"}</p>
               <PortableText value={watch.description} />
               <p>THE NITTY GRITTY:</p>
