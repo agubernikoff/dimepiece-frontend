@@ -1,11 +1,13 @@
 // import { useDispatch } from 'react-redux';
 // import { selectPost, setPreEditPost } from '../../redux/actions';
-import { NavLink } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { NavLink,useSearchParams, useNavigate,useLocation} from 'react-router-dom';
 import logo from '../../assets/logo_purple.png'
 
 function Header() {
   const nav = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const loc = useLocation();
   // const dispatch = useDispatch();
 
   // const handleAddClick = () => {
@@ -31,7 +33,7 @@ function Header() {
         <NavLink to="/stories/All"  className="navbar-link">
           STORIES
         </NavLink>
-        <NavLink to="/shop/All"  className="navbar-link">
+        <NavLink to="/shop/All?filter+by=Latest+Arrivals"  className="navbar-link" onClick={(e)=>{if(loc.pathname.includes("/shop/")) e.preventDefault();}}>
           SHOP
         </NavLink>
         <NavLink to="/about"  className="navbar-link">

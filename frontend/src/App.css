@@ -467,6 +467,7 @@ instead of tweaking each class */
   position: sticky;
   position: -webkit-sticky;
   top: 11%;
+  font-family: "swall-diatype";
 }
 
 .stories-page-index-list {
@@ -474,12 +475,11 @@ instead of tweaking each class */
   flex-direction: column;
   width: 80%;
   margin-bottom: 20%;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 .stories-page-index-list > ol {
   padding: 0;
   list-style-position: inside;
-  font-family: "tobias-regular";
   margin-bottom: 0%;
 }
 .index-link {
@@ -489,7 +489,6 @@ instead of tweaking each class */
   color: black;
   cursor: pointer;
   text-decoration: none;
-  font-size: 0.65rem;
   line-height: 130%;
   font-family: "swall-diatype";
 }
@@ -499,10 +498,6 @@ instead of tweaking each class */
 .stories-page-index-category-header {
   margin: auto 0% 8%;
 }
-.stories-page-index-list > ol,
-.stories-page-index-brynns-pick {
-  font-family: "tobias-regular";
-}
 .stories-page-index-list > ol {
   list-style-position: outside;
   padding-left: 20px;
@@ -511,12 +506,10 @@ instead of tweaking each class */
   margin-bottom: 10%;
   margin-top: 10%;
   line-height: 125%;
-  font-family: "tobias-regular";
   cursor: pointer;
 }
 .stories-page-index-brynns-pick {
   line-height: 125%;
-  font-family: "tobias-regular";
   cursor: pointer;
 }
 .stories-page-content {

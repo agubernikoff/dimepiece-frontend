@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { motion, AnimatePresence } from "framer-motion";
-import IndexSubSection from "./IndexSubSection";
 import { capitalizeWords } from "../../helpers/CapitalizeWords";
 import IndexStories from "./IndexStories";
 import IndexShop from "./IndexShop";
@@ -76,25 +75,87 @@ function IndexAndContent() {
   }, [URLParam, brands]);
 
   const [watches, setWatches] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filterBy = searchParams.get("filter by");
+  const caseSizeFilter = searchParams.get("case size");
+  const stylesFilter = searchParams.get("styles");
   useEffect(() => {
     client
       .fetch(
         `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
       )
-      .then((response) => setWatches(response));
+      .then((response) => {
+        setWatches(response);
+      });
   }, []);
 
-  let filteredWatches = [];
-  filteredWatches = [...watches].filter((w) => {
-    return w.brand === brand;
-  });
+  function toCamelCase(input) {
+    return input.toLowerCase().replace(/[-_ ](.)/g, function (match, group1) {
+      return group1.toUpperCase();
+    });
+  }
 
-  const mappedWatches =
-    brand === "All"
-      ? watches.map((w) => <WatchPreviewCard key={w._id} watch={w} />)
-      : filteredWatches.map((w) => <WatchPreviewCard key={w._id} watch={w} />);
+  function filterWatches(
+    initialArray,
+    brand,
+    filterBy,
+    caseSizeFilter,
+    stylesFilter
+  ) {
+    let filteredWatches = initialArray;
 
-  console.log(URLParam);
+    if (brand)
+      filteredWatches = filteredWatches.filter((w) => {
+        if (brand === "All") return true;
+        return w.brand === brand;
+      });
+
+    switch (filterBy) {
+      case "Latest Arrivals":
+        filteredWatches.sort(
+          (a, b) => new Date(a._createdAt) - new Date(b._createdAt)
+        );
+        break;
+      case "Price: Low to High":
+        filteredWatches.sort(
+          (a, b) =>
+            a.store.priceRange.maxVariantPrice -
+            b.store.priceRange.maxVariantPrice
+        );
+        break;
+      case "Price: High to Low":
+        filteredWatches.sort(
+          (a, b) =>
+            b.store.priceRange.maxVariantPrice -
+            a.store.priceRange.maxVariantPrice
+        );
+        break;
+    }
+
+    if (caseSizeFilter) {
+      filteredWatches = filteredWatches.filter(
+        (w) => w.caseSize === caseSizeFilter.toLowerCase()
+      );
+    }
+
+    if (stylesFilter) {
+      filteredWatches = filteredWatches.filter((w) => {
+        if (w.style.includes(toCamelCase(stylesFilter))) return true;
+        else return false;
+      });
+    }
+
+    return filteredWatches;
+  }
+
+  const mappedWatches = filterWatches(
+    watches,
+    brand,
+    filterBy,
+    caseSizeFilter,
+    stylesFilter
+  ).map((w) => <WatchPreviewCard key={w._id} watch={w} />);
+
   return (
     <div className="stories-page">
       <AnimatePresence mode="popLayout">
@@ -122,7 +183,7 @@ function IndexAndContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
+            transition={{ duration: 1 }}
             key={"brand"}
           >
             <IndexShop brandTitles={brandTitles} />
@@ -152,14 +213,14 @@ function IndexAndContent() {
         )}
       </AnimatePresence>
       <AnimatePresence mode="popLayout">
-        {brand && !URLParam.id && (
+        {brand && !URLParam.id ? (
           <motion.div
             className="stories-page-content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1, ease: "backInOut" }}
-            key={`${brand}${URLParam.id}`}
+            key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
           >
             <h3 className="section-title-home">
               {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
@@ -171,10 +232,20 @@ function IndexAndContent() {
                 ? brands.find((b) => b.title === brand).descriptor
                 : null}
             </p>
-
-            <div className="watches-page-card-container">{mappedWatches}</div>
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                className="watches-page-card-container"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, ease: "backInOut" }}
+                key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
+              >
+                {mappedWatches}
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
       <AnimatePresence mode="popLayout">
         {brand && URLParam.id && (
