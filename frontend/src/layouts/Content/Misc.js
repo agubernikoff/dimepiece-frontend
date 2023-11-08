@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
-import SanityEmailLink from "./SanityEmailLink";
+import SanityEmailLink from "../../sanity/SanityEmailLink";
 
 function Misc({ title }) {
   const [misc, setMisc] = useState();

@@ -1,6 +1,6 @@
 import imageUrlBuilder from "@sanity/image-url";
 import { getImageDimensions } from "@sanity/asset-utils";
-import { client } from "../../sanity/SanityClient";
+import { client } from "./SanityClient";
 
 // Barebones lazy-loaded image component
 function SanityArticleImage({ value }) {

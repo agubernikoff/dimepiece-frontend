@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
-import SanityArticleImage from "./SanityArticleImage";
+import SanityArticleImage from "../../sanity/SanityArticleImage";
 import { useScroll, motion } from "framer-motion";
 
 function Article() {

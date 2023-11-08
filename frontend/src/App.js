@@ -12,6 +12,7 @@ import IndexAndContent from './layouts/Content/IndexAndContent';
 import MobileHeader from './components/mobile/MobileHeader';
 import Misc from './layouts/Content/Misc';
 import NewsletterPage from './layouts/Content/NewsletterPage';
+import About from './layouts/Content/About';
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/shop" element={<IndexAndContent/>}/>
         <Route path="/shop/:brand" element={<IndexAndContent/>}/>
         <Route path="/shop/:brand/:id" element={<IndexAndContent/>}/>
+        <Route path="/about" element={<About/>}/>
         <Route path="/shipping_and_returns" element={<Misc title={"SHIPPING AND RETURNS"}/>} />
         <Route path="/faq" element={<Misc title={"FAQ"}/>} />
         <Route path="/terms_and_conditions" element={<Misc title={"TERMS AND CONDITIONS"}/>} />
