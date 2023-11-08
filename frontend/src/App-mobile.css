@@ -1,0 +1,19 @@
+.mobile-hamburger-menu {
+  position: relative;
+}
+
+.hamburger-icon {
+  cursor: pointer;
+  /* Hamburger icon styles (you can use CSS for a hamburger icon) */
+}
+
+.menu-content {
+  display: block;
+  position: absolute;
+  top: 100%; /* Position the menu below the hamburger icon */
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  /* Other styles for the dropdown menu */
+}

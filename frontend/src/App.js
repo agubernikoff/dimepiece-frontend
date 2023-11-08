@@ -8,10 +8,12 @@ import Homepage from './layouts/Content/Homepage';
 import Footer from './layouts/Footer';
 import Article from './layouts/Content/Article';
 import IndexAndContent from './layouts/Content/IndexAndContent';
+import MobileHeader from './components/mobile/MobileHeader';
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
 function App() {
+  const isMobile = window.innerWidth <= 768;
   return (
     <Suspense
       fallback={
@@ -19,7 +21,7 @@ function App() {
           Loading ...
         </div>
       }>
-      <Header />
+      {isMobile ? <MobileHeader /> :<Header />} 
       <Routes>
         <Route path="" element={<Homepage />} />
         <Route path="/" element={<Homepage />} />
