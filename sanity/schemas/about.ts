@@ -38,8 +38,7 @@ export default {
             title:'Dimepiece Press',
             name:'dimepiecePress',
             type:'array',
-            of:'reference',
-            to:[{type:'dimepiecePress'}]
+            of:[{type:'dimepiecePress'}]
         }
     ],
   }
