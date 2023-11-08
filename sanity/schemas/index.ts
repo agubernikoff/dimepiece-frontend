@@ -21,8 +21,10 @@ import articles from './articles'
 import category from './category'
 import brands from './brands'
 import miscellaneous from './miscellaneous'
+import dimepiecePress from './dimepiecePress'
+import about from './about'
 
-const documents = [collection, colorTheme, page, product, productVariant, articles, category, brands,miscellaneous]
+const documents = [collection, colorTheme, page, product, productVariant, articles, category, brands,miscellaneous,dimepiecePress,about]
 
 // Singleton document types
 import home from './singletons/home'
