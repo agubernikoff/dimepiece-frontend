@@ -688,10 +688,25 @@ instead of tweaking each class */
   font-size: var(--base-text-size);
   font-family: "swall-diatype";
 }
+/* Newsletter page */
+.newsletter-page{
+  margin-top: 3%;
+  min-height: 67.8vh;
+  overflow: hidden;
+}
 
+.newsletter-page .newsletter{
+  width: 40%;
+}
 /* misc */
 .misc-page {
   min-height: 92vh;
+  width: 50%;
+  margin-top: 3%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: var(--base-text-size);
+  margin-bottom: 5%;
 }
 
 /* FOOTER */

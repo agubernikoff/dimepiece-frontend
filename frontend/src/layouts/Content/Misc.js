@@ -16,7 +16,7 @@ function Misc({ title }) {
     <div className="misc-page">
       {misc ? (
         <>
-          <p>{misc.title}</p>
+          <h3 className="section-title-home">{misc.title}</h3>
           <PortableText
             value={misc.text}
             components={{ marks: { annotationLinkEmail: SanityEmailLink } }}

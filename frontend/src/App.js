@@ -10,6 +10,7 @@ import Article from './layouts/Content/Article';
 import IndexAndContent from './layouts/Content/IndexAndContent';
 import MobileHeader from './components/mobile/MobileHeader';
 import Misc from './layouts/Content/Misc';
+import NewsletterPage from './layouts/Content/NewsletterPage';
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="" element={<Homepage />} />
         <Route path="/" element={<Homepage />} />
+        <Route path="/newsletter" element={<NewsletterPage />} />
         <Route path="/stories" element={<IndexAndContent/>}/>
         <Route path="/stories/:category" element={<IndexAndContent/>}/>
         <Route path="/stories/:category/:id" element={<Article/>}/>
