@@ -1,6 +1,7 @@
 // import React, { Suspense, lazy } from 'react';
 import React, { Suspense } from 'react';
 import './App.css';
+import './App-mobile.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import PageNotFound from './pages/PageNotFound';
 import Header from './layouts/Header';

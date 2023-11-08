@@ -1,9 +1,17 @@
+.mobile-nav {
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 .mobile-hamburger-menu {
   position: relative;
+  width: 20%;
 }
 
 .hamburger-icon {
   cursor: pointer;
+  width: 25%;
   /* Hamburger icon styles (you can use CSS for a hamburger icon) */
 }
 
@@ -16,4 +24,38 @@
   border: 1px solid #ccc;
   padding: 10px;
   /* Other styles for the dropdown menu */
+}
+.mobile-logo {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.mobile-logo.navbar-image {
+  margin: 0;
+}
+.mobile-search-cart {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10%;
+}
+.mobile-cart-icon {
+  position: relative;
+}
+.mobile-cart-number {
+  position: absolute;
+  clip-path: circle(50%);
+  width: 2px;
+  height: 2px;
+  padding: 5px;
+  background: var(--blue);
+  color: white;
+  text-align: center;
+  margin: 0;
+  bottom: -10%;
+  left: 50%;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

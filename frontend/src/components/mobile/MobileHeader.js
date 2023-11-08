@@ -34,6 +34,7 @@ function MobileHeader() {
         </div>
         <div className="mobile-cart-icon">
           <img src={cart} alt="cart" />
+          <p className="mobile-cart-number">1</p>
         </div>
       </div>
     </div>
