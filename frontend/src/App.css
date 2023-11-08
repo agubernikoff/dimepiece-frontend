@@ -115,7 +115,7 @@ instead of tweaking each class */
 }
 
 .navbar-image {
-  width: clamp(64px,10%,1000px);
+  width: clamp(64px, 10%, 1000px);
   margin: auto;
   cursor: pointer;
 }
@@ -221,7 +221,7 @@ instead of tweaking each class */
   display: flex;
   flex-direction: column;
   font: "swall-diatype";
-  font-size: clamp(4px,.67vw,0.5rem);
+  font-size: clamp(4px, 0.67vw, 0.5rem);
   width: 10%;
   letter-spacing: 10%;
 }
@@ -296,7 +296,7 @@ instead of tweaking each class */
 
 .featured-watch-headline {
   text-align: center;
-  font-size: clamp(24px,3.33vw,2.5em);
+  font-size: clamp(24px, 3.33vw, 2.5em);
   font-family: "tobias-regular";
   width: 40%;
   margin: 2% auto 2%;
@@ -373,7 +373,7 @@ instead of tweaking each class */
 
 .dial-dimepiece-card-right {
   width: 50%;
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
   font-family: "tobias-regular";
 }
 .dial-dimepiece-card-date {
@@ -407,7 +407,7 @@ instead of tweaking each class */
   width: 50%;
 }
 .brynns-basics-card-description {
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
 }
 
 .brynns-basics-card-right-details > p {
@@ -416,7 +416,7 @@ instead of tweaking each class */
 }
 
 .brynns-basics-card-button {
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
 }
 
 /* newsletter */
@@ -476,7 +476,7 @@ instead of tweaking each class */
   flex-direction: column;
   width: 80%;
   margin-bottom: 20%;
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
 }
 .stories-page-index-list > ol {
   padding: 0;
@@ -652,7 +652,7 @@ instead of tweaking each class */
   justify-content: space-between;
 }
 .product-description-container .watch-preview-card-details > p {
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
   font-family: "swall-diatype";
 }
 .watch-description-table-row > p {
@@ -666,7 +666,7 @@ instead of tweaking each class */
 .watch-description-table-row-value {
   margin: 0;
   width: 20%;
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
   text-align: right;
   /* padding-right: 1%; */
   line-height: 120%;
@@ -677,7 +677,7 @@ instead of tweaking each class */
   border: 1px solid black;
   /* background: transparent; */
   text-decoration: none;
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
 }
 .watch-description-buttons-container > button:last-of-type {
   background: black;
@@ -685,9 +685,15 @@ instead of tweaking each class */
   margin-top: 1.5%;
 }
 .watch-description-summary {
-  font-size: var(--base-text-size);;
+  font-size: var(--base-text-size);
   font-family: "swall-diatype";
 }
+
+/* misc */
+.misc-page {
+  min-height: 92vh;
+}
+
 /* FOOTER */
 
 .footer {
@@ -712,6 +718,8 @@ instead of tweaking each class */
 }
 .footer-left-column {
   width: 25%;
+  display: flex;
+  flex-direction: column;
 }
 .footer > div > button {
   text-decoration: none;
@@ -719,14 +727,24 @@ instead of tweaking each class */
 
 /* MEDIA QUERIES */
 
-@media (max-width: 600px) { 
-  :root{--base-text-size: 10px}
+@media (max-width: 600px) {
+  :root {
+    --base-text-size: 10px;
+  }
 }
 
-@media (min-width: 601px) and (max-width: 768px) { /* styles */ }
+@media (min-width: 601px) and (max-width: 768px) {
+  /* styles */
+}
 
-@media (min-width: 769px) and (max-width: 1024px) { /* styles */ }
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* styles */
+}
 
-@media (min-width: 1025px) and (max-width: 1440px) { /* styles */ }
+@media (min-width: 1025px) and (max-width: 1440px) {
+  /* styles */
+}
 
-@media (min-width: 1441px) { /* styles */ }
+@media (min-width: 1441px) {
+  /* styles */
+}

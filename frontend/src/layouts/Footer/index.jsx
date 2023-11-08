@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {NavLink} from "react-router-dom";
 
 function Footer() {
   const [times, setTimes] = useState({
@@ -77,10 +78,10 @@ function Footer() {
             <strong>CUSTOMER CARE</strong>
           </p>
           <br />
-          <p>Shipping & Returns</p>
-          <p>FAQ</p>
-          <p>Terms & Conditions</p>
-          <p>Warranty</p>
+          <NavLink className="navbar-link" to="/shipping_and_returns">Shipping & Returns</NavLink>
+          <NavLink className="navbar-link" to="/faq">FAQ</NavLink>
+          <NavLink className="navbar-link" to="/terms_and_conditions">Terms & Conditions</NavLink>
+          <NavLink className="navbar-link" to="/warranty">Warranty</NavLink>
         </div>
         <div className="footer-left-column">
           <p>
