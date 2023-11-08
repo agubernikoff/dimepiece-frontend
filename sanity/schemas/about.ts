@@ -33,12 +33,6 @@ export default {
             name:'brands',
             type: 'array',
             of: [{type:'image'}]
-        },
-        {
-            title:'Dimepiece Press',
-            name:'dimepiecePress',
-            type:'array',
-            of:[{type:'dimepiecePress'}]
         }
     ],
   }
