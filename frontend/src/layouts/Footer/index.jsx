@@ -92,7 +92,7 @@ function Footer() {
             Warranty
           </NavLink>
         </div>
-        <div className="footer-left-column">
+        {/* <div className="footer-left-column">
           <p>
             <strong>GET IN TOUCH</strong>
           </p>
@@ -101,7 +101,7 @@ function Footer() {
           <p>FAQ</p>
           <p>Terms & Conditions</p>
           <p>Warranty</p>
-        </div>
+        </div> */}
       </div>
       <div className="footer-right-container">
         <button onClick={scrollToTop}>
