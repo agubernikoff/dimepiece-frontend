@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import shopifyClient from "../../shopify/shopify.js";
 
 function Footer() {
   const [times, setTimes] = useState({
@@ -78,10 +79,18 @@ function Footer() {
             <strong>CUSTOMER CARE</strong>
           </p>
           <br />
-          <NavLink className="navbar-link" to="/shipping_and_returns">Shipping & Returns</NavLink>
-          <NavLink className="navbar-link" to="/faq">FAQ</NavLink>
-          <NavLink className="navbar-link" to="/terms_and_conditions">Terms & Conditions</NavLink>
-          <NavLink className="navbar-link" to="/warranty">Warranty</NavLink>
+          <NavLink className="navbar-link" to="/shipping_and_returns">
+            Shipping & Returns
+          </NavLink>
+          <NavLink className="navbar-link" to="/faq">
+            FAQ
+          </NavLink>
+          <NavLink className="navbar-link" to="/terms_and_conditions">
+            Terms & Conditions
+          </NavLink>
+          <NavLink className="navbar-link" to="/warranty">
+            Warranty
+          </NavLink>
         </div>
         <div className="footer-left-column">
           <p>

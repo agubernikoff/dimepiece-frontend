@@ -82,7 +82,7 @@ instead of tweaking each class */
   position: -webkit-sticky;
   height: 54px;
   width: 90%;
-  margin: auto;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,23 +100,39 @@ instead of tweaking each class */
 .navbar-left,
 .navbar-right {
   display: flex;
-  width: 50%;
-  gap: 10%;
+  align-items: center;
+  /* width: 50%;
+  gap: 10%; */
 }
-.navbar-left:nth-child(2),
+
+.navbar-left {
+  justify-content: flex-start;
+  width: 40%;
+  gap: 4%;
+  margin-left: -3%;
+}
+
+.navbar-right {
+  justify-content: flex-end;
+  width: 40%;
+  gap: 4%;
+  margin-right: -3%;
+}
+
+/* .navbar-left:nth-child(2),
 .navbar-right:nth-child(2) {
   margin: auto 2%;
-}
+} */
 
 .navbar-center {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 20%;
 }
 
 .navbar-image {
-  width: clamp(64px, 10%, 1000px);
-  margin: auto;
+  width: clamp(100px, 10%, 100px);
   cursor: pointer;
 }
 
@@ -196,7 +212,7 @@ instead of tweaking each class */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 90%;
+  width: 95%;
   margin: auto;
   row-gap: 3em;
   margin: 2% auto 7%;
@@ -343,7 +359,7 @@ instead of tweaking each class */
 /* bottom homepage section */
 
 .three-column-homepage-container {
-  width: 90%;
+  width: 95%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -453,8 +469,8 @@ instead of tweaking each class */
   display: flex;
   padding-top: 3%;
   padding-bottom: 3%;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
   min-height: 100vh;
   margin-bottom: 5%;
   position: relative;
@@ -689,13 +705,13 @@ instead of tweaking each class */
   font-family: "swall-diatype";
 }
 /* Newsletter page */
-.newsletter-page{
+.newsletter-page {
   margin-top: 3%;
   min-height: 67.8vh;
   overflow: hidden;
 }
 
-.newsletter-page .newsletter{
+.newsletter-page .newsletter {
   width: 40%;
 }
 /* misc */
@@ -710,25 +726,25 @@ instead of tweaking each class */
 }
 
 /* ABOUT PAGE */
-.about-page{
+.about-page {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
-.about-header-title,.about-header-title-full {
+.about-header-title,
+.about-header-title-full {
   text-align: center;
-  font-size:clamp(24px, 3.33vw, 2.5em);
+  font-size: clamp(24px, 3.33vw, 2.5em);
   font-family: "tobias-regular";
   margin-bottom: 15%;
 }
 
-.about-header-title-full .article-images-container > img{
+.about-header-title-full .article-images-container > img {
   width: 100% !important;
 }
 
-.about-brynn-portrait{
+.about-brynn-portrait {
   font-size: 1rem;
   display: flex;
   align-items: flex-start;
@@ -736,13 +752,13 @@ instead of tweaking each class */
   margin-bottom: 15%;
 }
 
-.about-brynn-portrait-title{
+.about-brynn-portrait-title {
   text-align: center;
-  font-size:clamp(24px, 3.33vw, 2.5em);
+  font-size: clamp(24px, 3.33vw, 2.5em);
   font-family: "tobias-regular";
 }
 
-.about-brynn-portrait > p{
+.about-brynn-portrait > p {
   margin-top: 0%;
 }
 
@@ -757,7 +773,7 @@ instead of tweaking each class */
   padding: 0;
 }
 
-.about-dimepiece-press{
+.about-dimepiece-press {
   display: flex;
   align-items: flex-start;
   margin-bottom: 2%;
@@ -766,16 +782,16 @@ instead of tweaking each class */
   font-family: "swall-diatype";
 }
 
-.about-dimepiece-press:last-of-type{
+.about-dimepiece-press:last-of-type {
   margin-bottom: 15%;
 }
 
-.about-dimepiece-press-title{
+.about-dimepiece-press-title {
   font-size: 1.5rem;
   font-family: "tobias-regular";
 }
 
-.about-dimepiece-press img{
+.about-dimepiece-press img {
   width: 60%;
   height: 100%;
   margin-right: 2%;
@@ -783,12 +799,12 @@ instead of tweaking each class */
   aspect-ratio: 2/1.3;
 }
 
-.about-dimepiece-press div{
+.about-dimepiece-press div {
   width: 40%;
   height: 100%;
 }
 
-.about-dimepiece-press > p{
+.about-dimepiece-press > p {
   margin-top: 0%;
 }
 
@@ -796,7 +812,7 @@ instead of tweaking each class */
   margin-top: 0%;
 }
 
-.about-say-hello{
+.about-say-hello {
   text-align: center;
   line-height: 20%;
   font-size: 1.5rem;
@@ -808,7 +824,7 @@ instead of tweaking each class */
 .footer {
   background-color: #d7ceff;
   font-size: var(--base-text-size);
-  padding: 2% 5%;
+  padding: 2% 2.5%;
   display: flex;
   justify-content: space-between;
 }

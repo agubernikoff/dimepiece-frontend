@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
+import shopifyClient from "../../shopify/shopify.js";
 
 function Watch() {
   const [watch, setWatch] = useState();
