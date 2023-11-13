@@ -707,7 +707,7 @@ instead of tweaking each class */
 /* Newsletter page */
 .newsletter-page {
   margin-top: 3%;
-  min-height: 67.8vh;
+  min-height: 74vh;
   overflow: hidden;
 }
 
