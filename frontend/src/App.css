@@ -162,6 +162,7 @@ instead of tweaking each class */
 .featured-story-img {
   width: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .featured-story-blurb-container {

@@ -13,8 +13,8 @@ function LatestStoriesCard({ story }) {
         story.mostDiscussed ? "most-discussed-card" : "latest-story-card"
       }
       onClick={() => {
-        if (!story.mostDiscussed)
-          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        // if (!story.mostDiscussed)
+        nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
       }}
     >
       <div className="latest-story-card-top">

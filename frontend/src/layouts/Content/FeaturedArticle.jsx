@@ -17,10 +17,18 @@ function FeaturedArticle() {
   if (featured)
     return (
       <div className="featured-story">
-        <img loading="lazy"
+        <img
+          loading="lazy"
           className="featured-story-img"
           alt="***TO BE FIXED***"
           src={featured.coverImage.asset.url}
+          onClick={() =>
+            nav(
+              `/stories/${featured.category.replaceAll(" ", "-")}/${
+                featured._id
+              }`
+            )
+          }
         />
         <div className="featured-story-blurb-container">
           <div className="featured-story-blurb-container-inside">
@@ -31,9 +39,18 @@ function FeaturedArticle() {
               AP House, the new(ish) appointment only concept space by Audemars
               Piguet.
             </p>
-            <button className="read-story-btn" onClick={() =>
-          nav(`/stories/${featured.category.replaceAll(" ", "-")}/${featured._id}`)
-        }>READ STORY</button>
+            <button
+              className="read-story-btn"
+              onClick={() =>
+                nav(
+                  `/stories/${featured.category.replaceAll(" ", "-")}/${
+                    featured._id
+                  }`
+                )
+              }
+            >
+              READ STORY
+            </button>
           </div>
         </div>
       </div>

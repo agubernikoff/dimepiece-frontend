@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function MobileLatestStoriesCard({ story }) {
+  const nav = useNavigate();
   return (
     <div className="mobile-latest-story-card">
       <img
@@ -8,6 +10,10 @@ function MobileLatestStoriesCard({ story }) {
         className=""
         src={story.coverImage.asset.url}
         alt={story.title}
+        onClick={() => {
+          // if (!story.mostDiscussed)
+          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        }}
       />
       <p className="mobile-latest-story-card-title">{story.title}</p>
       <p className="mobile-most-discussed-preview">
