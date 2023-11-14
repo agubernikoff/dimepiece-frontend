@@ -16,6 +16,7 @@ function MobileHeader() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   const nav = useNavigate();
   return (
     <div className="mobile-nav">
@@ -23,7 +24,30 @@ function MobileHeader() {
         <div className="hamburger-icon" onClick={toggleMenu}>
           <img src={hamburger} alt="burger" />
         </div>
-        {isOpen && <div className="menu-content">{"list of items"}</div>}
+        <div className={`menu-content ${isOpen ? "open" : ""}`}>
+          <ul className="menu-list">
+            <li>
+              <NavLink to="/stories" onClick={() => setIsOpen(false)}>
+                STORIES
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop" onClick={() => setIsOpen(false)}>
+                SHOP
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/newsletter" onClick={() => setIsOpen(false)}>
+                NEWSLETTER
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" onClick={() => setIsOpen(false)}>
+                ABOUT
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="mobile-logo">
         <img src={logo} className="navbar-image" onClick={() => nav(`/`)} />
