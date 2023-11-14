@@ -19,14 +19,45 @@
 }
 
 .menu-content {
-  display: block;
+  display: none;
   position: absolute;
-  top: 100%; /* Position the menu below the hamburger icon */
+  top: calc(100% + 15%);
   left: 0;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  /* Other styles for the dropdown menu */
+  width: 100vw; /* Full width of the viewport */
+  height: calc(100vh - 8%);
+  max-height: calc(100vh - 8%);
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+  background-color: #fff;
+  margin-left: -53%;
+  font-family: "swall-diatype";
+  font-size: 24px;
+}
+
+.menu-content.open {
+  display: block;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  display: flex; /* Use flexbox to center vertically */
+  flex-direction: column; /* Align items vertically */
+  justify-content: center; /* Center items vertically */
+  height: 100%; /* Occupy full height of the menu */
+}
+
+.menu-list li {
+  padding: 15px 0; /* Adjust spacing */
+}
+
+.menu-list li a {
+  text-decoration: none;
+  color: #333; /* Link color */
+  /* Add other styles as needed */
 }
 .mobile-logo {
   width: 70%;
