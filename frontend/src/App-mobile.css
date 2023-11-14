@@ -206,6 +206,43 @@
   width: fit-content;
   white-space: nowrap;
 }
+.mobile-content-container {
+  width: 90%;
+  margin: auto;
+}
+.mobile-descriptor > p {
+  text-align: center;
+  font-size: 14px;
+  font-family: "swall-diatype";
+  margin-bottom: 10%;
+}
+.mobile-content-mapped {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 15%;
+}
+.mobile-content-mapped .mobile-watch-preview-card {
+  width: 50%;
+  margin-bottom: 5%;
+}
+.mobile-content-mapped .watch-preview-card-details {
+  text-align: center;
+}
+.mobile-content-mapped .mobile-latest-story-card {
+  width: 48%;
+  margin-bottom: 5%;
+}
+.mobile-content-mapped .mobile-latest-story-card > img {
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.mobile-content-mapped .mobile-latest-story-card-title {
+  font-size: 16px;
+}
+.mobile-content-mapped .mobile-most-discussed-preview {
+  display: none;
+}
 /* mobile footer */
 .mobile-footer {
   background-color: #d7ceff;

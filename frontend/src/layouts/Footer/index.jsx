@@ -67,12 +67,24 @@ function Footer() {
             <strong>LINKS</strong>
           </p>
           <br />
-          <p>Stories</p>
-          <p>Shop</p>
-          <p>About</p>
-          <p>Newsletter</p>
-          <p>Search</p>
-          <p>Cart (0)</p>
+          <NavLink className="navbar-link" to="/stories">
+            Stories
+          </NavLink>
+          <NavLink className="navbar-link" to="/shop">
+            Shop
+          </NavLink>
+          <NavLink className="navbar-link" to="/about">
+            About
+          </NavLink>
+          <NavLink className="navbar-link" to="/newsletter">
+            Newsletter
+          </NavLink>
+          <NavLink className="navbar-link" to="/search">
+            Search
+          </NavLink>
+          <NavLink className="navbar-link" to="/cart">
+            Cart (0)
+          </NavLink>
         </div>
         <div className="footer-left-column">
           <p>

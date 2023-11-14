@@ -36,8 +36,8 @@ function MobileIndexAndContent({ contentType }) {
             .then((response) => setFilters(response));
         });
     }
-  }, []);
-
+  }, [contentType]);
+  console.log(content);
   useEffect(() => {
     if (URLParam.category)
       setPrimaryFilter(capitalizeWords(URLParam.category.replaceAll("-", " ")));
@@ -46,7 +46,7 @@ function MobileIndexAndContent({ contentType }) {
         setPrimaryFilter(URLParam.brand);
       else
         setPrimaryFilter(capitalizeWords(URLParam.brand.replaceAll("-", " ")));
-    } else setPrimaryFilter("");
+    }
   }, [URLParam, filters]);
 
   const activeStyle = ({ isActive }) =>
@@ -68,16 +68,30 @@ function MobileIndexAndContent({ contentType }) {
       {t}
     </NavLink>
   ));
-  const mappedStories =
+
+  let filteredStories = [];
+  filteredStories =
     contentType === "stories"
-      ? content.map((s) => <MobileLatestStoriesCard key={s._id} story={s} />)
+      ? [...content].filter((s) => {
+          if (primaryFilter === "All") {
+            return true;
+          }
+          return s.category === primaryFilter;
+        })
+      : null;
+
+  const mappedStories =
+    content[0] && contentType === "stories"
+      ? filteredStories.map((s) => (
+          <MobileLatestStoriesCard key={s._id} story={s} />
+        ))
       : null;
 
   const filterBy = searchParams.get("filter by");
   const caseSizeFilter = searchParams.get("case size");
   const stylesFilter = searchParams.get("styles");
   const mappedWatches =
-    contentType === "shop"
+    content[0] && contentType === "shop"
       ? filterWatches(
           content,
           primaryFilter,
@@ -96,22 +110,32 @@ function MobileIndexAndContent({ contentType }) {
       ? filters.find((b) => b.title === primaryFilter).descriptor
       : null;
   console.log(mappedWatches);
-  return (
-    <div>
-      <div className="mobile-index">{mappedTitles}</div>
-      <div className="mobile-descriptor">
-        <h3 className="section-title-home">
-          {primaryFilter === "All"
-            ? contentType === "shop"
-              ? "SHOP ALL"
-              : "LATEST STORIES"
-            : primaryFilter.toUpperCase()}
-        </h3>
-        <p>{descriptor}</p>
+  if (
+    (contentType === "shop" && content[0] && content[0].brand) ||
+    (contentType === "stories" && content[0] && !content[0].brand)
+  )
+    return (
+      <div>
+        <div className="mobile-index">{mappedTitles}</div>
+        <div className="mobile-content-container">
+          <div className="mobile-descriptor">
+            <h3 className="section-title-home">
+              {primaryFilter === "All"
+                ? contentType === "shop"
+                  ? "SHOP ALL"
+                  : "LATEST STORIES"
+                : primaryFilter.toUpperCase()}
+            </h3>
+            <p>{descriptor}</p>
+          </div>
+          {content[0] ? (
+            <div className="mobile-content-mapped">
+              {contentType === "shop" ? mappedWatches : mappedStories}
+            </div>
+          ) : null}
+        </div>
       </div>
-      <div>{contentType === "shop" ? mappedWatches : mappedStories}</div>
-    </div>
-  );
+    );
 }
 
 export default MobileIndexAndContent;
