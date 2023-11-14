@@ -1,6 +1,7 @@
 // import { useDispatch } from 'react-redux';
 // import { selectPost, setPreEditPost } from '../../redux/actions';
 import React from "react";
+import { useScroll, motion } from "framer-motion";
 import {
   NavLink,
   useSearchParams,
@@ -32,9 +33,16 @@ function Header() {
   //     : null;
 
   //       console.log(logo);
-
+  const { scrollYProgress } = useScroll();
+  
   return (
     <div className="navbar">
+      {loc.pathname.split('/').length>=4 && loc.pathname.split('/')[1]==="stories"?<motion.div
+        className="scroll-progress-bar"
+        style={{
+          scaleX: scrollYProgress,
+        }}
+      />:null}
       <div className="navbar-left">
         <NavLink to="/stories/All" className="navbar-link">
           STORIES

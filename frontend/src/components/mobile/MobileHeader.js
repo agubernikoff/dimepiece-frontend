@@ -9,6 +9,7 @@ import logo from "../../assets/logo_purple.png";
 import search from "../../assets/search_icon.png";
 import cart from "../../assets/cart_icon.png";
 import hamburger from "../../assets/hamburger.png";
+import { useScroll, motion } from "framer-motion";
 
 function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +34,21 @@ function MobileHeader() {
     };
   }, [isOpen]);
 
+  const { scrollYProgress } = useScroll();
+
+  const loc = useLocation();
+
   return (
     <div className="mobile-nav">
+      {loc.pathname.split("/").length >= 4 &&
+      loc.pathname.split("/")[1] === "stories" ? (
+        <motion.div
+          className="scroll-progress-bar"
+          style={{
+            scaleX: scrollYProgress,
+          }}
+        />
+      ) : null}
       <div className="mobile-hamburger-menu">
         <div className="hamburger-icon" onClick={toggleMenu}>
           <img src={hamburger} alt="burger" />
