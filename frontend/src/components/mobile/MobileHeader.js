@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   NavLink,
   useSearchParams,
@@ -18,6 +18,21 @@ function MobileHeader() {
   };
 
   const nav = useNavigate();
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (isOpen) {
+      body.style.overflow = "hidden"; // Disable scrolling when menu is open
+    } else {
+      body.style.overflow = ""; // Enable scrolling when menu is closed
+    }
+
+    return () => {
+      // Cleanup function to restore scrolling when component unmounts
+      body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <div className="mobile-nav">
       <div className="mobile-hamburger-menu">
@@ -50,7 +65,14 @@ function MobileHeader() {
         </div>
       </div>
       <div className="mobile-logo">
-        <img src={logo} className="navbar-image" onClick={() => nav(`/`)} />
+        <img
+          src={logo}
+          className="navbar-image"
+          onClick={() => {
+            nav(`/`);
+            setIsOpen(false);
+          }}
+        />
       </div>
       <div className="mobile-search-cart">
         <div className="mobile-search-icon">
