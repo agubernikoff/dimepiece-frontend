@@ -333,6 +333,48 @@
   font-family: "swall-diatype";
 }
 
+/* Story page */
+
+.mobile-article {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  font-size: 14px;
+}
+.mobile-article-title {
+  font-size: 48px;
+  font-family: "tobias-regular";
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.mobile-author-photog-container {
+  font-family: "swall-diatype";
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 5%;
+}
+.mobile-author-photog-container > p {
+  margin: 0;
+}
+.mobile-article .article-sanity-content > p {
+  width: 100%;
+  font-size: 14px;
+  font-family: "swall-diatype";
+}
+
+.article-button-container {
+  margin-bottom: 10%;
+}
+.article-button-container > button {
+  margin-bottom: 10%;
+}
+.mobile-article .article-cover-img {
+  width: 100%;
+}
+.mobile-article .article-sanity-content .article-images-container > img {
+  width: 100% !important;
+}
 /* mobile footer */
 .mobile-footer {
   background-color: #d7ceff;
