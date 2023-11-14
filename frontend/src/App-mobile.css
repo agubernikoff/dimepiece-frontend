@@ -253,6 +253,9 @@
 .mobile-product-images-container > img {
   margin-right: 2%;
 }
+.mobile-product-images-container > img:last-of-type {
+  margin: 0 0 4% 0;
+}
 .mobile-product-container {
   width: 90%;
   margin: auto;
