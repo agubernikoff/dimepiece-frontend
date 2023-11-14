@@ -1,8 +1,9 @@
 .mobile-nav {
-  padding: 2%;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
+  width: 99%;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 .mobile-hamburger-menu {
   position: relative;
@@ -58,4 +59,133 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* MOBILE HOMEPAGE */
+
+.mobile-homepage {
+  width: 90%;
+  margin: auto;
+}
+
+/* Stories */
+
+.mobile-stories {
+  margin-bottom: 8%;
+}
+
+.mobile-latest-story-card-title {
+  font-family: "tobias-regular";
+  font-size: 32px;
+  margin: 1%;
+}
+
+.mobile-most-discussed-preview {
+  font-family: "swall-diatype";
+  font-size: 14px;
+}
+
+/* Watches */
+
+.mobile-watches {
+  margin-top: 2%;
+  margin-bottom: 10%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.mobile-watch-preview-card {
+  width: 100%;
+}
+
+.mobile-watches .watch-preview-card-details {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Brynn's Pick */
+
+.mobile-featured-watch {
+  margin-bottom: 10%;
+}
+
+.mobile-featured-watch-headline {
+  font-family: "tobias-regular";
+  font-size: 32px;
+  text-align: center;
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
+.mobile-featured-watch-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mobile-featured-watch-detail-container {
+  width: 50%;
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.mobile-featured-watch-detail-container > p,
+.mobile-featured-watch-detail-container > h5 {
+  margin: 2%;
+}
+
+.mobile-featured-watch-description {
+  font-family: "swall-diatype";
+  font-size: 14px;
+}
+
+/* DIAL DIMEPIECE */
+
+.mobile-dial-dimepiece {
+  margin-bottom: 10%;
+}
+
+.mobile-dial-dimepiece-card:first-of-type {
+  margin-top: 10%;
+}
+
+.mobile-dial-dimepiece-card {
+  display: flex;
+  margin-top: 5%;
+}
+
+.mobile-dial-dimepiece-card-left,
+.mobile-dial-dimepiece-card-right {
+  width: 50%;
+  margin: 1%;
+}
+
+.mobile-dial-dimepiece-card-headers > p {
+  border-bottom: 1px black solid;
+  padding-bottom: 2%;
+  font-size: 12px;
+  font-family: "tobias-regular";
+}
+
+.dial-dimepiece-card-date {
+  font-size: 12px;
+  font-family: "tobias-regular";
+}
+
+/*  NEWSLETTER */
+.mobile-newsletter {
+  margin-bottom: 10%;
+}
+
+.mobile-newsletter > p {
+  text-align: center;
+  font-size: 16px;
+  font-family: "swall-diatype";
+}
+
+.newsletter-input-container > input,
+.newsletter-input-container > button {
+  font-size: 16px;
+  font-family: "swall-diatype";
 }
