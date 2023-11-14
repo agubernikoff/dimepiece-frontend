@@ -250,14 +250,17 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   width: 100%;
-  margin: auto 5%;
+  margin: auto;
 }
 .mobile-product-images-container > img {
   margin-right: 2%;
-  width: 90%;
+  width: 92%;
+}
+.mobile-product-images-container > img:first-of-type {
+  margin: 0 2% 4% 5%;
 }
 .mobile-product-images-container > img:last-of-type {
-  margin: 0 10% 4% 0;
+  margin: 0 5% 4% 0;
 }
 .mobile-product-container {
   width: 100%;
