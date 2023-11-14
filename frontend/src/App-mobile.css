@@ -47,7 +47,7 @@
   display: flex; /* Use flexbox to center vertically */
   flex-direction: column; /* Align items vertically */
   justify-content: center; /* Center items vertically */
-  height: 100%; /* Occupy full height of the menu */
+  height: 75%; /* Occupy full height of the menu */
 }
 
 .menu-list li {
