@@ -144,6 +144,7 @@ instead of tweaking each class */
   cursor: pointer;
   text-decoration: none;
   font-size: 12px;
+  display: block;
 }
 .dimepiece-logo {
   color: var(--blue);

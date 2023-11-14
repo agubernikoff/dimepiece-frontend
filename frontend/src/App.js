@@ -14,6 +14,7 @@ import Misc from "./layouts/Content/Misc";
 import NewsletterPage from "./layouts/Content/NewsletterPage";
 import About from "./layouts/Content/About";
 import MobileHome from "./components/mobile/MobileHome";
+import MobileFooter from './components/mobile/MobileFooter';
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -52,7 +53,7 @@ function App() {
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
-      <Footer />
+      {isMobile?<MobileFooter/>:<Footer />}
     </Suspense>
   );
 }
