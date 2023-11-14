@@ -363,10 +363,10 @@
   font-family: "swall-diatype";
 }
 
-.article-button-container {
+.mobile-article .article-button-container {
   margin-bottom: 10%;
 }
-.article-button-container > button {
+.mobile-article .article-button-container > button {
   margin-bottom: 10%;
 }
 .mobile-article .article-cover-img {
