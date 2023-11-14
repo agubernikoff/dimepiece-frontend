@@ -249,19 +249,24 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  width: 100%;
+  margin: auto 5%;
 }
 .mobile-product-images-container > img {
   margin-right: 2%;
+  width: 90%;
 }
 .mobile-product-images-container > img:last-of-type {
-  margin: 0 0 4% 0;
+  margin: 0 10% 4% 0;
 }
 .mobile-product-container {
-  width: 90%;
-  margin: auto;
+  width: 100%;
+  margin: 5% auto;
+  overflow-x: hidden;
 }
 .mobile-product-description-container {
-  margin-top: 5%;
+  width: 90%;
+  margin: 2% auto;
   font-size: 12px;
   font-family: "swall-diatype";
 }
