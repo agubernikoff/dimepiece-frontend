@@ -392,6 +392,63 @@
 .mobile-article .article-sanity-content .article-images-container > img {
   width: 100% !important;
 }
+
+/* ABOUT */
+.mobile-about-page {
+  width: 90%;
+  margin: auto;
+  font-size: 36px;
+  font-family: "tobias-regular";
+}
+.mobile-about-page .article-images-container > img {
+  width: 100% !important;
+}
+
+.mobile-about-page .about-brynn-portrait {
+  flex-direction: column;
+  margin-top: 5%;
+}
+.mobile-about-page .about-brynn-portrait-title {
+  font-size: 24px;
+  font-family: "swall-diatype";
+}
+.about-brynn-portrait-title-tobias {
+  font-family: "tobias-regular";
+  font-size: 36px;
+  text-align: center;
+}
+.mobile-about-dimepiece-press {
+  margin-bottom: 10%;
+}
+.mobile-about-dimepiece-press .blue {
+  font-size: 36px;
+  font-family: "tobias-regular";
+  margin-top: 2%;
+  margin-bottom: 0;
+}
+.mobile-about-dimepiece-press-title {
+  font-size: 36px;
+  font-family: "tobias-regular";
+  margin-top: 2%;
+  margin-bottom: 0;
+}
+.mobile-about-dimepiece-description {
+  font-size: 14px;
+  font-family: "swall-diatype";
+  margin-top: 2%;
+  line-height: 130%;
+}
+.mobile-about-page .newsletter {
+  width: 100%;
+}
+.mobile-about-page .about-say-hello {
+  font-size: 14px;
+  margin-bottom: 10%;
+}
+.mobile-about-page .newsletter-input-container {
+  margin-bottom: 10%;
+  margin-top: 0;
+}
 /* mobile footer */
 .mobile-footer {
   background-color: #d7ceff;
