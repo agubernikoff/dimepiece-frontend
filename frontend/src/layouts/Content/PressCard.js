@@ -1,7 +1,6 @@
 import React from "react";
 
 function PressCard({ article }) {
-  console.log(article);
   return (
     <div className="about-dimepiece-press">
       <img alt={article.title} src={article.image.asset.url} />

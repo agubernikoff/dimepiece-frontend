@@ -11,7 +11,7 @@ function Misc({ title }) {
       .fetch(`*[_type == "miscellaneous" && title == "${title}"][0]`)
       .then((response) => setMisc(response));
   }, [title]);
-  console.log(misc);
+
   return (
     <div className="misc-page">
       {misc ? (

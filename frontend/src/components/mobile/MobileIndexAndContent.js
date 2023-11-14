@@ -37,7 +37,7 @@ function MobileIndexAndContent({ contentType }) {
         });
     }
   }, [contentType]);
-  console.log(content);
+
   useEffect(() => {
     if (URLParam.category)
       setPrimaryFilter(capitalizeWords(URLParam.category.replaceAll("-", " ")));
@@ -109,7 +109,7 @@ function MobileIndexAndContent({ contentType }) {
       : filters.find((b) => b.title === primaryFilter)
       ? filters.find((b) => b.title === primaryFilter).descriptor
       : null;
-  console.log(mappedWatches);
+
   if (
     (contentType === "shop" && content[0] && content[0].brand) ||
     (contentType === "stories" && content[0] && !content[0].brand)
