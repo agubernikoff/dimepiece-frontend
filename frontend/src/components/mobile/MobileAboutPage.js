@@ -41,7 +41,7 @@ function MobileAboutPage() {
             />
           </div>
           <div>
-            <p className="about-brynn-portrait-title">{about.text3Header}</p>
+            <p className="about-header-title">{about.text3Header}</p>
 
             <img
               alt="Brynn Wallner Portrait"

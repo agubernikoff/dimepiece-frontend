@@ -412,6 +412,13 @@
   font-size: 24px;
   font-family: "swall-diatype";
 }
+.mobile-about-page .about-header-title-full {
+  margin-bottom: 0%;
+}
+.mobile-about-page .about-header-title {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
 .about-brynn-portrait-title-tobias {
   font-family: "tobias-regular";
   font-size: 36px;
