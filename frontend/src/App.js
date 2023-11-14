@@ -15,6 +15,7 @@ import NewsletterPage from "./layouts/Content/NewsletterPage";
 import About from "./layouts/Content/About";
 import MobileHome from "./components/mobile/MobileHome";
 import MobileFooter from './components/mobile/MobileFooter';
+import MobileIndexAndContent from "./components/mobile/MobileIndexAndContent";
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -33,11 +34,11 @@ function App() {
         <Route path="" element={isMobile ? <MobileHome /> : <Homepage />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/newsletter" element={<NewsletterPage />} />
-        <Route path="/stories" element={<IndexAndContent />} />
-        <Route path="/stories/:category" element={<IndexAndContent />} />
+        <Route path="/stories" element={isMobile? <MobileIndexAndContent contentType={"stories"}/>:<IndexAndContent />} />
+        <Route path="/stories/:category" element={isMobile? <MobileIndexAndContent contentType={"stories"}/>:<IndexAndContent />} />
         <Route path="/stories/:category/:id" element={<Article />} />
-        <Route path="/shop" element={<IndexAndContent />} />
-        <Route path="/shop/:brand" element={<IndexAndContent />} />
+        <Route path="/shop" element={isMobile? <MobileIndexAndContent contentType={"shop"}/>:<IndexAndContent />} />
+        <Route path="/shop/:brand" element={isMobile? <MobileIndexAndContent contentType={"shop"}/>:<IndexAndContent />} />
         <Route path="/shop/:brand/:id" element={<IndexAndContent />} />
         <Route path="/about" element={<About />} />
         <Route

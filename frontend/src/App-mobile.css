@@ -192,6 +192,20 @@
   font-family: "swall-diatype";
 }
 
+/* mobileindex and content */
+.mobile-index {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-left: 2.5%;
+  font-family: "swall-diatype";
+  margin-bottom: 10%;
+}
+.mobile-index .index-link {
+  margin: auto 3%;
+  width: fit-content;
+  white-space: nowrap;
+}
 /* mobile footer */
 .mobile-footer {
   background-color: #d7ceff;
