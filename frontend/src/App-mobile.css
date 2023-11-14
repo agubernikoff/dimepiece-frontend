@@ -6,6 +6,22 @@
   padding-bottom: 4%;
   border-bottom: 1px solid #bfbfbf;
   margin-bottom: 4%;
+  position: sticky;
+  top: 0;
+  /* left: 0; */
+  background: white;
+}
+.mobile-scroll-progress-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* left: 0;
+  right: 0;
+  height: 55px; */
+  width: 100%;
+  z-index: -1;
+  background: #d7ceff;
+  transform-origin: 0%;
 }
 .mobile-hamburger-menu {
   position: relative;
@@ -340,6 +356,7 @@
   margin: auto;
   text-align: center;
   font-size: 14px;
+  min-height: 100vh;
 }
 .mobile-article-title {
   font-size: 48px;

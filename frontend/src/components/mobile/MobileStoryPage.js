@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
-import { useScroll, motion } from "framer-motion";
 
 function MobileStoryPage() {
   const [article, setArticle] = useState({
@@ -38,15 +37,8 @@ function MobileStoryPage() {
     });
   };
 
-  const { scrollYProgress } = useScroll();
   return (
     <div className="mobile-article">
-      {/* <motion.div
-    className="scroll-progress-bar"
-    style={{
-      scaleX: scrollYProgress,
-    }}
-  /> */}
       <p className="mobile-article-title">{article.title}</p>
       <p>{formattedDate.toUpperCase()}</p>
       <div className="mobile-author-photog-container">

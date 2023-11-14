@@ -43,7 +43,7 @@ function MobileHeader() {
       {loc.pathname.split("/").length >= 4 &&
       loc.pathname.split("/")[1] === "stories" ? (
         <motion.div
-          className="scroll-progress-bar"
+          className="mobile-scroll-progress-bar"
           style={{
             scaleX: scrollYProgress,
           }}

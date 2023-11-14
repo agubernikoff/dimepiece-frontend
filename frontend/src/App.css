@@ -565,12 +565,13 @@ instead of tweaking each class */
 }
 .scroll-progress-bar {
   position: fixed;
-  top: 54px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 10px;
+  height: 55px;
   width: 100%;
-  background: var(--blue);
+  z-index: -1;
+  background: #d7ceff;
   transform-origin: 0%;
 }
 .author-photog-container > p:first-of-type {
