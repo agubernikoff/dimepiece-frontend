@@ -37,7 +37,7 @@
 .menu-content {
   display: none;
   position: absolute;
-  top: calc(100% + 65%);
+  top: calc(100% + 68%);
   left: 0;
   width: 100vw; /* Full width of the viewport */
   height: calc(100vh - 8%);
