@@ -243,6 +243,51 @@
 .mobile-content-mapped .mobile-most-discussed-preview {
   display: none;
 }
+
+/* WATCH PAGE */
+.mobile-product-images-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+.mobile-product-images-container > img {
+  margin-right: 2%;
+}
+.mobile-product-container {
+  width: 90%;
+  margin: auto;
+}
+.mobile-product-description-container {
+  margin-top: 5%;
+  font-size: 12px;
+  font-family: "swall-diatype";
+}
+
+.mobile-product-container .watch-description-table {
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.mobile-product-container
+  .watch-description-table
+  .watch-description-table-row-key {
+  font-size: 8px;
+}
+
+/* .mobile-product-container
+  .watch-description-table
+  .watch-description-table-row-value {
+  font-size: 12px;
+} */
+
+.mobile-product-container .watch-description-buttons-container {
+  margin-bottom: 10%;
+}
+
+.mobile-product-container .watch-description-summary {
+  margin-bottom: 10%;
+}
+
 /* mobile footer */
 .mobile-footer {
   background-color: #d7ceff;
