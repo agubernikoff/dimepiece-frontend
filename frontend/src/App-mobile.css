@@ -1,9 +1,11 @@
 .mobile-nav {
   display: flex;
   justify-content: center;
-  width: 99%;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  width: 100%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  border-bottom: 1px solid #bfbfbf;
+  margin-bottom: 4%;
 }
 .mobile-hamburger-menu {
   position: relative;
