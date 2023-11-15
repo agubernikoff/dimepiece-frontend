@@ -224,6 +224,9 @@ instead of tweaking each class */
   width: 24%;
   cursor: pointer;
 }
+.latest-story-card-date {
+  font-family: "swall-diatype";
+}
 .latest-story-card-top {
   width: 100%;
   margin-bottom: 5%;
@@ -486,7 +489,7 @@ instead of tweaking each class */
   height: fit-content;
   position: sticky;
   position: -webkit-sticky;
-  top: 11%;
+  top: 18%;
   font-family: "swall-diatype";
 }
 
@@ -501,6 +504,8 @@ instead of tweaking each class */
   padding: 0;
   list-style-position: inside;
   margin-bottom: 0%;
+  font-family: "tobias-regular";
+  margin-top: 0;
 }
 .index-link {
   margin: 0;
@@ -513,10 +518,10 @@ instead of tweaking each class */
   font-family: "swall-diatype";
 }
 .index-link:first-of-type {
-  margin-top: 5%;
+  margin-top: 3%;
 }
 .stories-page-index-category-header {
-  margin: auto 0% 8%;
+  margin: auto 0% 3%;
 }
 .stories-page-index-list > ol {
   list-style-position: outside;
@@ -524,13 +529,14 @@ instead of tweaking each class */
 }
 .stories-page-index-list > ol > li {
   margin-bottom: 10%;
-  margin-top: 10%;
+  margin-top: 5%;
   line-height: 125%;
   cursor: pointer;
 }
 .stories-page-index-brynns-pick {
   line-height: 125%;
   cursor: pointer;
+  margin-top: 3%;
 }
 .stories-page-content {
   /* flex: 1; */
@@ -784,8 +790,10 @@ instead of tweaking each class */
   /* justify-content: space-between; */
   white-space: nowrap;
   overflow: hidden;
-  width: 100%;
+  width: 80%;
   min-height: 100px;
+  margin-bottom: 10%;
+  margin: auto;
 }
 .gradient {
   background-image: linear-gradient(
@@ -807,7 +815,7 @@ instead of tweaking each class */
   display: flex;
   gap: 5rem;
   flex-wrap: nowrap;
-  animation: scroll 30s linear infinite;
+  animation: scroll 10s linear infinite;
 }
 .slider > img {
   max-width: 10%;
@@ -870,21 +878,29 @@ instead of tweaking each class */
 }
 .footer-left-container {
   display: flex;
-  gap: 4rem;
   width: 50%;
   font-family: "swall-diatype";
+}
+.footer-right-container > button {
+  display: flex;
+  gap: 0.5rem;
+}
+.footer-right-container > button > p {
+  white-space: nowrap;
 }
 .footer-left-container > div > p,
 .footer-left-container > div > div > p {
   margin: 0;
 }
 .footer-links {
-  width: 10%;
+  width: fit-content;
+  margin: auto 6%;
 }
 .footer-left-column {
-  width: 25%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 .footer > div > button {
   text-decoration: none;

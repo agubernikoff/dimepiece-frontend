@@ -51,8 +51,12 @@ function Footer() {
     <div className="footer">
       <div className="footer-left-container">
         <div className="footer-left-column">
-          <p>© DIMEPIECE LLC 2023,</p>
-          <p>All Rights Reserved.</p>
+          <p>
+            <strong>© DIMEPIECE LLC 2023,</strong>
+          </p>
+          <p>
+            <strong>All Rights Reserved.</strong>
+          </p>
           <br />
           <div>
             <p>LA: {times.LosAngeles}</p>
@@ -67,10 +71,13 @@ function Footer() {
             <strong>LINKS</strong>
           </p>
           <br />
-          <NavLink className="navbar-link" to="/stories">
+          <NavLink className="navbar-link" to="/stories/All">
             Stories
           </NavLink>
-          <NavLink className="navbar-link" to="/shop">
+          <NavLink
+            className="navbar-link"
+            to="/shop/All?filter+by=Latest+Arrivals"
+          >
             Shop
           </NavLink>
           <NavLink className="navbar-link" to="/about">
@@ -117,7 +124,8 @@ function Footer() {
       </div>
       <div className="footer-right-container">
         <button onClick={scrollToTop}>
-          BACK TO TOP {String.fromCharCode(8593)}
+          <p>BACK TO TOP</p>
+          <p>{String.fromCharCode(8593)}</p>
         </button>
       </div>
     </div>

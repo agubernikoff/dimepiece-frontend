@@ -19,6 +19,7 @@ import MobileIndexAndContent from "./components/mobile/MobileIndexAndContent";
 import MobileWatchPage from "./components/mobile/MobileWatchPage";
 import MobileStoryPage from "./components/mobile/MobileStoryPage";
 import MobileAboutPage from "./components/mobile/MobileAboutPage";
+import MobileNewsletter from "./components/mobile/MobileNewsletter";
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -36,7 +37,10 @@ function App() {
       <Routes>
         <Route path="" element={isMobile ? <MobileHome /> : <Homepage />} />
         <Route path="/" element={<Homepage />} />
-        <Route path="/newsletter" element={<NewsletterPage />} />
+        <Route
+          path="/newsletter"
+          element={isMobile ? <MobileNewsletter /> : <NewsletterPage />}
+        />
         <Route
           path="/stories"
           element={

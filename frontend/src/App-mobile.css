@@ -239,6 +239,18 @@
   font-family: "swall-diatype";
 }
 
+/* NEWSLETTER PAGE */
+
+.mobile-newsletter-page {
+  width: 90%;
+  margin: auto;
+  height: 52vh;
+}
+.mobile-newsletter-page > p {
+  text-align: center;
+  margin-top: 8%;
+}
+
 /* mobileindex and content */
 .mobile-index {
   display: flex;

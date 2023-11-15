@@ -34,15 +34,18 @@ function Header() {
 
   //       console.log(logo);
   const { scrollYProgress } = useScroll();
-  
+
   return (
     <div className="navbar">
-      {loc.pathname.split('/').length>=4 && loc.pathname.split('/')[1]==="stories"?<motion.div
-        className="scroll-progress-bar"
-        style={{
-          scaleX: scrollYProgress,
-        }}
-      />:null}
+      {loc.pathname.split("/").length >= 4 &&
+      loc.pathname.split("/")[1] === "stories" ? (
+        <motion.div
+          className="scroll-progress-bar"
+          style={{
+            scaleX: scrollYProgress,
+          }}
+        />
+      ) : null}
       <div className="navbar-left">
         <NavLink to="/stories/All" className="navbar-link">
           STORIES
@@ -50,9 +53,9 @@ function Header() {
         <NavLink
           to="/shop/All?filter+by=Latest+Arrivals"
           className="navbar-link"
-          onClick={(e) => {
-            if (loc.pathname.includes("/shop/")) e.preventDefault();
-          }}
+          // onClick={(e) => {
+          //   if (loc.pathname.includes("/shop/")) e.preventDefault();
+          // }}
         >
           SHOP
         </NavLink>
