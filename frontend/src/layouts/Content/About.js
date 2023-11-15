@@ -5,6 +5,13 @@ import PressCard from "./PressCard";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
 import SanityEmailLink from "../../sanity/SanityEmailLink";
 import SanityExternalLink from "../../sanity/SanityExternalLink";
+import ap from "../../assets/ap.png";
+import breda from "../../assets/breda.png";
+import ebay from "../../assets/ebay.png";
+import foundwell from "../../assets/foundwell.png";
+import hodinkee from "../../assets/hodinkee.png";
+import jcrew from "../../assets/jcrew.png";
+import watchesandwonders from "../../assets/watchesandwonders.png";
 
 function About() {
   const [about, setAbout] = useState();
@@ -24,7 +31,7 @@ function About() {
   if (about)
     return (
       <div className="about-page">
-        <div>
+        <div className="about-page-container">
           <div className="about-header-title-full">
             <PortableText
               value={about.text1}
@@ -62,7 +69,34 @@ function About() {
             Dimepiece works with Brands, Businesses, and Individuals alike
           </p>
         </div>
-        <div>
+        <div className="carousel-container">
+          <div className="gradient"></div>
+          <div className="slider">
+            <img id="brand1" src={ap} alt="AP" />
+            <img id="brand2" src={breda} alt="Breda" />
+            <img id="brand3" src={ebay} alt="Ebay" />
+            <img id="brand4" src={foundwell} alt="Foundwell" />
+            <img id="brand5" src={hodinkee} alt="Hodinkee" />
+            <img id="brand6" src={jcrew} alt="J Crew" />
+            <img
+              id="brand7"
+              src={watchesandwonders}
+              alt="Watches And Wonders"
+            />
+            <img id="brand1" src={ap} alt="AP" />
+            <img id="brand2" src={breda} alt="Breda" />
+            <img id="brand3" src={ebay} alt="Ebay" />
+            <img id="brand4" src={foundwell} alt="Foundwell" />
+            <img id="brand5" src={hodinkee} alt="Hodinkee" />
+            <img id="brand6" src={jcrew} alt="J Crew" />
+            <img
+              id="brand7"
+              src={watchesandwonders}
+              alt="Watches And Wonders"
+            />
+          </div>
+        </div>
+        <div className="about-page-container">
           <p className="about-brynn-portrait-title">Dimepiece Press</p>
           {mappedPress}
         </div>

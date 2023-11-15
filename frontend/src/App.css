@@ -731,9 +731,11 @@ instead of tweaking each class */
 
 /* ABOUT PAGE */
 .about-page {
+  width: 100%;
+}
+.about-page-container {
   width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 
 .about-header-title,
@@ -776,7 +778,41 @@ instead of tweaking each class */
   margin: 0;
   padding: 0;
 }
-
+.carousel-container {
+  position: relative;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100px;
+}
+.gradient {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1),
+    rgba(0, 0, 0, 0),
+    rgba(255, 255, 255, 1)
+  );
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+.slider {
+  width: fit-content;
+  display: flex;
+  gap: 5rem;
+  flex-wrap: nowrap;
+  animation: scroll 30s linear infinite;
+}
+.slider > img {
+  max-width: 10%;
+  object-fit: contain;
+}
 .about-dimepiece-press {
   display: flex;
   align-items: flex-start;
@@ -876,4 +912,10 @@ instead of tweaking each class */
 
 @media (min-width: 1441px) {
   /* styles */
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-100% - 3.5rem));
+  }
 }
