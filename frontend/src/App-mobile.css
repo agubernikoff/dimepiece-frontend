@@ -477,7 +477,7 @@
 }
 .mobile-footer-top-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .mobile-footer-column {
   width: 30%;
@@ -490,15 +490,17 @@
 }
 .mobile-bold {
   margin-bottom: 10px !important;
-  font-size: 12px;
+  font-size: 11px;
+  white-space: nowrap;
 }
 .mobile-footer-column-margin-zero > p {
   margin: 0;
 }
 .mobile-footer-column-margin-zero .navbar-link {
-  font-size: 10px;
+  font-size: 9px;
 }
 .mobile-footer-column-margin-zero {
   margin: 4% auto;
   text-align: center;
+  min-width: 33%;
 }
