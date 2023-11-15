@@ -22,7 +22,6 @@ function Watch() {
       )
       .then((response) => setWatch(response));
   }, [URLParam.title]);
-
   const mappedImages =
     watch && watch.productImages
       ? watch.productImages.map((i) => (

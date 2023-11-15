@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
+import SanityProductLink from "../../sanity/SanityProductLink";
 
 function Article() {
   const [article, setArticle] = useState({
@@ -36,7 +37,10 @@ function Article() {
       behavior: "smooth", // Adds smooth scrolling animation
     });
   };
-
+  const components = {
+    marks: { annotationProduct: SanityProductLink },
+    types: { "module.images": SanityArticleImage },
+  };
   return (
     <div className="article">
       <p>{article.title}</p>
@@ -52,10 +56,7 @@ function Article() {
         alt={article.title}
       />
       <div className="article-sanity-content">
-        <PortableText
-          value={article.body}
-          components={{ types: { "module.images": SanityArticleImage } }}
-        />
+        <PortableText value={article.body} components={components} />
       </div>
       <p className="blue">{article.category.toUpperCase()}</p>
       <p>{formattedDate.toUpperCase()}</p>
