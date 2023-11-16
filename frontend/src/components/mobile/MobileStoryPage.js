@@ -43,31 +43,35 @@ function MobileStoryPage() {
   };
   return (
     <div className="mobile-article">
-      <p className="mobile-article-title">{article.title}</p>
-      <p>{formattedDate.toUpperCase()}</p>
-      <div className="mobile-author-photog-container">
-        <p>Text: {article.author}</p>
-        <p>Photos: {article.photographer}</p>
-      </div>
-      <img
-        loading="lazy"
-        className="article-cover-img"
-        src={article.coverImage.asset.url}
-        alt={article.title}
-      />
-      <div className="article-sanity-content">
-        <PortableText value={article.body} components={components} />
-      </div>
-      <p className="blue">{article.category.toUpperCase()}</p>
-      <p>{formattedDate.toUpperCase()}</p>
-      <div className="author-photog-container">
-        <p>Text: {article.author}</p>
-        <p>Photos: {article.photographer}</p>
-      </div>
-      <div className="article-button-container">
-        <button>Next Story</button>
-        <button onClick={scrollToTop}>Back To Top</button>
-      </div>
+      {article.title ? (
+        <>
+          <p className="mobile-article-title">{article.title}</p>
+          <p>{formattedDate.toUpperCase()}</p>
+          <div className="mobile-author-photog-container">
+            <p>Text: {article.author}</p>
+            <p>Photos: {article.photographer}</p>
+          </div>
+          <img
+            loading="lazy"
+            className="article-cover-img"
+            src={article.coverImage.asset.url}
+            alt={article.title}
+          />
+          <div className="article-sanity-content">
+            <PortableText value={article.body} components={components} />
+          </div>
+          <p className="blue">{article.category.toUpperCase()}</p>
+          <p>{formattedDate.toUpperCase()}</p>
+          <div className="author-photog-container">
+            <p>Text: {article.author}</p>
+            <p>Photos: {article.photographer}</p>
+          </div>
+          <div className="article-button-container">
+            <button>Next Story</button>
+            <button onClick={scrollToTop}>Back To Top</button>
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }
