@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function BrynnsBasicsCard({ watch }) {
   const nav = useNavigate();
@@ -13,6 +14,10 @@ function BrynnsBasicsCard({ watch }) {
     <div className="brynns-basics-card">
       <div className="brynns-basics-card-left">
         <img
+          onClick={() => {
+            nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
+            scrollToTop();
+          }}
           loading="lazy"
           src={watch.store.previewImageUrl}
           alt={watch.store.title}
@@ -37,9 +42,10 @@ function BrynnsBasicsCard({ watch }) {
         </p>
         <button
           className="brynns-basics-card-button"
-          onClick={() =>
-            nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`)
-          }
+          onClick={() => {
+            nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
+            scrollToTop();
+          }}
         >
           View Product
         </button>

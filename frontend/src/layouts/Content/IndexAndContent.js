@@ -9,6 +9,7 @@ import IndexShop from "./IndexShop";
 import LatestStoriesCard from "../../components/stories/LatestStoriesCard";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
 import Watch from "./Watch";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function IndexAndContent() {
   const [category, setCategory] = useState();
@@ -98,6 +99,9 @@ function IndexAndContent() {
     stylesFilter
   ).map((w) => <WatchPreviewCard key={w._id} watch={w} />);
 
+  // useEffect(() => {
+  //   setTimeout(() => scrollToTop(), 500);
+  // }, [URLParam, URLSearchParams]);
   return (
     <div className="stories-page">
       <AnimatePresence mode="popLayout">

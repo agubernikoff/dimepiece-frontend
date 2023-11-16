@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function MobileBrynnsPick() {
   const nav = useNavigate();
-  const options = {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  };
 
   const [featured, setFeatured] = useState([]);
   useEffect(() => {
@@ -28,7 +23,16 @@ function MobileBrynnsPick() {
           {featured.featuredHeadline}
         </p>
         <div className="mobile-featured-watch-image">
-          <img loading="lazy" src={featured.brynnPickImage.asset.url} />
+          <img
+            onClick={() => {
+              nav(
+                `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
+              );
+              scrollToTop();
+            }}
+            loading="lazy"
+            src={featured.brynnPickImage.asset.url}
+          />
         </div>
         <div className="mobile-featured-watch-details">
           <div className="mobile-featured-watch-detail-container">

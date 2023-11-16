@@ -11,6 +11,7 @@ import cartImg from "../../assets/cart_icon.png";
 import hamburger from "../../assets/hamburger.png";
 import { useScroll, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,22 +60,46 @@ function MobileHeader() {
         <div className={`menu-content ${isOpen ? "open" : ""}`}>
           <ul className="menu-list">
             <li>
-              <NavLink to="/stories" onClick={() => setIsOpen(false)}>
+              <NavLink
+                to="/stories"
+                onClick={() => {
+                  setIsOpen(false);
+                  scrollToTop();
+                }}
+              >
                 STORIES
               </NavLink>
             </li>
             <li>
-              <NavLink to="/shop" onClick={() => setIsOpen(false)}>
+              <NavLink
+                to="/shop"
+                onClick={() => {
+                  setIsOpen(false);
+                  scrollToTop();
+                }}
+              >
                 SHOP
               </NavLink>
             </li>
             <li>
-              <NavLink to="/newsletter" onClick={() => setIsOpen(false)}>
+              <NavLink
+                to="/newsletter"
+                onClick={() => {
+                  setIsOpen(false);
+                  scrollToTop();
+                }}
+              >
                 NEWSLETTER
               </NavLink>
             </li>
             <li>
-              <NavLink to="/about" onClick={() => setIsOpen(false)}>
+              <NavLink
+                to="/about"
+                onClick={() => {
+                  setIsOpen(false);
+                  scrollToTop();
+                }}
+              >
                 ABOUT
               </NavLink>
             </li>

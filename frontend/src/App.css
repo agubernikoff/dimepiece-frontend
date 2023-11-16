@@ -156,8 +156,9 @@ instead of tweaking each class */
 .featured-story {
   display: flex;
   flex-direction: row-reverse;
-  height: calc(100vh - 54px);
+  min-height: calc(100vh - 54px);
   margin-bottom: 7%;
+  /* min-height: 100vh; */
 }
 .featured-story-img {
   width: 50%;
@@ -344,6 +345,7 @@ instead of tweaking each class */
 .featured-watch-image {
   width: 50%;
   margin: auto 5%;
+  cursor: pointer;
 }
 
 .featured-watch-details {
@@ -427,6 +429,9 @@ instead of tweaking each class */
 .brynns-basics-card-right,
 .brynns-basics-card-left {
   width: 50%;
+}
+.brynns-basics-card-left > img {
+  cursor: pointer;
 }
 .brynns-basics-card-description {
   font-size: var(--base-text-size);
@@ -738,6 +743,7 @@ instead of tweaking each class */
 /* ABOUT PAGE */
 .about-page {
   width: 100%;
+  min-height: 100vh;
 }
 .about-page-container {
   width: 50%;
@@ -790,7 +796,7 @@ instead of tweaking each class */
   /* justify-content: space-between; */
   white-space: nowrap;
   overflow: hidden;
-  width: 80%;
+  width: 100%;
   min-height: 100px;
   margin-bottom: 10%;
   margin: auto;
@@ -948,7 +954,7 @@ instead of tweaking each class */
 }
 .footer-links {
   width: fit-content;
-  margin: auto 6%;
+  margin: 0 6%;
 }
 .footer-left-column {
   width: fit-content;

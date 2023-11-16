@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function MobileLatestWatchesCard({ watch }) {
   const nav = useNavigate();
@@ -12,9 +13,10 @@ function MobileLatestWatchesCard({ watch }) {
   return (
     <div
       className="mobile-watch-preview-card"
-      onClick={() =>
-        nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`)
-      }
+      onClick={() => {
+        nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
+        scrollToTop();
+      }}
     >
       <img loading="lazy" src={watch.store.previewImageUrl} alt={watch.title} />
       <div className="watch-preview-card-details">

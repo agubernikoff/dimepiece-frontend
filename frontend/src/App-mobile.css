@@ -117,10 +117,15 @@
   margin: auto;
 }
 
+/* mobile-index-and-content */
+.mobile-index-and-content {
+  min-height: 100vh;
+}
 /* Stories */
 
 .mobile-stories {
   margin-bottom: 8%;
+  min-height: 100vh;
 }
 
 .mobile-latest-story-card-title {
@@ -326,6 +331,7 @@
   width: 100%;
   margin: 5% auto;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 .mobile-product-description-container {
   width: 90%;
@@ -411,6 +417,7 @@
   margin: auto;
   font-size: 36px;
   font-family: "tobias-regular";
+  min-height: 100vh;
 }
 .mobile-about-page .article-images-container > img {
   width: 100% !important;

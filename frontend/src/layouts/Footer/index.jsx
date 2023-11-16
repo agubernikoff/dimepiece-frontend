@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import shopifyClient from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
+import {scrollToTop} from "../../helpers/ScrollToTop";
 
 function Footer() {
   const cart = useSelector((state) => state.cart.cart);
@@ -43,7 +44,7 @@ function Footer() {
     };
   }, []); // Empty dependency array ensures the effect runs only once after initial render
 
-  const scrollToTop = () => {
+  const scrollToTopFooter = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth", // Adds smooth scrolling animation
@@ -73,26 +74,23 @@ function Footer() {
             <strong>LINKS</strong>
           </p>
           <br />
-          <NavLink className="navbar-link" to="/stories/All">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/stories/All">
             Stories
           </NavLink>
-          <NavLink
+          <NavLink onClick={scrollToTop}
             className="navbar-link"
             to="/shop/All?filter+by=Latest+Arrivals"
           >
             Shop
           </NavLink>
-          <NavLink className="navbar-link" to="/about">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/about">
             About
           </NavLink>
-          <NavLink className="navbar-link" to="/newsletter">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/newsletter">
             Newsletter
           </NavLink>
-          <NavLink className="navbar-link" to="/search">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/search">
             Search
-          </NavLink>
-          <NavLink className="navbar-link" to="/cart">
-          {`Cart${cart.length>0?` (${cart.length})`:""}`}
           </NavLink>
         </div>
         <div className="footer-left-column">
@@ -100,16 +98,16 @@ function Footer() {
             <strong>CUSTOMER CARE</strong>
           </p>
           <br />
-          <NavLink className="navbar-link" to="/shipping_and_returns">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/shipping_and_returns">
             Shipping & Returns
           </NavLink>
-          <NavLink className="navbar-link" to="/faq">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/faq">
             FAQ
           </NavLink>
-          <NavLink className="navbar-link" to="/terms_and_conditions">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/terms_and_conditions">
             Terms & Conditions
           </NavLink>
-          <NavLink className="navbar-link" to="/warranty">
+          <NavLink onClick={scrollToTop} className="navbar-link" to="/warranty">
             Warranty
           </NavLink>
         </div>
@@ -125,7 +123,7 @@ function Footer() {
         </div> */}
       </div>
       <div className="footer-right-container">
-        <button onClick={scrollToTop}>
+        <button onClick={scrollToTopFooter}>
           <p>BACK TO TOP</p>
           <p>{String.fromCharCode(8593)}</p>
         </button>

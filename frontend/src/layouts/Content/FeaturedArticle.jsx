@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 import { client } from "../../sanity/SanityClient";
 
 function FeaturedArticle() {
@@ -14,10 +15,9 @@ function FeaturedArticle() {
       .then((response) => setFeatured(response));
   }, []);
 
-  if (featured)
     return (
       <div className="featured-story">
-        <img
+        {featured?<><img
           loading="lazy"
           className="featured-story-img"
           alt="***TO BE FIXED***"
@@ -42,17 +42,17 @@ function FeaturedArticle() {
             <button
               className="read-story-btn"
               onClick={() =>
-                nav(
+                {nav(
                   `/stories/${featured.category.replaceAll(" ", "-")}/${
                     featured._id
                   }`
-                )
+                );scrollToTop();}
               }
             >
               READ STORY
             </button>
           </div>
-        </div>
+        </div></>:null}
       </div>
     );
 }

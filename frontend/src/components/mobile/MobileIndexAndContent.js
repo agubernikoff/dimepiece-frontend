@@ -110,32 +110,38 @@ function MobileIndexAndContent({ contentType }) {
       ? filters.find((b) => b.title === primaryFilter).descriptor
       : null;
 
-  if (
-    (contentType === "shop" && content[0] && content[0].brand) ||
-    (contentType === "stories" && content[0] && !content[0].brand)
-  )
-    return (
-      <div>
-        <div className="mobile-index">{mappedTitles}</div>
-        <div className="mobile-content-container">
-          <div className="mobile-descriptor">
-            <h3 className="section-title-home">
-              {primaryFilter === "All"
-                ? contentType === "shop"
-                  ? "SHOP ALL"
-                  : "LATEST STORIES"
-                : primaryFilter.toUpperCase()}
-            </h3>
-            <p>{descriptor}</p>
-          </div>
-          {content[0] ? (
-            <div className="mobile-content-mapped">
-              {contentType === "shop" ? mappedWatches : mappedStories}
+  // if (
+  //   (contentType === "shop" && content[0] && content[0].brand) ||
+  //   (contentType === "stories" && content[0] && !content[0].brand)
+  // )
+  return (
+    <div className="mobile-index-and-content">
+      {(contentType === "shop" && content[0] && content[0].brand) ||
+      (contentType === "stories" && content[0] && !content[0].brand) ? (
+        <>
+          {" "}
+          <div className="mobile-index">{mappedTitles}</div>
+          <div className="mobile-content-container">
+            <div className="mobile-descriptor">
+              <h3 className="section-title-home">
+                {primaryFilter === "All"
+                  ? contentType === "shop"
+                    ? "SHOP ALL"
+                    : "LATEST STORIES"
+                  : primaryFilter.toUpperCase()}
+              </h3>
+              <p>{descriptor}</p>
             </div>
-          ) : null}
-        </div>
-      </div>
-    );
+            {content[0] ? (
+              <div className="mobile-content-mapped">
+                {contentType === "shop" ? mappedWatches : mappedStories}
+              </div>
+            ) : null}
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
 }
 
 export default MobileIndexAndContent;

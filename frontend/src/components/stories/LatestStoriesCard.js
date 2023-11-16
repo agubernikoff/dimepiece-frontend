@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function LatestStoriesCard({ story }) {
   const dateObject = new Date(story.datePublished);
@@ -13,8 +14,8 @@ function LatestStoriesCard({ story }) {
         story.mostDiscussed ? "most-discussed-card" : "latest-story-card"
       }
       onClick={() => {
-        // if (!story.mostDiscussed)
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        scrollToTop();
       }}
     >
       <div className="latest-story-card-top">
@@ -46,13 +47,14 @@ function LatestStoriesCard({ story }) {
               </p>
               <button
                 className="most-discussed-preview-button"
-                onClick={() =>
+                onClick={() => {
                   nav(
                     `/stories/${story.category.replaceAll(" ", "-")}/${
                       story._id
                     }`
-                  )
-                }
+                  );
+                  scrollToTop();
+                }}
               >
                 Read More
               </button>

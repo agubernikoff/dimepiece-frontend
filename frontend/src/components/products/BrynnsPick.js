@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function BrynnsPick() {
   const nav = useNavigate();
@@ -30,17 +31,27 @@ function BrynnsPick() {
           <div className="featured-watch-description">
             <PortableText value={featured.description} />
             <button
-              onClick={() =>
+              onClick={() => {
                 nav(
                   `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
-                )
-              }
+                );
+                scrollToTop();
+              }}
             >
               View Product
             </button>
           </div>
           <div className="featured-watch-image">
-            <img loading="lazy" src={featured.brynnPickImage.asset.url} />
+            <img
+              loading="lazy"
+              src={featured.brynnPickImage.asset.url}
+              onClick={() => {
+                nav(
+                  `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
+                );
+                scrollToTop();
+              }}
+            />
           </div>
           <div className="featured-watch-details">
             <div className="featured-watch-detail-container">
