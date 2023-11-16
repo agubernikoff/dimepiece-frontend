@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import logo from "../../assets/logo_purple.png";
 import search from "../../assets/search_icon.png";
-import cart from "../../assets/cart_icon.png";
+import cartImg from "../../assets/cart_icon.png";
 import hamburger from "../../assets/hamburger.png";
 import { useScroll, motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
 
 function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +38,8 @@ function MobileHeader() {
   const { scrollYProgress } = useScroll();
 
   const loc = useLocation();
+
+  const cart = useSelector((state) => state.cart.cart);
 
   return (
     <div className="mobile-nav">
@@ -93,8 +96,10 @@ function MobileHeader() {
           <img src={search} alt="search" />
         </div>
         <div className="mobile-cart-icon">
-          <img src={cart} alt="cart" />
-          <div className="mobile-cart-number">1</div>
+          <img src={cartImg} alt="cart" />
+          {cart.length > 0 ? (
+            <div className="mobile-cart-number">{cart.length}</div>
+          ) : null}
         </div>
       </div>
     </div>

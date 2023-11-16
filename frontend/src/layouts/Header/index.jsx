@@ -9,12 +9,16 @@ import {
   useLocation,
 } from "react-router-dom";
 import logo from "../../assets/logo_purple.png";
-import shopifyClient from "../../shopify/shopify.js";
+import shopifyClient from "../../shopify/ShopifyClient.js";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 
 function Header() {
   const nav = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const loc = useLocation();
+  const dispatch=useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
   // const dispatch = useDispatch();
 
   // const handleAddClick = () => {
@@ -67,15 +71,15 @@ function Header() {
         <img src={logo} className="navbar-image" onClick={() => nav(`/`)} />
       </div>
       <div className="navbar-right">
-        <NavLink to="/newsletter" className="navbar-link">
+        <motion.div layout="position"><NavLink to="/newsletter" className="navbar-link">
           NEWSLETTER
-        </NavLink>
-        <NavLink to="/search" className="navbar-link">
+        </NavLink></motion.div>
+        <motion.div layout="position"><NavLink to="/search" className="navbar-link">
           SEARCH
-        </NavLink>
-        <NavLink to="/cart" className="navbar-link">
-          CART
-        </NavLink>
+        </NavLink></motion.div>
+        <motion.p layout="position" className="navbar-link" onClick={()=>dispatch(cartActions.toggleDisplayCart())}>
+          {`CART${cart.length>0?` (${cart.length})`:""}`}
+        </motion.p>
       </div>
     </div>
   );

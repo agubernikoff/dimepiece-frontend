@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import shopifyClient from "../../shopify/shopify.js";
+import { shopifyClient } from "../../shopify/ShopifyClient.js";
+import { useDispatch, useSelector } from "react-redux";
 
 function Footer() {
+  const cart = useSelector((state) => state.cart.cart);
   const [times, setTimes] = useState({
     London: new Date().toLocaleTimeString("en-US", {
       timeZone: "Europe/London",
@@ -87,7 +89,7 @@ function Footer() {
             Search
           </NavLink>
           <NavLink className="navbar-link" to="/cart">
-            Cart (0)
+            {`Cart${cart.length > 0 ? ` (${cart.length})` : ""}`}
           </NavLink>
         </div>
         <div className="mobile-footer-column-margin-zero">

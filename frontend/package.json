@@ -38,6 +38,7 @@
     "react-scripts": "5.0.1",
     "react-types": "^0.1.0",
     "redux-saga": "^1.2.3",
+    "shopify-buy": "^2.21.1",
     "web-vitals": "^2.1.4"
   },
   "eslintConfig": {

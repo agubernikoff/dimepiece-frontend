@@ -1,5 +1,5 @@
 // import React, { Suspense, lazy } from 'react';
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import "./App.css";
 import "./App-mobile.css";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -13,6 +13,7 @@ import MobileHeader from "./components/mobile/MobileHeader";
 import Misc from "./layouts/Content/Misc";
 import NewsletterPage from "./layouts/Content/NewsletterPage";
 import About from "./layouts/Content/About";
+import Cart from './layouts/Content/Cart'
 import MobileHome from "./components/mobile/MobileHome";
 import MobileFooter from "./components/mobile/MobileFooter";
 import MobileIndexAndContent from "./components/mobile/MobileIndexAndContent";
@@ -20,10 +21,24 @@ import MobileWatchPage from "./components/mobile/MobileWatchPage";
 import MobileStoryPage from "./components/mobile/MobileStoryPage";
 import MobileAboutPage from "./components/mobile/MobileAboutPage";
 import MobileNewsletter from "./components/mobile/MobileNewsletter";
+import {shopifyClient} from './shopify/ShopifyClient';
+import { useSelector,useDispatch } from "react-redux";
+import { cartActions } from "./redux/cart-slice";
+import { AnimatePresence, motion } from "framer-motion";
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
 function App() {
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    shopifyClient.checkout.create()
+      .then(checkout=>{
+        dispatch(cartActions.setCheckoutId(checkout.id));
+        dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
+        dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
+      })
+  },[])
+  const displayCart = useSelector(state=>state.cart.displayCart);
   const isMobile = window.innerWidth <= 768;
   return (
     <Suspense
@@ -34,6 +49,7 @@ function App() {
       }
     >
       {isMobile ? <MobileHeader /> : <Header />}
+      <AnimatePresence>{displayCart && <Cart/>}</AnimatePresence>
       <Routes>
         <Route path="" element={isMobile ? <MobileHome /> : <Homepage />} />
         <Route path="/" element={<Homepage />} />

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
-import shopifyClient from "../../shopify/shopify.js";
+import { shopifyClient } from "../../shopify/ShopifyClient.js";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 
 function Watch() {
   const [watch, setWatch] = useState();
@@ -34,6 +36,67 @@ function Watch() {
           />
         ))
       : null;
+
+  const dispatch = useDispatch();
+  const checkoutId = useSelector((state) => state.cart.checkoutId);
+  const cart = useSelector((state) => state.cart.cart);
+  const inCart = watch && cart.find((w) => w._id === watch._id) ? true : false;
+
+  function addToCart() {
+    const lineItemsToAdd = [
+      {
+        variantId: `gid://shopify/ProductVariant/${
+          watch.store.variants[0]._ref.split("-")[1]
+        }`,
+        quantity: 1,
+      },
+    ];
+    shopifyClient.checkout
+      .addLineItems(checkoutId, lineItemsToAdd)
+      .then((checkout) => {
+        console.log(checkout);
+        dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
+      });
+    dispatch(cartActions.addToCart(watch));
+    dispatch(cartActions.showCart());
+  }
+
+  function removeFromCart() {
+    console.log(
+      `gid://shopify/CheckoutLineItem/${
+        watch.store.variants[0]._ref.split("-")[1]
+      }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`
+    );
+    const lineItemsToRemove = [
+      `gid://shopify/CheckoutLineItem/${
+        watch.store.variants[0]._ref.split("-")[1]
+      }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`,
+    ];
+    shopifyClient.checkout
+      .removeLineItems(checkoutId, lineItemsToRemove)
+      .then((checkout) => {
+        console.log(checkout);
+        dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
+      });
+    dispatch(cartActions.removeFromCart(watch._id));
+  }
+
+  function buyNow() {
+    const lineItemsToAdd = [
+      {
+        variantId: `gid://shopify/ProductVariant/${
+          watch.store.variants[0]._ref.split("-")[1]
+        }`,
+        quantity: 1,
+      },
+    ];
+    shopifyClient.checkout
+      .addLineItems(checkoutId, lineItemsToAdd)
+      .then((checkout) => {
+        console.log(checkout);
+        window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
+      });
+  }
 
   if (watch)
     return (
@@ -96,8 +159,10 @@ function Watch() {
               </div>
             </div>
             <div className="watch-description-buttons-container">
-              <button>ADD TO CART</button>
-              <button>BUY NOW</button>
+              <button onClick={inCart ? removeFromCart : addToCart}>
+                {inCart ? "REMOVE FROM CART" : "ADD TO CART"}
+              </button>
+              <button onClick={buyNow}>BUY NOW</button>
             </div>
             <div className="watch-description-summary">
               <p>{"BRYNN'S DESCRIPTION:"}</p>
