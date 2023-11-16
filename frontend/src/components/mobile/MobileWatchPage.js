@@ -40,6 +40,7 @@ function MobileWatchPage() {
 
   const dispatch = useDispatch();
   const checkoutId = useSelector((state) => state.cart.checkoutId);
+  const checkoutUrl = useSelector((state) => state.cart.checkoutUrl);
   const cart = useSelector((state) => state.cart.cart);
   const inCart = watch && cart.find((w) => w._id === watch._id) ? true : false;
 
@@ -91,12 +92,14 @@ function MobileWatchPage() {
         quantity: 1,
       },
     ];
-    shopifyClient.checkout
-      .addLineItems(checkoutId, lineItemsToAdd)
-      .then((checkout) => {
-        console.log(checkout);
-        window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
-      });
+    if (!inCart)
+      shopifyClient.checkout
+        .addLineItems(checkoutId, lineItemsToAdd)
+        .then((checkout) => {
+          console.log(checkout);
+          window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
+        });
+    else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
 
   if (watch)
