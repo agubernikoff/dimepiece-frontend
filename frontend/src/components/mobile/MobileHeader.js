@@ -113,6 +113,7 @@ function MobileHeader() {
           onClick={() => {
             nav(`/`);
             setIsOpen(false);
+            scrollToTop();
           }}
         />
       </div>
