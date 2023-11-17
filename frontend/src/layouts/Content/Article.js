@@ -66,10 +66,10 @@ function Article() {
             <p>Text: {article.author}</p>
             <p>Photos: {article.photographer}</p>
           </div>
-          <div className="article-button-container">
+          {/* <div className="article-button-container">
             <button>Next Story</button>
             <button onClick={scrollToTop}>Back To Top</button>
-          </div>
+          </div> */}
         </>
       ) : null}
     </div>
