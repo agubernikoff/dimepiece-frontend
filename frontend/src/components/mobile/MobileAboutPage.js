@@ -12,6 +12,7 @@ import foundwell from "../../assets/foundwell.png";
 import hodinkee from "../../assets/hodinkee.png";
 import jcrew from "../../assets/jcrew.png";
 import watchesandwonders from "../../assets/watchesandwonders.png";
+import { motion } from "framer-motion";
 
 function MobileAboutPage() {
   const [about, setAbout] = useState();
@@ -32,7 +33,14 @@ function MobileAboutPage() {
   ));
 
   return (
-    <div className="mobile-about-page">
+    <motion.div
+      className="mobile-about-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"about-page"}
+    >
       {about ? (
         <>
           <div>
@@ -125,7 +133,7 @@ function MobileAboutPage() {
           </div>
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 

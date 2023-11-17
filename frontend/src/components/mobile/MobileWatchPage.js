@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { shopifyClient } from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
+import { motion } from "framer-motion";
 
 function MobileWatchPage() {
   const [watch, setWatch] = useState();
@@ -103,7 +104,14 @@ function MobileWatchPage() {
   }
 
   return (
-    <div className="mobile-product-container">
+    <motion.div
+      className="mobile-product-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"watch"}
+    >
       {watch ? (
         <>
           <div className="mobile-product-images-container">{mappedImages}</div>
@@ -177,7 +185,7 @@ function MobileWatchPage() {
           </div>
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 

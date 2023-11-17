@@ -1,8 +1,16 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function MobileNewsletter() {
   return (
-    <div className="mobile-newsletter-page">
+    <motion.div
+      className="mobile-newsletter-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"newsletterPage"}
+    >
       <div>
         <h3 className="section-title-home">NEWSLETTER</h3>
         <p>
@@ -14,7 +22,7 @@ function MobileNewsletter() {
           <button>Join</button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

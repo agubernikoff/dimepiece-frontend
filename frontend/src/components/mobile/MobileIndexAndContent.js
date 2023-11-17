@@ -5,6 +5,7 @@ import { capitalizeWords } from "../../helpers/CapitalizeWords";
 import { filterWatches } from "../../helpers/FilterWatches";
 import MobileLatestStoriesCard from "./MobileLatestStoriesCard";
 import MobileLatestWatchesCard from "./MobileLatestWatchesCard";
+import { motion } from "framer-motion";
 
 function MobileIndexAndContent({ contentType }) {
   const URLParam = useParams();
@@ -115,11 +116,17 @@ function MobileIndexAndContent({ contentType }) {
   //   (contentType === "stories" && content[0] && !content[0].brand)
   // )
   return (
-    <div className="mobile-index-and-content">
+    <motion.div
+      className="mobile-index-and-content"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={URLParam}
+    >
       {(contentType === "shop" && content[0] && content[0].brand) ||
       (contentType === "stories" && content[0] && !content[0].brand) ? (
         <>
-          {" "}
           <div className="mobile-index">{mappedTitles}</div>
           <div className="mobile-content-container">
             <div className="mobile-descriptor">
@@ -140,7 +147,7 @@ function MobileIndexAndContent({ contentType }) {
           </div>
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 

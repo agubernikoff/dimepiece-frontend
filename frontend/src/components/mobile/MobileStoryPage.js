@@ -4,6 +4,7 @@ import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
 import SanityProductLink from "../../sanity/SanityProductLink";
+import { motion } from "framer-motion";
 
 function MobileStoryPage() {
   const [article, setArticle] = useState({
@@ -42,7 +43,14 @@ function MobileStoryPage() {
     types: { "module.images": SanityArticleImage },
   };
   return (
-    <div className="mobile-article">
+    <motion.div
+      className="mobile-article"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"article"}
+    >
       {article.title ? (
         <>
           <p className="mobile-article-title">{article.title}</p>
@@ -72,7 +80,7 @@ function MobileStoryPage() {
           </div> */}
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 

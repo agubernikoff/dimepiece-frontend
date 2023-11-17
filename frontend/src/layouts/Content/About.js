@@ -37,7 +37,7 @@ function About() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1, ease: "backInOut" }}
-      key={"homepage"}
+      key={"about"}
     >
       {about ? (
         <>

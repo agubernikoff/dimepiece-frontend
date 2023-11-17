@@ -3,10 +3,18 @@ import MobileBrynnsPick from "./MobileBrynnsPick";
 import MobileDialDimepiece from "./MobileDialDimepiece";
 import MobileStories from "./MobileStories";
 import MobileLatestWatches from "./MobileLatestWatches";
+import { motion } from "framer-motion";
 
 function MobileHome() {
   return (
-    <div className="mobile-homepage">
+    <motion.div
+      className="mobile-homepage"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"homepage"}
+    >
       <MobileStories />
       <MobileLatestWatches />
       <MobileBrynnsPick />
@@ -22,7 +30,7 @@ function MobileHome() {
           <button>Join</button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
