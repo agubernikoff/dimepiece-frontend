@@ -30,8 +30,8 @@ export default {
       type: 'string',
     },
     {
-      title: 'Most Discussed',
-      name: 'mostDiscussed',
+      title: 'Most Discussed Description',
+      name: 'mostDiscussedDescription',
       type: 'string',
     },
     {
