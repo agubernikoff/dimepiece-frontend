@@ -765,6 +765,9 @@ instead of tweaking each class */
 .about-header-title-full .article-images-container > img {
   width: 100% !important;
 }
+.about-header-title .article-images-container > img {
+  width: 49% !important;
+}
 
 .about-brynn-portrait {
   font-size: 1rem;
@@ -802,8 +805,7 @@ instead of tweaking each class */
   overflow: hidden;
   width: 100%;
   min-height: 100px;
-  margin-bottom: 10%;
-  margin: auto;
+  margin-bottom: 5%;
 }
 .gradient {
   background-image: linear-gradient(
@@ -825,7 +827,7 @@ instead of tweaking each class */
   display: flex;
   gap: 5rem;
   flex-wrap: nowrap;
-  animation: scroll 10s linear infinite;
+  animation: scroll 20s linear infinite;
 }
 .slider > img {
   max-width: 10%;
