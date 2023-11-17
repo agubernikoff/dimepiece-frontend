@@ -7,7 +7,7 @@ function MobileDialDimepiece() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && category == "Dial Dimepiece"][0..2]{_id,title,category,mostDiscussed,_createdAt,coverImage{asset->{url}}}`
+        `*[_type == "articles" && category == "Dial Dimepiece"][0..2]{_id,title,category,dialDimepieceSubheaders,mostDiscussed,_createdAt,coverImage{asset->{url}}}`
       )
       .then((response) => setDialDimepiece(response));
   }, []);

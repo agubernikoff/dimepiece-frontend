@@ -8,6 +8,10 @@ function MobileDialDimepieceCard({ story }) {
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
   const nav = useNavigate();
 
+  const mappedSubheaders = story.dialDimepieceSubheaders.map((subheader, i) => (
+    <p key={i}>{subheader}</p>
+  ));
+
   return (
     <div
       className="mobile-dial-dimepiece-card"
@@ -28,12 +32,7 @@ function MobileDialDimepieceCard({ story }) {
           {formattedDate.toUpperCase()}
         </p>
         <div className="mobile-dial-dimepiece-card-headers">
-          <p>Fave watch under $1k to start out a higher-tier collection?</p>
-          <p>Mary-Kate or Ashley?</p>
-          <p>How should I pick a watch?</p>
-          <p>Do I wear my Tank Française while working out?</p>
-          <p>Is/will Grand Seiko be heirloom quality?</p>
-          <p>How should I pick a watch?</p>
+          {mappedSubheaders}
         </div>
       </div>
     </div>
