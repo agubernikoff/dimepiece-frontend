@@ -8,6 +8,7 @@ function LatestStoriesCard({ story }) {
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
   const nav = useNavigate();
 
+  console.log(formattedDate, dateObject, story.datePublished);
   return (
     <div
       className={
