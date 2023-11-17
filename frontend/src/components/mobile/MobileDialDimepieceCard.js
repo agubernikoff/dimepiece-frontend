@@ -1,11 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { articleActions } from "../../redux/article-slice";
+import { useDispatch } from "react-redux";
 
 function MobileDialDimepieceCard({ story }) {
   const dateObject = new Date(story._createdAt);
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
   const nav = useNavigate();
+  const dispatch = useDispatch();
 
   const mappedSubheaders = story.dialDimepieceSubheaders.map((subheader, i) => (
     <p key={i}>{subheader}</p>
@@ -16,6 +19,7 @@ function MobileDialDimepieceCard({ story }) {
       className="mobile-dial-dimepiece-card"
       onClick={() => {
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        dispatch(articleActions.setIsArticleLoaded(false));
       }}
     >
       <div className="mobile-dial-dimepiece-card-left">

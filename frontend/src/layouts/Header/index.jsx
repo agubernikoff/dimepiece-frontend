@@ -19,7 +19,7 @@ function Header() {
   const loc = useLocation();
   const dispatch=useDispatch();
   const cart = useSelector((state) => state.cart.cart);
-  const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded)
+  const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded);
   // const dispatch = useDispatch();
 
   // const handleAddClick = () => {

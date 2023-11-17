@@ -13,6 +13,8 @@ import { useScroll, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
 function MobileHeader() {
+  const dispatch = useDispatch();
+  const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -36,6 +38,7 @@ function MobileHeader() {
   }, [isOpen]);
 
   const { scrollYProgress } = useScroll();
+  const scrollProgress = isArticleLoaded ? scrollYProgress : 0;
 
   const loc = useLocation();
 
@@ -48,7 +51,7 @@ function MobileHeader() {
         <motion.div
           className="mobile-scroll-progress-bar"
           style={{
-            scaleX: scrollYProgress,
+            scaleX: scrollProgress,
           }}
         />
       ) : null}
