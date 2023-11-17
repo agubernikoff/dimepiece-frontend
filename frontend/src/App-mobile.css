@@ -249,7 +249,10 @@
 .mobile-newsletter-page {
   width: 90%;
   margin: auto;
-  height: 52vh;
+  height: 43vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mobile-newsletter-page > p {
   text-align: center;

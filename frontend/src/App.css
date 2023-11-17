@@ -722,8 +722,11 @@ instead of tweaking each class */
 /* Newsletter page */
 .newsletter-page {
   margin-top: 3%;
-  min-height: 74vh;
+  min-height: 68vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .newsletter-page .newsletter {
