@@ -740,7 +740,7 @@ instead of tweaking each class */
   margin-top: 3%;
   margin-right: auto;
   margin-left: auto;
-  font-size: var(--base-text-size);
+  font-size: 1rem;
   margin-bottom: 5%;
 }
 
