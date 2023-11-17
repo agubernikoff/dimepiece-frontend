@@ -5,8 +5,11 @@ import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
 import SanityProductLink from "../../sanity/SanityProductLink";
+import { useDispatch } from "react-redux";
+import { articleActions } from "../../redux/article-slice";
 
 function Article() {
+  const dispatch = useDispatch();
   const [article, setArticle] = useState({
     title: "",
     datePublished: "",
@@ -23,7 +26,10 @@ function Article() {
       .fetch(
         `*[_type == "articles" && _id == "${URLParam.id}"][0]{...,coverImage{asset->{url}}}`
       )
-      .then((response) => setArticle(response));
+      .then((response) => {
+        setArticle(response);
+        dispatch(articleActions.setIsArticleLoaded(true));
+      });
   }, [URLParam.title]);
 
   const dateObject = article.datePublished

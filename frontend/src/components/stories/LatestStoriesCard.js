@@ -1,11 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { articleActions } from "../../redux/article-slice";
 
 function LatestStoriesCard({ story }) {
   const dateObject = new Date(story.datePublished);
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
   const nav = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -14,6 +17,7 @@ function LatestStoriesCard({ story }) {
       }
       onClick={() => {
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        dispatch(articleActions.setIsArticleLoaded(false));
       }}
     >
       <div className="latest-story-card-top">

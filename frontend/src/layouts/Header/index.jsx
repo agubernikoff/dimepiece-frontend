@@ -19,6 +19,7 @@ function Header() {
   const loc = useLocation();
   const dispatch=useDispatch();
   const cart = useSelector((state) => state.cart.cart);
+  const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded)
   // const dispatch = useDispatch();
 
   // const handleAddClick = () => {
@@ -38,6 +39,7 @@ function Header() {
 
   //       console.log(logo);
   const { scrollYProgress } = useScroll();
+  const scrollProgress = isArticleLoaded ? scrollYProgress : 0
   return (
     <div className="navbar">
       {loc.pathname.split("/").length >= 4 &&
@@ -45,7 +47,7 @@ function Header() {
         <motion.div
           className="scroll-progress-bar"
           style={{
-            scaleX: scrollYProgress,
+            scaleX: scrollProgress,
           }}
         />
       ) : null}
