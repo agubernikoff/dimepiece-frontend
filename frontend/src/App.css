@@ -468,6 +468,7 @@ instead of tweaking each class */
   width: 80%;
   border: none;
   font-size: 1.4rem;
+  outline: none;
 }
 .newsletter-input-container > input::placeholder {
   color: black;
