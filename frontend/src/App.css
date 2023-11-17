@@ -606,6 +606,7 @@ instead of tweaking each class */
   width: 50%;
   margin: 2% auto;
   text-align: left;
+  font-family: "swall-diatype";
 }
 .article-images-container {
   width: 100%;
