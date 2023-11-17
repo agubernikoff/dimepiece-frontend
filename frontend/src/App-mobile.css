@@ -445,8 +445,12 @@
   margin-top: 5%;
 }
 .mobile-about-page .about-brynn-portrait-title {
-  font-size: 24px;
+  margin: auto;
   font-family: "swall-diatype";
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 5%;
+  font-weight: bold;
 }
 .mobile-about-page .about-header-title-full {
   margin-bottom: 0%;
