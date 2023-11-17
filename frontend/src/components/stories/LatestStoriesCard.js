@@ -38,12 +38,7 @@ function LatestStoriesCard({ story }) {
           {story.mostDiscussed ? (
             <>
               <p className="most-discussed-preview">
-                I first met Joanna on the Las Vegas strip, her effortless
-                glamour only accentuated against the backdrop of the consumerist
-                desert wasteland. She was wearing a perfectly tailored, hot pink
-                suit set fresh off of the plane from New York, and I was
-                instantly struck at how someone could look so chic after a
-                cross-country flight...
+                {story.mostDiscussedDescription}
               </p>
               <button
                 className="most-discussed-preview-button"
