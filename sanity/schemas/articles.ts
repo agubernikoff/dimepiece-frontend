@@ -24,6 +24,22 @@ export default {
       name: 'coverImage',
       type: 'image',
     },
+    {
+      title: 'Featured Description',
+      name: 'featuredDescription',
+      type: 'string',
+    },
+    {
+      title: 'Most Discussed',
+      name: 'mostDiscussed',
+      type: 'string',
+    },
+    {
+      title: 'Dial Dimepiece Subheaders',
+      name: 'dialDimepieceSubheaders',
+      type: 'array',
+      of: [{type: 'string'}],
+    },
     defineField({
       name: 'body',
       title: 'Body',
