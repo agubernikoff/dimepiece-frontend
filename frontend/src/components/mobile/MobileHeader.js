@@ -11,7 +11,6 @@ import cartImg from "../../assets/cart_icon.png";
 import hamburger from "../../assets/hamburger.png";
 import { useScroll, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +63,6 @@ function MobileHeader() {
                 to="/stories"
                 onClick={() => {
                   setIsOpen(false);
-                  scrollToTop();
                 }}
               >
                 STORIES
@@ -75,7 +73,6 @@ function MobileHeader() {
                 to="/shop"
                 onClick={() => {
                   setIsOpen(false);
-                  scrollToTop();
                 }}
               >
                 SHOP
@@ -86,7 +83,6 @@ function MobileHeader() {
                 to="/newsletter"
                 onClick={() => {
                   setIsOpen(false);
-                  scrollToTop();
                 }}
               >
                 NEWSLETTER
@@ -97,7 +93,6 @@ function MobileHeader() {
                 to="/about"
                 onClick={() => {
                   setIsOpen(false);
-                  scrollToTop();
                 }}
               >
                 ABOUT
@@ -113,7 +108,6 @@ function MobileHeader() {
           onClick={() => {
             nav(`/`);
             setIsOpen(false);
-            scrollToTop();
           }}
         />
       </div>

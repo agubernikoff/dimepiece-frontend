@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function MobileLatestStoriesCard({ story }) {
   const nav = useNavigate();
@@ -13,7 +12,6 @@ function MobileLatestStoriesCard({ story }) {
         alt={story.title}
         onClick={() => {
           nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
-          scrollToTop();
         }}
       />
       <p className="mobile-latest-story-card-title">{story.title}</p>

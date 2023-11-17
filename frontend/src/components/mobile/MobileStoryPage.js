@@ -32,12 +32,6 @@ function MobileStoryPage() {
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Adds smooth scrolling animation
-    });
-  };
   const components = {
     marks: { annotationProduct: SanityProductLink },
     types: { "module.images": SanityArticleImage },
@@ -74,10 +68,6 @@ function MobileStoryPage() {
             <p>Text: {article.author}</p>
             <p>Photos: {article.photographer}</p>
           </div>
-          {/* <div className="article-button-container">
-            <button>Next Story</button>
-            <button onClick={scrollToTop}>Back To Top</button>
-          </div> */}
         </>
       ) : null}
     </motion.div>

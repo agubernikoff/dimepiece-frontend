@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { shopifyClient } from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
-import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function Footer() {
   const cart = useSelector((state) => state.cart.cart);
@@ -51,24 +50,16 @@ function Footer() {
           <p className="mobile-bold">
             <strong>CUSTOMER CARE</strong>
           </p>
-          <NavLink
-            onClick={scrollToTop}
-            className="navbar-link"
-            to="/shipping_and_returns"
-          >
+          <NavLink className="navbar-link" to="/shipping_and_returns">
             Shipping & Returns
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/faq">
+          <NavLink className="navbar-link" to="/faq">
             FAQ
           </NavLink>
-          <NavLink
-            onClick={scrollToTop}
-            className="navbar-link"
-            to="/terms_and_conditions"
-          >
+          <NavLink className="navbar-link" to="/terms_and_conditions">
             Terms & Conditions
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/warranty">
+          <NavLink className="navbar-link" to="/warranty">
             Warranty
           </NavLink>
         </div>
@@ -76,26 +67,22 @@ function Footer() {
           <p className="mobile-bold">
             <strong>LINKS</strong>
           </p>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/stories">
+          <NavLink className="navbar-link" to="/stories">
             Stories
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/shop">
+          <NavLink className="navbar-link" to="/shop">
             Shop
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/about">
+          <NavLink className="navbar-link" to="/about">
             About
           </NavLink>
-          <NavLink
-            onClick={scrollToTop}
-            className="navbar-link"
-            to="/newsletter"
-          >
+          <NavLink className="navbar-link" to="/newsletter">
             Newsletter
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/search">
+          <NavLink className="navbar-link" to="/search">
             Search
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/cart">
+          <NavLink className="navbar-link" to="/cart">
             {`Cart${cart.length > 0 ? ` (${cart.length})` : ""}`}
           </NavLink>
         </div>

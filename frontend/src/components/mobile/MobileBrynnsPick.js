@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { useNavigate } from "react-router-dom";
-import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function MobileBrynnsPick() {
   const nav = useNavigate();
@@ -28,7 +27,6 @@ function MobileBrynnsPick() {
               nav(
                 `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
               );
-              scrollToTop();
             }}
             loading="lazy"
             src={featured.brynnPickImage.asset.url}
