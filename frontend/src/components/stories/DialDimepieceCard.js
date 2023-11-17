@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function DialDimepieceCard({ story }) {
   const dateObject = new Date(story._createdAt);
@@ -17,7 +16,6 @@ function DialDimepieceCard({ story }) {
       className="dial-dimepiece-card"
       onClick={() => {
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
-        scrollToTop();
       }}
     >
       <div className="dial-dimepiece-card-left">

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import shopifyClient from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
-import {scrollToTop} from "../../helpers/ScrollToTop";
 
 function Footer() {
   const cart = useSelector((state) => state.cart.cart);
@@ -74,22 +73,22 @@ function Footer() {
             <strong>LINKS</strong>
           </p>
           <br />
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/stories/All">
+          <NavLink className="navbar-link" to="/stories/All">
             Stories
           </NavLink>
-          <NavLink onClick={scrollToTop}
+          <NavLink
             className="navbar-link"
             to="/shop/All?filter+by=Latest+Arrivals"
           >
             Shop
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/about">
+          <NavLink className="navbar-link" to="/about">
             About
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/newsletter">
+          <NavLink className="navbar-link" to="/newsletter">
             Newsletter
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/search">
+          <NavLink className="navbar-link" to="/search">
             Search
           </NavLink>
         </div>
@@ -98,16 +97,16 @@ function Footer() {
             <strong>CUSTOMER CARE</strong>
           </p>
           <br />
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/shipping_and_returns">
+          <NavLink className="navbar-link" to="/shipping_and_returns">
             Shipping & Returns
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/faq">
+          <NavLink className="navbar-link" to="/faq">
             FAQ
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/terms_and_conditions">
+          <NavLink className="navbar-link" to="/terms_and_conditions">
             Terms & Conditions
           </NavLink>
-          <NavLink onClick={scrollToTop} className="navbar-link" to="/warranty">
+          <NavLink className="navbar-link" to="/warranty">
             Warranty
           </NavLink>
         </div>

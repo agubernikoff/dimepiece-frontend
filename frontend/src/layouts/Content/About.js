@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
+import { motion } from "framer-motion";
 import PressCard from "./PressCard";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
 import SanityEmailLink from "../../sanity/SanityEmailLink";
@@ -30,7 +31,14 @@ function About() {
   const mappedPress = press.map((p) => <PressCard key={p._id} article={p} />);
 
   return (
-    <div className="about-page">
+    <motion.div
+      className="about-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"homepage"}
+    >
       {about ? (
         <>
           <div className="about-page-container">
@@ -123,7 +131,7 @@ function About() {
           </div>
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 

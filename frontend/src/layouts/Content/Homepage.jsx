@@ -7,10 +7,15 @@ import MostDiscussed from "../../components/stories/MostDiscussed";
 import BrynnsBasics from "../../components/products/BrynnsBasics";
 import DialDimepiece from "../../components/stories/DialDimepiece";
 import Newsletter from "./Newsletter";
+import {motion,AnimatePresence} from "framer-motion";
 
 function Homepage() {
   return (
-    <div className="homepage">
+    <motion.div className="homepage" initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 1, ease: "backInOut" }} 
+    key={"homepage"}>
       <FeaturedArticle />
       <LatestsStories />
       <WatchPreview />
@@ -21,7 +26,7 @@ function Homepage() {
         <BrynnsBasics />
       </div>
       <Newsletter/>
-    </div>
+    </motion.div>
   );
 }
 

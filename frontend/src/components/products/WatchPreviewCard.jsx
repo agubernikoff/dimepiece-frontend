@@ -1,6 +1,5 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom'
-import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function WatchPreviewCard({ watch }) {
   const nav = useNavigate();
@@ -11,7 +10,7 @@ function WatchPreviewCard({ watch }) {
     maximumFractionDigits: 0,
   };
   return (
-    <div className="watch-preview-card" onClick={()=>{nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);scrollToTop();}}>
+    <div className="watch-preview-card" onClick={()=>{nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`)}}>
       <img loading="lazy" src={watch.store.previewImageUrl} alt={watch.title} />
       <div className="watch-preview-card-details">
         <p>{watch.brand.toUpperCase()}</p>

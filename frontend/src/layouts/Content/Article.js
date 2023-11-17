@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
@@ -31,18 +32,19 @@ function Article() {
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Adds smooth scrolling animation
-    });
-  };
   const components = {
     marks: { annotationProduct: SanityProductLink },
     types: { "module.images": SanityArticleImage },
   };
   return (
-    <div className="article">
+    <motion.div
+      className="article"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"article"}
+    >
       {article.title ? (
         <>
           <p>{article.title}</p>
@@ -66,13 +68,9 @@ function Article() {
             <p>Text: {article.author}</p>
             <p>Photos: {article.photographer}</p>
           </div>
-          {/* <div className="article-button-container">
-            <button>Next Story</button>
-            <button onClick={scrollToTop}>Back To Top</button>
-          </div> */}
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 

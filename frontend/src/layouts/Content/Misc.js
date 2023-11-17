@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityEmailLink from "../../sanity/SanityEmailLink";
+import { motion } from "framer-motion";
 
 function Misc({ title }) {
   const [misc, setMisc] = useState();
@@ -13,7 +14,14 @@ function Misc({ title }) {
   }, [title]);
 
   return (
-    <div className="misc-page">
+    <motion.div
+      className="misc-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"misc-page"}
+    >
       {misc ? (
         <>
           <h3 className="section-title-home">{misc.title}</h3>
@@ -23,7 +31,7 @@ function Misc({ title }) {
           />
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 

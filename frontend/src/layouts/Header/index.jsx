@@ -12,7 +12,6 @@ import logo from "../../assets/logo_purple.png";
 import shopifyClient from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
-import {scrollToTop} from "../../helpers/ScrollToTop";
 
 function Header() {
   const nav = useNavigate();
@@ -39,7 +38,6 @@ function Header() {
 
   //       console.log(logo);
   const { scrollYProgress } = useScroll();
-
   return (
     <div className="navbar">
       {loc.pathname.split("/").length >= 4 &&
@@ -53,12 +51,12 @@ function Header() {
       ) : null}
       <div className="navbar-left">
         <NavLink 
-          onClick={scrollToTop}
+          
           to="/stories/All" className="navbar-link">
           STORIES
         </NavLink>
         <NavLink 
-          onClick={scrollToTop} 
+           
           to="/shop/All?filter+by=Latest+Arrivals"
           className="navbar-link"
           // onClick={(e) => {
@@ -67,18 +65,18 @@ function Header() {
         >
           SHOP
         </NavLink>
-        <NavLink onClick={scrollToTop}  to="/about" className="navbar-link">
+        <NavLink   to="/about" className="navbar-link">
           ABOUT
         </NavLink>
       </div>
       <div className="navbar-center">
-        <img src={logo} className="navbar-image" onClick={() => {nav(`/`);scrollToTop();}} />
+        <img src={logo} className="navbar-image" onClick={() => {nav(`/`);}} />
       </div>
       <div className="navbar-right">
-        <motion.div layout="position"><NavLink onClick={scrollToTop}  to="/newsletter" className="navbar-link">
+        <motion.div layout="position"><NavLink   to="/newsletter" className="navbar-link">
           NEWSLETTER
         </NavLink></motion.div>
-        <motion.div layout="position"><NavLink onClick={scrollToTop}  to="/search" className="navbar-link">
+        <motion.div layout="position"><NavLink   to="/search" className="navbar-link">
           SEARCH
         </NavLink></motion.div>
         <motion.p layout="position" className="navbar-link" onClick={()=>dispatch(cartActions.toggleDisplayCart())}>

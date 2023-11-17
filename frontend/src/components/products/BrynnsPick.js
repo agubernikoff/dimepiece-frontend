@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { useNavigate } from "react-router-dom";
-import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function BrynnsPick() {
   const nav = useNavigate();
@@ -35,7 +34,6 @@ function BrynnsPick() {
                 nav(
                   `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
                 );
-                scrollToTop();
               }}
             >
               View Product
@@ -49,7 +47,6 @@ function BrynnsPick() {
                 nav(
                   `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
                 );
-                scrollToTop();
               }}
             />
           </div>

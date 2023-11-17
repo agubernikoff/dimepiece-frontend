@@ -1,11 +1,19 @@
 import React from "react";
 import Newsletter from "./Newsletter";
+import { motion } from "framer-motion";
 
 function NewsletterPage() {
   return (
-    <div className="newsletter-page">
+    <motion.div
+      className="newsletter-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "backInOut" }}
+      key={"newsletterPage"}
+    >
       <Newsletter />
-    </div>
+    </motion.div>
   );
 }
 
