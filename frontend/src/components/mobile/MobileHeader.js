@@ -11,6 +11,7 @@ import cartImg from "../../assets/cart_icon.png";
 import hamburger from "../../assets/hamburger.png";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 
 function MobileHeader() {
   const dispatch = useDispatch();
@@ -150,7 +151,10 @@ function MobileHeader() {
         <div className="mobile-search-icon">
           <img src={search} alt="search" />
         </div>
-        <div className="mobile-cart-icon">
+        <div
+          className="mobile-cart-icon"
+          onClick={() => dispatch(cartActions.toggleDisplayCart())}
+        >
           <img src={cartImg} alt="cart" />
           {cart.length > 0 ? (
             <div className="mobile-cart-number">{cart.length}</div>
