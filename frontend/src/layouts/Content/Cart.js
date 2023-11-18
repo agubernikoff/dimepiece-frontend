@@ -16,42 +16,54 @@ function Cart() {
   ));
 
   return (
-    <motion.div
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: 1 }}
-      exit={{ scaleX: 0 }}
-      transition={{ duration: 0.5, ease: "linear" }}
-      key="cart"
-      className="cart-pop-up"
-    >
-      <button
-        className="close-cart-btn"
-        onClick={() => dispatch(cartActions.hideCart())}
-      >
-        X
-      </button>
-      <h2>CART</h2>
-      <div className="cart-product-cards-container">{productCards}</div>
-      <motion.p
-        layout="position"
-        className="cart-total"
-      >{`TOTAL: ${new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }).format(total)}`}</motion.p>
+    <>
       <motion.div
-        layout="position"
-        className="watch-description-buttons-container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5, ease: "linear" }}
+        key="cart-overlay"
+        className="cart-overlay"
+      ></motion.div>
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 0.5, ease: "linear" }}
+        key="cart"
+        className="cart-pop-up"
       >
         <button
-          onClick={() => window.open(`${url}`, "_blank", "noopener,noreferrer")}
+          className="close-cart-btn"
+          onClick={() => dispatch(cartActions.hideCart())}
         >
-          CHECK OUT
+          X
         </button>
+        <h2>CART</h2>
+        <div className="cart-product-cards-container">{productCards}</div>
+        <motion.p
+          layout="position"
+          className="cart-total"
+        >{`TOTAL: ${new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        }).format(total)}`}</motion.p>
+        <motion.div
+          layout="position"
+          className="watch-description-buttons-container"
+        >
+          <button
+            onClick={() =>
+              window.open(`${url}`, "_blank", "noopener,noreferrer")
+            }
+          >
+            CHECK OUT
+          </button>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 }
 

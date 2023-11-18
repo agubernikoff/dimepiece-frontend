@@ -882,9 +882,17 @@ instead of tweaking each class */
 }
 
 /* Cart */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(77, 77, 77, 0.777);
+  z-index: 11;
+}
 .cart-pop-up {
   position: fixed;
-  top: 56px;
+  top: 0;
   right: 0;
   bottom: 0;
   width: 35vw;
@@ -892,7 +900,7 @@ instead of tweaking each class */
   box-sizing: border-box;
   border: 1px solid black;
   background: white;
-  z-index: 3;
+  z-index: 12;
   transform-origin: 100%;
   overflow: auto;
 }
