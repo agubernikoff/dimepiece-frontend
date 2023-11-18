@@ -36,24 +36,16 @@
 }
 
 .menu-content {
-  display: none;
   position: absolute;
   top: calc(100% + 73%);
-  left: 0;
-  width: 100vw; /* Full width of the viewport */
-  height: calc(100vh - 8%);
-  max-height: calc(100vh - 8%);
-  overflow-y: auto;
-  transition: all 0.3s ease-in-out;
-  z-index: 999;
+  left: -50%;
+  width: 100vw;
+  height: calc(100vh - 7%);
+  max-height: calc(100vh - 7%);
   background-color: #fff;
-  margin-left: -53%;
   font-family: "swall-diatype";
   font-size: 24px;
-}
-
-.menu-content.open {
-  display: block;
+  transform-origin: 0%;
 }
 
 .menu-list {
