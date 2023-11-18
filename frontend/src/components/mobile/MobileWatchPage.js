@@ -93,14 +93,16 @@ function MobileWatchPage() {
         quantity: 1,
       },
     ];
-    if (!inCart)
+    console.log(inCart);
+    if (!inCart) {
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
           console.log(checkout);
-          window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
         });
-    else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
+      window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
+      dispatch(cartActions.addToCart(watch));
+    } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
 
   return (
