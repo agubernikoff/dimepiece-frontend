@@ -51,7 +51,7 @@ function App() {
       }
     >
       {isMobile ? <MobileHeader /> : <Header />}
-      <AnimatePresence>{displayCart && <Cart/>}</AnimatePresence>
+      <AnimatePresence>{displayCart && <Cart isMobile={isMobile}/>}</AnimatePresence>
       <AnimatePresence mode="wait" onExitComplete={scrollToTop}>
         <Routes location={location} key={location.pathname}>
           <Route path="" element={isMobile ? <MobileHome /> : <Homepage />} />

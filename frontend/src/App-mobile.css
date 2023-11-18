@@ -525,3 +525,23 @@
   text-align: center;
   min-width: 33%;
 }
+
+/* cart */
+
+.mobile-cart-pop-up {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 1vw;
+  box-sizing: border-box;
+  border: 1px solid black;
+  background: white;
+  z-index: 12;
+  transform-origin: 100%;
+  font-family: "swall-diatype";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

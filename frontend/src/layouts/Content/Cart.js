@@ -4,7 +4,7 @@ import { cartActions } from "../../redux/cart-slice";
 import { AnimatePresence, motion } from "framer-motion";
 import CartProductCards from "./CartProductCards";
 
-function Cart() {
+function Cart({ isMobile }) {
   const dispatch = useDispatch();
   const total = useSelector((state) => state.cart.checkoutTotal);
   const url = useSelector((state) => state.cart.checkoutUrl);
@@ -31,37 +31,40 @@ function Cart() {
         exit={{ scaleX: 0 }}
         transition={{ duration: 0.5, ease: "linear" }}
         key="cart"
-        className="cart-pop-up"
+        className={isMobile ? "mobile-cart-pop-up" : "cart-pop-up"}
       >
-        <button
-          className="close-cart-btn"
-          onClick={() => dispatch(cartActions.hideCart())}
-        >
-          X
-        </button>
-        <h2>CART</h2>
-        <div className="cart-product-cards-container">{productCards}</div>
-        <motion.p
-          layout="position"
-          className="cart-total"
-        >{`TOTAL: ${new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
-        }).format(total)}`}</motion.p>
-        <motion.div
-          layout="position"
-          className="watch-description-buttons-container"
-        >
+        <div className="cart-title-container">
+          <h2>CART</h2>
           <button
-            onClick={() =>
-              window.open(`${url}`, "_blank", "noopener,noreferrer")
-            }
+            className="close-cart-btn"
+            onClick={() => dispatch(cartActions.hideCart())}
           >
-            CHECK OUT
+            <h2>X</h2>
           </button>
-        </motion.div>
+        </div>
+        <div className="cart-product-cards-container">{productCards}</div>
+        <div className="cart-footer">
+          <div className="cart-subtotal-container">
+            <p>Subtotal</p>
+            <p>
+              {new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }).format(total)}
+            </p>
+          </div>
+          <div className="watch-description-buttons-container">
+            <button
+              onClick={() =>
+                window.open(`${url}`, "_blank", "noopener,noreferrer")
+              }
+            >
+              CHECK OUT
+            </button>
+          </div>
+        </div>
       </motion.div>
     </>
   );
