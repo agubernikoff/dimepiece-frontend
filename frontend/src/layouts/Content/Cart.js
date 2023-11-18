@@ -20,7 +20,7 @@ function Cart() {
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       exit={{ scaleX: 0 }}
-      transition={{ duration: 1, ease: "backInOut" }}
+      transition={{ duration: 0.5, ease: "linear" }}
       key="cart"
       className="cart-pop-up"
     >
