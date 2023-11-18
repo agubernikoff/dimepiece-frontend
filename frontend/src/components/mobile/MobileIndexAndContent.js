@@ -5,7 +5,7 @@ import { capitalizeWords } from "../../helpers/CapitalizeWords";
 import { filterWatches } from "../../helpers/FilterWatches";
 import MobileLatestStoriesCard from "./MobileLatestStoriesCard";
 import MobileLatestWatchesCard from "./MobileLatestWatchesCard";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 function MobileIndexAndContent({ contentType }) {
   const URLParam = useParams();
@@ -122,13 +122,29 @@ function MobileIndexAndContent({ contentType }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1, ease: "backInOut" }}
-      key={URLParam}
+      key={"mobile-index-and-content"}
     >
       {(contentType === "shop" && content[0] && content[0].brand) ||
       (contentType === "stories" && content[0] && !content[0].brand) ? (
-        <>
-          <div className="mobile-index">{mappedTitles}</div>
-          <div className="mobile-content-container">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={contentType}
+            className="mobile-index"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: "backInOut" }}
+          >
+            {mappedTitles}
+          </motion.div>
+          <motion.div
+            key={contentType}
+            className="mobile-content-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: "backInOut" }}
+          >
             <div className="mobile-descriptor">
               <h3 className="section-title-home">
                 {primaryFilter === "All"
@@ -144,8 +160,8 @@ function MobileIndexAndContent({ contentType }) {
                 {contentType === "shop" ? mappedWatches : mappedStories}
               </div>
             ) : null}
-          </div>
-        </>
+          </motion.div>
+        </AnimatePresence>
       ) : null}
     </motion.div>
   );
