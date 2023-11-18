@@ -46,24 +46,7 @@ function Footer() {
   return (
     <div className="mobile-footer">
       <div className="mobile-footer-top-container">
-        <div className="mobile-footer-column-margin-zero">
-          <p className="mobile-bold">
-            <strong>CUSTOMER CARE</strong>
-          </p>
-          <NavLink className="navbar-link" to="/shipping_and_returns">
-            Shipping & Returns
-          </NavLink>
-          <NavLink className="navbar-link" to="/faq">
-            FAQ
-          </NavLink>
-          <NavLink className="navbar-link" to="/terms_and_conditions">
-            Terms & Conditions
-          </NavLink>
-          <NavLink className="navbar-link" to="/warranty">
-            Warranty
-          </NavLink>
-        </div>
-        <div className="mobile-footer-column-margin-zero">
+        <div className="mobile-footer-column">
           <p className="mobile-bold">
             <strong>LINKS</strong>
           </p>
@@ -82,26 +65,39 @@ function Footer() {
           <NavLink className="navbar-link" to="/search">
             Search
           </NavLink>
-          <NavLink className="navbar-link" to="/cart">
-            {`Cart${cart.length > 0 ? ` (${cart.length})` : ""}`}
+          <a className="navbar-link">Site Credit</a>
+        </div>
+        <div className="mobile-footer-column">
+          <p className="mobile-bold">
+            <strong>CUSTOMER CARE</strong>
+          </p>
+          <NavLink className="navbar-link" to="/shipping_and_returns">
+            Shipping & Returns
+          </NavLink>
+          <NavLink className="navbar-link" to="/faq">
+            FAQ
+          </NavLink>
+          <NavLink className="navbar-link" to="/terms_and_conditions">
+            Terms & Conditions
+          </NavLink>
+          <NavLink className="navbar-link" to="/warranty">
+            Warranty
           </NavLink>
         </div>
-        <div className="mobile-footer-column-margin-zero">
-          <p className="mobile-bold">
-            <strong>GET IN TOUCH</strong>
-          </p>
-          <p>Contact Us</p>
-          <p>Press Releases</p>
-          <p>Instagram</p>
+      </div>
+      <div className="mobile-footer-newsletter-container">
+        <h3 className="mobile-bold">NEWSLETTER</h3>
+        <div className="mobile-footer-newsletter-input-container">
+          <input placeholder="Email Address" type="email"></input>
+          <button>Join</button>
         </div>
       </div>
       <div className="mobile-footer-bottom-container">
-        <div className="mobile-footer-column-margin-zero">
+        <div className="mobile-footer-column">
           <p>© DIMEPIECE LLC 2023,</p>
           <p>All Rights Reserved.</p>
         </div>
-        <a>Site Credit</a>
-        <div className="mobile-footer-column-margin-zero">
+        <div className="mobile-footer-column">
           <p>LA: {times.LosAngeles}</p>
           <p>NY: {times.NewYork}</p>
           <p>LON: {times.London} </p>
