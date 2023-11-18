@@ -35,24 +35,37 @@ function CartProductCards({ watch }) {
   }
 
   return (
-    <div className="cart-product-card">
-      <button onClick={removeFromCart}>X</button>
+    <div className="cart-product-card-content">
       <div className="cart-product-card-img-container">
         <img
           alt={`${watch.brand} ${watch.title}`}
           src={watch.store.previewImageUrl}
         />
-        <div className="cart-product-title-container">
-          <p>{watch.brand.toUpperCase()}</p>
-          <p>{watch.title}</p>
+      </div>
+      <div className="cart-product-title-container">
+        <div className="cart-product-brand-title">
+          <p>
+            <strong>{watch.brand.toUpperCase()}</strong>
+          </p>
+          <p>
+            <strong>{watch.title}</strong>
+          </p>
+        </div>
+        <div>
+          <p>size</p>
         </div>
       </div>
-      <p>
-        {watch.store.priceRange.maxVariantPrice.toLocaleString(
-          "en-US",
-          options
-        )}
-      </p>
+      <div className="cart-price-container">
+        <p>
+          {watch.store.priceRange.maxVariantPrice.toLocaleString(
+            "en-US",
+            options
+          )}
+        </p>
+        <div className="cart-price-container-button">
+          <button onClick={removeFromCart}>Remove</button>
+        </div>
+      </div>
     </div>
   );
 }
