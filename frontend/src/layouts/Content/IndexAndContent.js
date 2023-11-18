@@ -105,7 +105,7 @@ function IndexAndContent() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1, ease: "backInOut" }}
+      transition={{ duration: 0.5, ease: "backInOut" }}
       key={"stories-page"}
     >
       <AnimatePresence mode="popLayout" onExitComplete={scrollToTop}>
@@ -115,7 +115,7 @@ function IndexAndContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
+            transition={{ duration: 0.5, ease: "backInOut" }}
             key={"category"}
           >
             <IndexStories
@@ -133,7 +133,7 @@ function IndexAndContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.5 }}
             key={"brand"}
           >
             <IndexShop brandTitles={brandTitles} />
@@ -147,7 +147,7 @@ function IndexAndContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
+            transition={{ duration: 0.5, ease: "backInOut" }}
             key={category}
           >
             <h3 className="section-title-home">
@@ -169,7 +169,7 @@ function IndexAndContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
+            transition={{ duration: 0.5, ease: "backInOut" }}
             key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
           >
             <h3 className="section-title-home">
@@ -188,7 +188,7 @@ function IndexAndContent() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1, ease: "backInOut" }}
+                transition={{ duration: 0.5, ease: "backInOut" }}
                 key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
               >
                 {mappedWatches}
@@ -204,7 +204,7 @@ function IndexAndContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
+            transition={{ duration: 0.5, ease: "backInOut" }}
             key={`${brand}${URLParam.id}`}
           >
             <Watch />

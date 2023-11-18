@@ -49,7 +49,6 @@ function MobileHeader() {
       scaleX: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.1,
         duration: 0.5,
       },
     },

@@ -121,7 +121,7 @@ function MobileIndexAndContent({ contentType }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1, ease: "backInOut" }}
+      transition={{ duration: 0.5, ease: "backInOut" }}
       key={"mobile-index-and-content"}
     >
       {(contentType === "shop" && content[0] && content[0].brand) ||
@@ -133,7 +133,7 @@ function MobileIndexAndContent({ contentType }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
+            transition={{ duration: 0.5, ease: "backInOut" }}
           >
             {mappedTitles}
           </motion.div>
@@ -143,7 +143,7 @@ function MobileIndexAndContent({ contentType }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
+            transition={{ duration: 0.5, ease: "backInOut" }}
           >
             <div className="mobile-descriptor">
               <h3 className="section-title-home">
