@@ -9,7 +9,10 @@
   font-family: "swall-diatype";
   src: url("./fonts/SwallStudiosDiatype-Regular.otf") format("opentype");
 }
-
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
 button {
   /* cursor: url("./assets/watch-cursor.png"), pointer; */
 
