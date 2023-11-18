@@ -927,13 +927,16 @@ instead of tweaking each class */
   font-size: 1.1rem;
   font-family: "swall-diatype";
 }
-
+.cart-product-cards-hold {
+  height: 77vh;
+  overflow: auto;
+}
 .cart-product-cards-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 5%;
-  margin-bottom: 8%;
+  /* padding-top: 5%;
+  padding-bottom: 3%; */
   height: 100%;
 }
 .cart-product-card-content {
@@ -947,6 +950,12 @@ instead of tweaking each class */
   margin-right: 4%;
   margin-top: 2%;
   font-size: var(--base-text-size);
+}
+.cart-product-cards-container > div:first-of-type {
+  margin-top: 4%;
+}
+.cart-product-cards-container > div:last-of-type {
+  padding-bottom: 6%;
 }
 .cart-product-card-img-container {
   width: 30%;

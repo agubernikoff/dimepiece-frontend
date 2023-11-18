@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { client } from "../../sanity/SanityClient";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import { shopifyClient } from "../../shopify/ShopifyClient";
@@ -34,12 +35,14 @@ function CartProductCards({ watch }) {
     dispatch(cartActions.removeFromCart(watch._id));
   }
 
+  console.log(watch.brynnPickImage.asset._ref);
+
   return (
     <div className="cart-product-card-content">
       <div className="cart-product-card-img-container">
         <img
           alt={`${watch.brand} ${watch.title}`}
-          src={watch.store.previewImageUrl}
+          src={watch.brynnPickImage.asset.url}
         />
       </div>
       <div className="cart-product-title-container">
@@ -52,7 +55,7 @@ function CartProductCards({ watch }) {
           </p>
         </div>
         <div>
-          <p>size</p>
+          <p>{watch.size}</p>
         </div>
       </div>
       <div className="cart-price-container">

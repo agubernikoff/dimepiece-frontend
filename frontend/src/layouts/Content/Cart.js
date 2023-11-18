@@ -42,7 +42,9 @@ function Cart({ isMobile }) {
             <h2>X</h2>
           </button>
         </div>
-        <div className="cart-product-cards-container">{productCards}</div>
+        <div className="cart-product-cards-hold">
+          <div className="cart-product-cards-container">{productCards}</div>
+        </div>
         <div className="cart-footer">
           <div className="cart-subtotal-container">
             <p>Subtotal</p>
