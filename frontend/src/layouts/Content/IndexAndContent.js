@@ -9,6 +9,7 @@ import IndexShop from "./IndexShop";
 import LatestStoriesCard from "../../components/stories/LatestStoriesCard";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
 import Watch from "./Watch";
+import { scrollToTop } from "../../helpers/ScrollToTop";
 
 function IndexAndContent() {
   const [category, setCategory] = useState();
@@ -107,7 +108,7 @@ function IndexAndContent() {
       transition={{ duration: 1, ease: "backInOut" }}
       key={"stories-page"}
     >
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="popLayout" onExitComplete={scrollToTop}>
         {category && (
           <motion.div
             className="stories-page-index"
