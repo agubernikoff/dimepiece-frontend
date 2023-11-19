@@ -33,7 +33,11 @@ function Cart({ isMobile }) {
         key="cart"
         className={isMobile ? "mobile-cart-pop-up" : "cart-pop-up"}
       >
-        <div className="cart-title-container">
+        <div
+          className={
+            isMobile ? "mobile-cart-title-container" : "cart-title-container"
+          }
+        >
           <h2>CART</h2>
           <button
             className="close-cart-btn"

@@ -584,7 +584,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
+.mobile-cart-title-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  /* padding: 1vw; */
+  box-sizing: border-box;
+}
+.mobile-cart-title-container > button {
+  margin-right: 1%;
+}
 /* MISC */
 
 .mobile-misc-page {
