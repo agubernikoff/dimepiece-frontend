@@ -9,6 +9,7 @@ const cartSlice = createSlice({
     checkoutTotal: null,
     watches: [],
     cart: [],
+    searchText: null,
     searchResults: [],
     clickedPost: null,
   },
@@ -41,13 +42,30 @@ const cartSlice = createSlice({
       const filtered = [...state.cart].filter((w) => w._id !== action.payload);
       state.cart = filtered;
     },
-
     setSearchResults(state, action) {
       const searchText = action.payload;
-      const filtered = state.posts.filter((p) =>
-        p.title.toUpperCase().includes(searchText.toUpperCase())
-      );
-      if (!searchText) state.searchResults = [];
+      state.searchText = searchText;
+      const filtered = state.watches.filter((w) => {
+        if (w.title.toUpperCase().includes(searchText.toUpperCase()))
+          return true;
+        if (
+          w.title
+            .replaceAll("-", " ")
+            .toUpperCase()
+            .includes(searchText.toUpperCase())
+        )
+          return true;
+        if (w.brand.toUpperCase().includes(searchText.toUpperCase()))
+          return true;
+        if (
+          w.brand
+            .replaceAll("-", " ")
+            .toUpperCase()
+            .includes(searchText.toUpperCase())
+        )
+          return true;
+      });
+      if (!searchText || searchText.length < 3) state.searchResults = [];
       else state.searchResults = filtered;
     },
     setClickedPost(state, action) {

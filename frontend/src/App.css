@@ -81,46 +81,47 @@ instead of tweaking each class */
   }
 }
 
-.navbar {
+.header {
   position: sticky;
   position: -webkit-sticky;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+  width: 100vw;
+}
+.navbar-container {
+  width: 100%;
+  border-top: 1px solid #bfbfbf;
+  border-bottom: 1px solid #bfbfbf;
+}
+.navbar {
   height: 54px;
-  width: 90%;
-  margin: 0;
+  width: 95%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
   color: white;
-  /* margin-top: 0.5%; */
-  top: 0;
-  border-top: 1px solid #bfbfbf;
-  border-bottom: 1px solid #bfbfbf;
   font-family: "swall-diatype";
-  padding: 0 5%;
-  z-index: 10;
 }
 
 .navbar-left,
 .navbar-right {
   display: flex;
   align-items: center;
-  /* width: 50%;
-  gap: 10%; */
 }
 
 .navbar-left {
   justify-content: flex-start;
   width: 40%;
   gap: 4%;
-  margin-left: -3%;
 }
 
 .navbar-right {
   justify-content: flex-end;
   width: 40%;
   gap: 4%;
-  margin-right: -3%;
 }
 
 /* .navbar-left:nth-child(2),
@@ -153,7 +154,64 @@ instead of tweaking each class */
 .dimepiece-logo {
   color: var(--blue);
 }
-
+.search {
+  position: absolute;
+  width: 100%;
+  background-color: #d7ceff;
+  color: var(--blue);
+  box-sizing: border-box;
+}
+.search-container {
+  width: 95%;
+  margin: auto;
+  background-color: #d7ceff;
+  color: var(--blue);
+  padding-block-end: 1.5rem;
+  padding-block-start: 1rem;
+}
+.search-input-container {
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-input-container > input {
+  background-color: #d7ceff;
+  color: var(--blue);
+  caret-color: var(--blue);
+  border: none;
+  outline: none;
+  font-size: 3rem;
+  padding: 0;
+  width: 95%;
+}
+.search-input-container > button {
+  margin: 0;
+  font-size: 3rem;
+  color: var(--blue);
+  text-decoration: none;
+}
+.suggestions-container {
+  width: 33%;
+}
+.suggestion-title {
+  text-decoration: underline;
+}
+.suggestion-arrow-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  align-items: center;
+}
+.suggestion {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.suggestion-arrow-container > p {
+  margin: 0;
+}
 /* Featured Story / Top of Homepage Section */
 
 .featured-story {
