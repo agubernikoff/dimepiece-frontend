@@ -18,19 +18,31 @@ function IndexSubSection({
   );
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeStyle = ({ isActive }) =>
-    isActive
-      ? {
-          textDecoration: "underline",
-        }
-      : null;
 
   if (includeAll && options && !options.find((o) => o === "All"))
     options.unshift("All");
 
   const mappedOptions = options
-    ? useUSP
-      ? options.map((o, i) => (
+    ? isMobile
+      ? options.map((o) => (
+          <p
+            className="index-link"
+            key={o}
+            onClick={() =>
+              dispatch(
+                mobileFilterActions.setPrimaryFilter(o.replaceAll(" ", "-"))
+              )
+            }
+            style={
+              primaryFilter === o.replaceAll(" ", "-")
+                ? { textDecoration: "underline" }
+                : null
+            }
+          >
+            {o}
+          </p>
+        ))
+      : options.map((o, i) => (
           <p
             key={i}
             className="index-link"
@@ -52,37 +64,6 @@ function IndexSubSection({
           >
             {o}
           </p>
-        ))
-      : isMobile
-      ? options.map((o) => (
-          <p
-            className="index-link"
-            key={o}
-            onClick={() =>
-              dispatch(
-                mobileFilterActions.setPrimaryFilter(o.replaceAll(" ", "-"))
-              )
-            }
-            style={
-              primaryFilter === o.replaceAll(" ", "-")
-                ? { textDecoration: "underline" }
-                : null
-            }
-          >
-            {o}
-          </p>
-        ))
-      : options.map((o, i) => (
-          <NavLink
-            className="index-link"
-            style={activeStyle}
-            key={i}
-            to={`/${urlPrefix}/${o.replaceAll(" ", "-")}${
-              searchParams ? `?${searchParams}` : null
-            }`}
-          >
-            {o}
-          </NavLink>
         ))
     : null;
 

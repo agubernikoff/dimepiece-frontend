@@ -78,7 +78,7 @@ function Footer() {
           </NavLink>
           <NavLink
             className="navbar-link"
-            to="/shop/All?filter+by=Latest+Arrivals"
+            to="/shop?brands=All&filter+by=Latest+Arrivals"
           >
             Shop
           </NavLink>

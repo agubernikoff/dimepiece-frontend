@@ -11,16 +11,22 @@ import WatchPreviewCard from "../../components/products/WatchPreviewCard";
 import Watch from "./Watch";
 import { scrollToTop } from "../../helpers/ScrollToTop";
 
-function IndexAndContent() {
-  const [category, setCategory] = useState();
-  const [brand, setBrand] = useState();
+function IndexAndContent({ contentType }) {
+  // const [category, setCategory] = useState();
+  // const [brand, setBrand] = useState();
   const URLParam = useParams();
-
-  useEffect(() => {
-    if (URLParam.category)
-      setCategory(capitalizeWords(URLParam.category.replaceAll("-", " ")));
-    else setCategory("");
-  }, [URLParam]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const category = searchParams.get("categories");
+  const brand = searchParams.get("brands");
+  const filterBy = searchParams.get("filter by");
+  const caseSizeFilter = searchParams.get("case size");
+  const stylesFilter = searchParams.get("styles");
+  console.log(URLParam);
+  // useEffect(() => {
+  //   if (URLParam.category)
+  //     setCategory(capitalizeWords(URLParam.category.replaceAll("-", " ")));
+  //   else setCategory("");
+  // }, [URLParam]);
 
   const [types, setTypes] = useState([]);
   const [stories, setStories] = useState([]);
@@ -30,20 +36,24 @@ function IndexAndContent() {
     client
       .fetch(`*[_type == "product" && isFeatured == true][0]`)
       .then((response) => setBrynnsPick(response));
-  }, []);
-
-  useEffect(() => {
     client
       .fetch(
         `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)`
       )
       .then((response) => setStories(response));
-  }, []);
-
-  useEffect(() => {
     client
       .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
       .then((response) => setTypes(response));
+    client
+      .fetch(`*[_type == "brands"]{_id,descriptor,title}`)
+      .then((response) => setBrands(response));
+    client
+      .fetch(
+        `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
+      )
+      .then((response) => {
+        setWatches(response);
+      });
   }, []);
 
   const categories = types[0] ? types.map((t) => t.title) : null;
@@ -61,34 +71,31 @@ function IndexAndContent() {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    client
-      .fetch(`*[_type == "brands"]{_id,descriptor,title}`)
-      .then((response) => setBrands(response));
+    // client
+    //   .fetch(`*[_type == "brands"]{_id,descriptor,title}`)
+    //   .then((response) => setBrands(response));
   }, []);
 
   const brandTitles = brands[0] ? brands.map((b) => b.title).sort() : null;
 
-  useEffect(() => {
-    if (URLParam.brand && brands[0]) {
-      if (brands.find((b) => b.title === URLParam.brand))
-        setBrand(URLParam.brand);
-      else setBrand(capitalizeWords(URLParam.brand.replaceAll("-", " ")));
-    } else setBrand("");
-  }, [URLParam, brands]);
+  // useEffect(() => {
+  //   if (URLParam.brand && brands[0]) {
+  //     if (brands.find((b) => b.title === URLParam.brand))
+  //       setBrand(URLParam.brand);
+  //     else setBrand(capitalizeWords(URLParam.brand.replaceAll("-", " ")));
+  //   } else setBrand("");
+  // }, [URLParam, brands]);
 
   const [watches, setWatches] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const filterBy = searchParams.get("filter by");
-  const caseSizeFilter = searchParams.get("case size");
-  const stylesFilter = searchParams.get("styles");
+
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
-      )
-      .then((response) => {
-        setWatches(response);
-      });
+    // client
+    //   .fetch(
+    //     `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
+    //   )
+    //   .then((response) => {
+    //     setWatches(response);
+    //   });
   }, []);
 
   const mappedWatches = filterWatches(
@@ -108,14 +115,14 @@ function IndexAndContent() {
       transition={{ duration: 0.5, ease: "backInOut" }}
       key={"stories-page"}
     >
-      <AnimatePresence mode="popLayout" onExitComplete={scrollToTop}>
-        {category && (
+      <AnimatePresence mode="popLayout">
+        {contentType === "stories" && (
           <motion.div
             className="stories-page-index"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "backInOut" }}
+            transition={{ duration: 1, ease: "backInOut" }}
             key={"category"}
           >
             <IndexStories
@@ -127,13 +134,13 @@ function IndexAndContent() {
         )}
       </AnimatePresence>
       <AnimatePresence mode="popLayout">
-        {brand && (
+        {contentType === "shop" && (
           <motion.div
             className="stories-page-index"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             key={"brand"}
           >
             <IndexShop brandTitles={brandTitles} />
@@ -141,13 +148,13 @@ function IndexAndContent() {
         )}
       </AnimatePresence>
       <AnimatePresence mode="popLayout">
-        {category && (
+        {contentType === "stories" && (
           <motion.div
             className="stories-page-content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "backInOut" }}
+            transition={{ duration: 1, ease: "backInOut" }}
             key={category}
           >
             <h3 className="section-title-home">
@@ -156,20 +163,22 @@ function IndexAndContent() {
             <p>
               {category === "All"
                 ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
-                : types.find((t) => t.title === category).descriptor}
+                : types[0]
+                ? types.find((t) => t.title === category).descriptor
+                : null}
             </p>
             <div className="stories-page-card-container">{mappedStories}</div>
           </motion.div>
         )}
       </AnimatePresence>
-      <AnimatePresence mode="popLayout">
-        {brand && !URLParam.id ? (
+      <AnimatePresence mode="popLayout" onExitComplete={scrollToTop}>
+        {contentType === "shop" && !URLParam.id ? (
           <motion.div
             className="stories-page-content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "backInOut" }}
+            transition={{ duration: 1, ease: "backInOut" }}
             key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
           >
             <h3 className="section-title-home">
@@ -188,7 +197,7 @@ function IndexAndContent() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "backInOut" }}
+                transition={{ duration: 1, ease: "backInOut" }}
                 key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
               >
                 {mappedWatches}
@@ -204,7 +213,7 @@ function IndexAndContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "backInOut" }}
+            transition={{ duration: 1, ease: "backInOut" }}
             key={`${brand}${URLParam.id}`}
           >
             <Watch />

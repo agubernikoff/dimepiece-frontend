@@ -54,12 +54,12 @@ function Header() {
       <div className="navbar-left">
         <NavLink 
           
-          to="/stories/All" className="navbar-link">
+          to="/stories?categories=All" className="navbar-link">
           STORIES
         </NavLink>
         <NavLink 
            
-          to="/shop/All?filter+by=Latest+Arrivals"
+          to="/shop?brands=All&filter+by=Latest+Arrivals"
           className="navbar-link"
           // onClick={(e) => {
           //   if (loc.pathname.includes("/shop/")) e.preventDefault();
@@ -75,13 +75,13 @@ function Header() {
         <img src={logo} className="navbar-image" onClick={() => {nav(`/`);}} />
       </div>
       <div className="navbar-right">
-        <motion.div layout="position"><NavLink   to="/newsletter" className="navbar-link">
+        <motion.div style={{ originY: '0px' }} layout="position"><NavLink   to="/newsletter" className="navbar-link">
           NEWSLETTER
         </NavLink></motion.div>
-        <motion.div layout="position"><NavLink   to="/search" className="navbar-link">
+        <motion.div style={{ originY: '0px' }} layout="position"><NavLink   to="/search" className="navbar-link">
           SEARCH
         </NavLink></motion.div>
-        <motion.p layout="position" className="navbar-link" onClick={()=>dispatch(cartActions.toggleDisplayCart())}>
+        <motion.p style={{ originY: '0px' }} layout="position" className="navbar-link" onClick={()=>dispatch(cartActions.toggleDisplayCart())}>
           {`CART${cart.length>0?` (${cart.length})`:""}`}
         </motion.p>
       </div>

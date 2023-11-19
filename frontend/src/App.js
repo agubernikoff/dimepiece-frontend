@@ -74,7 +74,7 @@ function App() {
               isMobile ? (
                 <MobileIndexAndContent contentType={"stories"} />
               ) : (
-                <IndexAndContent />
+                <IndexAndContent contentType={"stories"}/>
               )
             }
           />
@@ -84,7 +84,7 @@ function App() {
               isMobile ? (
                 <MobileIndexAndContent contentType={"stories"} />
               ) : (
-                <IndexAndContent />
+                <IndexAndContent contentType={"stories"}/>
               )
             }
           />
@@ -98,7 +98,7 @@ function App() {
               isMobile ? (
                 <MobileIndexAndContent contentType={"shop"} />
               ) : (
-                <IndexAndContent />
+                <IndexAndContent contentType={"shop"}/>
               )
             }
           />
@@ -108,7 +108,7 @@ function App() {
               isMobile ? (
                 <MobileIndexAndContent contentType={"shop"} />
               ) : (
-                <IndexAndContent />
+                <IndexAndContent contentType={"shop"}/>
               )
             }
           />
