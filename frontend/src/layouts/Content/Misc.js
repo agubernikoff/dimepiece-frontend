@@ -13,9 +13,11 @@ function Misc({ title }) {
       .then((response) => setMisc(response));
   }, [title]);
 
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <motion.div
-      className="misc-page"
+      className={isMobile ? "mobile-misc-page" : "misc-page"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

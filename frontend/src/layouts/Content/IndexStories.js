@@ -29,15 +29,15 @@ function IndexStories({ categories, stories, brynnsPick, isMobile }) {
       />
       <div className="stories-page-index-list">
         <p className="stories-page-index-category-header">
-          <strong>FEATURED</strong>
+          {isMobile ? null : <strong>FEATURED</strong>}
         </p>
-        <ol>{mappedFeaturedTitles}</ol>
+        <ol>{isMobile ? null : mappedFeaturedTitles}</ol>
       </div>
       <div className="stories-page-index-list">
         <p className="stories-page-index-category-header">
-          <strong>{"BRYNN'S PICK"}</strong>
+          {isMobile ? null : <strong>{"BRYNN'S PICK"}</strong>}
         </p>
-        {brynnsPick ? (
+        {brynnsPick && !isMobile ? (
           <p
             className="stories-page-index-brynns-pick"
             onClick={() =>

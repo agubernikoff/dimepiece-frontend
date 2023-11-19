@@ -108,6 +108,7 @@
 .mobile-homepage {
   width: 90%;
   margin: auto;
+  margin-top: 8%;
 }
 
 /* mobile-index-and-content */
@@ -248,10 +249,11 @@
 .mobile-newsletter-page {
   width: 90%;
   margin: auto;
-  height: 43vh;
+  /* height: 43vh; */
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 8%;
 }
 .mobile-newsletter-page > p {
   text-align: center;
@@ -581,4 +583,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* MISC */
+
+.mobile-misc-page {
+  min-height: 92vh;
+  width: 90%;
+  margin-top: 8%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 1rem;
+  margin-bottom: 5%;
 }
