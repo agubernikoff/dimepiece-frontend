@@ -682,11 +682,14 @@ instead of tweaking each class */
   outline: 1px solid black;
 }
 .watch-description-table-row {
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
   border-bottom: 1px solid black;
   padding: 2%;
   display: flex;
   justify-content: space-between;
+}
+.watch-description-table-row:last-of-type {
+  border-bottom: none;
 }
 .product-description-container .watch-preview-card-details > p {
   font-size: var(--base-text-size);
