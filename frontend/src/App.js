@@ -29,6 +29,7 @@ import { scrollToTop } from "./helpers/ScrollToTop";
 import { mobileFilterActions } from "./redux/mobile-filter-slice";
 import { client } from "./sanity/SanityClient";
 import SearchResults from "./layouts/Content/SearchResults";
+import MobileSearchResults from "./components/mobile/MobileSearchResults";
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -131,7 +132,10 @@ function App() {
               )
             }
           />
-          <Route path="/search" element={<SearchResults />} />
+          <Route
+            path="/search"
+            element={isMobile ? <MobileSearchResults /> : <SearchResults />}
+          />
           <Route
             path="/about"
             element={isMobile ? <MobileAboutPage /> : <About />}

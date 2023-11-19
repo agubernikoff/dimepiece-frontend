@@ -13,11 +13,13 @@ import { useScroll, motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
+import MobileSearch from "./MobileSearch";
 
 function MobileHeader() {
   const dispatch = useDispatch();
   const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded);
   const [isOpen, setIsOpen] = useState(false);
+  const [displaySearch, setDisplaySearch] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -66,6 +68,13 @@ function MobileHeader() {
     visible: { opacity: 1, x: 0, transition: "linear" },
     hidden: { opacity: 0, x: -100, transition: "linear" },
   };
+
+  function toggleSearch() {
+    setDisplaySearch(!displaySearch);
+  }
+  function hideSearch() {
+    setDisplaySearch(false);
+  }
   return (
     <div className="mobile-nav">
       {loc.pathname.split("/").length >= 4 &&
@@ -151,7 +160,14 @@ function MobileHeader() {
       </div>
       <div className="mobile-search-cart">
         <div className="mobile-search-icon">
-          <img src={search} alt="search" />
+          <img
+            src={search}
+            alt="search"
+            onClick={() => {
+              toggleSearch();
+              dispatch(cartActions.setSearchResults(""));
+            }}
+          ></img>
         </div>
         <div
           className="mobile-cart-icon"
@@ -163,6 +179,7 @@ function MobileHeader() {
           ) : null}
         </div>
       </div>
+      {displaySearch ? <MobileSearch hideSearch={hideSearch} /> : null}
     </div>
   );
 }
