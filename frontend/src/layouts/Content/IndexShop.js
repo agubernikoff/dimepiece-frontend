@@ -1,7 +1,7 @@
 import React from "react";
 import IndexSubSection from "./IndexSubSection";
 
-function IndexShop({ brandTitles }) {
+function IndexShop({ brandTitles, isMobile }) {
   return (
     <>
       <IndexSubSection
@@ -9,6 +9,7 @@ function IndexShop({ brandTitles }) {
         options={brandTitles}
         includeAll={true}
         urlPrefix={"shop"}
+        isMobile={isMobile}
       />
       <IndexSubSection
         title={"filter by"}

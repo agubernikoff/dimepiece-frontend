@@ -6,14 +6,23 @@ import { filterWatches } from "../../helpers/FilterWatches";
 import MobileLatestStoriesCard from "./MobileLatestStoriesCard";
 import MobileLatestWatchesCard from "./MobileLatestWatchesCard";
 import { AnimatePresence, motion } from "framer-motion";
+import MobileIndexFilterDialogue from "./MobileIndexFilterDialogue";
+import { useDispatch, useSelector } from "react-redux";
+import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 
 function MobileIndexAndContent({ contentType }) {
+  const isDialogueOpen = useSelector(
+    (state) => state.mobileFilter.isDialogueOpen
+  );
+  const dispatch = useDispatch();
   const URLParam = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [content, setContent] = useState([]);
   const [filters, setFilters] = useState([]);
   const [primaryFilter, setPrimaryFilter] = useState("All");
+  const [stories, setStories] = useState([]);
+  const [brynnsPick, setBrynnsPick] = useState();
 
   useEffect(() => {
     if (contentType === "stories") {
@@ -25,6 +34,14 @@ function MobileIndexAndContent({ contentType }) {
       client
         .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
         .then((response) => setFilters(response));
+      client
+        .fetch(`*[_type == "product" && isFeatured == true][0]`)
+        .then((response) => setBrynnsPick(response));
+      client
+        .fetch(
+          `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)`
+        )
+        .then((response) => setStories(response));
     } else if (contentType === "shop") {
       client
         .fetch(
@@ -40,35 +57,23 @@ function MobileIndexAndContent({ contentType }) {
   }, [contentType]);
 
   useEffect(() => {
-    if (URLParam.category)
-      setPrimaryFilter(capitalizeWords(URLParam.category.replaceAll("-", " ")));
-    else if (URLParam.brand && filters[0]) {
-      if (filters.find((b) => b.title === URLParam.brand))
-        setPrimaryFilter(URLParam.brand);
-      else
-        setPrimaryFilter(capitalizeWords(URLParam.brand.replaceAll("-", " ")));
+    if (!isDialogueOpen) {
+      if (URLParam.category)
+        setPrimaryFilter(
+          capitalizeWords(URLParam.category.replaceAll("-", " "))
+        );
+      else if (URLParam.brand && filters[0]) {
+        if (filters.find((b) => b.title === URLParam.brand))
+          setPrimaryFilter(URLParam.brand);
+        else
+          setPrimaryFilter(
+            capitalizeWords(URLParam.brand.replaceAll("-", " "))
+          );
+      }
     }
-  }, [URLParam, filters]);
+  }, [URLParam, filters, isDialogueOpen]);
 
-  const activeStyle = ({ isActive }) =>
-    isActive
-      ? {
-          textDecoration: "underline",
-        }
-      : null;
   const filterTitles = filters[0] ? filters.map((b) => b.title).sort() : [];
-  const mappedTitles = ["All", ...filterTitles].map((t) => (
-    <NavLink
-      className="index-link"
-      style={activeStyle}
-      key={t}
-      to={`/${contentType}/${t.replaceAll(" ", "-")}${
-        searchParams ? `?${searchParams}` : null
-      }`}
-    >
-      {t}
-    </NavLink>
-  ));
 
   let filteredStories = [];
   filteredStories =
@@ -111,10 +116,36 @@ function MobileIndexAndContent({ contentType }) {
       ? filters.find((b) => b.title === primaryFilter).descriptor
       : null;
 
-  // if (
-  //   (contentType === "shop" && content[0] && content[0].brand) ||
-  //   (contentType === "stories" && content[0] && !content[0].brand)
-  // )
+  const key2 = `${contentType}2`;
+
+  function openDialogue() {
+    dispatch(mobileFilterActions.setIsDialogueOpen(true));
+  }
+  function closeDialogue() {
+    dispatch(mobileFilterActions.setIsDialogueOpen(false));
+  }
+
+  const list = {
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        duration: 0.5,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        when: "afterChildren",
+      },
+    },
+  };
+
+  const item = {
+    visible: { scaleY: 1, transition: "linear" },
+    hidden: { scaleY: 0, transition: "linear" },
+  };
+
   return (
     <motion.div
       className="mobile-index-and-content"
@@ -126,7 +157,7 @@ function MobileIndexAndContent({ contentType }) {
     >
       {(contentType === "shop" && content[0] && content[0].brand) ||
       (contentType === "stories" && content[0] && !content[0].brand) ? (
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout">
           <motion.div
             key={contentType}
             className="mobile-index"
@@ -135,10 +166,29 @@ function MobileIndexAndContent({ contentType }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "backInOut" }}
           >
-            {mappedTitles}
+            <p className="stories-page-index-category-header">
+              <strong>{primaryFilter.toUpperCase()}</strong>
+            </p>
+            <p
+              className="stories-page-index-category-header"
+              onClick={openDialogue}
+            >
+              <strong>FILTER BY</strong>
+            </p>
+            <AnimatePresence>
+              {isDialogueOpen && (
+                <MobileIndexFilterDialogue
+                  titles={filterTitles}
+                  closeDialogue={closeDialogue}
+                  contentType={contentType}
+                  stories={stories}
+                  brynnsPick={brynnsPick}
+                />
+              )}
+            </AnimatePresence>
           </motion.div>
           <motion.div
-            key={contentType}
+            key={key2}
             className="mobile-content-container"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

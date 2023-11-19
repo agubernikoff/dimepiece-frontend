@@ -1,8 +1,22 @@
 import { prepareCssVars } from "@mui/system";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useSearchParams } from "react-router-dom";
+import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 
-function IndexSubSection({ title, options, includeAll, urlPrefix, useUSP }) {
+function IndexSubSection({
+  title,
+  options,
+  includeAll,
+  urlPrefix,
+  useUSP,
+  isMobile,
+}) {
+  const dispatch = useDispatch();
+  const primaryFilter = useSelector(
+    (state) => state.mobileFilter.primaryFilter
+  );
+
   const [searchParams, setSearchParams] = useSearchParams();
   const activeStyle = ({ isActive }) =>
     isActive
@@ -11,7 +25,8 @@ function IndexSubSection({ title, options, includeAll, urlPrefix, useUSP }) {
         }
       : null;
 
-  if (includeAll && options) options.unshift("All");
+  if (includeAll && options && !options.find((o) => o === "All"))
+    options.unshift("All");
 
   const mappedOptions = options
     ? useUSP
@@ -38,6 +53,25 @@ function IndexSubSection({ title, options, includeAll, urlPrefix, useUSP }) {
             {o}
           </p>
         ))
+      : isMobile
+      ? options.map((o) => (
+          <p
+            className="index-link"
+            key={o}
+            onClick={() =>
+              dispatch(
+                mobileFilterActions.setPrimaryFilter(o.replaceAll(" ", "-"))
+              )
+            }
+            style={
+              primaryFilter === o.replaceAll(" ", "-")
+                ? { textDecoration: "underline" }
+                : null
+            }
+          >
+            {o}
+          </p>
+        ))
       : options.map((o, i) => (
           <NavLink
             className="index-link"
@@ -51,6 +85,10 @@ function IndexSubSection({ title, options, includeAll, urlPrefix, useUSP }) {
           </NavLink>
         ))
     : null;
+  console.log(searchParams);
+  if (isMobile) {
+    dispatch(mobileFilterActions.setUrlPrefix(urlPrefix));
+  }
 
   return (
     <div className="stories-page-index-list">

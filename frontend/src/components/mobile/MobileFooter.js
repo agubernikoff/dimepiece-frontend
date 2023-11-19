@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { shopifyClient } from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
+import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 
 function Footer() {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const [times, setTimes] = useState({
     London: new Date().toLocaleTimeString("en-US", {
@@ -53,7 +55,13 @@ function Footer() {
           <NavLink className="navbar-link" to="/stories">
             Stories
           </NavLink>
-          <NavLink className="navbar-link" to="/shop">
+          <NavLink
+            className="navbar-link"
+            to="/shop/All?filter+by=Latest+Arrivals"
+            onClick={() =>
+              dispatch(mobileFilterActions.setPrimaryFilter("All"))
+            }
+          >
             Shop
           </NavLink>
           <NavLink className="navbar-link" to="/about">

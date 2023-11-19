@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import IndexSubSection from "./IndexSubSection";
 
-function IndexStories({ categories, stories, brynnsPick }) {
+function IndexStories({ categories, stories, brynnsPick, isMobile }) {
   const nav = useNavigate();
 
   const mappedFeaturedTitles = [...stories]
@@ -25,6 +25,7 @@ function IndexStories({ categories, stories, brynnsPick }) {
         options={categories}
         includeAll={true}
         urlPrefix={"stories"}
+        isMobile={isMobile}
       />
       <div className="stories-page-index-list">
         <p className="stories-page-index-category-header">

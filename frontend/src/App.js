@@ -26,6 +26,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { cartActions } from "./redux/cart-slice";
 import { AnimatePresence, motion } from "framer-motion";
 import { scrollToTop } from "./helpers/ScrollToTop";
+import { mobileFilterActions } from "./redux/mobile-filter-slice";
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
@@ -52,7 +53,14 @@ function App() {
     >
       {isMobile ? <MobileHeader /> : <Header />}
       <AnimatePresence>{displayCart && <Cart isMobile={isMobile}/>}</AnimatePresence>
-      <AnimatePresence mode="wait" onExitComplete={scrollToTop}>
+      <AnimatePresence mode="wait" onExitComplete={
+        ()=>{
+          scrollToTop();
+          if(isMobile)
+            dispatch(mobileFilterActions.setIsDialogueOpen(false));
+            }
+          }
+        >
         <Routes location={location} key={location.pathname}>
           <Route path="" element={isMobile ? <MobileHome /> : <Homepage />} />
           <Route path="/" element={isMobile ? <MobileHome /> : <Homepage />} />

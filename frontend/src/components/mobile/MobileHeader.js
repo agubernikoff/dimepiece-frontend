@@ -12,6 +12,7 @@ import hamburger from "../../assets/hamburger.png";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
+import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 
 function MobileHeader() {
   const dispatch = useDispatch();
@@ -94,7 +95,7 @@ function MobileHeader() {
               <ul className="menu-list">
                 <motion.li variants={item}>
                   <NavLink
-                    to="/stories"
+                    to="/stories/All"
                     onClick={() => {
                       setIsOpen(false);
                     }}
@@ -104,9 +105,10 @@ function MobileHeader() {
                 </motion.li>
                 <motion.li variants={item}>
                   <NavLink
-                    to="/shop"
+                    to="/shop/All?filter+by=Latest+Arrivals"
                     onClick={() => {
                       setIsOpen(false);
+                      dispatch(mobileFilterActions.setPrimaryFilter("All"));
                     }}
                   >
                     SHOP
