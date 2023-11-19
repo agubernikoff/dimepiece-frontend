@@ -114,7 +114,7 @@ function App() {
           />
           <Route
             path="/shop/:brand/:id"
-            element={isMobile ? <MobileWatchPage /> : <IndexAndContent />}
+            element={isMobile ? <MobileWatchPage /> : <IndexAndContent contentType={"shop"}/>}
           />
           <Route
             path="/about"

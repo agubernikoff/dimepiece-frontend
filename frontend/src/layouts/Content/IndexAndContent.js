@@ -21,7 +21,7 @@ function IndexAndContent({ contentType }) {
   const filterBy = searchParams.get("filter by");
   const caseSizeFilter = searchParams.get("case size");
   const stylesFilter = searchParams.get("styles");
-  console.log(URLParam);
+
   // useEffect(() => {
   //   if (URLParam.category)
   //     setCategory(capitalizeWords(URLParam.category.replaceAll("-", " ")));
@@ -207,7 +207,7 @@ function IndexAndContent({ contentType }) {
         ) : null}
       </AnimatePresence>
       <AnimatePresence mode="popLayout">
-        {brand && URLParam.id && (
+        {contentType === "shop" && URLParam.id && (
           <motion.div
             className="stories-page-content watch-modifier"
             initial={{ opacity: 0 }}
