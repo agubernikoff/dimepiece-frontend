@@ -21,8 +21,6 @@ function MobileIndexAndContent({ contentType }) {
   const [content, setContent] = useState([]);
   const [filters, setFilters] = useState([]);
   const [primaryFilter, setPrimaryFilter] = useState("All");
-  const [stories, setStories] = useState([]);
-  const [brynnsPick, setBrynnsPick] = useState();
 
   useEffect(() => {
     if (contentType === "stories") {
@@ -34,14 +32,6 @@ function MobileIndexAndContent({ contentType }) {
       client
         .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
         .then((response) => setFilters(response));
-      client
-        .fetch(`*[_type == "product" && isFeatured == true][0]`)
-        .then((response) => setBrynnsPick(response));
-      client
-        .fetch(
-          `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)`
-        )
-        .then((response) => setStories(response));
     } else if (contentType === "shop") {
       client
         .fetch(
@@ -181,8 +171,6 @@ function MobileIndexAndContent({ contentType }) {
                   titles={filterTitles}
                   closeDialogue={closeDialogue}
                   contentType={contentType}
-                  stories={stories}
-                  brynnsPick={brynnsPick}
                 />
               )}
             </AnimatePresence>

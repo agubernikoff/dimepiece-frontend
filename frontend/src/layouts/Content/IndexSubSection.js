@@ -1,5 +1,5 @@
 import { prepareCssVars } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useSearchParams } from "react-router-dom";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
@@ -85,10 +85,12 @@ function IndexSubSection({
           </NavLink>
         ))
     : null;
-  console.log(searchParams);
-  if (isMobile) {
-    dispatch(mobileFilterActions.setUrlPrefix(urlPrefix));
-  }
+
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(mobileFilterActions.setUrlPrefix(urlPrefix));
+    }
+  }, []);
 
   return (
     <div className="stories-page-index-list">

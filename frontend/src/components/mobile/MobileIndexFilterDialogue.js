@@ -5,13 +5,7 @@ import IndexShop from "../../layouts/Content/IndexShop";
 import IndexStories from "../../layouts/Content/IndexStories";
 import { motion } from "framer-motion";
 
-function MobileIndexFilterDialogue({
-  closeDialogue,
-  titles,
-  contentType,
-  stories,
-  brynnsPick,
-}) {
+function MobileIndexFilterDialogue({ closeDialogue, titles, contentType }) {
   const nav = useNavigate();
   const primaryFilter = useSelector(
     (state) => state.mobileFilter.primaryFilter
@@ -32,12 +26,7 @@ function MobileIndexFilterDialogue({
           {contentType === "shop" ? (
             <IndexShop brandTitles={titles} isMobile={true} />
           ) : (
-            <IndexStories
-              categories={titles}
-              stories={stories}
-              brynnsPick={brynnsPick}
-              isMobile={true}
-            />
+            <IndexStories categories={titles} stories={[]} isMobile={true} />
           )}
         </div>
         <p
