@@ -10,6 +10,7 @@ import LatestStoriesCard from "../../components/stories/LatestStoriesCard";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
 import Watch from "./Watch";
 import { scrollToTop } from "../../helpers/ScrollToTop";
+import NoResults from "./NoResults";
 
 function IndexAndContent({ contentType }) {
   // const [category, setCategory] = useState();
@@ -200,7 +201,7 @@ function IndexAndContent({ contentType }) {
                 transition={{ duration: 1, ease: "backInOut" }}
                 key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
               >
-                {mappedWatches}
+                {mappedWatches[0] ? mappedWatches : <NoResults />}
               </motion.div>
             </AnimatePresence>
           </motion.div>
