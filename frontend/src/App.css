@@ -698,7 +698,7 @@ instead of tweaking each class */
 .product-container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 112%;
   height: 100vh;
 }
 .product-images-container {

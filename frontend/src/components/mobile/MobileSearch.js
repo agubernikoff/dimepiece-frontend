@@ -22,7 +22,7 @@ function MobileSearch({ hideSearch }) {
     >
       <p className="suggestion">
         {`${w.brand.toUpperCase()} ${w.title.toUpperCase()}`},{" "}
-        <em>{w.material.toUpperCase()}</em>
+        {w.material.toUpperCase()}
       </p>
       {/* <p>{String.fromCharCode(8594)}</p> */}
     </div>

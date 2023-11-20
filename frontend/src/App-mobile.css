@@ -93,16 +93,18 @@
   color: var(--blue);
   box-sizing: border-box;
   margin-top: 10%;
+  font-family: "swall-diatype";
 }
 .mobile-search .search-container {
   width: 100%;
 }
 .mobile-search .search-input-container {
-  border-bottom: solid 2px;
+  border-bottom: solid 1px;
 }
 .mobile-search .search-input-container > input {
   margin-left: 5%;
   font-size: 24px;
+  font-family: "swall-diatype";
 }
 .mobile-search .search-input-container > button {
   margin-right: 5%;
@@ -111,11 +113,14 @@
 .mobile-search .search-input-container > button,
 .mobile-search .search-input-container > input {
   margin-bottom: 2%;
+  font-family: "swall-diatype";
 }
 .mobile-search .suggestions-container {
   font-size: 12px;
   margin-left: 5%;
   width: 89%;
+  font-family: "swall-diatype";
+  line-height: 140%;
 }
 .mobile-cart-icon {
   position: relative;
@@ -391,6 +396,7 @@
 .mobile-product-images-container > img {
   margin-right: 2%;
   width: 90%;
+  aspect-ratio: 2/2;
 }
 .mobile-product-images-container > img:first-of-type {
   margin: 0 2% 4% 5%;
@@ -557,18 +563,22 @@
   font-size: var(--base-text-size);
   padding: 4% 5%;
   font-size: 10px;
+  font-family: "swall-diatype";
 }
 .mobile-footer-top-container {
   display: flex;
   gap: 2rem;
+  font-family: "swall-diatype";
 }
 .mobile-bold {
   margin-bottom: 10px !important;
   font-size: 11px;
   white-space: nowrap;
+  font-family: "swall-diatype";
 }
 .mobile-footer-column {
   margin-bottom: 8%;
+  font-family: "swall-diatype";
 }
 .mobile-footer-column > p {
   margin: 0;
