@@ -83,6 +83,37 @@
   gap: 20%;
   align-items: center;
 }
+.mobile-search {
+  position: absolute;
+  width: 100%;
+  background-color: #d7ceff;
+  color: var(--blue);
+  box-sizing: border-box;
+  margin-top: 10%;
+}
+.mobile-search .search-container {
+  width: 100%;
+}
+.mobile-search .search-input-container {
+  border-bottom: solid 2px;
+}
+.mobile-search .search-input-container > input {
+  margin-left: 5%;
+  font-size: 24px;
+}
+.mobile-search .search-input-container > button {
+  margin-right: 5%;
+  font-size: 24px;
+}
+.mobile-search .search-input-container > button,
+.mobile-search .search-input-container > input {
+  margin-bottom: 2%;
+}
+.mobile-search .suggestions-container {
+  font-size: 12px;
+  margin-left: 5%;
+  width: 80%;
+}
 .mobile-cart-icon {
   position: relative;
 }

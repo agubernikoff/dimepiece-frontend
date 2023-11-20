@@ -35,7 +35,7 @@ function MobileSearch({ hideSearch }) {
     }
   }
   return (
-    <div className="search">
+    <div className="mobile-search">
       <div className="search-container">
         <form className="search-input-container" onSubmit={handleSubmit}>
           <input
