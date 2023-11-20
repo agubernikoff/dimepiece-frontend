@@ -71,8 +71,9 @@ function App() {
   }
   function toggleDisplayIndex() {
     if (
-      location.pathname.includes("shop") ||
-      location.pathname.includes("search")
+      !isMobile &&
+      (location.pathname.includes("shop") ||
+        location.pathname.includes("search"))
     ) {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("shop");
@@ -91,8 +92,9 @@ function App() {
   }
   useEffect(() => {
     if (
-      location.pathname.includes("shop") ||
-      location.pathname.includes("search")
+      !isMobile &&
+      (location.pathname.includes("shop") ||
+        location.pathname.includes("search"))
     ) {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("shop");

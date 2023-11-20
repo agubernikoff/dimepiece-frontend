@@ -329,7 +329,10 @@ instead of tweaking each class */
   line-height: 110%;
 }
 .most-discussed {
-  width: 30%;
+  width: 40%;
+}
+.most-discussed .section-title-home {
+  margin-bottom: 4% !important;
 }
 .most-discussed-card {
   width: 100%;
@@ -556,7 +559,7 @@ instead of tweaking each class */
   height: fit-content;
   position: sticky;
   position: -webkit-sticky;
-  top: 18%;
+  top: calc(58px + (95vw * 0.03));
   font-family: "swall-diatype";
 }
 
