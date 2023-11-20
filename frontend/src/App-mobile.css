@@ -80,8 +80,11 @@
   width: 10%;
   display: flex;
   justify-content: flex-end;
-  gap: 20%;
+  gap: 30%;
   align-items: center;
+}
+.mobile-search-icon {
+  margin-top: 1%;
 }
 .mobile-search {
   position: absolute;
@@ -163,8 +166,9 @@
 .mobile-latest-story-card-title {
   font-family: "tobias-regular";
   font-size: 32px;
-  margin: 1%;
+  margin: 0%;
   margin-top: 5%;
+  margin-left: 0;
 }
 
 .mobile-most-discussed-preview {
@@ -372,9 +376,9 @@
   margin-bottom: 5%;
   font-size: 24px;
 }
-.mobile-content-mapped .mobile-most-discussed-preview {
+/* .mobile-content-mapped .mobile-most-discussed-preview {
   display: none;
-}
+} */
 
 /* WATCH PAGE */
 .mobile-product-images-container {
