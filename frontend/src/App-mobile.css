@@ -153,6 +153,9 @@
   margin-bottom: 8%;
   min-height: 100vh;
 }
+.mobile-stories-page-content .section-title-home {
+  margin-top: 8%;
+}
 .mobile-latest-story-card {
   margin-bottom: 15%;
 }

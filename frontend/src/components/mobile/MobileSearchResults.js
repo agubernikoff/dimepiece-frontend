@@ -2,18 +2,19 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
+import MobileLatestWatchesCard from "./MobileLatestWatchesCard";
 
 function MobileSearchResults() {
   const searchText = useSelector((state) => state.cart.searchText);
   const searchResults = useSelector((state) => state.cart.searchResults);
   const mappedWatches = searchResults.map((w) => (
-    <WatchPreviewCard key={w._id} watch={w} />
+    <MobileLatestWatchesCard key={w._id} watch={w} />
   ));
   return (
-    <div className="stories-page">
-      <div className="stories-page-content">
+    <div className="mobile-stories">
+      <div className="mobile-stories-page-content">
         <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
-        <div className="watches-page-card-container">{mappedWatches}</div>
+        <div className="mobile-content-mapped">{mappedWatches}</div>
       </div>
     </div>
   );
