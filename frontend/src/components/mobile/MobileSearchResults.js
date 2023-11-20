@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
+import NoResults from "../../layouts/Content/NoResults";
 import MobileLatestWatchesCard from "./MobileLatestWatchesCard";
 
 function MobileSearchResults() {
@@ -13,8 +14,14 @@ function MobileSearchResults() {
   return (
     <div className="mobile-stories">
       <div className="mobile-stories-page-content">
-        <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
-        <div className="mobile-content-mapped">{mappedWatches}</div>
+        {searchText ? (
+          <>
+            <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
+            <div className="mobile-content-mapped">{mappedWatches}</div>
+          </>
+        ) : (
+          <NoResults />
+        )}
       </div>
     </div>
   );

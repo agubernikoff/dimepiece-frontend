@@ -30,7 +30,7 @@ function Search({ hideSearch }) {
 
   function handleSubmit() {
     if (searchText) {
-      nav("/search");
+      nav(`/search?search=${searchText}`);
       hideSearch();
     }
   }

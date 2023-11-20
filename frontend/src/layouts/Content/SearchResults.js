@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
+import NoResults from "./NoResults";
 
 function SearchResults() {
   const searchText = useSelector((state) => state.cart.searchText);
@@ -12,8 +12,14 @@ function SearchResults() {
   return (
     <div className="stories-page">
       <div className="stories-page-content">
-        <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
-        <div className="watches-page-card-container">{mappedWatches}</div>
+        {searchText ? (
+          <>
+            <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
+            <div className="watches-page-card-container">{mappedWatches}</div>
+          </>
+        ) : (
+          <NoResults />
+        )}
       </div>
     </div>
   );
