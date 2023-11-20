@@ -24,6 +24,9 @@ function MobileHeader() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const hideMenu = () => {
+    setIsOpen(false);
+  };
 
   const nav = useNavigate();
 
@@ -87,7 +90,13 @@ function MobileHeader() {
         />
       ) : null}
       <div className="mobile-hamburger-menu">
-        <div className="hamburger-icon" onClick={toggleMenu}>
+        <div
+          className="hamburger-icon"
+          onClick={() => {
+            toggleMenu();
+            hideSearch();
+          }}
+        >
           <img src={hamburger} alt="burger" />
         </div>
         <AnimatePresence>
@@ -155,6 +164,7 @@ function MobileHeader() {
           onClick={() => {
             nav(`/`);
             setIsOpen(false);
+            hideSearch();
           }}
         />
       </div>
@@ -166,12 +176,16 @@ function MobileHeader() {
             onClick={() => {
               toggleSearch();
               dispatch(cartActions.setSearchResults(""));
+              hideMenu();
             }}
           ></img>
         </div>
         <div
           className="mobile-cart-icon"
-          onClick={() => dispatch(cartActions.toggleDisplayCart())}
+          onClick={() => {
+            dispatch(cartActions.toggleDisplayCart());
+            hideSearch();
+          }}
         >
           <img src={cartImg} alt="cart" />
           {cart.length > 0 ? (
