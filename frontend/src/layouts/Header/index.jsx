@@ -64,11 +64,11 @@ function Header() {
     ) : null}
     <div className="navbar-left">
       <NavLink onClick={hideSearch}
-        to="/stories?categories=All" className="navbar-link">
+        to="/stories/All" className="navbar-link">
         STORIES
       </NavLink>
       <NavLink onClick={hideSearch}
-        to="/shop?brands=All&filter+by=Latest+Arrivals"
+        to="/shop/All?filter+by=Latest+Arrivals"
         className="navbar-link"
         // onClick={(e) => {
         //   if (loc.pathname.includes("/shop/")) e.preventDefault();

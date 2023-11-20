@@ -13,21 +13,19 @@ import { scrollToTop } from "../../helpers/ScrollToTop";
 import NoResults from "./NoResults";
 
 function IndexAndContent({ contentType }) {
-  // const [category, setCategory] = useState();
-  // const [brand, setBrand] = useState();
+  const [category, setCategory] = useState();
+  const [brand, setBrand] = useState();
   const URLParam = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const category = searchParams.get("categories");
-  const brand = searchParams.get("brands");
   const filterBy = searchParams.get("filter by");
   const caseSizeFilter = searchParams.get("case size");
   const stylesFilter = searchParams.get("styles");
 
-  // useEffect(() => {
-  //   if (URLParam.category)
-  //     setCategory(capitalizeWords(URLParam.category.replaceAll("-", " ")));
-  //   else setCategory("");
-  // }, [URLParam]);
+  useEffect(() => {
+    if (URLParam.category)
+      setCategory(capitalizeWords(URLParam.category.replaceAll("-", " ")));
+    else setCategory("");
+  }, [URLParam]);
 
   const [types, setTypes] = useState([]);
   const [stories, setStories] = useState([]);
@@ -79,13 +77,13 @@ function IndexAndContent({ contentType }) {
 
   const brandTitles = brands[0] ? brands.map((b) => b.title).sort() : null;
 
-  // useEffect(() => {
-  //   if (URLParam.brand && brands[0]) {
-  //     if (brands.find((b) => b.title === URLParam.brand))
-  //       setBrand(URLParam.brand);
-  //     else setBrand(capitalizeWords(URLParam.brand.replaceAll("-", " ")));
-  //   } else setBrand("");
-  // }, [URLParam, brands]);
+  useEffect(() => {
+    if (URLParam.brand && brands[0]) {
+      if (brands.find((b) => b.title === URLParam.brand))
+        setBrand(URLParam.brand);
+      else setBrand(capitalizeWords(URLParam.brand.replaceAll("-", " ")));
+    } else setBrand("");
+  }, [URLParam, brands]);
 
   const [watches, setWatches] = useState([]);
 
@@ -116,40 +114,8 @@ function IndexAndContent({ contentType }) {
       transition={{ duration: 0.5, ease: "backInOut" }}
       key={"stories-page"}
     >
-      {/* <AnimatePresence mode="popLayout">
-        {contentType === "stories" && (
-          <motion.div
-            className="stories-page-index"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "backInOut" }}
-            key={"category"}
-          >
-            <IndexStories
-              categories={categories}
-              stories={stories}
-              brynnsPick={brynnsPick}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
       <AnimatePresence mode="popLayout">
-        {contentType === "shop" && (
-          <motion.div
-            className="stories-page-index"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            key={"brand"}
-          >
-            <IndexShop brandTitles={brandTitles} />
-          </motion.div>
-        )}
-      </AnimatePresence> */}
-      <AnimatePresence mode="popLayout">
-        {contentType === "stories" && (
+        {category && (
           <motion.div
             className="stories-page-content"
             initial={{ opacity: 0 }}
@@ -173,7 +139,7 @@ function IndexAndContent({ contentType }) {
         )}
       </AnimatePresence>
       <AnimatePresence mode="popLayout" onExitComplete={scrollToTop}>
-        {contentType === "shop" && !URLParam.id ? (
+        {brand && !URLParam.id ? (
           <motion.div
             className="stories-page-content"
             initial={{ opacity: 0 }}
