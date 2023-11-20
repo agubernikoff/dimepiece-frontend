@@ -95,6 +95,7 @@ function MobileHeader() {
           onClick={() => {
             toggleMenu();
             hideSearch();
+            dispatch(mobileFilterActions.setPrimaryFilter(""));
           }}
         >
           <img src={hamburger} alt="burger" />
