@@ -78,6 +78,7 @@ function App() {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("shop");
     } else if (
+      !isMobile &&
       location.pathname.includes("stories") &&
       location.pathname.split("/").length < 4
     ) {
@@ -99,6 +100,7 @@ function App() {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("shop");
     } else if (
+      !isMobile &&
       location.pathname.includes("stories") &&
       location.pathname.split("/").length < 4
     ) {
