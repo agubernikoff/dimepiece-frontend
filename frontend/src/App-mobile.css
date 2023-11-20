@@ -284,7 +284,7 @@
 .mobile-newsletter-page {
   width: 90%;
   margin: auto;
-  min-height: 43vh;
+  /* min-height: 43vh; */
   display: flex;
   justify-content: center;
   align-items: center;
