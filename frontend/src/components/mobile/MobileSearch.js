@@ -24,7 +24,7 @@ function MobileSearch({ hideSearch }) {
         {`${w.brand.toUpperCase()} ${w.title.toUpperCase()}`},{" "}
         <em>{w.material.toUpperCase()}</em>
       </p>
-      <p>{String.fromCharCode(8594)}</p>
+      {/* <p>{String.fromCharCode(8594)}</p> */}
     </div>
   ));
 
