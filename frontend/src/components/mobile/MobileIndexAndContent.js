@@ -63,6 +63,20 @@ function MobileIndexAndContent({ contentType }) {
     }
   }, [URLParam, filters, isDialogueOpen]);
 
+  useEffect(() => {
+    const body = document.querySelector("body");
+
+    if (isDialogueOpen) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
+    }
+
+    return () => {
+      body.style.overflow = "";
+    };
+  }, [isDialogueOpen]);
+
   const filterTitles = filters[0] ? filters.map((b) => b.title).sort() : [];
 
   let filteredStories = [];

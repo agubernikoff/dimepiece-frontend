@@ -21,6 +21,20 @@ function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
 
+  useEffect(() => {
+    const body = document.querySelector("body");
+
+    if (isOpen) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
+    }
+
+    return () => {
+      body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
