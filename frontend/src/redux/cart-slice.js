@@ -8,6 +8,8 @@ const cartSlice = createSlice({
     checkoutUrl: null,
     checkoutTotal: null,
     watches: [],
+    brands: [],
+    brandTitles: [],
     cart: [],
     searchText: null,
     searchResults: [],
@@ -34,6 +36,10 @@ const cartSlice = createSlice({
     },
     setWatches(state, action) {
       state.watches = action.payload;
+    },
+    setBrands(state, action) {
+      state.brands = action.payload;
+      state.brandTitles = action.payload.map((b) => b.title).sort();
     },
     addToCart(state, action) {
       state.cart = [...state.cart, action.payload];

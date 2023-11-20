@@ -108,14 +108,14 @@ function IndexAndContent({ contentType }) {
 
   return (
     <motion.div
-      className="stories-page"
+      style={{ width: "82%" }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: "backInOut" }}
       key={"stories-page"}
     >
-      <AnimatePresence mode="popLayout">
+      {/* <AnimatePresence mode="popLayout">
         {contentType === "stories" && (
           <motion.div
             className="stories-page-index"
@@ -146,7 +146,7 @@ function IndexAndContent({ contentType }) {
             <IndexShop brandTitles={brandTitles} />
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
       <AnimatePresence mode="popLayout">
         {contentType === "stories" && (
           <motion.div

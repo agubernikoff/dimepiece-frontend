@@ -10,17 +10,15 @@ function SearchResults() {
     <WatchPreviewCard key={w._id} watch={w} />
   ));
   return (
-    <div className="stories-page">
-      <div className="stories-page-content">
-        {searchText ? (
-          <>
-            <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
-            <div className="watches-page-card-container">{mappedWatches}</div>
-          </>
-        ) : (
-          <NoResults />
-        )}
-      </div>
+    <div className="stories-page-content">
+      {searchText ? (
+        <>
+          <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
+          <div className="watches-page-card-container">{mappedWatches}</div>
+        </>
+      ) : (
+        <NoResults />
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 // import React, { Suspense, lazy } from 'react';
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import "./App.css";
 import "./App-mobile.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
@@ -30,10 +30,14 @@ import { mobileFilterActions } from "./redux/mobile-filter-slice";
 import { client } from "./sanity/SanityClient";
 import SearchResults from "./layouts/Content/SearchResults";
 import MobileSearchResults from "./components/mobile/MobileSearchResults";
+import Index from "./layouts/Content/Index";
+import FetchAndSet from "./layouts/Content/FetchAndSet";
+import { useState } from "react";
 
 // const Posts = lazy(() => import('./pages/Posts'));
 
 function App() {
+  const contentWrapper = useRef();
   const dispatch = useDispatch();
   useEffect(() => {
     shopifyClient.checkout.create().then((checkout) => {
@@ -52,6 +56,45 @@ function App() {
   const displayCart = useSelector((state) => state.cart.displayCart);
   const isMobile = window.innerWidth <= 768;
   const location = useLocation();
+
+  const [displayIndex, setDisplayIndex] = useState(false);
+
+  function hideIndex() {
+    if (displayIndex) setDisplayIndex(false);
+  }
+  function toggleDisplayIndex() {
+    console.log(document.querySelector("#a"));
+    if (
+      location.pathname.includes("shop") ||
+      location.pathname.includes("search")
+    ) {
+      // contentWrapper.current.className = "stories-page";
+      setDisplayIndex("shop");
+    } else if (location.pathname.includes("stories")) {
+      // contentWrapper.current.className = "stories-page";
+      setDisplayIndex("stories");
+    } else {
+      setDisplayIndex(false);
+      // setTimeout(() => {
+      // contentWrapper.current.className = "";
+      // }, 100);
+    }
+  }
+  useEffect(() => {
+    if (
+      location.pathname.includes("shop") ||
+      location.pathname.includes("search")
+    ) {
+      // contentWrapper.current.className = "stories-page";
+      setDisplayIndex("shop");
+    } else if (location.pathname.includes("stories")) {
+      // contentWrapper.current.className = "stories-page";
+      setDisplayIndex("stories");
+    } else {
+      // contentWrapper.current.className = "";
+      setDisplayIndex(false);
+    }
+  }, []);
   return (
     <Suspense
       fallback={
@@ -60,100 +103,124 @@ function App() {
         </div>
       }
     >
+      <FetchAndSet />
       {isMobile ? <MobileHeader /> : <Header />}
       <AnimatePresence>
         {displayCart && <Cart isMobile={isMobile} />}
       </AnimatePresence>
-      <AnimatePresence
-        mode="wait"
-        onExitComplete={() => {
-          scrollToTop();
-          if (isMobile) dispatch(mobileFilterActions.setIsDialogueOpen(false));
-        }}
+      <div
+        ref={contentWrapper}
+        style={{ minHeight: "100vh" }}
+        className={displayIndex ? "stories-page" : ""}
+        // className={
+        //   location.pathname.includes("shop") ||
+        //   location.pathname.includes("stories") ||
+        //   location.pathname.includes("search")
+        //     ? "stories-page"
+        //     : null
+        // }
       >
-        <Routes location={location} key={location.pathname}>
-          <Route path="" element={isMobile ? <MobileHome /> : <Homepage />} />
-          <Route path="/" element={isMobile ? <MobileHome /> : <Homepage />} />
-          <Route
-            path="/newsletter"
-            element={isMobile ? <MobileNewsletter /> : <NewsletterPage />}
-          />
-          <Route
-            path="/stories"
-            element={
-              isMobile ? (
-                <MobileIndexAndContent contentType={"stories"} />
-              ) : (
-                <IndexAndContent contentType={"stories"} />
-              )
-            }
-          />
-          <Route
-            path="/stories/:category"
-            element={
-              isMobile ? (
-                <MobileIndexAndContent contentType={"stories"} />
-              ) : (
-                <IndexAndContent contentType={"stories"} />
-              )
-            }
-          />
-          <Route
-            path="/stories/:category/:id"
-            element={isMobile ? <MobileStoryPage /> : <Article />}
-          />
-          <Route
-            path="/shop"
-            element={
-              isMobile ? (
-                <MobileIndexAndContent contentType={"shop"} />
-              ) : (
-                <IndexAndContent contentType={"shop"} />
-              )
-            }
-          />
-          <Route
-            path="/shop/:brand"
-            element={
-              isMobile ? (
-                <MobileIndexAndContent contentType={"shop"} />
-              ) : (
-                <IndexAndContent contentType={"shop"} />
-              )
-            }
-          />
-          <Route
-            path="/shop/:brand/:id"
-            element={
-              isMobile ? (
-                <MobileWatchPage />
-              ) : (
-                <IndexAndContent contentType={"shop"} />
-              )
-            }
-          />
-          <Route
-            path="/search"
-            element={isMobile ? <MobileSearchResults /> : <SearchResults />}
-          />
-          <Route
-            path="/about"
-            element={isMobile ? <MobileAboutPage /> : <About />}
-          />
-          <Route
-            path="/shipping_and_returns"
-            element={<Misc title={"SHIPPING AND RETURNS"} />}
-          />
-          <Route path="/faq" element={<Misc title={"FAQ"} />} />
-          <Route
-            path="/terms_and_conditions"
-            element={<Misc title={"TERMS AND CONDITIONS"} />}
-          />
-          <Route path="/warranty" element={<Misc title={"WARRANTY"} />} />
-          <Route path="/404" element={<PageNotFound />} />
-          <Route path="*" element={<Navigate to="/404" />} />
-        </Routes>
-      </AnimatePresence>
+        {displayIndex ? (
+          <AnimatePresence mode="wait">
+            <Index displayIndex={displayIndex} hideIndex={hideIndex} />
+          </AnimatePresence>
+        ) : null}
+        <AnimatePresence
+          mode="wait"
+          onExitComplete={() => {
+            scrollToTop();
+            if (isMobile)
+              dispatch(mobileFilterActions.setIsDialogueOpen(false));
+            toggleDisplayIndex();
+          }}
+        >
+          <Routes location={location} key={location.pathname}>
+            <Route path="" element={isMobile ? <MobileHome /> : <Homepage />} />
+            <Route
+              path="/"
+              element={isMobile ? <MobileHome /> : <Homepage />}
+            />
+            <Route
+              path="/newsletter"
+              element={isMobile ? <MobileNewsletter /> : <NewsletterPage />}
+            />
+            <Route
+              path="/stories"
+              element={
+                isMobile ? (
+                  <MobileIndexAndContent contentType={"stories"} />
+                ) : (
+                  <IndexAndContent contentType={"stories"} />
+                )
+              }
+            />
+            <Route
+              path="/stories/:category"
+              element={
+                isMobile ? (
+                  <MobileIndexAndContent contentType={"stories"} />
+                ) : (
+                  <IndexAndContent contentType={"stories"} />
+                )
+              }
+            />
+            <Route
+              path="/stories/:category/:id"
+              element={isMobile ? <MobileStoryPage /> : <Article />}
+            />
+            <Route
+              path="/shop"
+              element={
+                isMobile ? (
+                  <MobileIndexAndContent contentType={"shop"} />
+                ) : (
+                  <IndexAndContent contentType={"shop"} />
+                )
+              }
+            />
+            <Route
+              path="/shop/:brand"
+              element={
+                isMobile ? (
+                  <MobileIndexAndContent contentType={"shop"} />
+                ) : (
+                  <IndexAndContent contentType={"shop"} />
+                )
+              }
+            />
+            <Route
+              path="/shop/:brand/:id"
+              element={
+                isMobile ? (
+                  <MobileWatchPage />
+                ) : (
+                  <IndexAndContent contentType={"shop"} />
+                )
+              }
+            />
+            <Route
+              path="/search"
+              element={isMobile ? <MobileSearchResults /> : <SearchResults />}
+            />
+            <Route
+              path="/about"
+              element={isMobile ? <MobileAboutPage /> : <About />}
+            />
+            <Route
+              path="/shipping_and_returns"
+              element={<Misc title={"SHIPPING AND RETURNS"} />}
+            />
+            <Route path="/faq" element={<Misc title={"FAQ"} />} />
+            <Route
+              path="/terms_and_conditions"
+              element={<Misc title={"TERMS AND CONDITIONS"} />}
+            />
+            <Route path="/warranty" element={<Misc title={"WARRANTY"} />} />
+            <Route path="/404" element={<PageNotFound />} />
+            <Route path="*" element={<Navigate to="/404" />} />
+          </Routes>
+        </AnimatePresence>
+      </div>
       {isMobile ? <MobileFooter /> : <Footer />}
     </Suspense>
   );

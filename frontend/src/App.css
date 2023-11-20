@@ -553,7 +553,7 @@ instead of tweaking each class */
   width: 32.46%;
 }
 .stories-page-index {
-  width: 9%; /* Set a fixed width for the index */
+  width: 100%;
   height: fit-content;
   position: sticky;
   position: -webkit-sticky;
@@ -607,9 +607,7 @@ instead of tweaking each class */
   margin-top: 3%;
 }
 .stories-page-content {
-  /* flex: 1; */
-  width: 82%;
-  /* overflow-y: auto; */
+  width: 100%;
 }
 .stories-page-content > p {
   width: 50%;
