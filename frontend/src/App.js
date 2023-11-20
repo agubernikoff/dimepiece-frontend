@@ -2,7 +2,13 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import "./App.css";
 import "./App-mobile.css";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import Header from "./layouts/Header";
 import Homepage from "./layouts/Content/Homepage";
@@ -37,6 +43,7 @@ import { useState } from "react";
 // const Posts = lazy(() => import('./pages/Posts'));
 
 function App() {
+  const URLParams = useParams();
   const contentWrapper = useRef();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -63,14 +70,16 @@ function App() {
     if (displayIndex) setDisplayIndex(false);
   }
   function toggleDisplayIndex() {
-    console.log(document.querySelector("#a"));
     if (
       location.pathname.includes("shop") ||
       location.pathname.includes("search")
     ) {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("shop");
-    } else if (location.pathname.includes("stories")) {
+    } else if (
+      location.pathname.includes("stories") &&
+      location.pathname.split("/").length < 4
+    ) {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("stories");
     } else {
@@ -87,7 +96,10 @@ function App() {
     ) {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("shop");
-    } else if (location.pathname.includes("stories")) {
+    } else if (
+      location.pathname.includes("stories") &&
+      location.pathname.split("/").length < 4
+    ) {
       // contentWrapper.current.className = "stories-page";
       setDisplayIndex("stories");
     } else {
