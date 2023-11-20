@@ -7,7 +7,7 @@ function MobileStories() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && isFeatured != true && mostDiscussed != true]{_id,title,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)[0..3]`
+        `*[_type == "articles" && isFeatured != true && mostDiscussed != true]{_id,title,category,mostDiscussedDescription,datePublished,coverImage{asset->{url}}} | order(datePublished desc)[0..3]`
       )
       .then((response) => setStories(response));
   }, []);
