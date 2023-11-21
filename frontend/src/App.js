@@ -126,7 +126,7 @@ function App() {
       </AnimatePresence>
       <div
         ref={contentWrapper}
-        style={{ minHeight: "100vh" }}
+        style={{ minHeight: "calc(100vh - 54px)" }}
         className={displayIndex ? "stories-page" : ""}
         // className={
         //   location.pathname.includes("shop") ||
