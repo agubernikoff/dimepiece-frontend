@@ -1,7 +1,7 @@
 import { prepareCssVars } from "@mui/system";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useSearchParams } from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 
 function IndexSubSection({
@@ -12,6 +12,7 @@ function IndexSubSection({
   useUSP,
   isMobile,
 }) {
+  const nav = useNavigate();
   const dispatch = useDispatch();
   const primaryFilter = useSelector(
     (state) => state.mobileFilter.primaryFilter
@@ -93,9 +94,16 @@ function IndexSubSection({
     }
   }, []);
 
+  function clearFilters() {
+    if (useUSP) {
+      searchParams.delete(title);
+      setSearchParams(searchParams);
+    } else nav(`/${urlPrefix}/All${searchParams ? `?${searchParams}` : null}`);
+  }
+
   return (
     <div className="stories-page-index-list">
-      <p className="stories-page-index-category-header">
+      <p className="stories-page-index-category-header" onClick={clearFilters}>
         <strong>{title.toUpperCase()}</strong>
       </p>
       {mappedOptions}
