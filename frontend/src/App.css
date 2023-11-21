@@ -304,18 +304,16 @@ instead of tweaking each class */
 .latest-story-card-bottom-left {
   display: flex;
   flex-direction: column;
-  font: "swall-diatype";
+  font-family: "swall-diatype";
   font-size: clamp(4px, 0.67vw, 0.5rem);
   width: 10%;
-  letter-spacing: 10%;
+  letter-spacing: -0.2px;
 }
 .latest-story-card-bottom-left > p {
   margin-top: 0.3rem;
 }
 .latest-story-card-bottom-left > p:last-of-type {
   margin-top: 0rem;
-}
-.latest-story-card-date {
 }
 .latest-story-card-bottom-right {
   font-family: "tobias-regular";
@@ -523,10 +521,10 @@ instead of tweaking each class */
 .newsletter-input-container {
   width: 100%;
   border-bottom: 1px solid black;
-  padding-bottom: 0.5rem;
+  padding: 0 0.5rem 0.5rem;
   margin: 12% auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .newsletter-input-container > input {
   width: 80%;
@@ -692,7 +690,6 @@ instead of tweaking each class */
   row-gap: 1em;
   margin: auto;
   width: 100%;
-  justify-content: center;
 }
 /* watch prooduct page */
 .product-container {
@@ -788,8 +785,7 @@ instead of tweaking each class */
 }
 /* Newsletter page */
 .newsletter-page {
-  margin-top: 3%;
-  min-height: 68vh;
+  min-height: calc(100vh - 54px);
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -798,6 +794,7 @@ instead of tweaking each class */
 
 .newsletter-page .newsletter {
   width: 40%;
+  margin: auto;
 }
 /* misc */
 .misc-page {
@@ -969,14 +966,16 @@ instead of tweaking each class */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-size: 0.75rem;
 }
 .cart-title-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   border-bottom: 1px solid grey;
   /* padding: 1vw; */
   box-sizing: border-box;
+  min-height: 55px;
 }
 .close-cart-btn {
   text-decoration: none;
@@ -985,7 +984,7 @@ instead of tweaking each class */
 .cart-pop-up h2 {
   margin-left: 4%;
   font-weight: normal;
-  font-size: 1.1rem;
+  font-size: 0.75rem;
   font-family: "swall-diatype";
 }
 .cart-product-cards-hold {
@@ -1088,6 +1087,7 @@ instead of tweaking each class */
 }
 .footer-right-container > button > p {
   white-space: nowrap;
+  margin: 0;
 }
 .footer-left-container > div > p,
 .footer-left-container > div > div > p {
