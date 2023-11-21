@@ -178,6 +178,7 @@ function MobileHeader() {
           onClick={() => {
             dispatch(cartActions.toggleDisplayCart());
             hideSearch();
+            hideMenu();
           }}
         >
           <img src={cartImg} alt="cart" />
