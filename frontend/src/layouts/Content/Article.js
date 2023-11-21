@@ -42,6 +42,8 @@ function Article() {
     marks: { annotationProduct: SanityProductLink },
     types: { "module.images": SanityArticleImage },
   };
+  console.log(article.author, article.authorLink);
+  console.log(article);
   return (
     <motion.div
       className="article"
@@ -56,8 +58,34 @@ function Article() {
           <p>{article.title}</p>
           <p>{formattedDate.toUpperCase()}</p>
           <div className="author-photog-container">
-            <p>Text: {article.author}</p>
-            <p>Photos: {article.photographer}</p>
+            <p>
+              Text:{" "}
+              {article.authorLink ? (
+                <a
+                  href={article.authorLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {article.author}
+                </a>
+              ) : (
+                <>{article.author}</>
+              )}
+            </p>
+            <p>
+              Photos:{" "}
+              {article.photographerLink ? (
+                <a
+                  href={article.photographerLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {article.photographer}
+                </a>
+              ) : (
+                article.photographer
+              )}
+            </p>
           </div>
           <img
             loading="lazy"
