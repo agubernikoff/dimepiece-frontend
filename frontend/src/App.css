@@ -913,13 +913,22 @@ instead of tweaking each class */
   max-width: 10%;
   object-fit: contain;
 }
+.about-section-container {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
 .about-dimepiece-press {
   display: flex;
   align-items: flex-start;
   margin-bottom: 2%;
-  width: 100%;
+  width: 49%;
   font-size: 1rem;
   font-family: "swall-diatype";
+  height: 290px;
+  overflow: hidden;
 }
 
 .about-dimepiece-press:last-of-type {
@@ -932,20 +941,22 @@ instead of tweaking each class */
 }
 
 .about-dimepiece-press img {
-  width: 60%;
+  width: 55%;
   height: 100%;
   margin-right: 2%;
   object-fit: cover;
-  aspect-ratio: 2/1.3;
+  aspect-ratio: 2/1;
 }
 
 .about-dimepiece-press div {
-  width: 40%;
+  width: 45%;
   height: 100%;
 }
 
-.about-dimepiece-press > p {
+.dimepiece-press-text {
   margin-top: 0%;
+  font-size: 14px;
+  font-family: "swall-diatype";
 }
 
 .about-dimepiece-press .blue {

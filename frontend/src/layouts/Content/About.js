@@ -107,10 +107,8 @@ function About() {
               />
             </div>
           </div>
-          <div className="about-page-container">
-            <p className="about-brynn-portrait-title">Dimepiece Press</p>
-            {mappedPress}
-          </div>
+          <p className="about-brynn-portrait-title">Dimepiece Press</p>
+          <div className="about-section-container">{mappedPress}</div>
           <div>
             <h3 className="section-title-home">SAY HELLO</h3>
             <div className="about-say-hello">

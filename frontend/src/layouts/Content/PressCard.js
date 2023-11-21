@@ -7,7 +7,7 @@ function PressCard({ article }) {
       <div>
         <p className="blue">{article.brand}</p>
         <p className="about-dimepiece-press-title">{article.title}</p>
-        <p>{article.description}</p>
+        <p className="dimepiece-press-text">{article.description}</p>
       </div>
     </div>
   );
