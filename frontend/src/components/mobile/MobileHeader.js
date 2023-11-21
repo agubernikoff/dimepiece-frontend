@@ -20,11 +20,12 @@ function MobileHeader() {
   const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded);
   const [isOpen, setIsOpen] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
+  const displayCart = useSelector((state) => state.cart.displayCart);
 
   useEffect(() => {
     const body = document.querySelector("body");
 
-    if (isOpen) {
+    if (isOpen || displayCart) {
       body.style.overflow = "hidden";
     } else {
       body.style.overflow = "";
@@ -33,7 +34,7 @@ function MobileHeader() {
     return () => {
       body.style.overflow = "";
     };
-  }, [isOpen]);
+  }, [isOpen, displayCart]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

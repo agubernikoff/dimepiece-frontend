@@ -298,13 +298,9 @@
 .mobile-newsletter .newsletter-input-container > button {
   font-size: 14px;
   font-family: "swall-diatype";
-  margin-bottom: -2%;
 }
-.mobile-newsletter .newsletter-input-container > input {
-  margin-left: -2%;
-}
-.mobile-newsletter .newsletter-input-container > button {
-  margin-right: -1%;
+.mobile-newsletter .newsletter-input-container {
+  padding: 0;
 }
 /* NEWSLETTER PAGE */
 
