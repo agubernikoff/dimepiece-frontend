@@ -65,27 +65,6 @@ function MobileHeader() {
 
   const cart = useSelector((state) => state.cart.cart);
 
-  const list = {
-    visible: {
-      scaleX: 1,
-      transition: {
-        when: "beforeChildren",
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      scaleX: 0,
-      // transition: {
-      //   when: "afterChildren",
-      // },
-    },
-  };
-
-  const item = {
-    visible: { opacity: 1, x: 0, transition: "linear" },
-    hidden: { opacity: 0, x: -100, transition: "linear" },
-  };
-
   function toggleSearch() {
     setDisplaySearch(!displaySearch);
   }
@@ -117,16 +96,15 @@ function MobileHeader() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={list}
-              transition={{ duration: 0.5, ease: "linear" }}
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
               key="menu"
               className="menu-content"
             >
               <ul className="menu-list">
-                <motion.li variants={item}>
+                <motion.li>
                   <NavLink
                     to="/stories/All"
                     onClick={() => {
@@ -136,7 +114,7 @@ function MobileHeader() {
                     STORIES
                   </NavLink>
                 </motion.li>
-                <motion.li variants={item}>
+                <motion.li>
                   <NavLink
                     to="/shop/All?filter+by=Latest+Arrivals"
                     onClick={() => {
@@ -147,7 +125,7 @@ function MobileHeader() {
                     SHOP
                   </NavLink>
                 </motion.li>
-                <motion.li variants={item}>
+                <motion.li>
                   <NavLink
                     to="/newsletter"
                     onClick={() => {
@@ -157,7 +135,7 @@ function MobileHeader() {
                     NEWSLETTER
                   </NavLink>
                 </motion.li>
-                <motion.li variants={item}>
+                <motion.li>
                   <NavLink
                     to="/about"
                     onClick={() => {
