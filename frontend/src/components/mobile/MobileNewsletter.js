@@ -1,7 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
 
 function MobileNewsletter() {
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_571yygo",
+        "template_84i2kjw",
+        e.target,
+        "WPUweZAoXmamBd_kZ"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          // Add success message or further actions here
+        },
+        (error) => {
+          console.log(error.text);
+          // Add error handling here
+        }
+      );
+  };
   return (
     <motion.div
       className="mobile-newsletter-page"
@@ -17,10 +39,10 @@ function MobileNewsletter() {
           Sign up for the Dimepiece Newsletter to stay up to date on all our
           latest stories, products, and offerings.
         </p>
-        <div className="newsletter-input-container">
-          <input placeholder="Email Address" type="email"></input>
-          <button>Join</button>
-        </div>
+        <form className="newsletter-input-container" onSubmit={sendEmail}>
+          <input type="email" placeholder="Email Address" name="email"></input>
+          <button type="submit">Join</button>
+        </form>
       </div>
     </motion.div>
   );
