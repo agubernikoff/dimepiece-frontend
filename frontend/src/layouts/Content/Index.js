@@ -10,7 +10,11 @@ function Index({ displayIndex }) {
   const stories = useSelector((state) => state.article.stories);
   const brynnsPick = useSelector((state) => state.article.brynnsPick);
   const brandTitles = useSelector((state) => state.cart.brandTitles);
+  const watches = useSelector((state) => state.cart.watches);
 
+  const filteredBrandTitles = [...brandTitles].filter((title) =>
+    watches.map((w) => w.brand).includes(title)
+  );
   return (
     <>
       {displayIndex && (
@@ -49,7 +53,7 @@ function Index({ displayIndex }) {
               transition={{ duration: 1 }}
               key={"brand"}
             >
-              <IndexShop brandTitles={[...brandTitles]} />
+              <IndexShop brandTitles={filteredBrandTitles} />
             </motion.div>
           )}
         </motion.div>
