@@ -300,7 +300,12 @@
   font-family: "swall-diatype";
   margin-bottom: -2%;
 }
-
+.mobile-newsletter .newsletter-input-container > input {
+  margin-left: -2%;
+}
+.mobile-newsletter .newsletter-input-container > button {
+  margin-right: -1%;
+}
 /* NEWSLETTER PAGE */
 
 .mobile-newsletter-page {
