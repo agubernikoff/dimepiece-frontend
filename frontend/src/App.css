@@ -600,6 +600,7 @@ instead of tweaking each class */
 }
 .stories-page-index-category-header {
   margin: auto 0% 3%;
+  cursor: pointer;
 }
 .stories-page-index-list > ol {
   list-style-position: outside;
