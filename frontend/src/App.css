@@ -542,6 +542,12 @@ instead of tweaking each class */
   font-size: 1.4rem;
   font-family: "swall-diatype";
 }
+.success {
+  animation: success 1s linear;
+}
+.failure {
+  animation: failure 1s linear;
+}
 /* latest stories page */
 .stories-page {
   display: flex;
@@ -1146,5 +1152,28 @@ instead of tweaking each class */
 @keyframes scroll {
   to {
     transform: translate(calc(-100% - 3.5rem));
+  }
+}
+
+@keyframes success {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 2px 2px 2px 2px green;
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+@keyframes failure {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 2px 2px 2px 2px red;
+  }
+  100% {
+    box-shadow: none;
   }
 }

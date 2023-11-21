@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 
 function Newsletter() {
+  const ref = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_571yygo",
-        "template_84i2kjw",
-        e.target,
-        "WPUweZAoXmamBd_kZ"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          // Add success message or further actions here
-        },
-        (error) => {
-          console.log(error.text);
-          // Add error handling here
-        }
-      );
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    console.log(emailPattern.test(e.target.email.value));
+    console.log(e.target.email.value);
+    if (emailPattern.test(e.target.email.value)) {
+      emailjs
+        .sendForm(
+          "service_571yygo",
+          "template_84i2kjw",
+          e.target,
+          "WPUweZAoXmamBd_kZ"
+        )
+        .then(
+          (result) => {
+            // Add success message or further actions here
+            if (result.text === "OK") {
+              console.log(result.text);
+              ref.current.classList.add("success");
+              setTimeout(() => ref.current.classList.remove("success"), 1000);
+              e.target.reset();
+            }
+          },
+          (error) => {
+            console.log(error.text);
+            // Add error handling here
+            ref.current.classList.add("failure");
+            setTimeout(() => ref.current.classList.remove("failure"), 1500);
+          }
+        );
+    } else {
+      ref.current.classList.add("failure");
+      setTimeout(() => ref.current.classList.remove("failure"), 1500);
+    }
   };
   return (
     <div className="newsletter">
@@ -30,8 +45,12 @@ function Newsletter() {
         Sign up for the Dimepiece Newsletter to stay up to date on all our
         latest stories, products, and offerings.
       </p>
-      <form className="newsletter-input-container" onSubmit={sendEmail}>
-        <input type="email" placeholder="Email Address" name="email"></input>
+      <form
+        className="newsletter-input-container"
+        onSubmit={sendEmail}
+        ref={ref}
+      >
+        <input placeholder="Email Address" name="email"></input>
         <button type="submit">Join</button>
       </form>
     </div>
