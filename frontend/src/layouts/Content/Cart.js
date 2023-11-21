@@ -21,16 +21,16 @@ function Cart({ isMobile }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5, ease: "linear" }}
+        transition={{ duration: 0.25, ease: "linear" }}
         key="cart-overlay"
         className="cart-overlay"
         onClick={() => dispatch(cartActions.toggleDisplayCart())}
       ></motion.div>
       <motion.div
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        exit={{ scaleX: 0 }}
-        transition={{ duration: 0.5, ease: "linear" }}
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
         key="cart"
         className={isMobile ? "mobile-cart-pop-up" : "cart-pop-up"}
       >
