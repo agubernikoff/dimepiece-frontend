@@ -24,6 +24,7 @@ function Cart({ isMobile }) {
         transition={{ duration: 0.5, ease: "linear" }}
         key="cart-overlay"
         className="cart-overlay"
+        onClick={() => dispatch(cartActions.toggleDisplayCart())}
       ></motion.div>
       <motion.div
         initial={{ scaleX: 0 }}
@@ -38,7 +39,7 @@ function Cart({ isMobile }) {
             isMobile ? "mobile-cart-title-container" : "cart-title-container"
           }
         >
-          <h2>CART</h2>
+          <h2>{cart.length > 0 ? `CART (${cart.length})` : "CART"}</h2>
           <button
             className="close-cart-btn"
             onClick={() => dispatch(cartActions.hideCart())}
@@ -67,7 +68,7 @@ function Cart({ isMobile }) {
                 window.open(`${url}`, "_blank", "noopener,noreferrer")
               }
             >
-              CHECK OUT
+              CHECKOUT
             </button>
           </div>
         </div>
