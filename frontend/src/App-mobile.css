@@ -285,7 +285,9 @@
 .mobile-newsletter {
   margin-bottom: 10%;
 }
-
+.mobile-newsletter .newsletter-input-container {
+  width: 95%;
+}
 .mobile-newsletter > p {
   text-align: center;
   font-size: 14px;
