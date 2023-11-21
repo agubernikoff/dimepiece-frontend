@@ -15,9 +15,19 @@ export default {
       type: 'string',
     },
     {
+      title: 'Author Link',
+      name: 'authorLink',
+      type: 'url',
+    },
+    {
       title: 'Photographer',
       name: 'photographer',
       type: 'string',
+    },
+    {
+      title: 'Photographer Link',
+      name: 'photographerLink',
+      type: 'url',
     },
     {
       title: 'Cover Image',
