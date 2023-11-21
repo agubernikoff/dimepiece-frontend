@@ -54,10 +54,10 @@ function Footer() {
       <div className="footer-left-container">
         <div className="footer-left-column">
           <p>
-            <strong>© DIMEPIECE LLC 2023,</strong>
+            © DIMEPIECE LLC 2023,
           </p>
           <p>
-            <strong>All Rights Reserved.</strong>
+            All Rights Reserved.
           </p>
           <br />
           <div>
