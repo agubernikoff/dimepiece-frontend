@@ -10,7 +10,23 @@ function Search({ hideSearch }) {
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
   useEffect(() => ref.current.focus());
-  console.log(searchResults);
+
+  useEffect(() => {
+    ref.current.focus();
+
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape") {
+        hideSearch();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [hideSearch]);
+
   const mappedSuggestions = searchResults.map((w) => (
     <div
       key={w._id}
@@ -22,9 +38,9 @@ function Search({ hideSearch }) {
     >
       <p className="suggestion">
         {`${w.brand.toUpperCase()} ${w.title.toUpperCase()}`},{" "}
-        <em>{w.material.toUpperCase()}</em>
+        {w.material.toUpperCase()}
       </p>
-      <p>{String.fromCharCode(8594)}</p>
+      {/* <p>{String.fromCharCode(8594)}</p> */}
     </div>
   ));
 

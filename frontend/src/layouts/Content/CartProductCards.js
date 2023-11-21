@@ -55,7 +55,7 @@ function CartProductCards({ watch }) {
           </p>
         </div>
         <div>
-          <p>{watch.size}</p>
+          <p>Size: {watch.size}</p>
         </div>
       </div>
       <div className="cart-price-container">
