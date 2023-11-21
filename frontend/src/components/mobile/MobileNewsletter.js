@@ -11,7 +11,7 @@ function MobileNewsletter() {
       transition={{ duration: 0.5, ease: "backInOut" }}
       key={"newsletterPage"}
     >
-      <div>
+      <div className="mobile-newsletter">
         <h3 className="section-title-home">NEWSLETTER</h3>
         <p>
           Sign up for the Dimepiece Newsletter to stay up to date on all our

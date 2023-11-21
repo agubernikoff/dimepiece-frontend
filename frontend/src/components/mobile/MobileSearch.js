@@ -9,8 +9,26 @@ function MobileSearch({ hideSearch }) {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
-  useEffect(() => ref.current.focus());
-  console.log(searchResults);
+  useEffect(() => {
+    ref.current.focus();
+
+    // Event listener for clicks outside the search bar
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        // Click occurred outside the search bar, close the search here
+        hideSearch();
+      }
+    };
+
+    // Add event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [hideSearch]);
+
   const mappedSuggestions = searchResults.map((w) => (
     <div
       key={w._id}
@@ -24,11 +42,11 @@ function MobileSearch({ hideSearch }) {
         {`${w.brand.toUpperCase()} ${w.title.toUpperCase()}`},{" "}
         {w.material.toUpperCase()}
       </p>
-      {/* <p>{String.fromCharCode(8594)}</p> */}
     </div>
   ));
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     if (searchText) {
       nav("/search");
       hideSearch();

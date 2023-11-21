@@ -56,11 +56,11 @@
   display: flex; /* Use flexbox to center vertically */
   flex-direction: column; /* Align items vertically */
   justify-content: center; /* Center items vertically */
-  height: 75%; /* Occupy full height of the menu */
+  height: 85%; /* Occupy full height of the menu */
 }
 
 .menu-list li {
-  padding: 15px 0; /* Adjust spacing */
+  padding: 8px 0; /* Adjust spacing */
 }
 
 .menu-list li a {
@@ -92,7 +92,7 @@
   background-color: #d7ceff;
   color: var(--blue);
   box-sizing: border-box;
-  margin-top: 10%;
+  margin-top: 9.75%;
   font-family: "swall-diatype";
 }
 .mobile-search .search-container {
@@ -116,7 +116,7 @@
   font-family: "swall-diatype";
 }
 .mobile-search .suggestions-container {
-  font-size: 12px;
+  font-size: 14px;
   margin-left: 5%;
   width: 89%;
   font-family: "swall-diatype";
@@ -146,7 +146,7 @@
 /* MOBILE HOMEPAGE */
 
 .mobile-homepage {
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-top: 6%;
 }
@@ -160,6 +160,9 @@
 .mobile-stories {
   margin-bottom: 8%;
   min-height: 100vh;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .mobile-stories-page-content .section-title-home {
   margin-top: 8%;
@@ -172,7 +175,7 @@
   font-family: "tobias-regular";
   font-size: 32px;
   margin: 0%;
-  margin-top: 5%;
+  margin-top: 1%;
   margin-left: 0;
 }
 
@@ -197,13 +200,16 @@
 
 .mobile-watches .watch-preview-card-details {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* Brynn's Pick */
 
 .mobile-featured-watch {
   margin-bottom: 10%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mobile-featured-watch-headline {
@@ -224,7 +230,7 @@
   text-align: center;
   margin-top: 3%;
   margin-bottom: 3%;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .mobile-featured-watch-detail-container > p,
@@ -241,6 +247,9 @@
 
 .mobile-dial-dimepiece {
   margin-bottom: 10%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mobile-dial-dimepiece-card:first-of-type {
@@ -256,18 +265,17 @@
 .mobile-dial-dimepiece-card-left,
 .mobile-dial-dimepiece-card-right {
   width: 100%;
-  margin: 1%;
 }
 
 .mobile-dial-dimepiece-card-headers > p {
   border-bottom: 1px black solid;
   padding-bottom: 2%;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "tobias-regular";
 }
 
 .dial-dimepiece-card-date {
-  font-size: 12px;
+  font-size: 14px;
   font-family: "tobias-regular";
 }
 
@@ -278,14 +286,15 @@
 
 .mobile-newsletter > p {
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "swall-diatype";
 }
 
 .newsletter-input-container > input,
 .newsletter-input-container > button {
-  font-size: 16px;
+  font-size: 14px;
   font-family: "swall-diatype";
+  margin-bottom: -2%;
 }
 
 /* NEWSLETTER PAGE */
@@ -362,7 +371,7 @@
 }
 .mobile-content-mapped .mobile-watch-preview-card {
   width: 50%;
-  margin-bottom: 5%;
+  margin-bottom: 8%;
 }
 .mobile-content-mapped .watch-preview-card-details {
   text-align: center;
@@ -414,7 +423,7 @@
 .mobile-product-description-container {
   width: 90%;
   margin: 2% auto;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "swall-diatype";
 }
 
@@ -432,7 +441,7 @@
 /* .mobile-product-container
   .watch-description-table
   .watch-description-table-row-value {
-  font-size: 12px;
+  font-size: 14px;
 } */
 
 .mobile-product-container .watch-description-buttons-container {
@@ -441,7 +450,7 @@
 
 .mobile-product-container .watch-description-summary {
   margin-bottom: 10%;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "swall-diatype";
 }
 
@@ -453,6 +462,12 @@
   text-align: center;
   font-size: 14px;
   min-height: 100vh;
+}
+.mobile-article .blue {
+  margin-top: 10%;
+}
+.mobile-article .author-photog-container {
+  margin-bottom: 10%;
 }
 .mobile-article-title {
   font-size: 48px;
@@ -548,6 +563,7 @@
 }
 .mobile-about-page .newsletter {
   width: 100%;
+  margin-bottom: 20%;
 }
 .mobile-about-page .about-say-hello {
   font-size: 14px;
@@ -561,8 +577,8 @@
 .mobile-footer {
   background-color: #d7ceff;
   font-size: var(--base-text-size);
-  padding: 4% 5%;
-  font-size: 10px;
+  padding: 8% 5%;
+  font-size: 14px;
   font-family: "swall-diatype";
 }
 .mobile-footer-top-container {
@@ -572,7 +588,7 @@
 }
 .mobile-bold {
   margin-bottom: 10px !important;
-  font-size: 11px;
+  font-size: 14px;
   white-space: nowrap;
   font-family: "swall-diatype";
 }
@@ -584,7 +600,7 @@
   margin: 0;
 }
 .mobile-footer-column .navbar-link {
-  font-size: 9px;
+  font-size: 14px;
 }
 .mobile-footer-bottom-container {
   width: 50%;
@@ -605,14 +621,14 @@
   border: none;
   background: #d7ceff;
   padding: 0;
-  font-size: 9px;
+  font-size: 14px;
 }
 .mobile-footer-newsletter-input-container > input::placeholder {
   color: black;
 }
 .mobile-footer-newsletter-input-container > button {
   text-decoration: none;
-  font-size: 9px;
+  font-size: 14px;
 }
 /* cart */
 
@@ -639,6 +655,9 @@
   border-bottom: 1px solid grey;
   /* padding: 1vw; */
   box-sizing: border-box;
+  font-size: 14px;
+  height: 7%;
+  align-items: center;
 }
 .mobile-cart-title-container > button {
   margin-right: 1%;
@@ -651,6 +670,6 @@
   margin-top: 6%;
   margin-right: auto;
   margin-left: auto;
-  font-size: 1rem;
+  font-size: 14px;
   margin-bottom: 5%;
 }

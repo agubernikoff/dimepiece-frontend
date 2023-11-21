@@ -4,6 +4,7 @@ import MobileDialDimepiece from "./MobileDialDimepiece";
 import MobileStories from "./MobileStories";
 import MobileLatestWatches from "./MobileLatestWatches";
 import { motion } from "framer-motion";
+import MobileNewsletter from "./MobileNewsletter";
 
 function MobileHome() {
   return (
@@ -19,17 +20,7 @@ function MobileHome() {
       <MobileLatestWatches />
       <MobileBrynnsPick />
       <MobileDialDimepiece />
-      <div className="mobile-newsletter">
-        <h3 className="section-title-home">NEWSLETTER</h3>
-        <p>
-          Sign up for the Dimepiece Newsletter to stay up to date on all our
-          latest stories, products, and offerings.
-        </p>
-        <div className="newsletter-input-container">
-          <input placeholder="Email Address" type="email"></input>
-          <button>Join</button>
-        </div>
-      </div>
+      <MobileNewsletter />
     </motion.div>
   );
 }
