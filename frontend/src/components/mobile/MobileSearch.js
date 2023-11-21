@@ -5,25 +5,29 @@ import { cartActions } from "../../redux/cart-slice";
 
 function MobileSearch({ hideSearch }) {
   const ref = useRef();
+  const suggestionsRef = useRef();
   const nav = useNavigate();
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
+
   useEffect(() => {
     ref.current.focus();
 
-    // Event listener for clicks outside the search bar
     const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        // Click occurred outside the search bar, close the search here
+      if (
+        ref.current &&
+        !ref.current.contains(event.target) &&
+        suggestionsRef.current &&
+        !suggestionsRef.current.contains(event.target) &&
+        !event.target.classList.contains("return-button")
+      ) {
         hideSearch();
       }
     };
 
-    // Add event listener
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Clean up the event listener
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -67,7 +71,7 @@ function MobileSearch({ hideSearch }) {
           <button>{String.fromCharCode(8594)}</button>
         </form>
         {searchResults.length > 0 ? (
-          <div className="suggestions-container">
+          <div className="suggestions-container" ref={suggestionsRef}>
             <p className="suggestion-title">SUGGESTIONS</p>
             <div>{mappedSuggestions}</div>
           </div>
