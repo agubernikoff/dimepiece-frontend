@@ -7,8 +7,6 @@ function MobileNewsletter() {
   const sendEmail = (e) => {
     e.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    console.log(emailPattern.test(e.target.email.value));
-    console.log(e.target.email.value);
     if (emailPattern.test(e.target.email.value)) {
       emailjs
         .sendForm(
