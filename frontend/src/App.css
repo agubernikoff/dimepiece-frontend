@@ -93,6 +93,7 @@ instead of tweaking each class */
   width: 100%;
   border-top: 1px solid #bfbfbf;
   border-bottom: 1px solid #bfbfbf;
+  background-color: white;
 }
 .navbar {
   height: 54px;
@@ -103,6 +104,7 @@ instead of tweaking each class */
   align-items: center;
   color: white;
   font-family: "swall-diatype";
+  position: relative;
 }
 
 .navbar-left,
@@ -154,11 +156,19 @@ instead of tweaking each class */
   color: var(--blue);
 }
 .search {
-  position: absolute;
+  position: fixed;
+  top: 54px;
   width: 100%;
   background-color: #d7ceff;
   color: var(--blue);
   box-sizing: border-box;
+  transform-origin: top;
+  z-index: -1;
+  height: auto;
+  -moz-transition: height 1s ease;
+  -webkit-transition: height 1s ease;
+  -o-transition: height 1s ease;
+  transition: height 1s ease;
 }
 .search-container {
   width: 95%;
@@ -653,7 +663,7 @@ instead of tweaking each class */
   right: 0;
   height: 55px;
   width: 100%;
-  z-index: -1;
+  /* z-index: -1; */
   background: #d7ceff;
   transform-origin: 0%;
 }
