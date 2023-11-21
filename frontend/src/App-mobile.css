@@ -292,7 +292,11 @@
 
 .mobile-newsletter .newsletter-input-container > input,
 .mobile-newsletter .newsletter-input-container > button {
+<<<<<<< HEAD
   font-size: 14px;
+=======
+  font-size: 16px;
+>>>>>>> 6585773 (improved specificity)
   font-family: "swall-diatype";
   margin-bottom: -2%;
 }
