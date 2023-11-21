@@ -290,8 +290,8 @@
   font-family: "swall-diatype";
 }
 
-.newsletter-input-container > input,
-.newsletter-input-container > button {
+.mobile-newsletter .newsletter-input-container > input,
+.mobile-newsletter .newsletter-input-container > button {
   font-size: 14px;
   font-family: "swall-diatype";
   margin-bottom: -2%;
