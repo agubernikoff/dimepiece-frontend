@@ -46,15 +46,15 @@ export const structure: StructureResolver = (S, context) =>
   S.list()
     .title('Content')
     .items([
-      home(S, context),
-      pages(S, context),
-      S.divider(),
-      collections(S, context),
+      // home(S, context),
+      // pages(S, context),
+      // S.divider(),
+      // collections(S, context),
       products(S, context),
-      S.divider(),
-      colorThemes(S, context),
-      S.divider(),
-      settings(S, context),
-      S.divider(),
+      // S.divider(),
+      // colorThemes(S, context),
+      // S.divider(),
+      // settings(S, context),
+      // S.divider(),
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ])
