@@ -13,9 +13,13 @@ function Search({ hideSearch }) {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
+  const globalSearchText = useSelector((state) => state.cart.searchText);
+
   useEffect(() => {
     input.current.focus();
-    if (searchTermFromParams) setSearchText(searchTermFromParams);
+    if (searchTermFromParams && globalSearchText) {
+      setSearchText(searchTermFromParams);
+    }
   }, []);
 
   useEffect(() => {

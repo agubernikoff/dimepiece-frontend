@@ -74,6 +74,9 @@ const cartSlice = createSlice({
       if (!searchText || searchText.length < 3) state.searchResults = [];
       else state.searchResults = filtered;
     },
+    setSearchText(state, action) {
+      state.searchText = action.payload;
+    },
     setClickedPost(state, action) {
       state.clickedPost = action.payload;
     },

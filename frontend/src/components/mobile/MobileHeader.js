@@ -25,6 +25,12 @@ function MobileHeader() {
   const displayCart = useSelector((state) => state.cart.displayCart);
 
   useEffect(() => {
+    if (searchTerm) {
+      dispatch(cartActions.setSearchText(searchTerm));
+    }
+  }, []);
+
+  useEffect(() => {
     const body = document.querySelector("body");
 
     if (isOpen || displayCart) {

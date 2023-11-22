@@ -1,6 +1,6 @@
 // import { useDispatch } from 'react-redux';
 // import { selectPost, setPreEditPost } from '../../redux/actions';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
 import {
   NavLink,
@@ -23,6 +23,12 @@ function Header() {
   const cart = useSelector((state) => state.cart.cart);
   const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded);
   const [displaySearch, setDisplaySearch] = useState(false);
+
+  useEffect(() => {
+    if (searchTerm) {
+      dispatch(cartActions.setSearchText(searchTerm));
+    }
+  }, []);
   // const dispatch = useDispatch();
 
   // const handleAddClick = () => {
