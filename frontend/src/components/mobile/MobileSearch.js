@@ -38,7 +38,7 @@ function MobileSearch({ hideSearch }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (searchText) {
-      nav("/search");
+      nav(`/search?search=${searchText}`);
       hideSearch();
     }
   }
