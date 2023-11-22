@@ -945,6 +945,7 @@ instead of tweaking each class */
 .about-dimepiece-press-title {
   font-size: 1.5rem;
   font-family: "tobias-regular";
+  margin: 0;
 }
 
 .about-dimepiece-press img {
@@ -961,14 +962,16 @@ instead of tweaking each class */
 }
 
 .about-dimepiece-press-text {
-  margin-top: 0%;
+  margin-top: 3%;
   font-size: 14px;
   font-family: "swall-diatype";
 }
 
 .about-dimepiece-press .blue {
   margin-top: 0%;
-  font-family: "swall-diatype" !important;
+  font-family: "tobias-regular" !important;
+  margin-bottom: 3%;
+  font-size: 1.5rem;
 }
 
 .about-say-hello {
