@@ -4,6 +4,7 @@ import { client } from "./SanityClient";
 
 // Barebones lazy-loaded image component
 function SanityArticleImage({ value }) {
+  console.log(value.modules[0]);
   const builder = imageUrlBuilder(client);
 
   function urlFor(source) {
@@ -15,7 +16,7 @@ function SanityArticleImage({ value }) {
     return (
       <img
         key={m._key}
-        src={urlFor(m.image).width(800).fit("max").auto("format").url()}
+        src={m.image.asset.url}
         alt={value.alt || " "}
         loading="lazy"
         style={{
@@ -32,11 +33,7 @@ function SanityArticleImage({ value }) {
     <div className="article-images-container">
       {isMobile ? (
         <img
-          src={urlFor(value.modules[0].image)
-            .width(800)
-            .fit("max")
-            .auto("format")
-            .url()}
+          src={value.modules[0].image.asset.url}
           alt={value.alt || " "}
           loading="lazy"
           style={{
