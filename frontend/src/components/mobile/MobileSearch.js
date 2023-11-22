@@ -11,7 +11,7 @@ function MobileSearch({ hideSearch }) {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
-  // useEffect(() => input.current.focus(), []);
+  useEffect(() => input.current.focus(), []);
 
   // useEffect(() => {
   //   input.current.focus();
