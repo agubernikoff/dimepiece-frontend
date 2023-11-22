@@ -23,6 +23,13 @@ function Search({ hideSearch }) {
   }, []);
 
   useEffect(() => {
+    if (searchTermFromParams && !searchText) {
+      searchParams.delete("search");
+      setSearchParams(searchParams);
+    }
+  }, [searchText]);
+
+  useEffect(() => {
     input.current.focus();
 
     const handleEscapeKey = (event) => {

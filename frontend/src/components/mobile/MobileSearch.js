@@ -21,6 +21,13 @@ function MobileSearch({ hideSearch }) {
       setSearchText(searchTermFromParams);
   }, []);
 
+  useEffect(() => {
+    if (searchTermFromParams && !searchText) {
+      searchParams.delete("search");
+      setSearchParams(searchParams);
+    }
+  }, [searchText]);
+
   const mappedSuggestions = searchResults.map((w) => (
     <div
       key={w._id}

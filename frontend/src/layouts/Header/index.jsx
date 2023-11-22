@@ -29,6 +29,7 @@ function Header() {
       dispatch(cartActions.setSearchText(searchTerm));
     }
   }, []);
+
   // const dispatch = useDispatch();
 
   // const handleAddClick = () => {
@@ -118,7 +119,9 @@ function Header() {
               className="navbar-link"
               onClick={() => {
                 toggleSearch();
-                if (!searchTerm) dispatch(cartActions.setSearchResults(""));
+                if (!searchTerm) {
+                  dispatch(cartActions.setSearchResults(""));
+                }
               }}
             >
               SEARCH

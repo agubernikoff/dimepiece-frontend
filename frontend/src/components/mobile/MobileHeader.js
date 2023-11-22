@@ -181,7 +181,9 @@ function MobileHeader() {
               alt="search"
               onClick={() => {
                 toggleSearch();
-                if (!searchTerm) dispatch(cartActions.setSearchResults(""));
+                if (!searchTerm) {
+                  dispatch(cartActions.setSearchResults(""));
+                }
                 hideMenu();
               }}
             ></img>
