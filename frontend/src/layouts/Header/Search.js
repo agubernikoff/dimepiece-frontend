@@ -2,18 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { cartActions } from "../../redux/cart-slice";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimate } from "framer-motion";
+import useMeasure from "react-use-measure";
 
 function Search({ hideSearch }) {
-  const ref = useRef();
+  const input = useRef();
   const nav = useNavigate();
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
-  useEffect(() => ref.current.focus());
+  useEffect(() => input.current.focus());
 
   useEffect(() => {
-    ref.current.focus();
+    input.current.focus();
 
     const handleEscapeKey = (event) => {
       if (event.key === "Escape") {
@@ -41,7 +42,6 @@ function Search({ hideSearch }) {
         {`${w.brand.toUpperCase()} ${w.title.toUpperCase()}`},{" "}
         {w.material.toUpperCase()}
       </p>
-      {/* <p>{String.fromCharCode(8594)}</p> */}
     </div>
   ));
 
@@ -51,23 +51,42 @@ function Search({ hideSearch }) {
       hideSearch();
     }
   }
+
+  let [searchContainer, { height }] = useMeasure();
+  const suggestionsContainer = useRef();
+  const [scope, animate] = useAnimate();
+  const originalHeight = useRef();
+
+  useEffect(() => {
+    if (!originalHeight.current && height > 0) originalHeight.current = height;
+    if (searchResults) animate(scope.current, { height });
+  }, [height]);
+
+  function removeSuggestions() {
+    if (suggestionsContainer.current.style.opacity == 1) {
+      animate(scope.current, { height: originalHeight.current });
+    } else animate(scope.current, { height });
+  }
+
   return (
     <motion.div
       initial={{ y: "-100%" }}
-      animate={{ y: 0 }}
+      animate={{ y: 0, height }}
       exit={{ y: "-100%" }}
       transition={{
         duration: 0.25,
         ease: "linear",
+        height: { duration: 0.25 },
       }}
       layout="size"
       key="search"
       className="search"
+      ref={scope}
     >
-      <div className="search-container">
+      <motion.div className="search-container" ref={searchContainer}>
         <form className="search-input-container" onSubmit={handleSubmit}>
           <input
-            ref={ref}
+            ref={input}
             onChange={(e) => {
               dispatch(cartActions.setSearchResults(e.target.value));
               setSearchText(e.target.value);
@@ -76,20 +95,24 @@ function Search({ hideSearch }) {
           ></input>
           <button>{String.fromCharCode(8594)}</button>
         </form>
-        {searchResults.length > 0 ? (
-          <div
-            // initial={{ y: "-100%" }}
-            // animate={{ y: 0 }}
-            // exit={{ y: "-100%" }}
-            // transition={{ duration: 0.25, ease: "linear" }}
-            // key="suggestions-container"
-            className="suggestions-container"
-          >
-            <p className="suggestion-title">SUGGESTIONS</p>
-            <div>{mappedSuggestions}</div>
-          </div>
-        ) : null}
-      </div>
+        <AnimatePresence>
+          {searchResults.length > 0 ? (
+            <motion.div
+              initial={{ y: "-50%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-50%", opacity: 0 }}
+              transition={{ duration: 0.25, ease: "linear" }}
+              onAnimationStart={removeSuggestions}
+              key="suggestions-container"
+              className="suggestions-container"
+              ref={suggestionsContainer}
+            >
+              <p className="suggestion-title">SUGGESTIONS</p>
+              <div>{mappedSuggestions}</div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </motion.div>
     </motion.div>
   );
 }

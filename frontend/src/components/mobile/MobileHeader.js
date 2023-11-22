@@ -73,122 +73,126 @@ function MobileHeader() {
     setDisplaySearch(false);
   }
   return (
-    <div className="mobile-nav">
-      {loc.pathname.split("/").length >= 4 &&
-      loc.pathname.split("/")[1] === "stories" ? (
-        <motion.div
-          className="mobile-scroll-progress-bar"
-          style={{
-            scaleX: scrollProgress,
-          }}
-        />
-      ) : null}
-      <div className="mobile-hamburger-menu">
-        <div
-          className="hamburger-icon"
-          onClick={() => {
-            toggleMenu();
-            hideSearch();
-            dispatch(mobileFilterActions.setPrimaryFilter(""));
-          }}
-        >
-          <img src={hamburger} alt="burger" />
-        </div>
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              key="menu"
-              className="menu-content"
-            >
-              <ul className="menu-list">
-                <motion.li>
-                  <NavLink
-                    to="/stories/All"
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                  >
-                    STORIES
-                  </NavLink>
-                </motion.li>
-                <motion.li>
-                  <NavLink
-                    to="/shop/All?filter+by=Latest+Arrivals"
-                    onClick={() => {
-                      setIsOpen(false);
-                      dispatch(mobileFilterActions.setPrimaryFilter("All"));
-                    }}
-                  >
-                    SHOP
-                  </NavLink>
-                </motion.li>
-                <motion.li>
-                  <NavLink
-                    to="/newsletter"
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                  >
-                    NEWSLETTER
-                  </NavLink>
-                </motion.li>
-                <motion.li>
-                  <NavLink
-                    to="/about"
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                  >
-                    ABOUT
-                  </NavLink>
-                </motion.li>
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-      <div className="mobile-logo">
-        <img
-          src={logo}
-          className="navbar-image"
-          onClick={() => {
-            nav(`/`);
-            setIsOpen(false);
-            hideSearch();
-          }}
-        />
-      </div>
-      <div className="mobile-search-cart">
-        <div className="mobile-search-icon">
-          <img
-            src={search}
-            alt="search"
+    <div className="header">
+      <AnimatePresence>
+        {displaySearch && <MobileSearch hideSearch={hideSearch} />}
+      </AnimatePresence>
+      <div className="mobile-nav">
+        {loc.pathname.split("/").length >= 4 &&
+        loc.pathname.split("/")[1] === "stories" ? (
+          <motion.div
+            className="mobile-scroll-progress-bar"
+            style={{
+              scaleX: scrollProgress,
+            }}
+          />
+        ) : null}
+        <div className="mobile-hamburger-menu">
+          <div
+            className="hamburger-icon"
             onClick={() => {
-              toggleSearch();
-              dispatch(cartActions.setSearchResults(""));
+              toggleMenu();
+              hideSearch();
+              dispatch(mobileFilterActions.setPrimaryFilter(""));
+            }}
+          >
+            <img src={hamburger} alt="burger" />
+          </div>
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                key="menu"
+                className="menu-content"
+              >
+                <ul className="menu-list">
+                  <motion.li>
+                    <NavLink
+                      to="/stories/All"
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                    >
+                      STORIES
+                    </NavLink>
+                  </motion.li>
+                  <motion.li>
+                    <NavLink
+                      to="/shop/All?filter+by=Latest+Arrivals"
+                      onClick={() => {
+                        setIsOpen(false);
+                        dispatch(mobileFilterActions.setPrimaryFilter("All"));
+                      }}
+                    >
+                      SHOP
+                    </NavLink>
+                  </motion.li>
+                  <motion.li>
+                    <NavLink
+                      to="/newsletter"
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                    >
+                      NEWSLETTER
+                    </NavLink>
+                  </motion.li>
+                  <motion.li>
+                    <NavLink
+                      to="/about"
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                    >
+                      ABOUT
+                    </NavLink>
+                  </motion.li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        <div className="mobile-logo">
+          <img
+            src={logo}
+            className="navbar-image"
+            onClick={() => {
+              nav(`/`);
+              setIsOpen(false);
+              hideSearch();
+            }}
+          />
+        </div>
+        <div className="mobile-search-cart">
+          <div className="mobile-search-icon">
+            <img
+              src={search}
+              alt="search"
+              onClick={() => {
+                toggleSearch();
+                dispatch(cartActions.setSearchResults(""));
+                hideMenu();
+              }}
+            ></img>
+          </div>
+          <div
+            className="mobile-cart-icon"
+            onClick={() => {
+              dispatch(cartActions.toggleDisplayCart());
+              hideSearch();
               hideMenu();
             }}
-          ></img>
-        </div>
-        <div
-          className="mobile-cart-icon"
-          onClick={() => {
-            dispatch(cartActions.toggleDisplayCart());
-            hideSearch();
-            hideMenu();
-          }}
-        >
-          <img src={cartImg} alt="cart" />
-          {cart.length > 0 ? (
-            <div className="mobile-cart-number">{cart.length}</div>
-          ) : null}
+          >
+            <img src={cartImg} alt="cart" />
+            {cart.length > 0 ? (
+              <div className="mobile-cart-number">{cart.length}</div>
+            ) : null}
+          </div>
         </div>
       </div>
-      {displaySearch ? <MobileSearch hideSearch={hideSearch} /> : null}
     </div>
   );
 }

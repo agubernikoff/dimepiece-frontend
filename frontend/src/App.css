@@ -162,27 +162,23 @@ instead of tweaking each class */
   background-color: #d7ceff;
   color: var(--blue);
   box-sizing: border-box;
-  transform-origin: top;
   z-index: -1;
-  height: auto;
-  -moz-transition: height 1s ease;
-  -webkit-transition: height 1s ease;
-  -o-transition: height 1s ease;
-  transition: height 1s ease;
+  overflow: hidden;
 }
 .search-container {
   width: 95%;
   margin: auto;
   background-color: #d7ceff;
   color: var(--blue);
-  padding-block-end: 1.5rem;
-  padding-block-start: 1rem;
+  padding-block: 1rem;
 }
 .search-input-container {
   font-size: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 .search-input-container > input {
   background-color: #d7ceff;
@@ -203,6 +199,7 @@ instead of tweaking each class */
 .suggestions-container {
   width: 90%;
   line-height: 140%;
+  transform-origin: top;
 }
 .suggestion-title {
   text-decoration: underline;

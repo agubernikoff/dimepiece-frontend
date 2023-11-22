@@ -91,8 +91,10 @@
   background-color: #d7ceff;
   color: var(--blue);
   box-sizing: border-box;
-  margin-top: 9.75%;
+  top: calc(100%);
   font-family: "swall-diatype";
+  z-index: -1;
+  overflow: hidden;
 }
 .mobile-search .search-container {
   width: 100%;
@@ -111,8 +113,9 @@
 }
 .mobile-search .search-input-container > button,
 .mobile-search .search-input-container > input {
-  margin-bottom: 2%;
   font-family: "swall-diatype";
+  box-sizing: border-box;
+  padding-bottom: 2%;
 }
 .mobile-search .suggestions-container {
   font-size: 14px;
