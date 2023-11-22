@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { cartActions } from "../../redux/cart-slice";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import useMeasure from "react-use-measure";
 
 function Search({ hideSearch }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTermFromParams = searchParams.get("search");
   const input = useRef();
   const nav = useNavigate();
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
-  useEffect(() => input.current.focus());
+  useEffect(() => {
+    input.current.focus();
+    if (searchTermFromParams) setSearchText(searchTermFromParams);
+  }, []);
 
   useEffect(() => {
     input.current.focus();
@@ -45,7 +50,8 @@ function Search({ hideSearch }) {
     </div>
   ));
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     if (searchText) {
       nav(`/search?search=${searchText}`);
       hideSearch();

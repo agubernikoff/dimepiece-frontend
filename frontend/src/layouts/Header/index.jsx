@@ -17,6 +17,7 @@ import Search from "./Search";
 function Header() {
   const nav = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = searchParams.get("search");
   const loc = useLocation();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
@@ -111,7 +112,7 @@ function Header() {
               className="navbar-link"
               onClick={() => {
                 toggleSearch();
-                dispatch(cartActions.setSearchResults(""));
+                if (!searchTerm) dispatch(cartActions.setSearchResults(""));
               }}
             >
               SEARCH

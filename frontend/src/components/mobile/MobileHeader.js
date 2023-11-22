@@ -16,6 +16,8 @@ import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 import MobileSearch from "./MobileSearch";
 
 function MobileHeader() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = searchParams.get("search");
   const dispatch = useDispatch();
   const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded);
   const [isOpen, setIsOpen] = useState(false);
@@ -173,7 +175,7 @@ function MobileHeader() {
               alt="search"
               onClick={() => {
                 toggleSearch();
-                dispatch(cartActions.setSearchResults(""));
+                if (!searchTerm) dispatch(cartActions.setSearchResults(""));
                 hideMenu();
               }}
             ></img>
