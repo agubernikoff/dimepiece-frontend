@@ -14,7 +14,7 @@ function MobileSearchResults() {
   return (
     <div className="mobile-stories">
       <div className="mobile-stories-page-content">
-        {searchText ? (
+        {searchText && mappedWatches.length > 0 ? (
           <>
             <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
             <div className="mobile-content-mapped">{mappedWatches}</div>

@@ -12,7 +12,7 @@ function SearchResults() {
   return (
     <div style={{ width: "82%" }}>
       <div className="stories-page-content">
-        {searchText ? (
+        {searchText && mappedWatches.length > 0 ? (
           <>
             <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
             <div className="watches-page-card-container">{mappedWatches}</div>
