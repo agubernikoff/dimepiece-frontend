@@ -4,7 +4,7 @@ import { client } from "./SanityClient";
 
 // Barebones lazy-loaded image component
 function SanityArticleImage({ value }) {
-  console.log(value.modules[0]);
+  console.log(value.modules[0].caption);
   const builder = imageUrlBuilder(client);
 
   function urlFor(source) {
@@ -12,28 +12,12 @@ function SanityArticleImage({ value }) {
   }
   const isMobile = window.innerWidth <= 768;
   const mappedImages = value.modules.map((m) => {
+    console.log(m);
     const { width, height } = getImageDimensions(m.image);
     return (
-      <img
-        key={m._key}
-        src={m.image.asset.url}
-        alt={value.alt || " "}
-        loading="lazy"
-        style={{
-          // Avoid jumping around with aspect-ratio CSS property
-          aspectRatio: width / height,
-          width: "50%",
-          margin: "auto",
-        }}
-      />
-    );
-  });
-  const { width, height } = getImageDimensions(value.modules[0].image);
-  return (
-    <div className="article-images-container">
-      {isMobile ? (
+      <div key={m._key} className="sanity-article-image-container">
         <img
-          src={value.modules[0].image.asset.url}
+          src={m.image.asset.url}
           alt={value.alt || " "}
           loading="lazy"
           style={{
@@ -43,6 +27,28 @@ function SanityArticleImage({ value }) {
             margin: "auto",
           }}
         />
+        {m.caption}
+      </div>
+    );
+  });
+  const { width, height } = getImageDimensions(value.modules[0].image);
+  return (
+    <div className="article-images-container">
+      {isMobile ? (
+        <div>
+          <img
+            src={value.modules[0].image.asset.url}
+            alt={value.alt || " "}
+            loading="lazy"
+            style={{
+              // Avoid jumping around with aspect-ratio CSS property
+              aspectRatio: width / height,
+              width: "50%",
+              margin: "auto",
+            }}
+          />
+          {/* value.modules.caption */}
+        </div>
       ) : (
         mappedImages
       )}

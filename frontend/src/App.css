@@ -695,6 +695,12 @@ instead of tweaking each class */
   display: flex;
   gap: 1rem;
 }
+.sanity-article-image-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+}
 .article-button-container {
   display: flex;
   flex-direction: column;
