@@ -138,7 +138,7 @@ function IndexAndContent({ contentType }) {
           </motion.div>
         )}
       </AnimatePresence>
-      <AnimatePresence mode="popLayout" onExitComplete={scrollToTop}>
+      <AnimatePresence mode="wait" onExitComplete={scrollToTop}>
         {brand && !URLParam.id ? (
           <motion.div
             className="stories-page-content"
@@ -158,7 +158,7 @@ function IndexAndContent({ contentType }) {
                 ? brands.find((b) => b.title === brand).descriptor
                 : null}
             </p>
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="wait">
               <motion.div
                 className="watches-page-card-container"
                 initial={{ opacity: 0 }}
