@@ -20,7 +20,7 @@ function About() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}}}`
+        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}},text1[]{...,modules[]{...,image{asset->{url}}}},text2[]{...,modules[]{...,image{asset->{url}}}}}`
       )
       .then((response) => setAbout(response));
     client

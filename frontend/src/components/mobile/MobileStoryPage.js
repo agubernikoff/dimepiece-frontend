@@ -24,7 +24,7 @@ function MobileStoryPage() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && _id == "${URLParam.id}"][0]{...,coverImage{asset->{url}}}`
+        `*[_type == "articles" && _id == "${URLParam.id}"][0]{...,body[]{...,_type == "module.images" => {...,modules[]{...,image{asset->{url}}}}},coverImage{asset->{url}}}`
       )
       .then((response) => setArticle(response));
     dispatch(articleActions.setIsArticleLoaded(true));
