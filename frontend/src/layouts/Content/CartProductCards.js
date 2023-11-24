@@ -3,8 +3,10 @@ import { client } from "../../sanity/SanityClient";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import { shopifyClient } from "../../shopify/ShopifyClient";
+import { useNavigate } from "react-router-dom";
 
 function CartProductCards({ watch }) {
+  const nav = useNavigate();
   const dispatch = useDispatch();
   const options = {
     style: "currency",
@@ -43,6 +45,10 @@ function CartProductCards({ watch }) {
         <img
           alt={`${watch.brand} ${watch.title}`}
           src={watch.brynnPickImage.asset.url}
+          onClick={() => {
+            nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
+            dispatch(cartActions.toggleDisplayCart());
+          }}
         />
       </div>
       <div className="cart-product-title-container">

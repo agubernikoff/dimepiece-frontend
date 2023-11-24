@@ -105,9 +105,9 @@ function Footer() {
           <NavLink className="navbar-link" to="/newsletter">
             Newsletter
           </NavLink>
-          <NavLink className="navbar-link" to="/search">
+          {/* <NavLink className="navbar-link" to="/search">
             Search
-          </NavLink>
+          </NavLink> */}
           <a className="navbar-link">Site Credit</a>
         </div>
         <div className="mobile-footer-column">

@@ -61,7 +61,7 @@ function App() {
       });
   }, []);
   const displayCart = useSelector((state) => state.cart.displayCart);
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 700;
   const location = useLocation();
 
   const [displayIndex, setDisplayIndex] = useState(false);

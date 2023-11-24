@@ -53,12 +53,8 @@ function Footer() {
     <div className="footer">
       <div className="footer-left-container">
         <div className="footer-left-column">
-          <p>
-            © DIMEPIECE LLC 2023,
-          </p>
-          <p>
-            All Rights Reserved.
-          </p>
+          <p>© DIMEPIECE LLC 2023,</p>
+          <p>All Rights Reserved.</p>
           <br />
           <div>
             <p>LA: {times.LosAngeles}</p>
@@ -88,9 +84,9 @@ function Footer() {
           <NavLink className="navbar-link" to="/newsletter">
             Newsletter
           </NavLink>
-          <NavLink className="navbar-link" to="/search">
+          {/* <NavLink className="navbar-link" to="/search">
             Search
-          </NavLink>
+          </NavLink> */}
         </div>
         <div className="footer-left-column">
           <p>
