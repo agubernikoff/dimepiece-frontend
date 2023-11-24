@@ -160,16 +160,7 @@ function App() {
               path="/newsletter"
               element={isMobile ? <MobileNewsletter /> : <NewsletterPage />}
             />
-            <Route
-              path="/stories"
-              element={
-                isMobile ? (
-                  <MobileIndexAndContent contentType={"stories"} />
-                ) : (
-                  <IndexAndContent contentType={"stories"} />
-                )
-              }
-            />
+            <Route path="/stories" element={<Navigate to="/stories/All" />} />
             <Route
               path="/stories/:category"
               element={
@@ -186,13 +177,7 @@ function App() {
             />
             <Route
               path="/shop"
-              element={
-                isMobile ? (
-                  <MobileIndexAndContent contentType={"shop"} />
-                ) : (
-                  <IndexAndContent contentType={"shop"} />
-                )
-              }
+              element={<Navigate to="/shop/All?filter+by=Latest+Arrivals" />}
             />
             <Route
               path="/shop/:brand"
