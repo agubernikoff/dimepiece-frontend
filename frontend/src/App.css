@@ -713,6 +713,11 @@ instead of tweaking each class */
   color: grey;
   font-size: 16px;
 }
+.sanity-article-image-container > p,
+.sanity-mobile-article-image-container > p {
+  margin-top: 2%;
+  margin-bottom: 0;
+}
 .article-button-container {
   display: flex;
   flex-direction: column;

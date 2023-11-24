@@ -27,7 +27,7 @@ function SanityArticleImage({ value }) {
             margin: "auto",
           }}
         />
-        {m.caption}
+        <p>{m.caption}</p>
       </div>
     );
   });
@@ -47,7 +47,7 @@ function SanityArticleImage({ value }) {
               margin: "auto",
             }}
           />
-          {value.modules[0].caption ? value.modules[0].caption : null}
+          <p>{value.modules[0].caption ? value.modules[0].caption : null}</p>
         </div>
       ) : (
         mappedImages
