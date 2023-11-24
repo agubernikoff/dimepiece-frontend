@@ -1170,7 +1170,38 @@ instead of tweaking each class */
 .footer > div > button {
   text-decoration: none;
 }
+/* 404 */
 
+.page-not-found {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3%;
+}
+
+.fourohfour-text {
+  margin: auto;
+  font-family: "swall-diatype";
+  text-align: center;
+  font-size: 1.4rem;
+  padding-top: 5%;
+  margin-bottom: 2%;
+}
+.fourohfour-button {
+  background-color: transparent;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-family: "swall-diatype";
+  text-decoration: underline;
+}
 /* MEDIA QUERIES */
 
 @media (max-width: 600px) {
