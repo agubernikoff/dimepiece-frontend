@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { articleActions } from "../../redux/article-slice";
 import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 
 function MobileDialDimepieceCard({ story }) {
   const dateObject = new Date(story._createdAt);
@@ -20,6 +21,7 @@ function MobileDialDimepieceCard({ story }) {
       onClick={() => {
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
         dispatch(articleActions.setIsArticleLoaded(false));
+        dispatch(cartActions.hideSearch());
       }}
     >
       <div className="mobile-dial-dimepiece-card-left">
