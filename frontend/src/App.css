@@ -698,7 +698,13 @@ instead of tweaking each class */
 .sanity-article-image-container {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+.sanity-mobile-article-image-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
   margin: auto;
 }
 .article-button-container {
@@ -854,12 +860,14 @@ instead of tweaking each class */
   margin-bottom: 15%;
 }
 
-.about-header-title-full .article-images-container > img {
+.about-header-title-full
+  .article-images-container
+  .sanity-article-image-container {
   width: 100% !important;
 }
-.about-header-title .article-images-container > img {
+/* .about-header-title .article-images-container > img {
   width: 49% !important;
-}
+} */
 
 .about-brynn-portrait {
   font-size: 1rem;

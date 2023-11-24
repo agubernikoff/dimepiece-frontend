@@ -23,7 +23,7 @@ function SanityArticleImage({ value }) {
           style={{
             // Avoid jumping around with aspect-ratio CSS property
             aspectRatio: width / height,
-            width: "50%",
+            width: "100%",
             margin: "auto",
           }}
         />
@@ -35,7 +35,7 @@ function SanityArticleImage({ value }) {
   return (
     <div className="article-images-container">
       {isMobile ? (
-        <div className="sanity-article-image-container">
+        <div className="sanity-mobile-article-image-container">
           <img
             src={value.modules[0].image.asset.url}
             alt={value.alt || " "}
@@ -43,11 +43,11 @@ function SanityArticleImage({ value }) {
             style={{
               // Avoid jumping around with aspect-ratio CSS property
               aspectRatio: width / height,
-              width: "50%",
+              width: "100%",
               margin: "auto",
             }}
           />
-          {value.modules[0].caption}
+          {value.modules[0].caption ? value.modules[0].caption : null}
         </div>
       ) : (
         mappedImages
