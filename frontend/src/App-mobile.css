@@ -344,7 +344,6 @@
   right: 0;
   background: white;
   z-index: 9;
-  transform-origin: top;
 }
 .mobile-index-filter-dialogue .mobile-index {
   border: none;
