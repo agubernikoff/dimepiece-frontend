@@ -171,6 +171,7 @@
 }
 .mobile-latest-story-card {
   margin-bottom: 15%;
+  cursor: pointer;
 }
 
 .mobile-latest-story-card-title {
