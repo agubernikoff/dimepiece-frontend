@@ -21,6 +21,8 @@ function MobileIndexAndContent({ contentType }) {
   const [content, setContent] = useState([]);
   const [filters, setFilters] = useState([]);
   const [primaryFilter, setPrimaryFilter] = useState("All");
+  const categories = useSelector((state) => state.article.categories);
+  const brandTitles = useSelector((state) => state.cart.brandTitles);
 
   useEffect(() => {
     if (contentType === "stories") {
@@ -52,8 +54,8 @@ function MobileIndexAndContent({ contentType }) {
         setPrimaryFilter(
           capitalizeWords(URLParam.category.replaceAll("-", " "))
         );
-      else if (URLParam.brand && filters[0]) {
-        if (filters.find((b) => b.title === URLParam.brand))
+      else if (URLParam.brand && brandTitles[0]) {
+        if (brandTitles.find((b) => b.title === URLParam.brand))
           setPrimaryFilter(URLParam.brand);
         else
           setPrimaryFilter(
@@ -61,7 +63,7 @@ function MobileIndexAndContent({ contentType }) {
           );
       }
     }
-  }, [URLParam, filters, isDialogueOpen]);
+  }, [URLParam, isDialogueOpen]);
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -77,7 +79,14 @@ function MobileIndexAndContent({ contentType }) {
     };
   }, [isDialogueOpen]);
 
-  const filterTitles = filters[0] ? filters.map((b) => b.title).sort() : [];
+  const watches = useSelector((state) => state.cart.watches);
+
+  const filterTitles =
+    contentType === "stories"
+      ? [...categories]
+      : [...brandTitles].filter((title) =>
+          watches.map((w) => w.brand).includes(title)
+        );
 
   let filteredStories = [];
   filteredStories =
@@ -128,27 +137,6 @@ function MobileIndexAndContent({ contentType }) {
   function closeDialogue() {
     dispatch(mobileFilterActions.setIsDialogueOpen(false));
   }
-
-  const list = {
-    visible: {
-      opacity: 1,
-      transition: {
-        when: "beforeChildren",
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      transition: {
-        when: "afterChildren",
-      },
-    },
-  };
-
-  const item = {
-    visible: { scaleY: 1, transition: "linear" },
-    hidden: { scaleY: 0, transition: "linear" },
-  };
 
   return (
     <motion.div

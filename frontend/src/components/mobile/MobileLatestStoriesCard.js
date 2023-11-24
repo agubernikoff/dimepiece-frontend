@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 function MobileLatestStoriesCard({ story }) {
   const nav = useNavigate();
   const dispatch = useDispatch();
-  console.log(story);
+
   return (
     <div className="mobile-latest-story-card">
       <img
