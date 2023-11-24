@@ -35,7 +35,7 @@ function SanityArticleImage({ value }) {
   return (
     <div className="article-images-container">
       {isMobile ? (
-        <div>
+        <div className="sanity-article-image-container">
           <img
             src={value.modules[0].image.asset.url}
             alt={value.alt || " "}
@@ -47,7 +47,7 @@ function SanityArticleImage({ value }) {
               margin: "auto",
             }}
           />
-          {/* value.modules.caption */}
+          {value.modules[0].caption}
         </div>
       ) : (
         mappedImages
