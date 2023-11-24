@@ -199,6 +199,7 @@
 
 .mobile-watch-preview-card {
   width: 100%;
+  cursor: pointer;
 }
 
 .mobile-watches .watch-preview-card-details {
@@ -222,6 +223,9 @@
   text-align: center;
   margin-top: 4%;
   margin-bottom: 4%;
+}
+.mobile-featured-watch-image {
+  cursor: pointer;
 }
 
 .mobile-featured-watch-details {
@@ -266,6 +270,7 @@
   display: flex;
   margin-top: 5%;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .mobile-dial-dimepiece-card-left,

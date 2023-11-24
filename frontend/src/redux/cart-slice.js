@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     displayCart: false,
+    displaySearch: false,
     checkoutId: null,
     checkoutUrl: null,
     checkoutTotal: null,
@@ -24,6 +25,12 @@ const cartSlice = createSlice({
     },
     hideCart(state) {
       state.displayCart = false;
+    },
+    toggleDisplaySearch(state) {
+      state.displaySearch = !state.displaySearch;
+    },
+    hideSearch(state) {
+      state.displaySearch = false;
     },
     setCheckoutId(state, action) {
       state.checkoutId = action.payload;

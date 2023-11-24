@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import shopifyClient from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../redux/cart-slice.js";
 
 function Footer() {
-  const cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
   const [times, setTimes] = useState({
     London: new Date().toLocaleTimeString("en-US", {
       timeZone: "Europe/London",
@@ -69,22 +70,35 @@ function Footer() {
             <strong>LINKS</strong>
           </p>
           <br />
-          <NavLink className="navbar-link" to="/stories/All">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/stories/All"
+          >
             Stories
           </NavLink>
           <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
             className="navbar-link"
             to="/shop/All?filter+by=Latest+Arrivals"
           >
             Shop
           </NavLink>
-          <NavLink className="navbar-link" to="/about">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/about"
+          >
             About
           </NavLink>
-          <NavLink className="navbar-link" to="/newsletter">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/newsletter"
+          >
             Newsletter
           </NavLink>
-          {/* <NavLink className="navbar-link" to="/search">
+          {/* <NavLink onClick={()=>dispatch(cartActions.hideSearch())} className="navbar-link" to="/search">
             Search
           </NavLink> */}
         </div>
@@ -93,16 +107,32 @@ function Footer() {
             <strong>CUSTOMER CARE</strong>
           </p>
           <br />
-          <NavLink className="navbar-link" to="/shipping_and_returns">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/shipping_and_returns"
+          >
             Shipping & Returns
           </NavLink>
-          <NavLink className="navbar-link" to="/faq">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/faq"
+          >
             FAQ
           </NavLink>
-          <NavLink className="navbar-link" to="/terms_and_conditions">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/terms_and_conditions"
+          >
             Terms & Conditions
           </NavLink>
-          <NavLink className="navbar-link" to="/warranty">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/warranty"
+          >
             Warranty
           </NavLink>
         </div>
@@ -118,7 +148,12 @@ function Footer() {
         </div> */}
       </div>
       <div className="footer-right-container">
-        <button onClick={scrollToTopFooter}>
+        <button
+          onClick={() => {
+            scrollToTopFooter();
+            dispatch(cartActions.hideSearch());
+          }}
+        >
           <p>BACK TO TOP</p>
           <p>{String.fromCharCode(8593)}</p>
         </button>

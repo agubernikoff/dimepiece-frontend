@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { articleActions } from "../../redux/article-slice";
+import { cartActions } from "../../redux/cart-slice";
 
 function LatestStoriesCard({ story }) {
   const dateObject = new Date(story.datePublished);
@@ -19,6 +20,7 @@ function LatestStoriesCard({ story }) {
       onClick={() => {
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
         dispatch(articleActions.setIsArticleLoaded(false));
+        dispatch(cartActions.hideSearch());
       }}
     >
       <div className="latest-story-card-top">
@@ -51,6 +53,7 @@ function LatestStoriesCard({ story }) {
                       story._id
                     }`
                   );
+                  dispatch(cartActions.hideSearch());
                 }}
               >
                 Read More

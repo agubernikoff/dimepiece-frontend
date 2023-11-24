@@ -2,6 +2,7 @@ import { prepareCssVars } from "@mui/system";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
+import { cartActions } from "../../redux/cart-slice";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 
 function IndexSubSection({
@@ -45,6 +46,7 @@ function IndexSubSection({
                   p.set(title, o);
                   return p;
                 });
+              dispatch(cartActions.hideSearch());
             }}
             style={
               searchParams.get(title) === o
@@ -82,6 +84,7 @@ function IndexSubSection({
             to={`/${urlPrefix}/${o.replaceAll(" ", "-")}${
               searchParams ? `?${searchParams}` : null
             }`}
+            onClick={() => dispatch(cartActions.hideSearch())}
           >
             {o}
           </NavLink>
@@ -96,14 +99,27 @@ function IndexSubSection({
 
   function clearFilters() {
     if (useUSP) {
-      searchParams.delete(title);
-      setSearchParams(searchParams);
+      if (title === "filter by")
+        setSearchParams((p) => {
+          p.set(title, "Latest Arrivals");
+          return p;
+        });
+      else {
+        searchParams.delete(title);
+        setSearchParams(searchParams);
+      }
     } else nav(`/${urlPrefix}/All${searchParams ? `?${searchParams}` : null}`);
   }
 
   return (
     <div className="stories-page-index-list">
-      <p className="stories-page-index-category-header" onClick={clearFilters}>
+      <p
+        className="stories-page-index-category-header"
+        onClick={() => {
+          clearFilters();
+          dispatch(cartActions.hideSearch());
+        }}
+      >
         <strong>{title.toUpperCase()}</strong>
       </p>
       {mappedOptions}

@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { articleActions } from "../../redux/article-slice";
 import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 
 function MobileLatestStoriesCard({ story }) {
   const nav = useNavigate();
@@ -17,6 +18,7 @@ function MobileLatestStoriesCard({ story }) {
         onClick={() => {
           nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
           dispatch(articleActions.setIsArticleLoaded(false));
+          dispatch(cartActions.hideSearch());
         }}
       />
       <p className="mobile-latest-story-card-title">{story.title}</p>

@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { useNavigate } from "react-router-dom";
+import { cartActions } from "../../redux/cart-slice";
+import { useDispatch } from "react-redux";
 
 function MobileBrynnsPick() {
   const nav = useNavigate();
+  const dispatch = useDispatch();
 
   const [featured, setFeatured] = useState([]);
   useEffect(() => {
@@ -27,6 +30,7 @@ function MobileBrynnsPick() {
               nav(
                 `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
               );
+              dispatch(cartActions.hideSearch());
             }}
             loading="lazy"
             src={featured.brynnPickImage.asset.url}

@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 
 function Newsletter() {
+  const dispatch = useDispatch();
   const ref = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
@@ -50,7 +53,11 @@ function Newsletter() {
         onSubmit={sendEmail}
         ref={ref}
       >
-        <input placeholder="Email Address" name="email"></input>
+        <input
+          placeholder="Email Address"
+          name="email"
+          onFocus={() => dispatch(cartActions.hideSearch())}
+        ></input>
         <button type="submit">Join</button>
       </form>
     </div>

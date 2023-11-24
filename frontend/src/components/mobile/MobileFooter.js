@@ -4,6 +4,7 @@ import emailjs from "emailjs-com";
 import { shopifyClient } from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
+import { cartActions } from "../../redux/cart-slice.js";
 
 function Footer() {
   const dispatch = useDispatch();
@@ -87,25 +88,38 @@ function Footer() {
           <p className="mobile-bold">
             <strong>LINKS</strong>
           </p>
-          <NavLink className="navbar-link" to="/stories">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/stories"
+          >
             Stories
           </NavLink>
           <NavLink
             className="navbar-link"
             to="/shop/All?filter+by=Latest+Arrivals"
-            onClick={() =>
-              dispatch(mobileFilterActions.setPrimaryFilter("All"))
-            }
+            onClick={() => {
+              dispatch(mobileFilterActions.setPrimaryFilter("All"));
+              dispatch(cartActions.hideSearch());
+            }}
           >
             Shop
           </NavLink>
-          <NavLink className="navbar-link" to="/about">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/about"
+          >
             About
           </NavLink>
-          <NavLink className="navbar-link" to="/newsletter">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/newsletter"
+          >
             Newsletter
           </NavLink>
-          {/* <NavLink className="navbar-link" to="/search">
+          {/* <NavLink onClick={()=>dispatch(cartActions.hideSearch())} className="navbar-link" to="/search">
             Search
           </NavLink> */}
           <a className="navbar-link">Site Credit</a>
@@ -114,16 +128,32 @@ function Footer() {
           <p className="mobile-bold">
             <strong>CUSTOMER CARE</strong>
           </p>
-          <NavLink className="navbar-link" to="/shipping_and_returns">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/shipping_and_returns"
+          >
             Shipping & Returns
           </NavLink>
-          <NavLink className="navbar-link" to="/faq">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/faq"
+          >
             FAQ
           </NavLink>
-          <NavLink className="navbar-link" to="/terms_and_conditions">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/terms_and_conditions"
+          >
             Terms & Conditions
           </NavLink>
-          <NavLink className="navbar-link" to="/warranty">
+          <NavLink
+            onClick={() => dispatch(cartActions.hideSearch())}
+            className="navbar-link"
+            to="/warranty"
+          >
             Warranty
           </NavLink>
         </div>
@@ -135,7 +165,11 @@ function Footer() {
           onSubmit={sendEmail}
           ref={ref}
         >
-          <input placeholder="Email Address" name="email"></input>
+          <input
+            placeholder="Email Address"
+            name="email"
+            onFocus={() => dispatch(cartActions.hideSearch())}
+          ></input>
           <button type="submit">Join</button>
         </form>
       </div>

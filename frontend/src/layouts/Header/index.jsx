@@ -22,7 +22,7 @@ function Header() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const isArticleLoaded = useSelector((state) => state.article.isArticleLoaded);
-  const [displaySearch, setDisplaySearch] = useState(false);
+  const displaySearch = useSelector((state) => state.cart.displaySearch);
 
   useEffect(() => {
     if (searchTerm) {
@@ -52,10 +52,10 @@ function Header() {
   const scrollProgress = isArticleLoaded ? scrollYProgress : 0;
 
   function toggleSearch() {
-    setDisplaySearch(!displaySearch);
+    dispatch(cartActions.toggleDisplaySearch());
   }
   function hideSearch() {
-    setDisplaySearch(false);
+    dispatch(cartActions.hideSearch());
   }
 
   return (

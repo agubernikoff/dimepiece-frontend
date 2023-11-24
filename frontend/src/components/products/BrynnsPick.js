@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { useNavigate } from "react-router-dom";
+import { cartActions } from "../../redux/cart-slice";
+import { useDispatch } from "react-redux";
 
 function BrynnsPick() {
   const nav = useNavigate();
+  const dispatch = useDispatch();
   const options = {
     style: "currency",
     currency: "USD",
@@ -34,6 +37,7 @@ function BrynnsPick() {
                 nav(
                   `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
                 );
+                dispatch(cartActions.hideSearch());
               }}
             >
               View Product
@@ -47,6 +51,7 @@ function BrynnsPick() {
                 nav(
                   `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`
                 );
+                dispatch(cartActions.hideSearch());
               }}
             />
           </div>

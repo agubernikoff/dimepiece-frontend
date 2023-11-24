@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { articleActions } from "../../redux/article-slice";
+import { cartActions } from "../../redux/cart-slice";
 import { client } from "../../sanity/SanityClient";
 
 function FeaturedArticle() {
@@ -20,12 +21,13 @@ function FeaturedArticle() {
   return (
     <div
       className="featured-story"
-      onClick={() =>{
+      onClick={() => {
         nav(
           `/stories/${featured.category.replaceAll(" ", "-")}/${featured._id}`
         );
-        dispatch(articleActions.setIsArticleLoaded(false));}
-      }
+        dispatch(articleActions.setIsArticleLoaded(false));
+        dispatch(cartActions.hideSearch());
+      }}
     >
       {featured ? (
         <>

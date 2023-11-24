@@ -1,8 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { cartActions } from "../../redux/cart-slice";
 
 function BrynnsBasicsCard({ watch }) {
   const nav = useNavigate();
+  const dispatch = useDispatch();
   const options = {
     style: "currency",
     currency: "USD",
@@ -15,6 +18,7 @@ function BrynnsBasicsCard({ watch }) {
         <img
           onClick={() => {
             nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
+            dispatch(cartActions.hideSearch());
           }}
           loading="lazy"
           src={watch.store.previewImageUrl}
@@ -42,6 +46,7 @@ function BrynnsBasicsCard({ watch }) {
           className="brynns-basics-card-button"
           onClick={() => {
             nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
+            dispatch(cartActions.hideSearch());
           }}
         >
           View Product
