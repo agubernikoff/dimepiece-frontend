@@ -20,7 +20,7 @@ function Watch() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id][0]{...,productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
+        `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant"]._id][0]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
       )
       .then((response) => setWatch(response));
   }, [URLParam.title]);
@@ -100,7 +100,7 @@ function Watch() {
         });
     else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
-
+  console.log(watch);
   if (watch)
     return (
       <>
@@ -162,10 +162,25 @@ function Watch() {
               </div>
             </div>
             <div className="watch-description-buttons-container">
-              <button onClick={inCart ? removeFromCart : addToCart}>
-                {inCart ? "REMOVE FROM CART" : "ADD TO CART"}
-              </button>
-              <button onClick={buyNow}>BUY NOW</button>
+              {watch.store.variants[0].store.inventory.isAvailable ? (
+                <>
+                  <button onClick={inCart ? removeFromCart : addToCart}>
+                    {inCart ? "REMOVE FROM CART" : "ADD TO CART"}
+                  </button>
+                  <button onClick={buyNow}>BUY NOW</button>
+                </>
+              ) : (
+                <button
+                  style={{
+                    backgroundColor: "#D8D8D8",
+                    border: "none",
+                    color: "black",
+                    cursor: "default",
+                  }}
+                >
+                  SOLD OUT
+                </button>
+              )}
             </div>
             <div className="watch-description-summary">
               <p>{"BRYNN'S DESCRIPTION:"}</p>

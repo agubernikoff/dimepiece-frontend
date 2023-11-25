@@ -21,7 +21,7 @@ function MobileWatchPage() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id][0]{...,productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
+        `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant"]._id][0]{...,productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
       )
       .then((response) => setWatch(response));
   }, [URLParam.title]);
@@ -104,7 +104,7 @@ function MobileWatchPage() {
       dispatch(cartActions.addToCart(watch));
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
-
+  console.log(watch);
   return (
     <motion.div
       className="mobile-product-container"
