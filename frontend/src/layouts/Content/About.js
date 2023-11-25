@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 import PressCard from "./PressCard";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
 import SanityEmailLink from "../../sanity/SanityEmailLink";
@@ -17,6 +20,8 @@ import watchesandwonders from "../../assets/watchesandwonders.png";
 function About() {
   const [about, setAbout] = useState();
   const [press, setPress] = useState([]);
+  const dispatch = useDispatch();
+  const ref = useRef();
   useEffect(() => {
     client
       .fetch(
@@ -29,6 +34,42 @@ function About() {
   }, []);
 
   const mappedPress = press.map((p) => <PressCard key={p._id} article={p} />);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    console.log(emailPattern.test(e.target.email.value));
+    console.log(e.target.email.value);
+    if (emailPattern.test(e.target.email.value)) {
+      emailjs
+        .sendForm(
+          "service_571yygo",
+          "template_84i2kjw",
+          e.target,
+          "WPUweZAoXmamBd_kZ"
+        )
+        .then(
+          (result) => {
+            // Add success message or further actions here
+            if (result.text === "OK") {
+              console.log(result.text);
+              ref.current.classList.add("success");
+              setTimeout(() => ref.current.classList.remove("success"), 1000);
+              e.target.reset();
+            }
+          },
+          (error) => {
+            console.log(error.text);
+            // Add error handling here
+            ref.current.classList.add("failure");
+            setTimeout(() => ref.current.classList.remove("failure"), 1500);
+          }
+        );
+    } else {
+      ref.current.classList.add("failure");
+      setTimeout(() => ref.current.classList.remove("failure"), 1500);
+    }
+  };
 
   return (
     <motion.div
@@ -122,10 +163,18 @@ function About() {
           </div>
           <div className="newsletter">
             <h3 className="section-title-home">STAY IN THE KNOW</h3>
-            <div className="newsletter-input-container">
-              <input placeholder="Email Address" type="email"></input>
-              <button>Join</button>
-            </div>
+            <form
+              className="newsletter-input-container"
+              onSubmit={sendEmail}
+              ref={ref}
+            >
+              <input
+                placeholder="Email Address"
+                name="email"
+                onFocus={() => dispatch(cartActions.hideSearch())}
+              ></input>
+              <button type="submit">Join</button>
+            </form>
           </div>
         </>
       ) : null}
