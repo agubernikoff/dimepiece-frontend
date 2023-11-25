@@ -962,6 +962,7 @@ instead of tweaking each class */
   display: flex;
   flex-wrap: wrap;
   gap: 2%;
+  margin-bottom: -5%;
 }
 .about-dimepiece-press:last-of-type {
   margin-bottom: 15%;
@@ -974,7 +975,7 @@ instead of tweaking each class */
 }
 
 .about-dimepiece-press img {
-  width: 55%;
+  width: 50%;
   height: 100%;
   margin-right: 2%;
   object-fit: cover;
@@ -982,8 +983,9 @@ instead of tweaking each class */
 }
 
 .about-dimepiece-press div {
-  width: 45%;
+  width: 50%;
   height: 100%;
+  --base-text-size: 0.75rem;
 }
 
 .about-dimepiece-press-text {
