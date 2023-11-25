@@ -1230,7 +1230,7 @@ instead of tweaking each class */
 
 @keyframes scroll {
   to {
-    transform: translate(calc(-100% - 3.5rem));
+    transform: translate(calc(-100% - 5rem));
   }
 }
 
