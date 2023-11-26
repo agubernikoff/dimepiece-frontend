@@ -202,10 +202,11 @@ function About() {
             <h3 className="section-title-home">SAY HELLO</h3>
             <div className="about-say-hello">
               <p>
-                e. <a>hello@dimepiece.co</a>
+                e. <a href={`mailto:hello@dimepiece.co`}>hello@dimepiece.co</a>
               </p>
               <p>
-                ig. <a>@dimepiece</a>
+                ig.{" "}
+                <a href="https://www.instagram.com/dimepiece.co/">@dimepiece</a>
               </p>
             </div>
           </div>

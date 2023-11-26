@@ -164,10 +164,11 @@ function MobileAboutPage() {
             <h3 className="about-brynn-portrait-title">SAY HELLO</h3>
             <div className="about-say-hello">
               <p>
-                e. <a>hello@dimepiece.co</a>
+                e. <a href={`mailto:hello@dimepiece.co`}>hello@dimepiece.co</a>
               </p>
               <p>
-                ig. <a>@dimepiece</a>
+                ig.{" "}
+                <a href="https://www.instagram.com/dimepiece.co/">@dimepiece</a>
               </p>
             </div>
           </div>
