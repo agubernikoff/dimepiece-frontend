@@ -82,7 +82,54 @@ function MobileAboutPage() {
               Dimepiece works with Brands, Businesses, and Individuals alike
             </p>
           </div>
-          <div className="carousel-container">
+          <div className="slider">
+            <div className="gradient"></div>
+            <div className="slide-track">
+              <div className="slide">
+                <img src={ap} alt="AP" />
+              </div>
+              <div className="slide">
+                <img src={breda} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={ebay} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={foundwell} alt="foundwell" />
+              </div>
+              <div className="slide">
+                <img src={hodinkee} alt="hodinkee" />
+              </div>
+              <div className="slide">
+                <img src={jcrew} alt="jcrew" />
+              </div>
+              <div className="slide">
+                <img src={watchesandwonders} alt="watches and wonders" />
+              </div>
+              <div className="slide">
+                <img src={ap} alt="AP" />
+              </div>
+              <div className="slide">
+                <img src={breda} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={ebay} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={foundwell} alt="foundwell" />
+              </div>
+              <div className="slide">
+                <img src={hodinkee} alt="hodinkee" />
+              </div>
+              <div className="slide">
+                <img src={jcrew} alt="jcrew" />
+              </div>
+              <div className="slide">
+                <img src={watchesandwonders} alt="watches and wonders" />
+              </div>
+            </div>
+          </div>
+          {/* <div className="carousel-container">
             <div className="gradient"></div>
             <div className="slider">
               <img id="brand1" src={ap} alt="AP" />
@@ -108,7 +155,7 @@ function MobileAboutPage() {
                 alt="Watches And Wonders"
               />
             </div>
-          </div>
+          </div> */}
           <div>
             <p className="about-brynn-portrait-title"> PRESS</p>
             {mappedPress}

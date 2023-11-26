@@ -121,7 +121,55 @@ function About() {
             </p>
           </div>
 
-          <div className="carousel-container">
+          <div className="slider">
+            <div className="gradient"></div>
+            <div className="slide-track">
+              <div className="slide">
+                <img src={ap} alt="AP" />
+              </div>
+              <div className="slide">
+                <img src={breda} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={ebay} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={foundwell} alt="foundwell" />
+              </div>
+              <div className="slide">
+                <img src={hodinkee} alt="hodinkee" />
+              </div>
+              <div className="slide">
+                <img src={jcrew} alt="jcrew" />
+              </div>
+              <div className="slide">
+                <img src={watchesandwonders} alt="watches and wonders" />
+              </div>
+              <div className="slide">
+                <img src={ap} alt="AP" />
+              </div>
+              <div className="slide">
+                <img src={breda} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={ebay} alt="ebay" />
+              </div>
+              <div className="slide">
+                <img src={foundwell} alt="foundwell" />
+              </div>
+              <div className="slide">
+                <img src={hodinkee} alt="hodinkee" />
+              </div>
+              <div className="slide">
+                <img src={jcrew} alt="jcrew" />
+              </div>
+              <div className="slide">
+                <img src={watchesandwonders} alt="watches and wonders" />
+              </div>
+            </div>
+          </div>
+
+          {/* <div className="carousel-container">
             <div className="gradient"></div>
             <div className="slider">
               <img id="brand1" src={ap} alt="AP" />
@@ -147,7 +195,7 @@ function About() {
                 alt="Watches And Wonders"
               />
             </div>
-          </div>
+          </div> */}
           <p className="about-brynn-portrait-title">Dimepiece Press</p>
           <div className="about-section-container">{mappedPress}</div>
           <div>
