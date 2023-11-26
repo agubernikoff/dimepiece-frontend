@@ -414,7 +414,7 @@ instead of tweaking each class */
 
 .featured-watch-image {
   width: 50%;
-  margin: auto 5%;
+  margin: 0 5%;
   cursor: pointer;
 }
 
@@ -1042,7 +1042,7 @@ instead of tweaking each class */
   --base-text-size: 0.75rem;
 }
 
-.about-dimepiece-press-text {
+.dimepiece-press-text {
   margin-top: 3%;
   font-size: 14px;
   font-family: "swall-diatype";
@@ -1268,18 +1268,99 @@ instead of tweaking each class */
 
 @media (min-width: 601px) and (max-width: 768px) {
   /* styles */
+  .featured-watch-content-container {
+    width: 95%;
+  }
+  .featured-watch-detail-container > p {
+    width: 100%;
+  }
+  .featured-watch-description,
+  .featured-watch-description button {
+    font-size: 0.5rem;
+  }
+  .newsletter {
+    width: 50%;
+  }
+  .about-dimepiece-press .blue {
+    font-size: 0.75rem;
+  }
+  .about-dimepiece-press-title {
+    font-size: 1rem;
+  }
+  .dimepiece-press-text {
+    font-size: 0.67rem;
+  }
+  .about-brynn-portrait {
+    flex-direction: column;
+  }
+  .about-brynn-portrait > img {
+    width: 75%;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   /* styles */
+  .featured-watch-content-container {
+    width: 95%;
+  }
+  .featured-watch-detail-container > p {
+    width: 100%;
+  }
+  .featured-watch-description,
+  .featured-watch-description button {
+    font-size: 1vw;
+  }
+  .newsletter {
+    width: 45%;
+  }
+  .about-dimepiece-press .blue {
+    font-size: 1.5vw;
+  }
+  .about-dimepiece-press-title {
+    font-size: 1.75vw;
+  }
+  .dimepiece-press-text {
+    font-size: 1.3vw;
+  }
+  .about-brynn-portrait {
+    flex-direction: column;
+  }
+  .about-brynn-portrait > img {
+    width: 75%;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
   /* styles */
+  .featured-watch-description,
+  .featured-watch-description button {
+    font-size: 0.9vw;
+  }
+  .newsletter {
+    width: 40%;
+  }
+  .about-dimepiece-press .blue {
+    font-size: 1.5vw;
+  }
+  .about-dimepiece-press-title {
+    font-size: 1.75vw;
+  }
+  .dimepiece-press-text {
+    font-size: 1vw;
+  }
 }
 
-@media (min-width: 1441px) {
+@media (min-width: 1425px) {
   /* styles */
+  .featured-story-preview-title {
+    font-size: 5.7vw;
+  }
+}
+@media (max-width: 1559px) {
+  /* styles */
+  .featured-watch-headline {
+    font-size: 2.5vw;
+  }
 }
 /* 
 @keyframes scroll {
