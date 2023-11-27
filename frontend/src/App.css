@@ -1312,6 +1312,9 @@ instead of tweaking each class */
   .stories-page-content > p {
     width: 65%;
   }
+  .featured-story-preview-title {
+    font-size: 3.9vw;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -1353,6 +1356,9 @@ instead of tweaking each class */
   .stories-page-content > p {
     width: 65%;
   }
+  .featured-story-preview-title {
+    font-size: 4.2vw;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -1378,6 +1384,9 @@ instead of tweaking each class */
   }
   .content-index-container {
     width: 75%;
+  }
+  .featured-story-preview-title {
+    font-size: 4.7vw;
   }
 }
 

@@ -43,6 +43,15 @@ import { useState } from "react";
 // const Posts = lazy(() => import('./pages/Posts'));
 
 function App() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    window
+      .matchMedia("(max-width:700px)")
+      .addEventListener("change", (e) => setIsMobile(e.matches));
+    if (window.matchMedia("(max-width:700px)").matches) setIsMobile(true);
+  }, []);
+  console.log(isMobile);
   const URLParams = useParams();
   const contentWrapper = useRef();
   const dispatch = useDispatch();
@@ -61,7 +70,7 @@ function App() {
       });
   }, []);
   const displayCart = useSelector((state) => state.cart.displayCart);
-  const isMobile = window.innerWidth <= 700;
+  // const isMobile = window.innerWidth <= 700;
   const location = useLocation();
 
   const [displayIndex, setDisplayIndex] = useState(false);
@@ -92,25 +101,25 @@ function App() {
     }
   }
   useEffect(() => {
-    if (
-      !isMobile &&
-      (location.pathname.includes("shop") ||
-        location.pathname.includes("search"))
-    ) {
-      // contentWrapper.current.className = "stories-page";
-      setDisplayIndex("shop");
-    } else if (
-      !isMobile &&
-      location.pathname.includes("stories") &&
-      location.pathname.split("/").length < 4
-    ) {
-      // contentWrapper.current.className = "stories-page";
-      setDisplayIndex("stories");
+    if (!isMobile) {
+      if (
+        location.pathname.includes("shop") ||
+        location.pathname.includes("search")
+      ) {
+        // contentWrapper.current.className = "stories-page";
+        setDisplayIndex("shop");
+      } else if (
+        location.pathname.includes("stories") &&
+        location.pathname.split("/").length < 4
+      ) {
+        // contentWrapper.current.className = "stories-page";
+        setDisplayIndex("stories");
+      }
     } else {
       // contentWrapper.current.className = "";
       setDisplayIndex(false);
     }
-  }, []);
+  }, [isMobile]);
   return (
     <Suspense
       fallback={
