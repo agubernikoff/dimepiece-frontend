@@ -107,7 +107,8 @@ function IndexAndContent({ contentType }) {
 
   return (
     <motion.div
-      style={{ width: "82%" }}
+      className="content-index-container"
+      // style={{ width: "82%" }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

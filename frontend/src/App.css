@@ -555,6 +555,13 @@ instead of tweaking each class */
 .failure {
   animation: failure 1.5s linear;
 }
+/* INDEX */
+.index-container {
+  width: 9%;
+}
+.content-index-container {
+  width: 82%;
+}
 /* latest stories page */
 .stories-page {
   display: flex;
@@ -1296,6 +1303,15 @@ instead of tweaking each class */
   .about-brynn-portrait > img {
     width: 75%;
   }
+  .index-container {
+    width: 15%;
+  }
+  .content-index-container {
+    width: 70%;
+  }
+  .stories-page-content > p {
+    width: 65%;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -1328,6 +1344,15 @@ instead of tweaking each class */
   .about-brynn-portrait > img {
     width: 75%;
   }
+  .index-container {
+    width: 15%;
+  }
+  .content-index-container {
+    width: 70%;
+  }
+  .stories-page-content > p {
+    width: 65%;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -1347,6 +1372,12 @@ instead of tweaking each class */
   }
   .dimepiece-press-text {
     font-size: 1vw;
+  }
+  .index-container {
+    width: 12%;
+  }
+  .content-index-container {
+    width: 75%;
   }
 }
 

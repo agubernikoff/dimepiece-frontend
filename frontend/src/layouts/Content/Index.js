@@ -20,7 +20,8 @@ function Index({ displayIndex }) {
     <>
       {displayIndex && (
         <motion.div
-          style={{ width: "9%" }}
+          className="index-container"
+          // style={{ width: "9%" }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
