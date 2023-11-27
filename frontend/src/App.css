@@ -171,6 +171,7 @@ instead of tweaking each class */
   background-color: #d7ceff;
   color: var(--blue);
   padding-block: 1rem;
+  font-family: "swall-diatype";
 }
 .search-input-container {
   font-size: 3rem;
@@ -277,6 +278,7 @@ instead of tweaking each class */
   font-family: "swall-diatype";
   text-align: center;
   font-size: 1.4rem;
+  margin-top: -0.25%;
 }
 
 /* Latest Stories Homepage Section */
@@ -379,6 +381,7 @@ instead of tweaking each class */
   font-size: var(--base-text-size);
   line-height: 125%;
   margin: 0%;
+  letter-spacing: -0.15px;
 }
 
 /* brynns pick */
@@ -540,6 +543,7 @@ instead of tweaking each class */
   font-size: 1.4rem;
   outline: none;
   font-family: "swall-diatype";
+  margin-bottom: 0.5%;
 }
 .newsletter-input-container > input::placeholder {
   color: black;
@@ -547,6 +551,8 @@ instead of tweaking each class */
 .newsletter-input-container > button {
   font-size: 1.4rem;
   font-family: "swall-diatype";
+  margin-bottom: 0.5%;
+  margin-right: 0.5%;
 }
 .success {
   animation: success 1.5s linear;
@@ -634,12 +640,12 @@ instead of tweaking each class */
   width: 100%;
 }
 .stories-page-content > p {
-  width: 50%;
+  width: 60%;
   text-align: center;
   font-family: "swall-diatype";
   line-height: 130%;
-  margin: 2% auto 2%;
-  font-size: var(--base-text-size);
+  margin: 1% auto 2%;
+  font-size: 1rem;
 }
 .stories-page-card-container {
   display: flex;
@@ -721,7 +727,7 @@ instead of tweaking each class */
 }
 .sanity-article-image-container > p,
 .sanity-mobile-article-image-container > p {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-bottom: 0;
 }
 .article-button-container {
@@ -754,6 +760,7 @@ instead of tweaking each class */
   overflow: auto;
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
+  margin-left: 0.5%;
 }
 .product-images-container::-webkit-scrollbar {
   width: 0px;
@@ -1281,6 +1288,7 @@ instead of tweaking each class */
     width: 100%;
   }
   .featured-watch-description,
+  .featured-watch-details,
   .featured-watch-description button {
     font-size: 0.5rem;
   }
@@ -1325,6 +1333,7 @@ instead of tweaking each class */
     width: 100%;
   }
   .featured-watch-description,
+  .featured-watch-details,
   .featured-watch-description button {
     font-size: 1vw;
   }
@@ -1363,6 +1372,7 @@ instead of tweaking each class */
 @media (min-width: 1025px) and (max-width: 1440px) {
   /* styles */
   .featured-watch-description,
+  .featured-watch-details,
   .featured-watch-description button {
     font-size: 0.9vw;
   }

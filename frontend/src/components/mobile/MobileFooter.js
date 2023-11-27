@@ -120,7 +120,6 @@ function Footer() {
           {/* <NavLink onClick={()=>dispatch(cartActions.hideSearch())} className="navbar-link" to="/search">
             Search
           </NavLink> */}
-          <a className="navbar-link">Site Credit</a>
         </div>
         <div className="mobile-footer-column">
           <p className="mobile-bold">
@@ -181,6 +180,7 @@ function Footer() {
           <p>NY: {times.NewYork}</p>
           <p>LON: {times.London} </p>
         </div>
+        <a className="navbar-link">Site Credit</a>
       </div>
     </div>
   );

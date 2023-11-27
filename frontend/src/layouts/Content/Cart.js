@@ -62,7 +62,10 @@ function Cart({ isMobile }) {
               }).format(total)}
             </p>
           </div>
-          <div className="watch-description-buttons-container">
+          <div
+            className="watch-description-buttons-container"
+            style={{ marginBottom: "1%" }}
+          >
             <button
               onClick={() =>
                 window.open(`${url}`, "_blank", "noopener,noreferrer")

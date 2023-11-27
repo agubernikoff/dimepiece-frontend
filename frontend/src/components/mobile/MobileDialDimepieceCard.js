@@ -32,9 +32,9 @@ function MobileDialDimepieceCard({ story }) {
         />
       </div>
       <div className="mobile-dial-dimepiece-card-right">
-        <p className="blue dial-dimepiece-card-date">
+        {/* <p className="blue dial-dimepiece-card-date">
           {formattedDate.toUpperCase()}
-        </p>
+        </p> */}
         <div className="mobile-dial-dimepiece-card-headers">
           {mappedSubheaders}
         </div>

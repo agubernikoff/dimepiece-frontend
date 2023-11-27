@@ -55,8 +55,13 @@ function Article() {
       {article.title ? (
         <>
           <p>{article.title}</p>
-          <p>{formattedDate.toUpperCase()}</p>
-          <div className="author-photog-container">
+          <p style={{ fontFamily: "swall-diatype" }}>
+            {formattedDate.toUpperCase()}
+          </p>
+          <div
+            className="author-photog-container"
+            style={{ fontFamily: "swall-diatype" }}
+          >
             <p>
               Text:{" "}
               {article.authorLink ? (

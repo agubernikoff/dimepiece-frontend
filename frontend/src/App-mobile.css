@@ -286,7 +286,7 @@
 .mobile-dial-dimepiece-card-headers > p {
   border-bottom: 1px black solid;
   padding-bottom: 2%;
-  font-size: 14px;
+  font-size: 28px;
   font-family: "tobias-regular";
 }
 
@@ -325,7 +325,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 6%;
+  /* margin-top: 6%; */
+  height: 100vh;
 }
 .mobile-newsletter-page > p {
   text-align: center;
@@ -419,6 +420,9 @@
   overflow-x: auto;
   width: 100%;
   margin: auto;
+}
+.mobile-product-images-container::-webkit-scrollbar {
+  display: none;
 }
 .mobile-product-images-container > img {
   margin-right: 2%;
@@ -675,7 +679,7 @@
   border-bottom: 1px solid grey;
   /* padding: 1vw; */
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 10.7px;
   height: 6%;
   align-items: center;
 }
@@ -691,6 +695,6 @@
   margin-right: auto;
   margin-left: auto;
   font-size: 14px;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
   font-family: "swall-diatype";
 }
