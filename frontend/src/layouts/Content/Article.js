@@ -42,8 +42,7 @@ function Article() {
     marks: { annotationProduct: SanityProductLink },
     types: { "module.images": SanityArticleImage },
   };
-  console.log(article.author, article.authorLink);
-  console.log(article);
+
   return (
     <motion.div
       className="article"

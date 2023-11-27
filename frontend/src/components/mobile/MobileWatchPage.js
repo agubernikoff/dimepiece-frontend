@@ -57,7 +57,6 @@ function MobileWatchPage() {
     shopifyClient.checkout
       .addLineItems(checkoutId, lineItemsToAdd)
       .then((checkout) => {
-        console.log(checkout);
         dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
       });
     dispatch(cartActions.addToCart(watch));
@@ -65,11 +64,6 @@ function MobileWatchPage() {
   }
 
   function removeFromCart() {
-    console.log(
-      `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0]._ref.split("-")[1]
-      }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`
-    );
     const lineItemsToRemove = [
       `gid://shopify/CheckoutLineItem/${
         watch.store.variants[0]._ref.split("-")[1]
@@ -93,7 +87,7 @@ function MobileWatchPage() {
         quantity: 1,
       },
     ];
-    console.log(inCart);
+
     if (!inCart) {
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
@@ -104,7 +98,7 @@ function MobileWatchPage() {
       dispatch(cartActions.addToCart(watch));
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
-  console.log(watch);
+
   return (
     <motion.div
       className="mobile-product-container"

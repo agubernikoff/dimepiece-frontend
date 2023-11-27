@@ -9,8 +9,7 @@ function Newsletter() {
   const sendEmail = (e) => {
     e.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    console.log(emailPattern.test(e.target.email.value));
-    console.log(e.target.email.value);
+
     if (emailPattern.test(e.target.email.value)) {
       emailjs
         .sendForm(
@@ -23,14 +22,12 @@ function Newsletter() {
           (result) => {
             // Add success message or further actions here
             if (result.text === "OK") {
-              console.log(result.text);
               ref.current.classList.add("success");
               setTimeout(() => ref.current.classList.remove("success"), 1000);
               e.target.reset();
             }
           },
           (error) => {
-            console.log(error.text);
             // Add error handling here
             ref.current.classList.add("failure");
             setTimeout(() => ref.current.classList.remove("failure"), 1500);

@@ -16,7 +16,6 @@ function Watch() {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   };
-  console.log(watch);
   useEffect(() => {
     client
       .fetch(
@@ -91,7 +90,6 @@ function Watch() {
         });
     else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
-  console.log(watch);
   if (watch)
     return (
       <>

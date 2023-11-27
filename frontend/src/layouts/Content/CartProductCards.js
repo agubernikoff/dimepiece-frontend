@@ -18,11 +18,6 @@ function CartProductCards({ watch }) {
   const checkoutId = useSelector((state) => state.cart.checkoutId);
 
   function removeFromCart() {
-    console.log(
-      `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0].store.id
-      }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`
-    );
     const lineItemsToRemove = [
       `gid://shopify/CheckoutLineItem/${
         watch.store.variants[0].store.id
@@ -36,8 +31,6 @@ function CartProductCards({ watch }) {
       });
     dispatch(cartActions.removeFromCart(watch._id));
   }
-
-  console.log(watch.brynnPickImage.asset._ref);
 
   return (
     <div className="cart-product-card-content">

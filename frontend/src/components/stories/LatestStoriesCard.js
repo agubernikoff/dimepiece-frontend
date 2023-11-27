@@ -10,7 +10,6 @@ function LatestStoriesCard({ story }) {
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
   const nav = useNavigate();
   const dispatch = useDispatch();
-  // console.log(story);
 
   return (
     <div

@@ -30,24 +30,6 @@ function Header() {
     }
   }, []);
 
-  // const dispatch = useDispatch();
-
-  // const handleAddClick = () => {
-  //   dispatch(selectPost({}));
-  // };
-
-  // const handleEditClick = () => {
-  //   dispatch(setPreEditPost(true));
-  // };
-
-  // const activeStyle = ({ isActive }) =>
-  //   isActive
-  //     ? {
-  //         textDecoration: 'none'
-  //       }
-  //     : null;
-
-  //       console.log(logo);
   const { scrollYProgress } = useScroll();
   const scrollProgress = isArticleLoaded ? scrollYProgress : 0;
 

@@ -15,7 +15,7 @@ function Index({ displayIndex }) {
   const filteredBrandTitles = [...brandTitles].filter((title) =>
     watches.map((w) => w.brand).includes(title)
   );
-  console.log(categories);
+
   return (
     <>
       {displayIndex && (

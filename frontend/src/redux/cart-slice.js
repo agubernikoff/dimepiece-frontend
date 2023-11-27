@@ -56,7 +56,6 @@ const cartSlice = createSlice({
       state.cart = filtered;
     },
     setSearchResults(state, action) {
-      console.log(action.payload);
       const searchText = action.payload;
       state.searchText = searchText;
       const filtered = state.watches.filter((w) => {
@@ -79,7 +78,7 @@ const cartSlice = createSlice({
         )
           return true;
       });
-      console.log(filtered);
+
       if (!searchText || searchText.length < 3) state.searchResults = [];
       else state.searchResults = filtered;
     },
