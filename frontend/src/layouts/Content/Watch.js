@@ -78,9 +78,7 @@ function Watch() {
   function buyNow() {
     const lineItemsToAdd = [
       {
-        variantId: `gid://shopify/ProductVariant/${
-          watch.store.variants[0]._ref.split("-")[1]
-        }`,
+        variantId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];

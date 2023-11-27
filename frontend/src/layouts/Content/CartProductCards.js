@@ -20,12 +20,12 @@ function CartProductCards({ watch }) {
   function removeFromCart() {
     console.log(
       `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0]._ref.split("-")[1]
+        watch.store.variants[0].store.id
       }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`
     );
     const lineItemsToRemove = [
       `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0]._ref.split("-")[1]
+        watch.store.variants[0].store.id
       }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`,
     ];
     shopifyClient.checkout
