@@ -16,7 +16,7 @@ function Watch() {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   };
-
+  console.log(watch);
   useEffect(() => {
     client
       .fetch(
@@ -46,9 +46,7 @@ function Watch() {
   function addToCart() {
     const lineItemsToAdd = [
       {
-        variantId: `gid://shopify/ProductVariant/${
-          watch.store.variants[0]._ref.split("-")[1]
-        }`,
+        variantId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];
@@ -63,14 +61,9 @@ function Watch() {
   }
 
   function removeFromCart() {
-    console.log(
-      `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0]._ref.split("-")[1]
-      }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`
-    );
     const lineItemsToRemove = [
       `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0]._ref.split("-")[1]
+        watch.store.variants[0].store.id
       }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`,
     ];
     shopifyClient.checkout

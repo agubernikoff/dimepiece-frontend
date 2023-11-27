@@ -51,7 +51,6 @@ function App() {
       .addEventListener("change", (e) => setIsMobile(e.matches));
     if (window.matchMedia("(max-width:700px)").matches) setIsMobile(true);
   }, []);
-  console.log(isMobile);
   const URLParams = useParams();
   const contentWrapper = useRef();
   const dispatch = useDispatch();
