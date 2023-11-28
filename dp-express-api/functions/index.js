@@ -96,7 +96,9 @@ app.get("/checkoutId", (req, res) => {
 app.post("/checkoutId", (req, res) => {
   functions.logger.log(req.body);
   req.session.checkoutId = req.body.checkoutId;
+  res.session.checkoutId = req.body.checkoutId;
   req.session.save();
+  res.session.save();
   res.json({ checkoutId: req.session.checkoutId });
 });
 exports.api = functions.https.onRequest(app);
