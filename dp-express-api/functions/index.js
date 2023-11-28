@@ -32,14 +32,14 @@ app.use(cookieParser());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    name: "SessionCookie",
+    name: "__session",
     genid: function (req) {
       console.log("session id created");
       return v1();
     },
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: { secure: true, sameSite: "Lax" },
   })
 );
 app.use(express.json());
