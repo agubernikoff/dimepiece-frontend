@@ -68,6 +68,7 @@ app.get("/test", (req, res) => {
 });
 app.get("/checkoutId", (req, res) => {
   functions.logger.log(req);
+  req.session.save();
   if (req.session.checkoutId) res.json({ checkoutId: req.session.checkoutId });
   else res.json({ checkoutId: "" });
 });
