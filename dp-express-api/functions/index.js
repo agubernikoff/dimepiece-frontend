@@ -46,7 +46,10 @@ const {
 
 const app = express();
 
-var whitelist = ["http://localhost:3000" /** other domains if any */];
+var whitelist = [
+  "http://localhost:3000",
+  "https://dimepiece-755d8.web.app" /** other domains if any */,
+];
 var corsOptions = {
   httpOnly: true,
   credentials: true,
