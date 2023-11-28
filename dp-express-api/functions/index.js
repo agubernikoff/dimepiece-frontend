@@ -78,7 +78,7 @@ app.use(
     },
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false, sameSite: "Lax" },
+    cookie: { secure: true, sameSite: "none" },
   })
 );
 
