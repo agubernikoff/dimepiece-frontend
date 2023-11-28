@@ -33,6 +33,14 @@ const ref = firebase.initializeApp({
   ),
   databaseURL: "https://dimepiece-api-default-rtdb.firebaseio.com/",
 });
+const {
+  log,
+  info,
+  debug,
+  warn,
+  error,
+  write,
+} = require("firebase-functions/logger");
 
 const app = express();
 app.use(cors());
@@ -59,12 +67,12 @@ app.get("/test", (req, res) => {
   res.send("You did it! 🥳");
 });
 app.get("/checkoutId", (req, res) => {
-  console.log(req);
+  functions.logger.log(req);
   if (req.session.checkoutId) res.json({ checkoutId: req.session.checkoutId });
   else res.json({ checkoutId: "" });
 });
 app.post("/checkoutId", (req, res) => {
-  console.log(req.body);
+  functions.logger.log(req.body);
   req.session.checkoutId = req.body.checkoutId;
   req.session.save();
   res.json({ checkoutId: req.session.checkoutId });
