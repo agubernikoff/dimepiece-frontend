@@ -475,6 +475,10 @@ instead of tweaking each class */
   font-family: "tobias-regular";
 }
 .dial-dimepiece-card-date {
+  font-family: "swall-diatype" !important;
+  margin: 0;
+}
+.dial-dimepiece-card-date .blue {
   font-family: "swall-diatype";
   margin: 0;
 }
