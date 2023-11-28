@@ -704,7 +704,7 @@ instead of tweaking each class */
 }
 .article-sanity-content > p {
   width: 50%;
-  margin: 2% auto;
+  margin: 1% auto;
   text-align: left;
   font-family: "swall-diatype";
 }
