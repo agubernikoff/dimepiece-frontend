@@ -31,7 +31,7 @@ const ref = firebase.initializeApp({
   credential: firebase.credential.cert(
     "./dimepiece-api-firebase-adminsdk-3aj9d-5c26de87b5.json"
   ),
-  databaseURL: "https://dimepiece-api.web.app",
+  // databaseURL: "https://dimepiece-api.web.app",
 });
 
 const app = express();
@@ -59,6 +59,7 @@ app.get("/test", (req, res) => {
   res.send("You did it! 🥳");
 });
 app.get("/checkoutId", (req, res) => {
+  console.log(req);
   if (req.session.checkoutId) res.json({ checkoutId: req.session.checkoutId });
   else res.json({ checkoutId: "" });
 });
