@@ -22,7 +22,7 @@ const express = require("express");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 const session = require("express-session");
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 require("body-parser");
 
@@ -63,7 +63,7 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// app.use(cookieParser());
+app.use(cookieParser());
 
 app.use(
   session({
@@ -77,8 +77,13 @@ app.use(
       return uuidv4();
     },
     resave: false,
-    saveUninitialized: false,
-    cookie: { sameSite: "None", secure: true },
+    saveUninitialized: true,
+    cookie: {
+      sameSite: "None",
+      secure: true,
+      domain: "https://dimepiece-755d8.web.app",
+      path: "/",
+    },
   })
 );
 
