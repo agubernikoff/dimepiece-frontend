@@ -63,7 +63,9 @@ function Footer() {
             <p>LON: {times.London} </p>
           </div>
           <br />
-          <a>Site Credit</a>
+          <a rel="noopener noreferrer" target="_blank">
+            Site Credit
+          </a>
         </div>
         <div className="footer-links">
           <p>

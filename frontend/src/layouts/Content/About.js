@@ -203,7 +203,13 @@ function About() {
               </p>
               <p>
                 ig.{" "}
-                <a href="https://www.instagram.com/dimepiece.co/">@dimepiece</a>
+                <a
+                  href="https://www.instagram.com/dimepiece.co/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  @dimepiece
+                </a>
               </p>
             </div>
           </div>

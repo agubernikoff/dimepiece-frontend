@@ -180,7 +180,9 @@ function Footer() {
           <p>NY: {times.NewYork}</p>
           <p>LON: {times.London} </p>
         </div>
-        <a className="navbar-link">Site Credit</a>
+        <a className="navbar-link" rel="noopener noreferrer" target="_blank">
+          Site Credit
+        </a>
       </div>
     </div>
   );
