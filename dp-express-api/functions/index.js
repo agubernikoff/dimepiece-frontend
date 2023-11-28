@@ -89,16 +89,12 @@ app.get("/test", (req, res) => {
 });
 app.get("/checkoutId", (req, res) => {
   functions.logger.log(req);
-  req.session.save();
   if (req.session.checkoutId) res.json({ checkoutId: req.session.checkoutId });
   else res.json({ checkoutId: "" });
 });
 app.post("/checkoutId", (req, res) => {
   functions.logger.log(req.body);
   req.session.checkoutId = req.body.checkoutId;
-  res.session.checkoutId = req.body.checkoutId;
-  req.session.save();
-  res.session.save();
   res.json({ checkoutId: req.session.checkoutId });
 });
 exports.api = functions.https.onRequest(app);
