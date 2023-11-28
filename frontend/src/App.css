@@ -564,10 +564,10 @@ instead of tweaking each class */
   margin-right: 0.5%;
 }
 .success {
-  animation: success 1.5s linear;
+  animation: success 1s linear;
 }
 .failure {
-  animation: failure 1.5s linear;
+  animation: failure 1s linear;
 }
 /* INDEX */
 .index-container {
@@ -1432,8 +1432,14 @@ instead of tweaking each class */
   0% {
     box-shadow: none;
   }
+  33% {
+    box-shadow: 0 0 2px 2px green;
+  }
   50% {
-    box-shadow: 2px 2px 2px 2px green;
+    box-shadow: 0 0 3px 3px green;
+  }
+  66% {
+    box-shadow: 0 0 2px 2px green;
   }
   100% {
     box-shadow: none;
@@ -1443,8 +1449,14 @@ instead of tweaking each class */
   0% {
     box-shadow: none;
   }
+  33% {
+    box-shadow: 0 0 2px 2px red;
+  }
   50% {
-    box-shadow: 2px 2px 2px 2px red;
+    box-shadow: 0 0 3px 3px red;
+  }
+  66% {
+    box-shadow: 0 0 2px 2px red;
   }
   100% {
     box-shadow: none;

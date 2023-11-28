@@ -5,7 +5,8 @@ import { cartActions } from "../../redux/cart-slice";
 
 function Newsletter() {
   const dispatch = useDispatch();
-  const ref = useRef();
+  const inputContainer = useRef();
+  const btn = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,20 +23,32 @@ function Newsletter() {
           (result) => {
             // Add success message or further actions here
             if (result.text === "OK") {
-              ref.current.classList.add("success");
-              setTimeout(() => ref.current.classList.remove("success"), 1000);
+              inputContainer.current.classList.add("success");
+              btn.current.innerHTML = "Thank You!";
+              btn.current.style.textDecoration = "none";
+              setTimeout(() => {
+                inputContainer.current.classList.remove("success");
+                btn.current.innerHTML = "Join";
+                btn.current.style.textDecoration = "underline";
+              }, 1000);
               e.target.reset();
             }
           },
           (error) => {
             // Add error handling here
-            ref.current.classList.add("failure");
-            setTimeout(() => ref.current.classList.remove("failure"), 1500);
+            inputContainer.current.classList.add("failure");
+            setTimeout(
+              () => inputContainer.current.classList.remove("failure"),
+              1000
+            );
           }
         );
     } else {
-      ref.current.classList.add("failure");
-      setTimeout(() => ref.current.classList.remove("failure"), 1500);
+      inputContainer.current.classList.add("failure");
+      setTimeout(
+        () => inputContainer.current.classList.remove("failure"),
+        1000
+      );
     }
   };
   return (
@@ -48,14 +61,16 @@ function Newsletter() {
       <form
         className="newsletter-input-container"
         onSubmit={sendEmail}
-        ref={ref}
+        ref={inputContainer}
       >
         <input
           placeholder="Email Address"
           name="email"
           onFocus={() => dispatch(cartActions.hideSearch())}
         ></input>
-        <button type="submit">Join</button>
+        <button type="submit" ref={btn}>
+          Join
+        </button>
       </form>
     </div>
   );
