@@ -17,25 +17,37 @@
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-import functions from "firebase-functions";
-import express from "express";
-import cors from "cors";
-import { v1 } from "uuid";
-import session from "express-session";
-import cookieParser from "cookie-parser";
-import "dotenv/config";
-import bodyParser from "body-parser";
-
+const functions = require("firebase-functions");
+const express = require("express");
+const cors = require("cors");
+var genuuid = require("uuid");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
+require("body-parser");
+const FirebaseStore = require("connect-session-firebase")(session);
+const firebase = require("firebase-admin");
+const ref = firebase.initializeApp({
+  credential: firebase.credential.cert(
+    "./dimepiece-api-firebase-adminsdk-3aj9d-5c26de87b5.json"
+  ),
+  databaseURL: "https://dimepiece-api.web.app",
+});
+console.log(ref.database());
+console.log(FirebaseStore);
 const app = express();
 app.use(cors());
 app.use(cookieParser());
 app.use(
   session({
+    store: new FirebaseStore({
+      database: ref.database(),
+    }),
     secret: process.env.SESSION_SECRET,
     name: "__session",
     genid: function (req) {
       console.log("session id created");
-      return v1();
+      return genuuid();
     },
     resave: false,
     saveUninitialized: false,
@@ -57,4 +69,4 @@ app.post("/checkoutId", (req, res) => {
   req.session.save();
   res.json({ checkoutId: req.session.checkoutId });
 });
-export const api = functions.https.onRequest(app);
+exports.api = functions.https.onRequest(app);
