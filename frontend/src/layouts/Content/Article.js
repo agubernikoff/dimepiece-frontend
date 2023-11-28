@@ -100,10 +100,14 @@ function Article() {
           <div className="article-sanity-content">
             <PortableText value={article.body} components={components} />
           </div>
-          <p className="blue">{article.category.toUpperCase()}</p>
-          <p>{formattedDate.toUpperCase()}</p>
+          <p style={{ fontFamily: "swall-diatype" }} className="blue">
+            {article.category.toUpperCase()}
+          </p>
+          <p style={{ fontFamily: "swall-diatype" }}>
+            {formattedDate.toUpperCase()}
+          </p>
           <div className="author-photog-container">
-            <p>
+            <p style={{ fontFamily: "swall-diatype" }}>
               Text:{" "}
               {article.authorLink ? (
                 <a
@@ -117,7 +121,7 @@ function Article() {
                 <>{article.author}</>
               )}
             </p>
-            <p>
+            <p style={{ fontFamily: "swall-diatype" }}>
               Photos:{" "}
               {article.photographerLink ? (
                 <a

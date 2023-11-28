@@ -190,6 +190,7 @@ instead of tweaking each class */
   font-size: 3rem;
   padding: 0;
   width: 95%;
+  font-family: "swall-diatype";
 }
 .search-input-container > button {
   margin: 0;
@@ -679,6 +680,7 @@ instead of tweaking each class */
 .author-photog-container {
   margin-bottom: 2%;
   margin-top: 1%;
+  font-family: "swall-diatype";
 }
 .author-photog-container > p:first-of-type {
   margin-bottom: 0;
