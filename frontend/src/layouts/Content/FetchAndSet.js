@@ -7,6 +7,9 @@ import { client } from "../../sanity/SanityClient";
 function FetchAndSet() {
   const dispatch = useDispatch();
   useEffect(() => {
+    fetch("https://dimepiece-api.web.app/checkoutId")
+      .then((r) => r.json())
+      .then((data) => console.log(data));
     client
       .fetch(`*[_type == "product" && isFeatured == true][0]`)
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));

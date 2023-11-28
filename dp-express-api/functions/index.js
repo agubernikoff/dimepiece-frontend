@@ -48,7 +48,8 @@ app.get("/test", (req, res) => {
   res.send("You did it! 🥳");
 });
 app.get("/checkoutId", (req, res) => {
-  res.json({ checkoutId: req.session.checkoutId });
+  if (req.session.checkoutId) res.json({ checkoutId: req.session.checkoutId });
+  else res.json({ checkoutId: "" });
 });
 app.post("/checkoutId", (req, res) => {
   console.log(req.body);
