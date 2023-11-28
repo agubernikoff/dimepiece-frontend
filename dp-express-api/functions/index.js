@@ -25,6 +25,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 require("body-parser");
+
 const FirebaseStore = require("connect-session-firebase")(session);
 const firebase = require("firebase-admin");
 const ref = firebase.initializeApp({
@@ -33,6 +34,7 @@ const ref = firebase.initializeApp({
   ),
   databaseURL: "https://dimepiece-api-default-rtdb.firebaseio.com/",
 });
+
 const {
   log,
   info,
@@ -43,8 +45,22 @@ const {
 } = require("firebase-functions/logger");
 
 const app = express();
-app.use(cors({ origin: ["http://localhost:3000"] }));
+
+var whitelist = ["http://localhost:3000" /** other domains if any */];
+var corsOptions = {
+  credentials: true,
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+server.use(cors(corsOptions));
+
 app.use(cookieParser());
+
 app.use(
   session({
     store: new FirebaseStore({
@@ -61,6 +77,7 @@ app.use(
     cookie: { secure: false, sameSite: "Lax" },
   })
 );
+
 app.use(express.json());
 
 app.get("/test", (req, res) => {
