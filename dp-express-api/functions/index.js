@@ -51,7 +51,6 @@ var whitelist = [
   "https://dimepiece-755d8.web.app" /** other domains if any */,
 ];
 var corsOptions = {
-  httpOnly: true,
   credentials: true,
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -78,7 +77,7 @@ app.use(
     },
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, sameSite: "none" },
+    cookie: { secure: true, sameSite: "none", httpOnly: true },
   })
 );
 
