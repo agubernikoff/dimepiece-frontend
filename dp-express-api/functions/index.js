@@ -58,7 +58,7 @@ app.use(
     },
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, sameSite: "Lax" },
+    cookie: { secure: false, sameSite: "Lax" },
   })
 );
 app.use(express.json());
