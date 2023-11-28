@@ -71,11 +71,14 @@ function MobileSearch({ hideSearch }) {
   return (
     <motion.div
       initial={{ y: "-100%" }}
-      animate={{ y: 0, height }}
-      exit={{ y: "-100%" }}
+      animate={{
+        y: 0,
+        height,
+        transition: { ease: "easeOut", duration: 0.25 },
+      }}
+      exit={{ y: "-100%", transition: { ease: "easeIn", duration: 0.25 } }}
       transition={{
-        duration: 0.25,
-        ease: "linear",
+        ease: "easeOut",
         height: { duration: 0.25 },
       }}
       layout="size"

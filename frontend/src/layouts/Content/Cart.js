@@ -28,9 +28,8 @@ function Cart({ isMobile }) {
       ></motion.div>
       <motion.div
         initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ duration: 0.25, ease: "easeInOut" }}
+        animate={{ x: 0, transition: { ease: "easeOut", duration: 0.25 } }}
+        exit={{ x: "100%", transition: { ease: "easeIn", duration: 0.25 } }}
         key="cart"
         className={isMobile ? "mobile-cart-pop-up" : "cart-pop-up"}
       >
