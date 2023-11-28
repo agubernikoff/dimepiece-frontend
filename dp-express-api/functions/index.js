@@ -20,7 +20,7 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
-var genuuid = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
@@ -47,7 +47,7 @@ app.use(
     name: "__session",
     genid: function (req) {
       console.log("session id created");
-      return genuuid();
+      return uuidv4();
     },
     resave: false,
     saveUninitialized: false,
