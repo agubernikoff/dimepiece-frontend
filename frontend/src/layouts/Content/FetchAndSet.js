@@ -10,6 +10,13 @@ function FetchAndSet() {
     fetch("https://dimepiece-api.web.app/checkoutId")
       .then((r) => r.json())
       .then((data) => console.log(data));
+    // fetch("https://dimepiece-api.web.app/checkoutId", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ checkoutId: "abc" }),
+    // })
+    //   .then((r) => r.json())
+    //   .then((data) => console.log(data));
     client
       .fetch(`*[_type == "product" && isFeatured == true][0]`)
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
