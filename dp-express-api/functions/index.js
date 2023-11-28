@@ -33,8 +33,7 @@ const ref = firebase.initializeApp({
   ),
   databaseURL: "https://dimepiece-api.web.app",
 });
-console.log(ref.database());
-console.log(FirebaseStore);
+
 const app = express();
 app.use(cors());
 app.use(cookieParser());
