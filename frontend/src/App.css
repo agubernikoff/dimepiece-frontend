@@ -170,7 +170,7 @@ instead of tweaking each class */
   margin: auto;
   background-color: #d7ceff;
   color: var(--blue);
-  padding-block: 1rem;
+  padding-block-start: 1rem;
   font-family: "swall-diatype";
 }
 .search-input-container {
@@ -189,6 +189,7 @@ instead of tweaking each class */
   outline: none;
   font-size: 3rem;
   padding: 0;
+  padding-bottom: 1rem;
   width: 95%;
   font-family: "swall-diatype";
 }
@@ -202,9 +203,12 @@ instead of tweaking each class */
   width: 90%;
   line-height: 140%;
   transform-origin: top;
+  box-sizing: border-box;
+  padding-bottom: 1rem;
 }
 .suggestion-title {
   text-decoration: underline;
+  margin-block: 1rem;
 }
 .suggestion-arrow-container {
   display: flex;
