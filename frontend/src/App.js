@@ -60,13 +60,13 @@ function App() {
       dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
       dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
     });
-    client
-      .fetch(
-        `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
-      )
-      .then((response) => {
-        dispatch(cartActions.setWatches(response));
-      });
+    // client
+    //   .fetch(
+    //     `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
+    //   )
+    //   .then((response) => {
+    //     dispatch(cartActions.setWatches(response));
+    //   });
   }, []);
   const displayCart = useSelector((state) => state.cart.displayCart);
   // const isMobile = window.innerWidth <= 700;

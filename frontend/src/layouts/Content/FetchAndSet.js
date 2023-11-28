@@ -3,20 +3,38 @@ import { useDispatch } from "react-redux";
 import { articleActions } from "../../redux/article-slice";
 import { cartActions } from "../../redux/cart-slice";
 import { client } from "../../sanity/SanityClient";
+import { shopifyClient } from "../../shopify/ShopifyClient";
 
 function FetchAndSet() {
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch("https://dimepiece-api.web.app/checkoutId")
+    fetch("https://dimepiece-api.web.app/checkoutId", {
+      credentials: "include",
+      headers: { "Access-Control-Allow-Credentials": true },
+    })
       .then((r) => r.json())
-      .then((data) => console.log(data));
-    // fetch("https://dimepiece-api.web.app/checkoutId", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ checkoutId: "abc" }),
-    // })
-    //   .then((r) => r.json())
-    //   .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        if (data.checkoutId) {
+          console.log("existing ", data.checkoutId);
+        } else {
+          shopifyClient.checkout.create().then((checkout) => {
+            dispatch(cartActions.setCheckoutId(checkout.id));
+            dispatch(
+              cartActions.setCheckoutTotal(checkout.subtotalPrice.amount)
+            );
+            dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
+            fetch("https://dimepiece-api.web.app/checkoutId", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify({ checkoutId: checkout.id }),
+            })
+              .then((r) => r.json())
+              .then((data) => console.log("new ", data));
+          });
+        }
+      });
     client
       .fetch(`*[_type == "product" && isFeatured == true][0]`)
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
