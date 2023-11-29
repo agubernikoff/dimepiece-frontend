@@ -48,7 +48,7 @@ function Article() {
     },
     types: { "module.images": SanityArticleImage },
   };
-  console.log(article.body);
+
   return (
     <motion.div
       className="article"
