@@ -7,6 +7,8 @@ import SanityProductLink from "../../sanity/SanityProductLink";
 import { motion } from "framer-motion";
 import { articleActions } from "../../redux/article-slice";
 import { useDispatch } from "react-redux";
+import SanityEmailLink from "../../sanity/SanityEmailLink";
+import SanityExternalLink from "../../sanity/SanityExternalLink";
 
 function MobileStoryPage() {
   const dispatch = useDispatch();
@@ -37,7 +39,11 @@ function MobileStoryPage() {
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
   const components = {
-    marks: { annotationProduct: SanityProductLink },
+    marks: {
+      annotationProduct: SanityProductLink,
+      annotationLinkEmail: SanityEmailLink,
+      annotationLinkExternal: SanityExternalLink,
+    },
     types: { "module.images": SanityArticleImage },
   };
   return (

@@ -7,6 +7,8 @@ import SanityArticleImage from "../../sanity/SanityArticleImage";
 import SanityProductLink from "../../sanity/SanityProductLink";
 import { useDispatch } from "react-redux";
 import { articleActions } from "../../redux/article-slice";
+import SanityEmailLink from "../../sanity/SanityEmailLink";
+import SanityExternalLink from "../../sanity/SanityExternalLink";
 
 function Article() {
   const dispatch = useDispatch();
@@ -39,10 +41,14 @@ function Article() {
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
   const components = {
-    marks: { annotationProduct: SanityProductLink },
+    marks: {
+      annotationProduct: SanityProductLink,
+      annotationLinkEmail: SanityEmailLink,
+      annotationLinkExternal: SanityExternalLink,
+    },
     types: { "module.images": SanityArticleImage },
   };
-
+  console.log(article.body);
   return (
     <motion.div
       className="article"
