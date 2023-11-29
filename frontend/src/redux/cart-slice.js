@@ -48,6 +48,16 @@ const cartSlice = createSlice({
       state.brands = action.payload;
       state.brandTitles = action.payload.map((b) => b.title).sort();
     },
+    addToCartFromLineItems(state, action) {
+      const productsToAdd = [];
+      action.payload.forEach((variant) => {
+        const watch = state.watches.find(
+          (w) => w.store.variants[0].store.id == variant
+        );
+        productsToAdd.push(watch);
+      });
+      state.cart = productsToAdd;
+    },
     addToCart(state, action) {
       state.cart = [...state.cart, action.payload];
     },
