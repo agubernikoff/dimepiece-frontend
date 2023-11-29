@@ -144,6 +144,11 @@
   justify-content: center;
   align-items: center;
 }
+.mobile-cart-footer {
+  font-weight: bold;
+  font-family: "swall-diatype";
+  margin-bottom: 4%;
+}
 
 /* MOBILE HOMEPAGE */
 
@@ -678,10 +683,10 @@
 .mobile-cart-title-container {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
   /* padding: 1vw; */
   box-sizing: border-box;
-  font-size: 10.7px;
+  font-size: 12px;
   height: 6%;
   align-items: center;
 }

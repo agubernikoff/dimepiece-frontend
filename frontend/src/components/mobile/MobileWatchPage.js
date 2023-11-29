@@ -21,7 +21,7 @@ function MobileWatchPage() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant"]._id][0]{...,productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
+        `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant"]._id][0]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
       )
       .then((response) => setWatch(response));
   }, [URLParam.title]);
@@ -48,9 +48,7 @@ function MobileWatchPage() {
   function addToCart() {
     const lineItemsToAdd = [
       {
-        variantId: `gid://shopify/ProductVariant/${
-          watch.store.variants[0]._ref.split("-")[1]
-        }`,
+        variantId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];
@@ -66,7 +64,7 @@ function MobileWatchPage() {
   function removeFromCart() {
     const lineItemsToRemove = [
       `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0]._ref.split("-")[1]
+        watch.store.variants[0].store.id
       }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`,
     ];
     shopifyClient.checkout
@@ -81,9 +79,7 @@ function MobileWatchPage() {
   function buyNow() {
     const lineItemsToAdd = [
       {
-        variantId: `gid://shopify/ProductVariant/${
-          watch.store.variants[0]._ref.split("-")[1]
-        }`,
+        variantId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];

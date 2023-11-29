@@ -38,18 +38,20 @@ function Cart({ isMobile }) {
             isMobile ? "mobile-cart-title-container" : "cart-title-container"
           }
         >
-          <h2>{cart.length > 0 ? `CART (${cart.length})` : "CART"}</h2>
+          <p style={isMobile ? null : { marginLeft: "1vw" }}>
+            {cart.length > 0 ? `CART (${cart.length})` : "CART"}
+          </p>
           <button
             className="close-cart-btn"
             onClick={() => dispatch(cartActions.hideCart())}
           >
-            <h2>X</h2>
+            <p>X</p>
           </button>
         </div>
         <div className="cart-product-cards-hold">
           <div className="cart-product-cards-container">{productCards}</div>
         </div>
-        <div className="cart-footer">
+        <div className={isMobile ? "mobile-cart-footer" : "cart-footer"}>
           <div className="cart-subtotal-container">
             <p>Subtotal</p>
             <p>
