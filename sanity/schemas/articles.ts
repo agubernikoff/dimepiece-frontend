@@ -44,12 +44,12 @@ export default {
       name: 'mostDiscussedDescription',
       type: 'string',
     },
-    {
-      title: 'Dial Dimepiece Subheaders',
-      name: 'dialDimepieceSubheaders',
-      type: 'array',
-      of: [{type: 'string'}],
-    },
+    // {
+    //   title: 'Dial Dimepiece Subheaders',
+    //   name: 'dialDimepieceSubheaders',
+    //   type: 'array',
+    //   of: [{type: 'string'}],
+    // },
     defineField({
       name: 'body',
       title: 'Body',

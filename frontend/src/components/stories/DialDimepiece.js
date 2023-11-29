@@ -7,7 +7,7 @@ function DialDimepiece() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && category == "Dial Dimepiece"][0..2]{_id,title,category,dialDimepieceSubheaders,mostDiscussed,_createdAt,coverImage{asset->{url}}}`
+        `*[_type == "articles" && category == "Interview"][0..3]{_id,title,category,mostDiscussed,mostDiscussedDescription,_createdAt,coverImage{asset->{url}}}`
       )
       .then((response) => setDialDimepiece(response));
   }, []);
@@ -16,7 +16,7 @@ function DialDimepiece() {
   ));
   return (
     <div className="dial-dimepiece">
-      <h3 className="section-title-home">DIAL DIMEPIECE</h3>
+      <h3 className="section-title-home">INTERVIEWS</h3>
       <div className="dial-dimepiece-cards-container">{mapped}</div>
     </div>
   );

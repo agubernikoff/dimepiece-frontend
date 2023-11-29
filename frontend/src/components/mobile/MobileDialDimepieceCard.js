@@ -11,9 +11,9 @@ function MobileDialDimepieceCard({ story }) {
   const nav = useNavigate();
   const dispatch = useDispatch();
 
-  const mappedSubheaders = story.dialDimepieceSubheaders.map((subheader, i) => (
-    <p key={i}>{subheader}</p>
-  ));
+  // const mappedSubheaders = story.dialDimepieceSubheaders.map((subheader, i) => (
+  //   <p key={i}>{subheader}</p>
+  // ));
 
   return (
     <div
@@ -32,12 +32,15 @@ function MobileDialDimepieceCard({ story }) {
         />
       </div>
       <div className="mobile-dial-dimepiece-card-right">
+        <p>{story.title}</p>
+        <p>{story.mostDiscussedDescription}</p>
+        <button>Read More</button>
         {/* <p className="blue dial-dimepiece-card-date">
           {formattedDate.toUpperCase()}
         </p> */}
-        <div className="mobile-dial-dimepiece-card-headers">
+        {/* <div className="mobile-dial-dimepiece-card-headers">
           {mappedSubheaders}
-        </div>
+        </div> */}
       </div>
     </div>
   );
