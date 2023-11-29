@@ -8,7 +8,7 @@ import { shopifyClient } from "../../shopify/ShopifyClient";
 function FetchAndSet() {
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch("http://127.0.0.1:5001/dimepiece-api/us-central1/api/checkoutId", {
+    fetch("https://dimepiece-api.web.app/checkoutId", {
       credentials: "include",
     })
       .then((r) => r.json())
@@ -23,15 +23,12 @@ function FetchAndSet() {
               cartActions.setCheckoutTotal(checkout.subtotalPrice.amount)
             );
             dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
-            fetch(
-              "http://127.0.0.1:5001/dimepiece-api/us-central1/api/checkoutId",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                credentials: "include",
-                body: JSON.stringify({ checkoutId: checkout.id }),
-              }
-            )
+            fetch("https://dimepiece-api.web.app/checkoutId", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify({ checkoutId: checkout.id }),
+            })
               .then((r) => r.json())
               .then((data) => console.log("new ", data));
           });
