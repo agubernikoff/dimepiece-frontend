@@ -78,10 +78,10 @@ app.use(
     },
     resave: false,
     // proxy: true,
-    // saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
-      // sameSite: "none",
-      // secure: true,
+      sameSite: "none",
+      secure: true,
     },
   })
 );
