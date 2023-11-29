@@ -472,11 +472,23 @@ instead of tweaking each class */
 .dial-dimepiece-card-left {
   width: 50%;
 }
-
+.dial-dimepiece-card-left > img {
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
 .dial-dimepiece-card-right {
   width: 50%;
   font-size: var(--base-text-size);
   font-family: "tobias-regular";
+}
+.dial-dimepiece-title {
+  font-size: 1.5rem;
+  font-family: "tobias-regular";
+  margin-top: 0;
+}
+.dial-dimepiece-discussed {
+  font-size: 0.75rem;
+  font-family: "swall-diatype";
 }
 .dial-dimepiece-card-date {
   font-family: "swall-diatype" !important;

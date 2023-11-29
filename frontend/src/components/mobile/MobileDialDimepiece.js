@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
+import MobileLatestStoriesCard from "./MobileLatestStoriesCard";
 import MobileDialDimepieceCard from "./MobileDialDimepieceCard";
 
 function MobileDialDimepiece() {
@@ -7,12 +8,12 @@ function MobileDialDimepiece() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && category == "Interview"][0..3]{_id,title,category,mostDiscussed,mostDiscussedDescription,_createdAt,coverImage{asset->{url}}}`
+        `*[_type == "articles" && category == "Interview" && mostDiscussed != true && isFeatured != true][0..3]{_id,title,category,mostDiscussed,mostDiscussedDescription,_createdAt,coverImage{asset->{url}}}`
       )
       .then((response) => setDialDimepiece(response));
   }, []);
   const mapped = DialDimepiece.map((bb) => (
-    <MobileDialDimepieceCard key={bb._id} story={bb} />
+    <MobileLatestStoriesCard key={bb._id} story={bb} />
   ));
   return (
     <div className="mobile-dial-dimepiece">

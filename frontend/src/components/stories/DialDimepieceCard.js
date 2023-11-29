@@ -25,9 +25,20 @@ function DialDimepieceCard({ story }) {
         />
       </div>
       <div className="dial-dimepiece-card-right">
-        <p>{story.title}</p>
-        <p>{story.mostDiscussedDescription}</p>
-        <button>Read More</button>
+        <p className="dial-dimepiece-title">{story.title}</p>
+        <p className="dial-dimepiece-discussed">
+          {story.mostDiscussedDescription}
+        </p>
+        <button
+          style={{ fontSize: ".75rem" }}
+          className="most-discussed-preview-button"
+          onClick={() => {
+            nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+            dispatch(cartActions.hideSearch());
+          }}
+        >
+          Read More
+        </button>
       </div>
     </div>
   );
