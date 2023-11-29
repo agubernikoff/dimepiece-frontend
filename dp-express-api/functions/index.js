@@ -51,7 +51,7 @@ var whitelist = [
   "https://dimepiece-755d8.web.app" /** other domains if any */,
 ];
 var corsOptions = {
-  httpOnly: true,
+  // httpOnly: true,
   credentials: true,
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -64,7 +64,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(cookieParser());
-
+app.set("trust proxy", 1);
 app.use(
   session({
     store: new FirebaseStore({
@@ -77,11 +77,11 @@ app.use(
       return uuidv4();
     },
     resave: false,
-    proxy: true,
-    saveUninitialized: true,
+    // proxy: true,
+    // saveUninitialized: true,
     cookie: {
-      sameSite: "None",
-      secure: true,
+      // sameSite: "none",
+      // secure: true,
     },
   })
 );
@@ -92,13 +92,15 @@ app.get("/test", (req, res) => {
   res.send("You did it! 🥳");
 });
 app.get("/checkoutId", (req, res) => {
-  functions.logger.log(req);
+  // functions.logger.log(req.session);
+  console.log(req.session);
   if (req.session.checkoutId) res.json({ checkoutId: req.session.checkoutId });
   else res.json({ checkoutId: "" });
 });
 app.post("/checkoutId", (req, res) => {
   functions.logger.log(req.body);
   req.session.checkoutId = req.body.checkoutId;
+  console.log(req.session);
   res.json({ checkoutId: req.session.checkoutId });
 });
 exports.api = functions.https.onRequest(app);
