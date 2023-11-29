@@ -525,7 +525,9 @@
 .mobile-article .article-sanity-content .article-images-container > img {
   width: 100% !important;
 }
-
+.sanity-mobile-article-image-container > p {
+  font-size: 12px;
+}
 /* ABOUT */
 .mobile-about-page {
   width: 90%;
