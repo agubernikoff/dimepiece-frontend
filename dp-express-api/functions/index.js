@@ -77,12 +77,11 @@ app.use(
       return uuidv4();
     },
     resave: false,
+    proxy: true,
     saveUninitialized: true,
     cookie: {
       sameSite: "None",
       secure: true,
-      domain: "https://dimepiece-755d8.web.app",
-      path: "/",
     },
   })
 );
