@@ -7,8 +7,8 @@ import { cartActions } from "../../redux/cart-slice.js";
 function Footer() {
   const dispatch = useDispatch();
   const [times, setTimes] = useState({
-    London: new Date().toLocaleTimeString("en-US", {
-      timeZone: "Europe/London",
+    Geneva: new Date().toLocaleTimeString("en-US", {
+      timeZone: "Europe/Zurich",
       hour12: false,
     }),
     LosAngeles: new Date().toLocaleTimeString("en-US", {
@@ -24,8 +24,8 @@ function Footer() {
   useEffect(() => {
     const interval = setInterval(() => {
       setTimes({
-        London: new Date().toLocaleTimeString("en-US", {
-          timeZone: "Europe/London",
+        Geneva: new Date().toLocaleTimeString("en-US", {
+          timeZone: "Europe/Zurich",
           hour12: false,
         }),
         LosAngeles: new Date().toLocaleTimeString("en-US", {
@@ -60,7 +60,7 @@ function Footer() {
           <div>
             <p>LA: {times.LosAngeles}</p>
             <p>NY: {times.NewYork}</p>
-            <p>LON: {times.London} </p>
+            <p>GEN: {times.Geneva} </p>
           </div>
           <br />
           <a rel="noopener noreferrer" target="_blank">

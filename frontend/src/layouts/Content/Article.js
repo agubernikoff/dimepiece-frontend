@@ -82,20 +82,22 @@ function Article() {
                 <>{article.author}</>
               )}
             </p>
-            <p>
-              Photos:{" "}
-              {article.photographerLink ? (
-                <a
-                  href={article.photographerLink}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {article.photographer}
-                </a>
-              ) : (
-                article.photographer
-              )}
-            </p>
+            {article.photographer ? (
+              <p>
+                Photos:{" "}
+                {article.photographerLink ? (
+                  <a
+                    href={article.photographerLink}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {article.photographer}
+                  </a>
+                ) : (
+                  article.photographer
+                )}
+              </p>
+            ) : null}
           </div>
           <img
             loading="lazy"

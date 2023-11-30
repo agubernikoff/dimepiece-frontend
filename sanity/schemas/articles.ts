@@ -41,7 +41,7 @@ export default {
     },
     // {
     //   title: 'Most Discussed Description',
-    //   name: 'mostDiscussedDescription',
+    //   name: 'previewDescription',
     //   type: 'string',
     // },
     // {

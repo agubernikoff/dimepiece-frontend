@@ -33,7 +33,7 @@ function MobileDialDimepieceCard({ story }) {
       </div>
       <div className="mobile-dial-dimepiece-card-right">
         <p className="mobile-latest-story-card-title">{story.title}</p>
-        <p>{story.mostDiscussedDescription}</p>
+        <p>{story.previewDescription}</p>
         <button>Read More</button>
         {/* <p className="blue dial-dimepiece-card-date">
           {formattedDate.toUpperCase()}

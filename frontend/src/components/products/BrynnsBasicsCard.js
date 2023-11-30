@@ -27,7 +27,7 @@ function BrynnsBasicsCard({ watch }) {
       </div>
       <div className="brynns-basics-card-right">
         <div className="brynns-basics-card-right-details">
-          <p>{watch.brand}</p>
+          <p>{watch.brand.toUpperCase()}</p>
           <p>{watch.title}</p>
           <p>
             {watch.store.priceRange.minVariantPrice.toLocaleString(

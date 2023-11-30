@@ -42,7 +42,7 @@ function LatestStoriesCard({ story }) {
           {story.mostDiscussed ? (
             <>
               <p className="most-discussed-preview">
-                {story.mostDiscussedDescription}
+                {story.previewDescription}
               </p>
               <button
                 className="most-discussed-preview-button"

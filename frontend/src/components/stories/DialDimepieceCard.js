@@ -26,9 +26,7 @@ function DialDimepieceCard({ story }) {
       </div>
       <div className="dial-dimepiece-card-right">
         <p className="dial-dimepiece-title">{story.title}</p>
-        <p className="dial-dimepiece-discussed">
-          {story.mostDiscussedDescription}
-        </p>
+        <p className="dial-dimepiece-discussed">{story.previewDescription}</p>
         <button
           style={{ fontSize: ".75rem" }}
           className="most-discussed-preview-button"

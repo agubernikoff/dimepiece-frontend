@@ -8,7 +8,7 @@ function MostDiscussed() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && mostDiscussed == true][0]{_id,title,category,mostDiscussedDescription,datePublished,mostDiscussed,_createdAt,coverImage{asset->{url}}}`
+        `*[_type == "articles" && mostDiscussed == true][0]{_id,title,category,previewDescription,datePublished,mostDiscussed,_createdAt,coverImage{asset->{url}}}`
       )
       .then((response) => setMostDiscussed(response));
   }, []);

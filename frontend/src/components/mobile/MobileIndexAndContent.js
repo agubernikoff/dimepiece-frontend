@@ -28,7 +28,7 @@ function MobileIndexAndContent({ contentType }) {
     if (contentType === "stories") {
       client
         .fetch(
-          `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,mostDiscussedDescription,coverImage{asset->{url}}} | order(datePublished desc)`
+          `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)`
         )
         .then((response) => setContent(response));
       client

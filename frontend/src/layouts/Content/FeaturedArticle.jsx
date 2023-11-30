@@ -13,7 +13,7 @@ function FeaturedArticle() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,featuredDescription,coverImage{asset->{url}}} | order(datePublished desc)[0]`
+        `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)[0]`
       )
       .then((response) => setFeatured(response));
   }, []);
@@ -41,7 +41,7 @@ function FeaturedArticle() {
             <div className="featured-story-blurb-container-inside">
               <h2 className="featured-story-preview-title">{featured.title}</h2>
               <p className="featured-story-preview-description">
-                {featured.featuredDescription}
+                {featured.previewDescription}
               </p>
               <button className="read-story-btn">READ STORY</button>
             </div>

@@ -23,7 +23,7 @@ function MobileLatestStoriesCard({ story }) {
       />
       <p className="mobile-latest-story-card-title">{story.title}</p>
       <p className="mobile-most-discussed-preview">
-        {story.mostDiscussedDescription}
+        {story.previewDescription}
       </p>
     </div>
   );

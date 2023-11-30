@@ -57,7 +57,7 @@ function BrynnsPick() {
           </div>
           <div className="featured-watch-details">
             <div className="featured-watch-detail-container">
-              <p>{featured.brand}</p>
+              <p>{featured.brand.toUpperCase()}</p>
               <p>{featured.title}</p>
               <p>
                 {featured.store.priceRange.minVariantPrice.toLocaleString(

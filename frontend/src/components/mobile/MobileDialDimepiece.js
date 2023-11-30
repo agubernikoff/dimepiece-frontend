@@ -8,7 +8,7 @@ function MobileDialDimepiece() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && category == "Interview" && mostDiscussed != true && isFeatured != true][0..3]{_id,title,category,mostDiscussed,mostDiscussedDescription,_createdAt,coverImage{asset->{url}}}`
+        `*[_type == "articles" && category == "Interview" && mostDiscussed != true && isFeatured != true][0..3]{_id,title,category,mostDiscussed,previewDescription,_createdAt,coverImage{asset->{url}}}`
       )
       .then((response) => setDialDimepiece(response));
   }, []);
