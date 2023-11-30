@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import MobilePressCard from "./MobilePressCard";
@@ -13,10 +13,15 @@ import hodinkee from "../../assets/hodinkee.png";
 import jcrew from "../../assets/jcrew.png";
 import watchesandwonders from "../../assets/watchesandwonders.png";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux/cart-slice";
 
 function MobileAboutPage() {
   const [about, setAbout] = useState();
   const [press, setPress] = useState([]);
+  const dispatch = useDispatch();
+  const ref = useRef();
   useEffect(() => {
     client
       .fetch(
@@ -31,6 +36,39 @@ function MobileAboutPage() {
   const mappedPress = press.map((p) => (
     <MobilePressCard key={p._id} article={p} />
   ));
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailPattern.test(e.target.email.value)) {
+      emailjs
+        .sendForm(
+          "service_571yygo",
+          "template_84i2kjw",
+          e.target,
+          "WPUweZAoXmamBd_kZ"
+        )
+        .then(
+          (result) => {
+            // Add success message or further actions here
+            if (result.text === "OK") {
+              ref.current.classList.add("success");
+              setTimeout(() => ref.current.classList.remove("success"), 1000);
+              e.target.reset();
+            }
+          },
+          (error) => {
+            // Add error handling here
+            ref.current.classList.add("failure");
+            setTimeout(() => ref.current.classList.remove("failure"), 1500);
+          }
+        );
+    } else {
+      ref.current.classList.add("failure");
+      setTimeout(() => ref.current.classList.remove("failure"), 1500);
+    }
+  };
 
   return (
     <motion.div
@@ -180,10 +218,18 @@ function MobileAboutPage() {
           </div>
           <div className="newsletter">
             <h3 className="about-brynn-portrait-title">NEWSLETTER</h3>
-            <div className="newsletter-input-container">
-              <input placeholder="Email Address" type="email"></input>
-              <button>Join</button>
-            </div>
+            <form
+              className="newsletter-input-container"
+              onSubmit={sendEmail}
+              ref={ref}
+            >
+              <input
+                placeholder="Email Address"
+                name="email"
+                onFocus={() => dispatch(cartActions.hideSearch())}
+              ></input>
+              <button type="submit">Join</button>
+            </form>
           </div>
         </>
       ) : null}
