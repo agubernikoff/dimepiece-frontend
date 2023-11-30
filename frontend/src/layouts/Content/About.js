@@ -68,6 +68,51 @@ function About() {
     }
   };
 
+  // const carouselRef = useRef(null);
+
+  // useEffect(() => {
+  //   const options = {
+  //     root: null,
+  //     rootMargin: "0px",
+  //     threshold: 0.5,
+  //   };
+
+  //   const observer = new IntersectionObserver((entries) => {
+  //     console.log("Observer triggered:", entries);
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         startCarousel();
+  //       } else {
+  //         stopCarousel();
+  //       }
+  //     });
+  //   }, options);
+
+  //   if (carouselRef.current) {
+  //     observer.observe(carouselRef.current);
+  //   }
+
+  //   return () => {
+  //     if (carouselRef.current) {
+  //       observer.unobserve(carouselRef.current);
+  //     }
+  //   };
+  // }, []);
+
+  // const startCarousel = () => {
+  //   // Start the carousel animation
+  //   const slideTrack = carouselRef.current.querySelector(".slide-track");
+  //   slideTrack.style.animation = "scroll 25s linear infinite";
+  //   console.log("Carousel started");
+  // };
+
+  // const stopCarousel = () => {
+  //   // Stop the carousel animation
+  //   const slideTrack = carouselRef.current.querySelector(".slide-track");
+  //   slideTrack.style.animation = "none";
+  //   console.log("Carousel stopped");
+  // };
+
   return (
     <motion.div
       className="about-page"
@@ -117,7 +162,7 @@ function About() {
               Dimepiece works with Brands, Businesses, and Individuals alike
             </p>
           </div>
-
+          {/* <div className="carousel-wrapper" ref={carouselRef}> */}
           <div className="slider">
             <div className="gradient"></div>
             <div className="slide-track">
@@ -165,7 +210,7 @@ function About() {
               </div>
             </div>
           </div>
-
+          {/* </div> */}
           {/* <div className="carousel-container">
             <div className="gradient"></div>
             <div className="slider">
