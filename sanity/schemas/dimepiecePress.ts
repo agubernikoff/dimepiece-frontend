@@ -9,6 +9,11 @@ export default {
             type: 'string',
         },
         {
+            title: 'Link To Article',
+            name: 'link',
+            type: 'url',
+        },
+        {
             title: 'Brand',
             name: 'brand',
             type: 'string',
