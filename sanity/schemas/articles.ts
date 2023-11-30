@@ -35,15 +35,15 @@ export default {
       type: 'image',
     },
     {
-      title: 'Featured Description',
-      name: 'featuredDescription',
+      title: 'Preview Description',
+      name: 'previewDescription',
       type: 'string',
     },
-    {
-      title: 'Most Discussed Description',
-      name: 'mostDiscussedDescription',
-      type: 'string',
-    },
+    // {
+    //   title: 'Most Discussed Description',
+    //   name: 'mostDiscussedDescription',
+    //   type: 'string',
+    // },
     // {
     //   title: 'Dial Dimepiece Subheaders',
     //   name: 'dialDimepieceSubheaders',
