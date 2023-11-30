@@ -572,6 +572,9 @@
 .mobile-about-dimepiece-press {
   margin-bottom: 10%;
 }
+.mobile-about-dimepiece-press > img {
+  cursor: pointer;
+}
 .mobile-about-dimepiece-press .blue {
   font-size: 36px;
   font-family: "tobias-regular";
@@ -583,6 +586,7 @@
   font-family: "tobias-regular";
   margin-top: 2%;
   margin-bottom: 0;
+  cursor: pointer;
 }
 .mobile-about-dimepiece-description {
   font-size: 14px;
