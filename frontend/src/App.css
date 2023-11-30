@@ -1354,6 +1354,14 @@ instead of tweaking each class */
   .featured-story-preview-title {
     font-size: 3.9vw;
   }
+  .stories-page .latest-story-card {
+    width: 49%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stories-page .latest-story-card-title {
+    font-size: 0.75em;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -1399,6 +1407,14 @@ instead of tweaking each class */
   .featured-story-preview-title {
     font-size: 4.2vw;
   }
+  .stories-page .latest-story-card {
+    width: 49%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stories-page .latest-story-card-title {
+    font-size: 1em;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -1428,6 +1444,14 @@ instead of tweaking each class */
   }
   .featured-story-preview-title {
     font-size: 4.7vw;
+  }
+  .stories-page .latest-story-card {
+    width: 49%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stories-page .latest-story-card-title {
+    font-size: 1.25em;
   }
 }
 
