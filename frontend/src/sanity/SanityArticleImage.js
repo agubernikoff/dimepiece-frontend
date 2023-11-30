@@ -1,19 +1,30 @@
 import imageUrlBuilder from "@sanity/image-url";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { client } from "./SanityClient";
+import { useEffect, useState } from "react";
 
 // Barebones lazy-loaded image component
 function SanityArticleImage({ value }) {
-  const builder = imageUrlBuilder(client);
+  const [isMobile, setIsMobile] = useState(false);
 
-  function urlFor(source) {
-    return builder.image(source);
-  }
-  const isMobile = window.innerWidth <= 768;
+  useEffect(() => {
+    window
+      .matchMedia("(max-width:700px)")
+      .addEventListener("change", (e) => setIsMobile(e.matches));
+    if (window.matchMedia("(max-width:700px)").matches) setIsMobile(true);
+  }, []);
+
   const mappedImages = value.modules.map((m) => {
     const { width, height } = getImageDimensions(m.image);
     return (
-      <div key={m._key} className="sanity-article-image-container">
+      <div
+        key={m._key}
+        className={
+          isMobile
+            ? "sanity-mobile-article-image-container"
+            : "sanity-article-image-container"
+        }
+      >
         <img
           src={m.image.asset.url}
           alt={value.alt || " "}
@@ -21,7 +32,7 @@ function SanityArticleImage({ value }) {
           style={{
             // Avoid jumping around with aspect-ratio CSS property
             aspectRatio: width / height,
-            width: "100%",
+            width: isMobile ? "87vw" : "100%",
             margin: "auto",
           }}
         />
@@ -29,29 +40,8 @@ function SanityArticleImage({ value }) {
       </div>
     );
   });
-  const { width, height } = getImageDimensions(value.modules[0].image);
-  return (
-    <div className="article-images-container">
-      {isMobile ? (
-        <div className="sanity-mobile-article-image-container">
-          <img
-            src={value.modules[0].image.asset.url}
-            alt={value.alt || " "}
-            loading="lazy"
-            style={{
-              // Avoid jumping around with aspect-ratio CSS property
-              aspectRatio: width / height,
-              width: "100%",
-              margin: "auto",
-            }}
-          />
-          <p>{value.modules[0].caption ? value.modules[0].caption : null}</p>
-        </div>
-      ) : (
-        mappedImages
-      )}
-    </div>
-  );
+
+  return <div className="article-images-container">{mappedImages}</div>;
 }
 
 export default SanityArticleImage;
