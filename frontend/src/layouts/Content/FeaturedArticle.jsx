@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { articleActions } from "../../redux/article-slice";
 import { cartActions } from "../../redux/cart-slice";
-import { client } from "../../sanity/SanityClient";
 
 function FeaturedArticle() {
-  const [featured, setFeatured] = useState();
+  const featured = useSelector((state) => state.article.featured);
   const nav = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)[0]`
-      )
-      .then((response) => setFeatured(response));
-  }, []);
 
   return (
     <div
@@ -32,9 +23,8 @@ function FeaturedArticle() {
       {featured ? (
         <>
           <img
-            loading="lazy"
             className="featured-story-img"
-            alt="***TO BE FIXED***"
+            alt={featured.title}
             src={featured.coverImage.asset.url}
           />
           <div className="featured-story-blurb-container">

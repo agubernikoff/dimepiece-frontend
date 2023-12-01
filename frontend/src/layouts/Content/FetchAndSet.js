@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { aboutActions } from "../../redux/about-slice";
 import { articleActions } from "../../redux/article-slice";
 import { cartActions } from "../../redux/cart-slice";
 import { client } from "../../sanity/SanityClient";
@@ -8,6 +9,11 @@ import { shopifyClient } from "../../shopify/ShopifyClient";
 function FetchAndSet() {
   const dispatch = useDispatch();
   useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)[0]`
+      )
+      .then((response) => dispatch(articleActions.setFeatured(response)));
     client
       .fetch(`*[_type == "product" && isFeatured == true][0]`)
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
@@ -29,6 +35,16 @@ function FetchAndSet() {
       .then((response) => {
         dispatch(cartActions.setWatches(response));
       });
+    client
+      .fetch(
+        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}},text1[]{...,modules[]{...,image{asset->{url}}}},text2[]{...,modules[]{...,image{asset->{url}}}}}`
+      )
+      .then((response) => dispatch(aboutActions.setAbout(response)));
+    client
+      .fetch(`*[_type == "dimepiecePress"]{...,image{asset->{url}}}`)
+      .then((response) => dispatch(aboutActions.setPress(response)));
+
+    // cart
     fetch("https://dimepiece-api.web.app/checkoutId", {
       credentials: "include",
     })

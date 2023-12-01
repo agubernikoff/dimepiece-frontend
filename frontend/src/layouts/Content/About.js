@@ -3,7 +3,7 @@ import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import PressCard from "./PressCard";
 import SanityArticleImage from "../../sanity/SanityArticleImage";
@@ -18,20 +18,10 @@ import jcrew from "../../assets/jcrew.png";
 import watchesandwonders from "../../assets/watchesandwonders.png";
 
 function About() {
-  const [about, setAbout] = useState();
-  const [press, setPress] = useState([]);
+  const about = useSelector((state) => state.about.about);
+  const press = useSelector((state) => state.about.press);
   const dispatch = useDispatch();
   const ref = useRef();
-  useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}},text1[]{...,modules[]{...,image{asset->{url}}}},text2[]{...,modules[]{...,image{asset->{url}}}}}`
-      )
-      .then((response) => setAbout(response));
-    client
-      .fetch(`*[_type == "dimepiecePress"]{...,image{asset->{url}}}`)
-      .then((response) => setPress(response));
-  }, []);
 
   const mappedPress = press.map((p) => <PressCard key={p._id} article={p} />);
 

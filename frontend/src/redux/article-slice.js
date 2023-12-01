@@ -8,8 +8,12 @@ const articleSlice = createSlice({
     stories: [],
     types: [],
     categories: [],
+    featured: null,
   },
   reducers: {
+    setFeatured(state, action) {
+      state.featured = action.payload;
+    },
     setIsArticleLoaded(state, action) {
       state.isArticleLoaded = action.payload;
     },
