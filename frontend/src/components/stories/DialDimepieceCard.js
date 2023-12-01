@@ -28,7 +28,6 @@ function DialDimepieceCard({ story }) {
         <p className="dial-dimepiece-title">{story.title}</p>
         <p className="dial-dimepiece-discussed">{story.previewDescription}</p>
         <button
-          style={{ fontSize: ".75rem" }}
           className="most-discussed-preview-button"
           onClick={() => {
             nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);

@@ -1,3 +1,4 @@
+import { PortableText } from "@portabletext/react";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,7 @@ function BrynnsBasicsCard({ watch }) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   };
+  console.log(watch);
   return (
     <div className="brynns-basics-card">
       <div className="brynns-basics-card-left">
@@ -36,12 +38,9 @@ function BrynnsBasicsCard({ watch }) {
             )}
           </p>
         </div>
-        <p className="brynns-basics-card-description">
-          This watch is called the Princess, and aptly so. Not a mighty king,
-          not a sternly regal queen, but a charming princess. Pink and cute, but
-          important, nonetheless. We love this watch for her color and size, but
-          also because you rarely see this out and about.{" "}
-        </p>
+        <div className="brynns-basics-card-description">
+          <PortableText value={watch.description} />
+        </div>
         <button
           className="brynns-basics-card-button"
           onClick={() => {
@@ -49,7 +48,7 @@ function BrynnsBasicsCard({ watch }) {
             dispatch(cartActions.hideSearch());
           }}
         >
-          View Product
+          Shop Now
         </button>
       </div>
     </div>

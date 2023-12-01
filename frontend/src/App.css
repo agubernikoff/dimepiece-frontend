@@ -477,18 +477,28 @@ instead of tweaking each class */
   object-fit: cover;
 }
 .dial-dimepiece-card-right {
+  overflow: hidden;
   width: 50%;
   font-size: var(--base-text-size);
   font-family: "tobias-regular";
 }
 .dial-dimepiece-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: "tobias-regular";
-  margin-top: 0;
+  margin: 0;
+  margin-top: -2%;
 }
 .dial-dimepiece-discussed {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 0.75rem;
   font-family: "swall-diatype";
+}
+.dial-dimepiece-card-right .most-discussed-preview-button {
+  font-size: 0.75rem;
 }
 .dial-dimepiece-card-date {
   font-family: "swall-diatype" !important;
@@ -530,7 +540,13 @@ instead of tweaking each class */
 .brynns-basics-card-description {
   font-size: var(--base-text-size);
 }
-
+.brynns-basics-card-description > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .brynns-basics-card-right-details > p {
   font-size: var(--base-text-size);
   margin: 1%;
@@ -1362,6 +1378,20 @@ instead of tweaking each class */
   .stories-page .latest-story-card-title {
     font-size: 0.75em;
   }
+  .dial-dimepiece-title {
+    font-size: 0.7rem;
+  }
+  .dial-dimepiece-discussed,
+  .dial-dimepiece-card-right .most-discussed-preview-button,
+  .brynns-basics-card-right-details > p,
+  .brynns-basics-card-description,
+  .brynns-basics-card-button {
+    font-size: 0.5rem;
+  }
+  .most-discussed-preview,
+  .most-discussed-preview-button {
+    font-size: 0.6rem;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -1415,6 +1445,20 @@ instead of tweaking each class */
   .stories-page .latest-story-card-title {
     font-size: 1em;
   }
+  .dial-dimepiece-title {
+    font-size: 0.8rem;
+  }
+  .dial-dimepiece-discussed,
+  .dial-dimepiece-card-right .most-discussed-preview-button,
+  .brynns-basics-card-right-details > p,
+  .brynns-basics-card-description,
+  .brynns-basics-card-button {
+    font-size: 0.6rem;
+  }
+  .most-discussed-preview,
+  .most-discussed-preview-button {
+    font-size: 0.75rem;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -1453,6 +1497,20 @@ instead of tweaking each class */
   .stories-page .latest-story-card-title {
     font-size: 1.25em;
   }
+  .dial-dimepiece-title {
+    font-size: 1rem;
+  }
+  .dial-dimepiece-discussed,
+  .dial-dimepiece-card-right .most-discussed-preview-button,
+  .brynns-basics-card-right-details > p,
+  .brynns-basics-card-description,
+  .brynns-basics-card-button {
+    font-size: 0.6rem;
+  }
+  .most-discussed-preview,
+  .most-discussed-preview-button {
+    font-size: 0.75rem;
+  }
 }
 
 @media (min-width: 1425px) {
@@ -1466,6 +1524,9 @@ instead of tweaking each class */
   .featured-watch-headline {
     font-size: 2.5vw;
   }
+  /* .dial-dimepiece-title {
+    font-size: 1.15rem;
+  } */
 }
 /* 
 @keyframes scroll {
