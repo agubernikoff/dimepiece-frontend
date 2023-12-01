@@ -68,9 +68,10 @@ function Cart({ isMobile }) {
             style={{ marginBottom: "1%" }}
           >
             <button
-              onClick={() =>
-                window.open(`${url}`, "_blank", "noopener,noreferrer")
-              }
+              onClick={() => {
+                if (cart.length > 0)
+                  window.open(`${url}`, "_blank", "noopener,noreferrer");
+              }}
             >
               CHECKOUT
             </button>
