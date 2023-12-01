@@ -1380,6 +1380,10 @@ instead of tweaking each class */
   }
   .dial-dimepiece-title {
     font-size: 0.7rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
   }
   .dial-dimepiece-discussed,
   .dial-dimepiece-card-right .most-discussed-preview-button,
@@ -1387,6 +1391,9 @@ instead of tweaking each class */
   .brynns-basics-card-description,
   .brynns-basics-card-button {
     font-size: 0.5rem;
+  }
+  .dial-dimepiece-discussed {
+    -webkit-line-clamp: 3;
   }
   .most-discussed-preview,
   .most-discussed-preview-button {
@@ -1447,6 +1454,11 @@ instead of tweaking each class */
   }
   .dial-dimepiece-title {
     font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .dial-dimepiece-discussed,
   .dial-dimepiece-card-right .most-discussed-preview-button,
@@ -1454,6 +1466,9 @@ instead of tweaking each class */
   .brynns-basics-card-description,
   .brynns-basics-card-button {
     font-size: 0.6rem;
+  }
+  .dial-dimepiece-discussed {
+    -webkit-line-clamp: 3;
   }
   .most-discussed-preview,
   .most-discussed-preview-button {
