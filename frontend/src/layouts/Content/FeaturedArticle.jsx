@@ -8,7 +8,6 @@ function FeaturedArticle() {
   const featured = useSelector((state) => state.article.featured);
   const nav = useNavigate();
   const dispatch = useDispatch();
-
   return (
     <div
       className="featured-story"
@@ -26,6 +25,9 @@ function FeaturedArticle() {
             className="featured-story-img"
             alt={featured.title}
             src={featured.coverImage.asset.url}
+            style={{
+              backgroundImage: `url(${featured.coverImage.asset.url}?blur=50)`,
+            }}
           />
           <div className="featured-story-blurb-container">
             <div className="featured-story-blurb-container-inside">
