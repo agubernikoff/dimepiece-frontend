@@ -533,6 +533,9 @@
 .sanity-mobile-article-image-container > p {
   font-size: 12px;
 }
+.sanity-mobile-article-image-container {
+  margin-top: 2.5%;
+}
 /* ABOUT */
 .mobile-about-page {
   width: 90%;

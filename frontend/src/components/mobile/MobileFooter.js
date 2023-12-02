@@ -10,8 +10,8 @@ function Footer() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const [times, setTimes] = useState({
-    London: new Date().toLocaleTimeString("en-US", {
-      timeZone: "Europe/London",
+    Geneva: new Date().toLocaleTimeString("en-US", {
+      timeZone: "Europe/Zurich",
       hour12: false,
     }),
     LosAngeles: new Date().toLocaleTimeString("en-US", {
@@ -59,8 +59,8 @@ function Footer() {
   useEffect(() => {
     const interval = setInterval(() => {
       setTimes({
-        London: new Date().toLocaleTimeString("en-US", {
-          timeZone: "Europe/London",
+        Geneva: new Date().toLocaleTimeString("en-US", {
+          timeZone: "Europe/Zurich",
           hour12: false,
         }),
         LosAngeles: new Date().toLocaleTimeString("en-US", {
@@ -178,7 +178,7 @@ function Footer() {
         <div className="mobile-footer-column">
           <p>LA: {times.LosAngeles}</p>
           <p>NY: {times.NewYork}</p>
-          <p>LON: {times.London} </p>
+          <p>GEN: {times.Geneva} </p>
         </div>
         <a className="navbar-link" rel="noopener noreferrer" target="_blank">
           Site Credit
