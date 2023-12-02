@@ -736,7 +736,7 @@ instead of tweaking each class */
 }
 .article-sanity-content > p {
   width: 50%;
-  margin: 1% auto;
+  margin: auto;
   text-align: left;
   font-family: "swall-diatype";
 }
@@ -749,6 +749,7 @@ instead of tweaking each class */
   display: flex;
   gap: 1rem;
   overflow: auto;
+  margin-top: 1.5%;
 }
 .article-images-container::-webkit-scrollbar {
   display: none;
