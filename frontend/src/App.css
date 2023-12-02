@@ -733,6 +733,7 @@ instead of tweaking each class */
 .article-cover-img {
   width: 50%;
   margin: auto;
+  margin-top: 1.5%;
 }
 .article-sanity-content > p {
   width: 50%;
@@ -749,7 +750,7 @@ instead of tweaking each class */
   display: flex;
   gap: 1rem;
   overflow: auto;
-  margin-top: 1.5%;
+  margin-top: 1.8%;
 }
 .article-images-container::-webkit-scrollbar {
   display: none;
