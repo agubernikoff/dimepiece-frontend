@@ -491,7 +491,7 @@ instead of tweaking each class */
 .dial-dimepiece-discussed {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 7;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 0.75rem;
@@ -539,6 +539,7 @@ instead of tweaking each class */
 }
 .brynns-basics-card-description {
   font-size: var(--base-text-size);
+  font-family: "swall-diatype";
 }
 .brynns-basics-card-description > p {
   display: -webkit-box;
@@ -590,12 +591,13 @@ instead of tweaking each class */
   font-family: "swall-diatype";
   margin-bottom: 0.5%;
   margin-right: 0.5%;
+  white-space: nowrap;
 }
 .success {
-  animation: success 1s linear;
+  animation: success 0.5s linear;
 }
 .failure {
-  animation: failure 1s linear;
+  animation: failure 0.5s linear;
 }
 /* INDEX */
 .index-container {
