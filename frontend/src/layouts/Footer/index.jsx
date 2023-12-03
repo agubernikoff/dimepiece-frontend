@@ -58,9 +58,9 @@ function Footer() {
           <p>All Rights Reserved.</p>
           <br />
           <div>
-            <p>LA: {times.LosAngeles}</p>
-            <p>NY: {times.NewYork}</p>
-            <p>GEN: {times.Geneva} </p>
+            <p>Los Angeles — {times.LosAngeles}</p>
+            <p>New York — {times.NewYork}</p>
+            <p>Geneva — {times.Geneva} </p>
           </div>
           <br />
           <a rel="noopener noreferrer" target="_blank">

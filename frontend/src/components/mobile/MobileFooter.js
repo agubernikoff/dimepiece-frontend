@@ -176,9 +176,9 @@ function Footer() {
           <p>All Rights Reserved.</p>
         </div>
         <div className="mobile-footer-column">
-          <p>LA: {times.LosAngeles}</p>
-          <p>NY: {times.NewYork}</p>
-          <p>GEN: {times.Geneva} </p>
+          <p>Los Angeles — {times.LosAngeles}</p>
+          <p>New York — {times.NewYork}</p>
+          <p>Geneva — {times.Geneva} </p>
         </div>
         <a className="navbar-link" rel="noopener noreferrer" target="_blank">
           Site Credit
