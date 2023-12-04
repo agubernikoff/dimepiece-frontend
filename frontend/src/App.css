@@ -748,7 +748,7 @@ instead of tweaking each class */
 .article-images-container {
   width: 100%;
   display: flex;
-  gap: 1rem;
+  gap: 2vw;
   overflow: auto;
   margin-top: 1.8%;
 }
