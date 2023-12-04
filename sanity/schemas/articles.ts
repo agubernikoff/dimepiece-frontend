@@ -35,21 +35,25 @@ export default {
       type: 'image',
     },
     {
+      title: 'Featured',
+      name: 'isFeatured',
+      type: 'boolean',
+    },
+    {
+      title: 'Most Discussed',
+      name: 'mostDiscussed',
+      type: 'boolean',
+    },
+    {
       title: 'Preview Description',
       name: 'previewDescription',
       type: 'string',
+      validation: Rule => 
+        Rule.custom((description,context)=> 
+          {if((context.document.isFeatured || context.document.mostDiscussed) && !description) 
+            return "Preview Description is required for a 'Featured' or 'Most Discussed' article.";
+          else return true})
     },
-    // {
-    //   title: 'Most Discussed Description',
-    //   name: 'previewDescription',
-    //   type: 'string',
-    // },
-    // {
-    //   title: 'Dial Dimepiece Subheaders',
-    //   name: 'dialDimepieceSubheaders',
-    //   type: 'array',
-    //   of: [{type: 'string'}],
-    // },
     defineField({
       name: 'body',
       title: 'Body',
@@ -75,16 +79,6 @@ export default {
           {title: 'Interview', value: 'Interview'},
         ],
       },
-    },
-    {
-      title: 'Featured',
-      name: 'isFeatured',
-      type: 'boolean',
-    },
-    {
-      title: 'Most Discussed',
-      name: 'mostDiscussed',
-      type: 'boolean',
     },
   ],
 }

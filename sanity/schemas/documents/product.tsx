@@ -106,14 +106,24 @@ export default defineType({
       type: 'boolean',
     },
     {
-      title: "Brynn's Pick Image - Grey",
+      title: "Brynn's Pick Image - Grey (Required if Brynn's Pick)",
       name: 'brynnPickImage',
       type: 'image',
+      validation: Rule => 
+        Rule.custom((image,context)=> 
+          {if(context.document.isFeatured && !image) 
+            return "Grey Image is required for a 'Brynn's Pick' product.";
+          else return true})
     },
     {
-      title: 'Featured Headline',
+      title: 'Featured Headline (Required if Brynn\'s Pick)',
       name: 'featuredHeadline',
       type: 'string',
+      validation: Rule => 
+        Rule.custom((headline,context)=> 
+          {if(context.document.isFeatured && !headline) 
+            return "Featured Headline is required for a 'Brynn's Pick' product.";
+          else return true})
     },
     {
       title: 'Date of Birth',
