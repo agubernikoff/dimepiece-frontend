@@ -734,6 +734,7 @@ instead of tweaking each class */
   width: 50%;
   margin: auto;
   margin-top: 1.5%;
+  margin-bottom: 1.5%;
 }
 .article-sanity-content > p {
   width: 50%;

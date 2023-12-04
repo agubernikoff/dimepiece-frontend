@@ -272,6 +272,9 @@
   margin-right: auto;
 }
 
+.mobile-dial-dimepiece-cards-container {
+  margin-bottom: 4%;
+}
 .mobile-dial-dimepiece-card:first-of-type {
   margin-top: 10%;
 }
@@ -402,8 +405,8 @@
 }
 .mobile-content-mapped .mobile-latest-story-card {
   width: 90%;
-  margin-bottom: 5%;
   margin: auto;
+  margin-bottom: 10%;
 }
 .mobile-content-mapped .mobile-latest-story-card > img {
   aspect-ratio: 2/3;
@@ -412,7 +415,7 @@
 .mobile-content-mapped .mobile-latest-story-card-title {
   margin-top: 2%;
   margin-bottom: 5%;
-  font-size: 24px;
+  font-size: 32px;
 }
 /* .mobile-content-mapped .mobile-most-discussed-preview {
   display: none;
@@ -526,6 +529,7 @@
 }
 .mobile-article .article-cover-img {
   width: 100%;
+  margin-bottom: 5%;
 }
 .mobile-article .article-sanity-content .article-images-container > img {
   width: 100% !important;
