@@ -77,21 +77,21 @@ function MobileWatchPage() {
   }
 
   function buyNow() {
+    dispatch(cartActions.addToCart(watch));
     const lineItemsToAdd = [
       {
         variantId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];
-
     if (!inCart) {
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
           console.log(checkout);
+          window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
+          dispatch(cartActions.addToCart(watch));
         });
-      window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
-      dispatch(cartActions.addToCart(watch));
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
 

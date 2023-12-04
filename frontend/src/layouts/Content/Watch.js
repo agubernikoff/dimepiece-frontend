@@ -75,6 +75,7 @@ function Watch() {
   }
 
   function buyNow() {
+    dispatch(cartActions.addToCart(watch));
     const lineItemsToAdd = [
       {
         variantId: `${watch.store.variants[0].store.gid}`,
@@ -86,6 +87,7 @@ function Watch() {
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
           console.log(checkout);
+          dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
           window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
         });
     else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
