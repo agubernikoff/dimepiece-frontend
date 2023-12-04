@@ -63,7 +63,12 @@ function Footer() {
             <p>Geneva — {times.Geneva} </p>
           </div>
           <br />
-          <a rel="noopener noreferrer" target="_blank">
+          <a
+            href="https://www.swallstudios.com/"
+            className="navbar-link site-credit"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             Site Credit
           </a>
         </div>
@@ -100,9 +105,6 @@ function Footer() {
           >
             Newsletter
           </NavLink>
-          {/* <NavLink onClick={()=>dispatch(cartActions.hideSearch())} className="navbar-link" to="/search">
-            Search
-          </NavLink> */}
         </div>
         <div className="footer-left-column">
           <p>
@@ -138,16 +140,6 @@ function Footer() {
             Warranty
           </NavLink>
         </div>
-        {/* <div className="footer-left-column">
-          <p>
-            <strong>GET IN TOUCH</strong>
-          </p>
-          <br />
-          <p>Shipping & Returns</p>
-          <p>FAQ</p>
-          <p>Terms & Conditions</p>
-          <p>Warranty</p>
-        </div> */}
       </div>
       <div className="footer-right-container">
         <button

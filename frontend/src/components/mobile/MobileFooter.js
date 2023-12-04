@@ -180,7 +180,12 @@ function Footer() {
           <p>New York — {times.NewYork}</p>
           <p>Geneva — {times.Geneva} </p>
         </div>
-        <a className="navbar-link" rel="noopener noreferrer" target="_blank">
+        <a
+          href="https://www.swallstudios.com/"
+          className="navbar-link site-credit"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           Site Credit
         </a>
       </div>

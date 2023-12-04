@@ -14,8 +14,6 @@ a {
   text-decoration: none;
 }
 button {
-  /* cursor: url("./assets/watch-cursor.png"), pointer; */
-
   cursor: pointer;
   background: none;
   color: black;
@@ -1587,4 +1585,8 @@ instead of tweaking each class */
   100% {
     box-shadow: none;
   }
+}
+
+.site-credit {
+  cursor: url("./assets/watch-cursor.png"), pointer;
 }
