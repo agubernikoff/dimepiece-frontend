@@ -21,7 +21,7 @@ function MobileBrynnsPick() {
     return (
       <div className="mobile-featured-watch">
         <p
-          style={{ fontFamily: "swall-diatype", fontWeight: "bold" }}
+          style={{ fontFamily: "swall-diatype-bold" }}
           className="section-title-home"
         >
           {"SHOP BRYNN'S PICK"}
