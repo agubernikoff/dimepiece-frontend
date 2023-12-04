@@ -156,7 +156,9 @@ function Footer() {
         </div>
       </div>
       <div className="mobile-footer-newsletter-container">
-        <h3 className="mobile-bold">NEWSLETTER</h3>
+        <p style={{ fontFamily: "swall-diatype-bold" }} className="mobile-bold">
+          NEWSLETTER
+        </p>
         <form
           className="mobile-footer-newsletter-input-container"
           onSubmit={sendEmail}
