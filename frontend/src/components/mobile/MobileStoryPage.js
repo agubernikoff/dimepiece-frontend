@@ -108,8 +108,36 @@ function MobileStoryPage() {
           <p className="blue">{article.category.toUpperCase()}</p>
           <p>{formattedDate.toUpperCase()}</p>
           <div className="author-photog-container">
-            <p>Text: {article.author}</p>
-            <p>Photos: {article.photographer}</p>
+            <p>
+              Text:{" "}
+              {article.authorLink ? (
+                <a
+                  href={article.authorLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {article.author}
+                </a>
+              ) : (
+                <>{article.author}</>
+              )}
+            </p>
+            {article.photographer ? (
+              <p>
+                Photos:{" "}
+                {article.photographerLink ? (
+                  <a
+                    href={article.photographerLink}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {article.photographer}
+                  </a>
+                ) : (
+                  article.photographer
+                )}
+              </p>
+            ) : null}
           </div>
         </>
       ) : null}
