@@ -20,7 +20,12 @@ function MobileBrynnsPick() {
   if (featured.store) {
     return (
       <div className="mobile-featured-watch">
-        <h3 className="section-title-home">{"SHOP BRYNN'S PICK"}</h3>
+        <p
+          style={{ fontFamily: "swall-diatype", fontWeight: "bold" }}
+          className="section-title-home"
+        >
+          {"SHOP BRYNN'S PICK"}
+        </p>
         <p className="mobile-featured-watch-headline">
           {featured.featuredHeadline}
         </p>
