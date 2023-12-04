@@ -281,7 +281,7 @@ h3 {
 }
 
 .mobile-dial-dimepiece-cards-container {
-  margin-bottom: 4%;
+  margin-top: 4%;
 }
 .mobile-dial-dimepiece-card:first-of-type {
   margin-top: 10%;
@@ -620,6 +620,9 @@ h3 {
 .mobile-about-page .newsletter-input-container {
   margin-bottom: 10%;
   margin-top: 0;
+}
+.mobile-about-page .newsletter-input-container > button {
+  margin-right: 2%;
 }
 /* mobile footer */
 .mobile-footer {
