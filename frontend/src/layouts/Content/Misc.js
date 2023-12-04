@@ -26,7 +26,12 @@ function Misc({ title }) {
     >
       {misc ? (
         <>
-          <h3 className="section-title-home">{misc.title}</h3>
+          <p
+            style={{ fontFamily: "swall-diatype-bold" }}
+            className="section-title-home"
+          >
+            {misc.title}
+          </p>
           <PortableText
             value={misc.text}
             components={{ marks: { annotationLinkEmail: SanityEmailLink } }}

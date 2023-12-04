@@ -16,7 +16,12 @@ function MobileLatestWatches() {
   ));
   return (
     <div>
-      <h3 className="section-title-home">LATEST WATCHES</h3>
+      <p
+        style={{ fontFamily: "swall-diatype-bold" }}
+        className="section-title-home"
+      >
+        LATEST WATCHES
+      </p>
       <div className="mobile-watches">{mapped}</div>
     </div>
   );

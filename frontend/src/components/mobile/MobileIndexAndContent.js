@@ -186,13 +186,20 @@ function MobileIndexAndContent({ contentType }) {
             transition={{ duration: 0.5, ease: "backInOut" }}
           >
             <div className="mobile-descriptor">
-              <h3 className="section-title-home">
+              <p
+                style={{
+                  fontFamily: "swall-diatype-bold",
+                  fontSize: "1.4rem",
+                  marginBottom: "5%",
+                }}
+                className="section-title-home"
+              >
                 {primaryFilter === "All"
                   ? contentType === "shop"
                     ? "SHOP ALL"
                     : "LATEST STORIES"
                   : primaryFilter.toUpperCase()}
-              </h3>
+              </p>
               <p>{descriptor}</p>
             </div>
             {content[0] ? (

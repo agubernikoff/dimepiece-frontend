@@ -48,7 +48,12 @@ function MobileNewsletter() {
       key={"newsletterPage"}
     >
       <div className="mobile-newsletter">
-        <h3 className="section-title-home">NEWSLETTER</h3>
+        <p
+          style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
+          className="section-title-home"
+        >
+          NEWSLETTER
+        </p>
         <p>
           Sign up for the Dimepiece Newsletter to stay up to date on all our
           latest stories, products, and offerings.

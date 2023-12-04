@@ -17,7 +17,12 @@ function MobileDialDimepiece() {
   ));
   return (
     <div className="mobile-dial-dimepiece">
-      <h3 className="section-title-home">INTERVIEWS</h3>
+      <p
+        style={{ fontFamily: "swall-diatype-bold" }}
+        className="section-title-home"
+      >
+        INTERVIEWS
+      </p>
       <div className="mobile-dial-dimepiece-cards-container">{mapped}</div>
     </div>
   );

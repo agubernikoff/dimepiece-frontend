@@ -199,7 +199,12 @@ function MobileAboutPage() {
             {mappedPress}
           </div>
           <div>
-            <h3 className="about-brynn-portrait-title">SAY HELLO</h3>
+            <p
+              style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
+              className="about-brynn-portrait-title"
+            >
+              SAY HELLO
+            </p>
             <div className="about-say-hello">
               <p>
                 e. <a href={`mailto:hello@dimepiece.co`}>hello@dimepiece.co</a>
@@ -217,7 +222,12 @@ function MobileAboutPage() {
             </div>
           </div>
           <div className="newsletter">
-            <h3 className="about-brynn-portrait-title">NEWSLETTER</h3>
+            <p
+              style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
+              className="about-brynn-portrait-title"
+            >
+              NEWSLETTER
+            </p>
             <form
               className="newsletter-input-container"
               onSubmit={sendEmail}
