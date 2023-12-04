@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "swall-diatype-bold";
+  src: url("./fonts/SwallStudiosDiatype-Bold.otf") format("opentype");
+}
+h2,
+h3 {
+  font-family: "swall-diatype-bold";
+}
 .mobile-nav {
   display: flex;
   justify-content: center;
