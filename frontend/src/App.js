@@ -51,25 +51,12 @@ function App() {
       .addEventListener("change", (e) => setIsMobile(e.matches));
     if (window.matchMedia("(max-width:700px)").matches) setIsMobile(true);
   }, []);
-  const URLParams = useParams();
+
   const contentWrapper = useRef();
   const dispatch = useDispatch();
-  useEffect(() => {
-    shopifyClient.checkout.create().then((checkout) => {
-      dispatch(cartActions.setCheckoutId(checkout.id));
-      dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
-      dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
-    });
-    // client
-    //   .fetch(
-    //     `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
-    //   )
-    //   .then((response) => {
-    //     dispatch(cartActions.setWatches(response));
-    //   });
-  }, []);
+
   const displayCart = useSelector((state) => state.cart.displayCart);
-  // const isMobile = window.innerWidth <= 700;
+
   const location = useLocation();
 
   const [displayIndex, setDisplayIndex] = useState(false);
@@ -83,20 +70,15 @@ function App() {
       (location.pathname.includes("shop") ||
         location.pathname.includes("search"))
     ) {
-      // contentWrapper.current.className = "stories-page";
       setDisplayIndex("shop");
     } else if (
       !isMobile &&
       location.pathname.includes("stories") &&
       location.pathname.split("/").length < 4
     ) {
-      // contentWrapper.current.className = "stories-page";
       setDisplayIndex("stories");
     } else {
       setDisplayIndex(false);
-      // setTimeout(() => {
-      // contentWrapper.current.className = "";
-      // }, 100);
     }
   }
   useEffect(() => {
@@ -105,20 +87,18 @@ function App() {
         location.pathname.includes("shop") ||
         location.pathname.includes("search")
       ) {
-        // contentWrapper.current.className = "stories-page";
         setDisplayIndex("shop");
       } else if (
         location.pathname.includes("stories") &&
         location.pathname.split("/").length < 4
       ) {
-        // contentWrapper.current.className = "stories-page";
         setDisplayIndex("stories");
       }
     } else {
-      // contentWrapper.current.className = "";
       setDisplayIndex(false);
     }
   }, [isMobile]);
+
   return (
     <Suspense
       fallback={
@@ -136,13 +116,6 @@ function App() {
         ref={contentWrapper}
         style={{ minHeight: "calc(100vh - 54px)" }}
         className={displayIndex ? "stories-page" : ""}
-        // className={
-        //   location.pathname.includes("shop") ||
-        //   location.pathname.includes("stories") ||
-        //   location.pathname.includes("search")
-        //     ? "stories-page"
-        //     : null
-        // }
       >
         {displayIndex ? (
           <AnimatePresence mode="wait">
