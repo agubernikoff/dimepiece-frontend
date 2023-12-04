@@ -38,28 +38,40 @@ function MobileBrynnsPick() {
         </div>
         <div className="mobile-featured-watch-details">
           <div className="mobile-featured-watch-detail-container">
-            <h5>DATE OF BIRTH</h5>
+            <p>
+              <strong> DATE OF BIRTH</strong>
+            </p>
             <p>{featured.dateOfBirth}</p>
           </div>
           <div className="mobile-featured-watch-detail-container">
-            <h5>MOVEMENT</h5>
+            <p>
+              <strong>MOVEMENT</strong>
+            </p>
             <p>{featured.movement}</p>
           </div>
 
           <div className="mobile-featured-watch-detail-container">
-            <h5>MATERIAL</h5>
+            <p>
+              <strong>MATERIAL</strong>
+            </p>
             <p>{featured.material}</p>
           </div>
           <div className="mobile-featured-watch-detail-container">
-            <h5>SIZE</h5>
+            <p>
+              <strong>SIZE</strong>
+            </p>
             <p>{featured.size}</p>
           </div>
           <div className="mobile-featured-watch-detail-container">
-            <h5>CONDITION</h5>
+            <p>
+              <strong>CONDITION</strong>
+            </p>
             <p>{featured.condition}</p>
           </div>
           <div className="mobile-featured-watch-detail-container">
-            <h5>BOX/PAPERS</h5>
+            <p>
+              <strong>BOX/PAPERS</strong>
+            </p>
             <p>
               {featured.box ? "Yes" : "No"}/{featured.papers ? "Yes" : "No"}
             </p>
