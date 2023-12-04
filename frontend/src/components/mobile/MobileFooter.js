@@ -182,7 +182,7 @@ function Footer() {
         </div>
         <a
           href="https://www.swallstudios.com/"
-          className="navbar-link site-credit"
+          className="navbar-link site-credit-mobile"
           rel="noopener noreferrer"
           target="_blank"
         >

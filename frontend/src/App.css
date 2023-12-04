@@ -1589,4 +1589,5 @@ instead of tweaking each class */
 
 .site-credit {
   cursor: url("./assets/watch-cursor.png"), pointer;
+  width: fit-content;
 }
