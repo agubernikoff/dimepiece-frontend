@@ -4,11 +4,13 @@ import LatestStoriesCard from "./LatestStoriesCard";
 
 function LatestsStories() {
   const stories = useSelector((state) => state.article.stories);
-  const featuredId = useSelector((state) => state.article.featured._id);
-  const mapped = [...stories]
-    .filter((story) => story._id !== featuredId)
-    .slice(0, 8)
-    .map((story) => <LatestStoriesCard key={story._id} story={story} />);
+  const featured = useSelector((state) => state.article.featured);
+  const mapped = featured
+    ? [...stories]
+        .filter((story) => story._id !== featured._id)
+        .slice(0, 8)
+        .map((story) => <LatestStoriesCard key={story._id} story={story} />)
+    : null;
   return (
     <div>
       <h3 className="section-title-home">LATEST STORIES</h3>
