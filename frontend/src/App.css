@@ -270,6 +270,7 @@ instead of tweaking each class */
   margin: 0;
   font-size: var(--medium-text-size);
   line-height: 125%;
+  font-family: "swall-diatype";
 }
 
 .read-story-btn {

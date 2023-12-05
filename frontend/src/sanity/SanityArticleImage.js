@@ -32,7 +32,7 @@ function SanityArticleImage({ value }) {
           style={{
             // Avoid jumping around with aspect-ratio CSS property
             aspectRatio: width / height,
-            width: isMobile ? "87vw" : "100%",
+            width: isMobile && value.modules.length > 1 ? "87vw" : "100%",
             margin: "auto",
           }}
         />
