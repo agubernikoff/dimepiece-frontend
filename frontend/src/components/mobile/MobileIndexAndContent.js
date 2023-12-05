@@ -158,14 +158,18 @@ function MobileIndexAndContent({ contentType }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "backInOut" }}
           >
-            <p className="stories-page-index-category-header">
-              <strong>{primaryFilter.toUpperCase()}</strong>
+            <p
+              style={{ fontFamily: "swall-diatype-bold" }}
+              className="stories-page-index-category-header"
+            >
+              {primaryFilter.toUpperCase()}
             </p>
             <p
+              style={{ fontFamily: "swall-diatype-bold" }}
               className="stories-page-index-category-header"
               onClick={openDialogue}
             >
-              <strong>FILTER BY</strong>
+              FILTER BY
             </p>
             <AnimatePresence>
               {isDialogueOpen && (

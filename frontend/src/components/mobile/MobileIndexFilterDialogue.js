@@ -30,6 +30,7 @@ function MobileIndexFilterDialogue({ closeDialogue, titles, contentType }) {
           )}
         </div>
         <p
+          style={{ fontFamily: "swall-diatype-bold" }}
           className="stories-page-index-category-header"
           onClick={() => {
             closeDialogue();
@@ -40,7 +41,7 @@ function MobileIndexFilterDialogue({ closeDialogue, titles, contentType }) {
             );
           }}
         >
-          <strong>CLOSE</strong>
+          CLOSE
         </p>
       </div>
     </motion.div>

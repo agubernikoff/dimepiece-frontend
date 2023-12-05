@@ -114,13 +114,14 @@ function IndexSubSection({
   return (
     <div className="stories-page-index-list">
       <p
+        style={{ fontFamily: "swall-diatype-bold" }}
         className="stories-page-index-category-header"
         onClick={() => {
           clearFilters();
           dispatch(cartActions.hideSearch());
         }}
       >
-        <strong>{title.toUpperCase()}</strong>
+        {title.toUpperCase()}
       </p>
       {mappedOptions}
     </div>
