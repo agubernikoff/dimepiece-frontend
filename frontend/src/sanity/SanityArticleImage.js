@@ -2,6 +2,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { client } from "./SanityClient";
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 
 // Barebones lazy-loaded image component
 function SanityArticleImage({ value }) {
@@ -12,6 +13,20 @@ function SanityArticleImage({ value }) {
       .matchMedia("(max-width:700px)")
       .addEventListener("change", (e) => setIsMobile(e.matches));
     if (window.matchMedia("(max-width:700px)").matches) setIsMobile(true);
+  }, []);
+
+  const [heightOfSmallerImage, setHeightOfSmallerIamge] = useState();
+  const ref = useRef();
+  useEffect(() => {
+    if (ref.current.children.length > 1)
+      setHeightOfSmallerIamge(
+        [...ref.current.children]
+          .map((c) => c.children[0].clientHeight)
+          .sort((a, b) => a - b)[0]
+      );
+    console.log(
+      [...ref.current.children].map((c) => c.children[0]).sort((a, b) => a - b)
+    );
   }, []);
 
   const mappedImages = value.modules.map((m) => {
@@ -32,8 +47,9 @@ function SanityArticleImage({ value }) {
           style={{
             // Avoid jumping around with aspect-ratio CSS property
             aspectRatio: width / height,
+            objectFit: "cover",
+            height: height > 0 ? heightOfSmallerImage : "auto",
             width: isMobile && value.modules.length > 1 ? "87vw" : "100%",
-            margin: "auto",
           }}
         />
         <p>{m.caption}</p>
@@ -41,7 +57,11 @@ function SanityArticleImage({ value }) {
     );
   });
 
-  return <div className="article-images-container">{mappedImages}</div>;
+  return (
+    <div className="article-images-container" ref={ref}>
+      {mappedImages}
+    </div>
+  );
 }
 
 export default SanityArticleImage;

@@ -699,7 +699,7 @@ instead of tweaking each class */
 /* article */
 .article {
   text-align: center;
-  padding: 2%;
+  padding: 2.5%;
   min-height: 100vh;
 }
 .scroll-progress-bar {
@@ -761,7 +761,7 @@ instead of tweaking each class */
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin: auto;
+  margin: 0 auto;
   font-family: "swall-diatype";
   color: grey;
   font-size: 1rem;
