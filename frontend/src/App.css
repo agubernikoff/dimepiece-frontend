@@ -714,7 +714,7 @@ instead of tweaking each class */
   transform-origin: 0%;
 }
 .author-photog-container {
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   margin-top: 1%;
   font-family: "swall-diatype";
 }
@@ -733,7 +733,7 @@ instead of tweaking each class */
 .article-cover-img {
   width: 50%;
   margin: auto;
-  margin-top: 1.5%;
+  margin-top: 1%;
   margin-bottom: 1.5%;
 }
 .article-sanity-content > p {
@@ -751,7 +751,8 @@ instead of tweaking each class */
   display: flex;
   gap: 2vw;
   overflow: auto;
-  margin-top: 1.8%;
+  margin-top: 1.5%;
+  margin-bottom: 1.25%;
 }
 .article-images-container::-webkit-scrollbar {
   display: none;
