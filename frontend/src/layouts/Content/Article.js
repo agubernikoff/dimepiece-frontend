@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { client } from "../../sanity/SanityClient";
@@ -48,7 +48,14 @@ function Article() {
     },
     types: { "module.images": SanityArticleImage },
   };
-
+  const articleContentContainer = useRef();
+  useEffect(() => {
+    if (article.title)
+      [...articleContentContainer.current.children].forEach((child) => {
+        if (child.firstChild.localName == "br")
+          child.firstChild.style.display = "none";
+      });
+  }, [articleContentContainer, article]);
   return (
     <motion.div
       className="article"
@@ -105,7 +112,7 @@ function Article() {
             src={article.coverImage.asset.url}
             alt={article.title}
           />
-          <div className="article-sanity-content">
+          <div className="article-sanity-content" ref={articleContentContainer}>
             <PortableText value={article.body} components={components} />
           </div>
           <p style={{ fontFamily: "swall-diatype" }} className="blue">
