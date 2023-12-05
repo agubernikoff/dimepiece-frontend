@@ -6,6 +6,10 @@ h2,
 h3 {
   font-family: "swall-diatype-bold";
 }
+strong {
+  font-family: "swall-diatype-bold";
+  font-weight: normal;
+}
 .mobile-nav {
   display: flex;
   justify-content: center;
