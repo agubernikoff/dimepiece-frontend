@@ -18,7 +18,10 @@ function MobileIndexAndContent({ contentType }) {
   const URLParam = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [content, setContent] = useState([]);
+  const content =
+    contentType === "stories"
+      ? useSelector((state) => state.article.stories)
+      : useSelector((state) => state.cart.watches);
   const [filters, setFilters] = useState([]);
   const [primaryFilter, setPrimaryFilter] = useState("All");
   const categories = useSelector((state) => state.article.categories);
@@ -27,24 +30,12 @@ function MobileIndexAndContent({ contentType }) {
   useEffect(() => {
     if (contentType === "stories") {
       client
-        .fetch(
-          `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)`
-        )
-        .then((response) => setContent(response));
-      client
         .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
         .then((response) => setFilters(response));
     } else if (contentType === "shop") {
       client
-        .fetch(
-          `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
-        )
-        .then((response) => {
-          setContent(response);
-          client
-            .fetch(`*[_type == "brands"]{_id,descriptor,title}`)
-            .then((response) => setFilters(response));
-        });
+        .fetch(`*[_type == "brands"]{_id,descriptor,title}`)
+        .then((response) => setFilters(response));
     }
   }, [contentType]);
 
@@ -181,37 +172,39 @@ function MobileIndexAndContent({ contentType }) {
               )}
             </AnimatePresence>
           </motion.div>
-          <motion.div
-            key={key2}
-            className="mobile-content-container"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "backInOut" }}
-          >
-            <div className="mobile-descriptor">
-              <p
-                style={{
-                  fontFamily: "swall-diatype-bold",
-                  fontSize: "1.4rem",
-                  marginBottom: "5%",
-                }}
-                className="section-title-home"
-              >
-                {primaryFilter === "All"
-                  ? contentType === "shop"
-                    ? "SHOP ALL"
-                    : "LATEST STORIES"
-                  : primaryFilter.toUpperCase()}
-              </p>
-              <p>{descriptor}</p>
-            </div>
-            {content[0] ? (
-              <div className="mobile-content-mapped">
-                {contentType === "shop" ? mappedWatches : mappedStories}
+          {!isDialogueOpen && (
+            <motion.div
+              key={key2}
+              className="mobile-content-container"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut" }}
+            >
+              <div className="mobile-descriptor">
+                <p
+                  style={{
+                    fontFamily: "swall-diatype-bold",
+                    fontSize: "1.4rem",
+                    marginBottom: "5%",
+                  }}
+                  className="section-title-home"
+                >
+                  {primaryFilter === "All"
+                    ? contentType === "shop"
+                      ? "SHOP ALL"
+                      : "LATEST STORIES"
+                    : primaryFilter.toUpperCase()}
+                </p>
+                <p>{descriptor}</p>
               </div>
-            ) : null}
-          </motion.div>
+              {content[0] ? (
+                <div className="mobile-content-mapped">
+                  {contentType === "shop" ? mappedWatches : mappedStories}
+                </div>
+              ) : null}
+            </motion.div>
+          )}
         </AnimatePresence>
       ) : null}
     </motion.div>

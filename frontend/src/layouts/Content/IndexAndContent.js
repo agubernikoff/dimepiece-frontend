@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { client } from "../../sanity/SanityClient";
 import { motion, AnimatePresence } from "framer-motion";
 import { capitalizeWords } from "../../helpers/CapitalizeWords";
 import { filterWatches } from "../../helpers/FilterWatches";
-import IndexStories from "./IndexStories";
-import IndexShop from "./IndexShop";
 import LatestStoriesCard from "../../components/stories/LatestStoriesCard";
 import WatchPreviewCard from "../../components/products/WatchPreviewCard";
 import Watch from "./Watch";
 import { scrollToTop } from "../../helpers/ScrollToTop";
 import NoResults from "./NoResults";
+import { useSelector } from "react-redux";
 
 function IndexAndContent({ contentType }) {
   const [category, setCategory] = useState();
@@ -27,35 +25,8 @@ function IndexAndContent({ contentType }) {
     else setCategory("");
   }, [URLParam]);
 
-  const [types, setTypes] = useState([]);
-  const [stories, setStories] = useState([]);
-  const [brynnsPick, setBrynnsPick] = useState();
-
-  useEffect(() => {
-    client
-      .fetch(`*[_type == "product" && isFeatured == true][0]`)
-      .then((response) => setBrynnsPick(response));
-    client
-      .fetch(
-        `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)`
-      )
-      .then((response) => setStories(response));
-    client
-      .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
-      .then((response) => setTypes(response));
-    client
-      .fetch(`*[_type == "brands"]{_id,descriptor,title}`)
-      .then((response) => setBrands(response));
-    client
-      .fetch(
-        `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
-      )
-      .then((response) => {
-        setWatches(response);
-      });
-  }, []);
-
-  const categories = types[0] ? types.map((t) => t.title) : null;
+  const types = useSelector((state) => state.article.types);
+  const stories = useSelector((state) => state.article.stories);
 
   let filteredStories = [];
   filteredStories = [...stories].filter((s) => {
@@ -67,15 +38,7 @@ function IndexAndContent({ contentType }) {
       ? stories.map((s) => <LatestStoriesCard key={s._id} story={s} />)
       : filteredStories.map((s) => <LatestStoriesCard key={s._id} story={s} />);
 
-  const [brands, setBrands] = useState([]);
-
-  useEffect(() => {
-    // client
-    //   .fetch(`*[_type == "brands"]{_id,descriptor,title}`)
-    //   .then((response) => setBrands(response));
-  }, []);
-
-  const brandTitles = brands[0] ? brands.map((b) => b.title).sort() : null;
+  const brands = useSelector((state) => state.cart.brands);
 
   useEffect(() => {
     if (URLParam.brand && brands[0]) {
@@ -85,20 +48,10 @@ function IndexAndContent({ contentType }) {
     } else setBrand("");
   }, [URLParam, brands]);
 
-  const [watches, setWatches] = useState([]);
-
-  useEffect(() => {
-    // client
-    //   .fetch(
-    //     `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]`
-    //   )
-    //   .then((response) => {
-    //     setWatches(response);
-    //   });
-  }, []);
+  const watches = useSelector((state) => state.cart.watches);
 
   const mappedWatches = filterWatches(
-    watches,
+    [...watches],
     brand,
     filterBy,
     caseSizeFilter,

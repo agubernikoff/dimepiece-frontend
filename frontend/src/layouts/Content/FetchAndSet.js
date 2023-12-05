@@ -19,7 +19,7 @@ function FetchAndSet() {
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
     client
       .fetch(
-        `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,coverImage{asset->{url}}} | order(datePublished desc)`
+        `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)`
       )
       .then((response) => dispatch(articleActions.setStories(response)));
     client
@@ -33,7 +33,7 @@ function FetchAndSet() {
         `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
       )
       .then((response) => {
-        dispatch(cartActions.setWatches(response));
+        dispatch(cartActions.setWatches(response.filter((w) => w.brand)));
       });
     client
       .fetch(
