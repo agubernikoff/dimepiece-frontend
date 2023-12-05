@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
@@ -46,6 +46,14 @@ function MobileStoryPage() {
     },
     types: { "module.images": SanityArticleImage },
   };
+  const articleContentContainer = useRef();
+  useEffect(() => {
+    if (article.title)
+      [...articleContentContainer.current.children].forEach((child) => {
+        if (child.firstChild.localName == "br")
+          child.firstChild.style.display = "none";
+      });
+  }, [articleContentContainer, article]);
   return (
     <motion.div
       className="mobile-article"
@@ -102,7 +110,7 @@ function MobileStoryPage() {
             src={article.coverImage.asset.url}
             alt={article.title}
           />
-          <div className="article-sanity-content">
+          <div className="article-sanity-content" ref={articleContentContainer}>
             <PortableText value={article.body} components={components} />
           </div>
           <p className="blue">{article.category.toUpperCase()}</p>
