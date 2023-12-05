@@ -77,7 +77,7 @@ export default defineType({
     }),
     defineField({
       name: 'description',
-      title: 'Brynn\'s Description',
+      title: "Brynn's Description",
       type: 'body',
       group: 'editorial',
     }),
@@ -109,21 +109,23 @@ export default defineType({
       title: "Brynn's Pick Image - Grey (Required if Brynn's Pick)",
       name: 'brynnPickImage',
       type: 'image',
-      validation: Rule => 
-        Rule.custom((image,context)=> 
-          {if(context.document.isFeatured && !image) 
-            return "Grey Image is required for a 'Brynn's Pick' product.";
-          else return true})
+      validation: (Rule) =>
+        Rule.custom((image, context) => {
+          if (context.document.isFeatured && !image)
+            return "Grey Image is required for a 'Brynn's Pick' product."
+          else return true
+        }),
     },
     {
-      title: 'Featured Headline (Required if Brynn\'s Pick)',
+      title: "Featured Headline (Required if Brynn's Pick)",
       name: 'featuredHeadline',
       type: 'string',
-      validation: Rule => 
-        Rule.custom((headline,context)=> 
-          {if(context.document.isFeatured && !headline) 
-            return "Featured Headline is required for a 'Brynn's Pick' product.";
-          else return true})
+      validation: (Rule) =>
+        Rule.custom((headline, context) => {
+          if (context.document.isFeatured && !headline)
+            return "Featured Headline is required for a 'Brynn's Pick' product."
+          else return true
+        }),
     },
     {
       title: 'Date of Birth',
@@ -149,11 +151,13 @@ export default defineType({
       title: 'Condition',
       name: 'condition',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Box',
       name: 'box',
       type: 'boolean',
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Papers',
@@ -178,7 +182,7 @@ export default defineType({
         list: [
           {title: 'Small', value: 'small'},
           {title: 'Medium', value: 'medium'},
-          {title: 'Large', value: 'large'}
+          {title: 'Large', value: 'large'},
         ],
       },
     },
@@ -193,10 +197,10 @@ export default defineType({
           {title: 'Steel', value: 'steel'},
           {title: 'Gem-Set', value: 'gemSet'},
           {title: 'Leather Strap', value: 'leatherStrap'},
-          {title: 'Colored Dial', value: 'coloredDial'}
-        ]
-      }
-    }
+          {title: 'Colored Dial', value: 'coloredDial'},
+        ],
+      },
+    },
   ],
   orderings: [
     {
