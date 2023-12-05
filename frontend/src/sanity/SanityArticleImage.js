@@ -22,12 +22,16 @@ function SanityArticleImage({ value }) {
     if (ref.current.children.length > 1) {
       setHeightOfSmallerIamge(
         [...ref.current.children]
-          .map((c) =>
-            c.children[0].naturalWidth > 0
-              ? (c.children[0].width / c.children[0].naturalWidth) *
-                c.children[0].naturalHeight
-              : c.children[0].offsetHeight
-          )
+          .map((c) => {
+            const naturalWidth = c.children[0].src.split("-")[1].split("x")[0];
+            const naturalHeight = c.children[0].src
+              .split("-")[1]
+              .split("x")[1]
+              .split(".")[0];
+            if (naturalWidth && naturalHeight)
+              return (c.children[0].width / naturalWidth) * naturalHeight;
+            else return c.children[0].clientHeight;
+          })
           .sort((a, b) => a - b)[0]
       );
     }
