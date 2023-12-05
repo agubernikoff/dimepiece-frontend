@@ -538,6 +538,8 @@ h3 {
 .mobile-article .article-cover-img {
   width: 100%;
   margin-bottom: 5%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
 }
 .mobile-article .article-sanity-content .article-images-container > img {
   width: 100% !important;
@@ -547,6 +549,7 @@ h3 {
 }
 .sanity-mobile-article-image-container {
   margin-top: 2.5%;
+  margin-bottom: 2.5%;
 }
 /* ABOUT */
 .mobile-about-page {
