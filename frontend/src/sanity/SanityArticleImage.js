@@ -19,23 +19,19 @@ function SanityArticleImage({ value }) {
   const [heightOfSmallerImage, setHeightOfSmallerIamge] = useState();
   const ref = useRef();
   useEffect(() => {
-    if (ref.current.children.length > 1)
+    if (ref.current.children.length > 1) {
       setHeightOfSmallerIamge(
         [...ref.current.children]
-          .map(
-            (c) =>
-              (c.children[0].width / c.children[0].naturalWidth) *
-              c.children[0].naturalHeight
+          .map((c) =>
+            c.children[0].naturalWidth > 0
+              ? (c.children[0].width / c.children[0].naturalWidth) *
+                c.children[0].naturalHeight
+              : c.children[0].offsetHeight
           )
           .sort((a, b) => a - b)[0]
       );
-    console.log(window);
-    console.log(
-      [...ref.current.children]
-        .map((c) => c.children[0].width / c.children[0].naturalWidth)
-        .sort((a, b) => a - b)
-    );
-  }, [isMobile, useWindowSize().width]);
+    }
+  }, [isMobile, useWindowSize().height, useWindowSize().width, ref.current]);
 
   const mappedImages = value.modules.map((m) => {
     const { width, height } = getImageDimensions(m.image);
