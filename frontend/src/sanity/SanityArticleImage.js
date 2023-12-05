@@ -3,6 +3,7 @@ import { getImageDimensions } from "@sanity/asset-utils";
 import { client } from "./SanityClient";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
+import { useWindowSize } from "../helpers/useWindowSize";
 
 // Barebones lazy-loaded image component
 function SanityArticleImage({ value }) {
@@ -21,13 +22,20 @@ function SanityArticleImage({ value }) {
     if (ref.current.children.length > 1)
       setHeightOfSmallerIamge(
         [...ref.current.children]
-          .map((c) => c.children[0].clientHeight)
+          .map(
+            (c) =>
+              (c.children[0].width / c.children[0].naturalWidth) *
+              c.children[0].naturalHeight
+          )
           .sort((a, b) => a - b)[0]
       );
+    console.log(window);
     console.log(
-      [...ref.current.children].map((c) => c.children[0]).sort((a, b) => a - b)
+      [...ref.current.children]
+        .map((c) => c.children[0].width / c.children[0].naturalWidth)
+        .sort((a, b) => a - b)
     );
-  }, []);
+  }, [isMobile, useWindowSize().width]);
 
   const mappedImages = value.modules.map((m) => {
     const { width, height } = getImageDimensions(m.image);
@@ -48,7 +56,7 @@ function SanityArticleImage({ value }) {
             // Avoid jumping around with aspect-ratio CSS property
             aspectRatio: width / height,
             objectFit: "cover",
-            height: height > 0 ? heightOfSmallerImage : "auto",
+            height: heightOfSmallerImage > 0 ? heightOfSmallerImage : "auto",
             width: isMobile && value.modules.length > 1 ? "87vw" : "100%",
           }}
         />
