@@ -190,12 +190,12 @@ function App() {
             />
             <Route
               path="/shipping_and_returns"
-              element={<Misc title={"SHIPPING AND RETURNS"} />}
+              element={<Misc title={"SHIPPING & RETURNS"} />}
             />
             <Route path="/faq" element={<Misc title={"FAQ"} />} />
             <Route
               path="/terms_and_conditions"
-              element={<Misc title={"TERMS AND CONDITIONS"} />}
+              element={<Misc title={"TERMS & CONDITIONS"} />}
             />
             <Route path="/warranty" element={<Misc title={"WARRANTY"} />} />
             <Route path="/404" element={<PageNotFound />} />
