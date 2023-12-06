@@ -312,7 +312,7 @@ instead of tweaking each class */
 }
 .latest-story-card-bottom {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.35rem;
 }
 .latest-story-card-bottom-left {
   display: flex;
@@ -1403,6 +1403,10 @@ instead of tweaking each class */
   .most-discussed-preview-button {
     font-size: 0.6rem;
   }
+  .latest-story-card-bottom {
+    display: flex;
+    gap: 0.5rem;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -1478,6 +1482,10 @@ instead of tweaking each class */
   .most-discussed-preview-button {
     font-size: 0.75rem;
   }
+  .latest-story-card-bottom {
+    display: flex;
+    gap: 0.5rem;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -1529,6 +1537,10 @@ instead of tweaking each class */
   .most-discussed-preview,
   .most-discussed-preview-button {
     font-size: 0.75rem;
+  }
+  .latest-story-card-bottom {
+    display: flex;
+    gap: 0.5rem;
   }
 }
 
