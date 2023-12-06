@@ -1484,7 +1484,7 @@ instead of tweaking each class */
   }
   .latest-story-card-bottom {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
   }
 }
 
@@ -1540,7 +1540,7 @@ instead of tweaking each class */
   }
   .latest-story-card-bottom {
     display: flex;
-    gap: 0.5rem;
+    gap: 1.2rem;
   }
 }
 
