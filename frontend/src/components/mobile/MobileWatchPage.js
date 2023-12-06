@@ -88,10 +88,10 @@ function MobileWatchPage() {
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
-          window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
           console.log(checkoutUrl);
           dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
         });
+      window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
 
