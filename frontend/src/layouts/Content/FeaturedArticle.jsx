@@ -25,9 +25,18 @@ function FeaturedArticle() {
             className="featured-story-img"
             alt={featured.title}
             src={featured.coverImage.asset.url}
-            style={{
-              backgroundImage: `url(${featured.coverImage.asset.url}?blur=50)`,
-            }}
+            style={
+              featured && featured.coverImage.hotspot
+                ? {
+                    backgroundImage: `url(${featured.coverImage.asset.url}?blur=50)`,
+                    objectPosition: `${featured.coverImage.hotspot.x * 100}% ${
+                      featured.coverImage.hotspot.y * 100
+                    }%`,
+                  }
+                : {
+                    backgroundImage: `url(${featured.coverImage.asset.url}?blur=50)`,
+                  }
+            }
           />
           <div className="featured-story-blurb-container">
             <div className="featured-story-blurb-container-inside">

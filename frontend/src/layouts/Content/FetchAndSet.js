@@ -11,7 +11,7 @@ function FetchAndSet() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)[0]`
+        `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{...,asset->{url}}} | order(datePublished desc)[0]`
       )
       .then((response) => dispatch(articleActions.setFeatured(response)));
     client

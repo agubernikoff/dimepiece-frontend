@@ -33,6 +33,9 @@ export default {
       title: 'Cover Image',
       name: 'coverImage',
       type: 'image',
+      options: {
+        hotspot: true, // Enables the ability to define the focal point for cropping
+      },
     },
     {
       title: 'Featured',
@@ -48,11 +51,12 @@ export default {
       title: 'Preview Description',
       name: 'previewDescription',
       type: 'string',
-      validation: Rule => 
-        Rule.custom((description,context)=> 
-          {if((context.document.isFeatured || context.document.mostDiscussed) && !description) 
-            return "Preview Description is required for a 'Featured' or 'Most Discussed' article.";
-          else return true})
+      validation: (Rule) =>
+        Rule.custom((description, context) => {
+          if ((context.document.isFeatured || context.document.mostDiscussed) && !description)
+            return "Preview Description is required for a 'Featured' or 'Most Discussed' article."
+          else return true
+        }),
     },
     defineField({
       name: 'body',
