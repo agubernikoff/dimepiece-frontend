@@ -90,7 +90,7 @@ function MobileWatchPage() {
         .then((checkout) => {
           console.log(checkout);
           dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
-          window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
+          window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
         });
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
