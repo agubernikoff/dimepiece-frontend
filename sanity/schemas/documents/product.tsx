@@ -151,13 +151,11 @@ export default defineType({
       title: 'Condition',
       name: 'condition',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Box',
       name: 'box',
       type: 'boolean',
-      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Papers',
