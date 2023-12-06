@@ -29,12 +29,16 @@ function FeaturedArticle() {
               featured && featured.coverImage.hotspot
                 ? {
                     backgroundImage: `url(${featured.coverImage.asset.url}?blur=50)`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
                     objectPosition: `${featured.coverImage.hotspot.x * 100}% ${
                       featured.coverImage.hotspot.y * 100
                     }%`,
                   }
                 : {
                     backgroundImage: `url(${featured.coverImage.asset.url}?blur=50)`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
                   }
             }
           />
