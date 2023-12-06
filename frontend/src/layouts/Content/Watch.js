@@ -75,14 +75,14 @@ function Watch() {
   }
 
   function buyNow() {
-    dispatch(cartActions.addToCart(watch));
     const lineItemsToAdd = [
       {
         variantId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];
-    if (!inCart)
+    if (!inCart) {
+      dispatch(cartActions.addToCart(watch));
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
@@ -90,7 +90,7 @@ function Watch() {
           dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
           window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
         });
-    else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
+    } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
   if (watch)
     return (

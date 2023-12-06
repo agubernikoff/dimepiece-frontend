@@ -77,7 +77,6 @@ function MobileWatchPage() {
   }
 
   function buyNow() {
-    dispatch(cartActions.addToCart(watch));
     const lineItemsToAdd = [
       {
         variantId: `${watch.store.variants[0].store.gid}`,
@@ -85,12 +84,13 @@ function MobileWatchPage() {
       },
     ];
     if (!inCart) {
+      dispatch(cartActions.addToCart(watch));
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
           console.log(checkout);
+          dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
           window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
-          dispatch(cartActions.addToCart(watch));
         });
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
