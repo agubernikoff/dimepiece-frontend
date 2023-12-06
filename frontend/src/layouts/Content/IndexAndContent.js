@@ -83,7 +83,7 @@ function IndexAndContent({ contentType }) {
             </h3>
             <p>
               {category === "All"
-                ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
+                ? "Explore all past and present Dimepiece content, from in-depth interviews and 101 information."
                 : types[0]
                 ? types.find((t) => t.title === category).descriptor
                 : null}

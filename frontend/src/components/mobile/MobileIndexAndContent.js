@@ -116,7 +116,7 @@ function MobileIndexAndContent({ contentType }) {
     primaryFilter === "All"
       ? contentType === "shop"
         ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."
-        : 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'
+        : "Explore all past and present Dimepiece content, from in-depth interviews and 101 information."
       : filters.find((b) => b.title === primaryFilter)
       ? filters.find((b) => b.title === primaryFilter).descriptor
       : null;
