@@ -99,9 +99,7 @@ app.get("/checkoutId", (req, res) => {
   else res.json({ checkoutId: "" });
 });
 app.post("/checkoutId", (req, res) => {
-  functions.logger.log(req.body);
   req.session.checkoutId = req.body.checkoutId;
-  console.log(req.session);
   res.json({ checkoutId: req.session.checkoutId });
 });
 exports.api = functions.https.onRequest(app);
