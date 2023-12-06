@@ -50,6 +50,7 @@ function FetchAndSet() {
     })
       .then((r) => r.json())
       .then((data) => {
+        console.log(data);
         if (data.checkoutId) {
           shopifyClient.checkout.fetch(data.checkoutId).then((checkout) => {
             if (!checkout.completedAt) {
