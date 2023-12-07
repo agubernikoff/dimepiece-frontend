@@ -38,7 +38,7 @@ function FeaturedArticle() {
                     }%`,
                   }
                 : {
-                    backgroundImage: `url(${featured.coverImage.asset.url}?blur=50)`,
+                    backgroundImage: `url(${featured.coverImage.asset.url}?blur=75)`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                   }

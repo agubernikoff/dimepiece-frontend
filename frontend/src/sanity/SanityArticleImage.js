@@ -58,6 +58,9 @@ function SanityArticleImage({ value }) {
             objectFit: "cover",
             height: heightOfSmallerImage > 0 ? heightOfSmallerImage : "auto",
             width: isMobile && value.modules.length > 1 ? "87vw" : "100%",
+            backgroundImage: `url(${m.image.asset.url}?blur=75)`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
           }}
         />
         <p>{m.caption}</p>
