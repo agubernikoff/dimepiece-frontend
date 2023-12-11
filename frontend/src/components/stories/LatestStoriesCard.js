@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { articleActions } from "../../redux/article-slice";
 import { cartActions } from "../../redux/cart-slice";
 
-function LatestStoriesCard({ story }) {
+function LatestStoriesCard({ story, mostDiscussed }) {
   const dateObject = new Date(story.datePublished);
   const options = { year: "numeric", month: "short", day: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
@@ -13,9 +13,7 @@ function LatestStoriesCard({ story }) {
 
   return (
     <div
-      className={
-        story.mostDiscussed ? "most-discussed-card" : "latest-story-card"
-      }
+      className={mostDiscussed ? "most-discussed-card" : "latest-story-card"}
       onClick={() => {
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
         dispatch(articleActions.setIsArticleLoaded(false));
@@ -31,15 +29,24 @@ function LatestStoriesCard({ story }) {
         />
       </div>
       <div className="latest-story-card-bottom">
-        <div className="latest-story-card-bottom-left">
-          <p className="blue">{story.category.toUpperCase()}</p>
-          <p className="latest-story-card-date">
-            {formattedDate.toUpperCase()}
-          </p>
-        </div>
+        {!mostDiscussed ? (
+          <div className="latest-story-card-bottom-left">
+            <p className="blue">{story.category.toUpperCase()}</p>
+            <p className="latest-story-card-date">
+              {formattedDate.toUpperCase()}
+            </p>
+          </div>
+        ) : null}
         <div className="latest-story-card-bottom-right">
-          <p className="latest-story-card-title">{story.title}</p>
-          {story.mostDiscussed ? (
+          <p
+            style={
+              mostDiscussed ? { fontSize: "clamp(28px, 1.8vw, 1.8rem)" } : null
+            }
+            className="latest-story-card-title"
+          >
+            {story.title}
+          </p>
+          {mostDiscussed ? (
             <>
               <p className="most-discussed-preview">
                 {story.previewDescription}

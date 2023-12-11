@@ -19,7 +19,7 @@ function FetchAndSet() {
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
     client
       .fetch(
-        `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,previewDescription,coverImage{asset->{url}}} | order(datePublished desc)`
+        `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,previewDescription,mostDiscussed, coverImage{asset->{url}}} | order(datePublished desc)`
       )
       .then((response) => dispatch(articleActions.setStories(response)));
     client

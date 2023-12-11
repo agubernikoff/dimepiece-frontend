@@ -7,10 +7,13 @@ function LatestsStories() {
   const featured = useSelector((state) => state.article.featured);
   const mapped = featured
     ? [...stories]
-        .filter((story) => story._id !== featured._id)
+        .filter(
+          (story) => story._id !== featured._id && story.mostDiscussed !== true
+        )
         .slice(0, 8)
         .map((story) => <LatestStoriesCard key={story._id} story={story} />)
     : null;
+  console.log(stories);
   return (
     <div>
       <p className="section-title-home">LATEST STORIES</p>

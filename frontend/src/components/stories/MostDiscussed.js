@@ -17,7 +17,7 @@ function MostDiscussed() {
     return (
       <div className="most-discussed">
         <p className="section-title-home">MOST DISCUSSED</p>
-        <LatestStoriesCard story={mostDiscussed} />
+        <LatestStoriesCard story={mostDiscussed} mostDiscussed={true} />
       </div>
     );
 }
