@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { client } from "../../sanity/SanityClient";
+import React, { useRef } from "react";
 import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
@@ -58,51 +57,6 @@ function About() {
     }
   };
 
-  // const carouselRef = useRef(null);
-
-  // useEffect(() => {
-  //   const options = {
-  //     root: null,
-  //     rootMargin: "0px",
-  //     threshold: 0.5,
-  //   };
-
-  //   const observer = new IntersectionObserver((entries) => {
-  //     console.log("Observer triggered:", entries);
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         startCarousel();
-  //       } else {
-  //         stopCarousel();
-  //       }
-  //     });
-  //   }, options);
-
-  //   if (carouselRef.current) {
-  //     observer.observe(carouselRef.current);
-  //   }
-
-  //   return () => {
-  //     if (carouselRef.current) {
-  //       observer.unobserve(carouselRef.current);
-  //     }
-  //   };
-  // }, []);
-
-  // const startCarousel = () => {
-  //   // Start the carousel animation
-  //   const slideTrack = carouselRef.current.querySelector(".slide-track");
-  //   slideTrack.style.animation = "scroll 25s linear infinite";
-  //   console.log("Carousel started");
-  // };
-
-  // const stopCarousel = () => {
-  //   // Stop the carousel animation
-  //   const slideTrack = carouselRef.current.querySelector(".slide-track");
-  //   slideTrack.style.animation = "none";
-  //   console.log("Carousel stopped");
-  // };
-
   return (
     <motion.div
       className="about-page"
@@ -152,7 +106,6 @@ function About() {
               Dimepiece works with Brands, Businesses, and Individuals alike
             </p>
           </div>
-          {/* <div className="carousel-wrapper" ref={carouselRef}> */}
           <div className="slider">
             <div className="gradient"></div>
             <div className="slide-track">
@@ -200,34 +153,6 @@ function About() {
               </div>
             </div>
           </div>
-          {/* </div> */}
-          {/* <div className="carousel-container">
-            <div className="gradient"></div>
-            <div className="slider">
-              <img id="brand1" src={ap} alt="AP" />
-              <img id="brand2" src={breda} alt="Breda" />
-              <img id="brand3" src={ebay} alt="Ebay" />
-              <img id="brand4" src={foundwell} alt="Foundwell" />
-              <img id="brand5" src={hodinkee} alt="Hodinkee" />
-              <img id="brand6" src={jcrew} alt="J Crew" />
-              <img
-                id="brand7"
-                src={watchesandwonders}
-                alt="Watches And Wonders"
-              />
-              <img id="brand1" src={ap} alt="AP" />
-              <img id="brand2" src={breda} alt="Breda" />
-              <img id="brand3" src={ebay} alt="Ebay" />
-              <img id="brand4" src={foundwell} alt="Foundwell" />
-              <img id="brand5" src={hodinkee} alt="Hodinkee" />
-              <img id="brand6" src={jcrew} alt="J Crew" />
-              <img
-                id="brand7"
-                src={watchesandwonders}
-                alt="Watches And Wonders"
-              />
-            </div>
-          </div> */}
           <p className="about-brynn-portrait-title">Dimepiece Press</p>
           <div className="about-section-container">{mappedPress}</div>
           <div>

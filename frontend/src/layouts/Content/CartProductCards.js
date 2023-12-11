@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { client } from "../../sanity/SanityClient";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import { shopifyClient } from "../../shopify/ShopifyClient";

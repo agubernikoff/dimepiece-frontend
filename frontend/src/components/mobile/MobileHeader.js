@@ -53,20 +53,6 @@ function MobileHeader() {
 
   const nav = useNavigate();
 
-  // useEffect(() => {
-  //   const body = document.querySelector("body");
-  //   if (isOpen) {
-  //     body.style.overflow = "hidden"; // Disable scrolling when menu is open
-  //   } else {
-  //     body.style.overflow = ""; // Enable scrolling when menu is closed
-  //   }
-
-  //   return () => {
-  //     // Cleanup function to restore scrolling when component unmounts
-  //     body.style.overflow = "";
-  //   };
-  // }, [isOpen]);
-
   const { scrollYProgress } = useScroll();
   const scrollProgress = isArticleLoaded ? scrollYProgress : 0;
 

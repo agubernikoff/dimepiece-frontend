@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import MobileLatestStoriesCard from "./MobileLatestStoriesCard";
-import MobileDialDimepieceCard from "./MobileDialDimepieceCard";
 
 function MobileDialDimepiece() {
   const [DialDimepiece, setDialDimepiece] = useState([]);

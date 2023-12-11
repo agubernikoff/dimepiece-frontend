@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MobileBrynnsPick from "./MobileBrynnsPick";
 import MobileDialDimepiece from "./MobileDialDimepiece";
 import MobileStories from "./MobileStories";

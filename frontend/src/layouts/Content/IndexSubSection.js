@@ -1,4 +1,3 @@
-import { prepareCssVars } from "@mui/system";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useSearchParams } from "react-router-dom";

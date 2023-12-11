@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import CartProductCards from "./CartProductCards";
 
 function Cart({ isMobile }) {

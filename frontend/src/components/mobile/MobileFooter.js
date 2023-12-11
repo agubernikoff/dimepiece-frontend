@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import emailjs from "emailjs-com";
-import { shopifyClient } from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 import { cartActions } from "../../redux/cart-slice.js";
 
 function Footer() {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart);
   const [times, setTimes] = useState({
     Geneva: new Date().toLocaleTimeString("en-US", {
       timeZone: "Europe/Zurich",
@@ -117,9 +115,6 @@ function Footer() {
           >
             Newsletter
           </NavLink>
-          {/* <NavLink onClick={()=>dispatch(cartActions.hideSearch())} className="navbar-link" to="/search">
-            Search
-          </NavLink> */}
         </div>
         <div className="mobile-footer-column">
           <p className="mobile-bold">

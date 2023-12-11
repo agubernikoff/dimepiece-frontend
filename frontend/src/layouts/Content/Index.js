@@ -1,7 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import IndexShop from "./IndexShop";
 import IndexStories from "./IndexStories";
 
@@ -44,8 +43,6 @@ function Index({ displayIndex }) {
               />
             </motion.div>
           )}
-          {/* </AnimatePresence>
-      <AnimatePresence mode="popLayout"> */}
           {displayIndex === "shop" && (
             <motion.div
               className="stories-page-index"
@@ -60,7 +57,6 @@ function Index({ displayIndex }) {
           )}
         </motion.div>
       )}
-      {/* </AnimatePresence> */}
     </>
   );
 }

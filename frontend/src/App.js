@@ -2,13 +2,7 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import "./App.css";
 import "./App-mobile.css";
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import Header from "./layouts/Header";
 import Homepage from "./layouts/Content/Homepage";
@@ -27,20 +21,15 @@ import MobileWatchPage from "./components/mobile/MobileWatchPage";
 import MobileStoryPage from "./components/mobile/MobileStoryPage";
 import MobileAboutPage from "./components/mobile/MobileAboutPage";
 import MobileNewsletter from "./components/mobile/MobileNewsletter";
-import { shopifyClient } from "./shopify/ShopifyClient";
 import { useSelector, useDispatch } from "react-redux";
-import { cartActions } from "./redux/cart-slice";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { scrollToTop } from "./helpers/ScrollToTop";
 import { mobileFilterActions } from "./redux/mobile-filter-slice";
-import { client } from "./sanity/SanityClient";
 import SearchResults from "./layouts/Content/SearchResults";
 import MobileSearchResults from "./components/mobile/MobileSearchResults";
 import Index from "./layouts/Content/Index";
 import FetchAndSet from "./layouts/Content/FetchAndSet";
 import { useState } from "react";
-
-// const Posts = lazy(() => import('./pages/Posts'));
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);

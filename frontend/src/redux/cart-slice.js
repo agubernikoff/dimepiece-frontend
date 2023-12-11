@@ -14,7 +14,6 @@ const cartSlice = createSlice({
     cart: [],
     searchText: null,
     searchResults: [],
-    clickedPost: null,
   },
   reducers: {
     toggleDisplayCart(state) {
@@ -94,16 +93,6 @@ const cartSlice = createSlice({
     },
     setSearchText(state, action) {
       state.searchText = action.payload;
-    },
-    setClickedPost(state, action) {
-      state.clickedPost = action.payload;
-    },
-    editPost(state, action) {
-      const updatedPost = action.payload;
-      const filtered = state.posts.filter((p) => p.id !== updatedPost.id);
-      const updatedPosts = [...filtered, updatedPost];
-      const sorted = updatedPosts.sort((a, b) => a.id - b.id);
-      state.posts = sorted;
     },
   },
 });

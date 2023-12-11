@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import WatchPreviewCard from "../../components/products/WatchPreviewCard";
 import NoResults from "../../layouts/Content/NoResults";
 import { cartActions } from "../../redux/cart-slice";
 import MobileLatestWatchesCard from "./MobileLatestWatchesCard";

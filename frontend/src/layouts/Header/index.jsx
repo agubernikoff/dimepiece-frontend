@@ -1,6 +1,4 @@
-// import { useDispatch } from 'react-redux';
-// import { selectPost, setPreEditPost } from '../../redux/actions';
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
 import {
   NavLink,
@@ -9,7 +7,6 @@ import {
   useLocation,
 } from "react-router-dom";
 import logo from "../../assets/logo_purple.png";
-import shopifyClient from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import Search from "./Search";

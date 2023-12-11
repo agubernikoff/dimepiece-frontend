@@ -1,6 +1,4 @@
-import imageUrlBuilder from "@sanity/image-url";
 import { getImageDimensions } from "@sanity/asset-utils";
-import { client } from "./SanityClient";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useWindowSize } from "../helpers/useWindowSize";

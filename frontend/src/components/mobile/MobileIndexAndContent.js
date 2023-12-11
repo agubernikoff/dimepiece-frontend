@@ -1,5 +1,5 @@
-import React, { useSate, useEffect, useState } from "react";
-import { NavLink, useParams, useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import { client } from "../../sanity/SanityClient";
 import { capitalizeWords } from "../../helpers/CapitalizeWords";
 import { filterWatches } from "../../helpers/FilterWatches";
