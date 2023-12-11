@@ -4,8 +4,9 @@ import WatchPreviewCard from "./WatchPreviewCard";
 
 function WatchPreview() {
   const products = useSelector((state) => state.cart.watches);
+  const endOfSlice = products.length < 10 ? 5 : 10;
   const mapped = [...products]
-    .slice(0, 10)
+    .slice(0, endOfSlice)
     .map((product) => <WatchPreviewCard key={product._id} watch={product} />);
   return (
     <div className="latest-watches">
