@@ -98,9 +98,9 @@ function Watches() {
             transition={{ duration: 0.5, ease: "backInOut" }}
             key={`${brand}${URLParam.id}`}
           >
-            <h3 className="section-title-home">
+            <p className="section-title-home">
               {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
-            </h3>
+            </p>
             <p>
               {brand === "All"
                 ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."

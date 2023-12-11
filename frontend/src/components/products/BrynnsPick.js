@@ -27,7 +27,7 @@ function BrynnsPick() {
   if (featured.store) {
     return (
       <div className="featured-watch">
-        <h3 className="section-title-home">{"SHOP BRYNN'S PICK"}</h3>
+        <p className="section-title-home">{"SHOP BRYNN'S PICK"}</p>
         <p className="featured-watch-headline">{featured.featuredHeadline}</p>
         <div className="featured-watch-content-container">
           <div className="featured-watch-description">

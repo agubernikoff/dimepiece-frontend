@@ -16,7 +16,7 @@ function WatchPreview() {
   ));
   return (
     <div className="latest-watches">
-      <h3 className="section-title-home">LATEST WATCHES</h3>
+      <p className="section-title-home">LATEST WATCHES</p>
       <div className="watch-preview-container">{mapped}</div>
     </div>
   );

@@ -78,9 +78,9 @@ function IndexAndContent({ contentType }) {
             transition={{ duration: 1, ease: "backInOut" }}
             key={category}
           >
-            <h3 className="section-title-home">
+            <p className="section-title-home">
               {category === "All" ? "LATEST STORIES" : category.toUpperCase()}
-            </h3>
+            </p>
             <p>
               {category === "All"
                 ? "Explore all past and present Dimepiece content, from in-depth interviews and 101 information."
@@ -102,9 +102,9 @@ function IndexAndContent({ contentType }) {
             transition={{ duration: 1, ease: "backInOut" }}
             key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
           >
-            <h3 className="section-title-home">
+            <p className="section-title-home">
               {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
-            </h3>
+            </p>
             <p>
               {brand === "All"
                 ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."

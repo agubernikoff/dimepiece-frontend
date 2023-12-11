@@ -16,7 +16,7 @@ function MostDiscussed() {
   if (mostDiscussed.coverImage)
     return (
       <div className="most-discussed">
-        <h3 className="section-title-home">MOST DISCUSSED</h3>
+        <p className="section-title-home">MOST DISCUSSED</p>
         <LatestStoriesCard story={mostDiscussed} />
       </div>
     );

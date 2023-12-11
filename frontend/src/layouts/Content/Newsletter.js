@@ -53,7 +53,7 @@ function Newsletter() {
   };
   return (
     <div className="newsletter">
-      <h3 className="section-title-home">NEWSLETTER</h3>
+      <p className="section-title-home">NEWSLETTER</p>
       <p>
         Sign up for the Dimepiece Newsletter to stay up to date on all our
         latest stories, products, and offerings.

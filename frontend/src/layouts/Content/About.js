@@ -231,7 +231,7 @@ function About() {
           <p className="about-brynn-portrait-title">Dimepiece Press</p>
           <div className="about-section-container">{mappedPress}</div>
           <div>
-            <h3 className="section-title-home">SAY HELLO</h3>
+            <p className="section-title-home">SAY HELLO</p>
             <div className="about-say-hello">
               <p>
                 e. <a href={`mailto:hello@dimepiece.co`}>hello@dimepiece.co</a>
@@ -249,7 +249,7 @@ function About() {
             </div>
           </div>
           <div className="newsletter">
-            <h3 className="section-title-home">STAY IN THE KNOW</h3>
+            <p className="section-title-home">STAY IN THE KNOW</p>
             <form
               className="newsletter-input-container"
               onSubmit={sendEmail}

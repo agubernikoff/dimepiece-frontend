@@ -16,7 +16,7 @@ function DialDimepiece() {
   ));
   return (
     <div className="dial-dimepiece">
-      <h3 className="section-title-home">INTERVIEWS</h3>
+      <p className="section-title-home">INTERVIEWS</p>
       <div className="dial-dimepiece-cards-container">{mapped}</div>
     </div>
   );

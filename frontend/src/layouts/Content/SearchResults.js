@@ -26,7 +26,7 @@ function SearchResults() {
       <div className="stories-page-content">
         {searchText && mappedWatches.length > 0 ? (
           <>
-            <h3 className="section-title-home">{`"${searchText.toUpperCase()}"`}</h3>
+            <p className="section-title-home">{`"${searchText.toUpperCase()}"`}</p>
             <div className="watches-page-card-container">{mappedWatches}</div>
           </>
         ) : (

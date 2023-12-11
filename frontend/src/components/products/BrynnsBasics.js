@@ -16,7 +16,7 @@ function BrynnsBasics() {
   ));
   return (
     <div className="brynns-basics">
-      <h3 className="section-title-home">{"BRYNN'S BASICS"}</h3>
+      <p className="section-title-home">{"BRYNN'S BASICS"}</p>
       <div className="brynns-basics-cards-container">{mapped}</div>
     </div>
   );

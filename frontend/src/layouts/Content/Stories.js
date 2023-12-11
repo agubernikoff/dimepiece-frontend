@@ -109,9 +109,9 @@ function Stories() {
           transition={{ duration: 0.5, ease: "backInOut" }}
           key={category}
         >
-          <h3 className="section-title-home">
+          <p className="section-title-home">
             {category === "All" ? "LATEST STORIES" : category.toUpperCase()}
-          </h3>
+          </p>
           <p>
             {category === "All"
               ? 'Explore all past and present Dimpiece content, from in-depth interviews and 101 information like "What is a bezel?" "What size is good for my wrist?" "What other brands should be on my radar besides Rolex?" This is your gateway to the captivating universe of timepieces.'

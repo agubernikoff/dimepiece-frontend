@@ -13,7 +13,7 @@ function LatestsStories() {
     : null;
   return (
     <div>
-      <h3 className="section-title-home">LATEST STORIES</h3>
+      <p className="section-title-home">LATEST STORIES</p>
       <div className="latest-stories">{mapped}</div>
     </div>
   );
