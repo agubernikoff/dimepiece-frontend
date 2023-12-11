@@ -280,7 +280,7 @@ instead of tweaking each class */
 .section-title-home {
   margin: auto;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.4rem !important;
   margin-top: -0.25%;
   font-family: "swall-diatype-bold" !important;
 }
