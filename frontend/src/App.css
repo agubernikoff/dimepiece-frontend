@@ -326,6 +326,9 @@ instead of tweaking each class */
 .latest-story-card-bottom-left > p {
   margin-top: 0.3rem;
 }
+.latest-story-card-bottom-left .blue {
+  margin-bottom: 2%;
+}
 .latest-story-card-bottom-left > p:last-of-type {
   margin-top: 0rem;
 }
