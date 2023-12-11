@@ -281,7 +281,7 @@ instead of tweaking each class */
   margin: auto;
   text-align: center;
   font-size: 1.4rem !important;
-  margin-top: -0.25%;
+  margin-top: -0.25% !important;
   font-family: "swall-diatype-bold" !important;
 }
 
