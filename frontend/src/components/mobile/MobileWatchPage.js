@@ -35,11 +35,6 @@ function MobileWatchPage() {
             key={i._key}
             src={i.asset.url}
             alt={watch.title}
-            style={{
-              backgroundImage: `url(${i.asset.url}?blur=75)`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
           />
         ))
       : null;
