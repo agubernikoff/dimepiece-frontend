@@ -365,7 +365,7 @@ strong {
   position: relative;
 }
 .mobile-index .stories-page-index-category-header {
-  font-size: var(--base-text-size);
+  font-size: 12px;
   margin: 4% 0;
 }
 .mobile-index-filter-dialogue {
