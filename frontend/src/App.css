@@ -193,6 +193,7 @@ instead of tweaking each class */
 }
 .search-input-container > button {
   margin: 0;
+  margin-bottom: 0.75%;
   font-size: 3rem;
   color: var(--blue);
   text-decoration: none;
