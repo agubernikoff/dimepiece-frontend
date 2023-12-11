@@ -4,7 +4,7 @@ import WatchPreviewCard from "./WatchPreviewCard";
 
 function WatchPreview() {
   const products = useSelector((state) => state.cart.watches);
-  const mapped = products
+  const mapped = [...products]
     .slice(0, 10)
     .map((product) => <WatchPreviewCard key={product._id} watch={product} />);
   return (

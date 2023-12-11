@@ -102,16 +102,20 @@ function IndexAndContent({ contentType }) {
             transition={{ duration: 1, ease: "backInOut" }}
             key={`${brand}${filterBy}${caseSizeFilter}${stylesFilter}`}
           >
-            <p className="section-title-home">
-              {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
-            </p>
-            <p>
-              {brand === "All"
-                ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."
-                : brands[0]
-                ? brands.find((b) => b.title === brand).descriptor
-                : null}
-            </p>
+            {mappedWatches.length > 0 ? (
+              <>
+                <p className="section-title-home">
+                  {brand === "All" ? "SHOP ALL" : brand.toUpperCase()}
+                </p>
+                <p>
+                  {brand === "All"
+                    ? "This limited collection has been lovingly curated by Dimepiece, in partnership with Foundwell. Each watch has been expertly selected, carefully vetted and authenticated by Foundwell, which was founded in 2009 and has worked with retailers such as Bergdorf Goodman, Harrods, and Mr. Porter."
+                    : brands[0]
+                    ? brands.find((b) => b.title === brand).descriptor
+                    : null}
+                </p>
+              </>
+            ) : null}
             <AnimatePresence mode="wait">
               <motion.div
                 className="watches-page-card-container"

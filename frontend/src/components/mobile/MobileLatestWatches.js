@@ -4,7 +4,7 @@ import MobileLatestWatchesCard from "./MobileLatestWatchesCard";
 
 function MobileLatestWatches() {
   const products = useSelector((state) => state.cart.watches);
-  const mapped = products
+  const mapped = [...products]
     .slice(0, 2)
     .map((product) => (
       <MobileLatestWatchesCard key={product._id} watch={product} />

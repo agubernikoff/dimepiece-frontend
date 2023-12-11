@@ -32,18 +32,20 @@ function IndexStories({ categories, stories, brynnsPick, isMobile }) {
         isMobile={isMobile}
       />
       <div className="stories-page-index-list">
-        <p className="stories-page-index-category-header">
-          {isMobile ? null : (
-            <p style={{ fontFamily: "swall-diatype-bold" }}>FEATURED</p>
-          )}
+        <p
+          className="stories-page-index-category-header"
+          style={isMobile ? null : { fontFamily: "swall-diatype-bold" }}
+        >
+          FEATURED
         </p>
         <ol>{isMobile ? null : mappedFeaturedTitles}</ol>
       </div>
       <div className="stories-page-index-list">
-        <p className="stories-page-index-category-header">
-          {isMobile ? null : (
-            <p style={{ fontFamily: "swall-diatype-bold" }}>{"BRYNN'S PICK"}</p>
-          )}
+        <p
+          className="stories-page-index-category-header"
+          style={isMobile ? null : { fontFamily: "swall-diatype-bold" }}
+        >
+          {"BRYNN'S PICK"}
         </p>
         {brynnsPick && !isMobile ? (
           <p
