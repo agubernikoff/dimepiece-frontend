@@ -320,7 +320,7 @@ instead of tweaking each class */
   flex-direction: column;
   font-family: "swall-diatype";
   font-size: clamp(4px, 0.58vw, 1rem);
-  width: 10%;
+  width: 11.5%;
   letter-spacing: -0.2px;
 }
 .latest-story-card-bottom-left > p {
