@@ -47,7 +47,6 @@ function MobileIndexAndContent({ contentType }) {
           capitalizeWords(URLParam.category.replaceAll("-", " "))
         );
       else if (URLParam.brand && brandTitles[0]) {
-        console.log(brandTitles, URLParam);
         if (brandTitles.find((b) => b === URLParam.brand))
           setPrimaryFilter(URLParam.brand);
         else

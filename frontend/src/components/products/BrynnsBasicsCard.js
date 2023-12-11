@@ -13,7 +13,6 @@ function BrynnsBasicsCard({ watch }) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   };
-  console.log(watch);
   return (
     <div className="brynns-basics-card">
       <div className="brynns-basics-card-left">

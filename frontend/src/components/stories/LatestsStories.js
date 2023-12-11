@@ -13,7 +13,7 @@ function LatestsStories() {
         .slice(0, 8)
         .map((story) => <LatestStoriesCard key={story._id} story={story} />)
     : null;
-  console.log(stories);
+
   return (
     <div>
       <p className="section-title-home">LATEST STORIES</p>
