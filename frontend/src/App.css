@@ -1013,10 +1013,43 @@ instead of tweaking each class */
   margin-top: 4%;
 } */
 .gradient {
-  background-image: linear-gradient(
+  background: -moz-linear-gradient(
+    right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    top left,
+    top right,
+    right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(
+    right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* IE10+ */
+  background: linear-gradient(
     to right,
     rgba(255, 255, 255, 1),
-    rgba(0, 0, 0, 0),
+    rgba(255, 255, 255, 0),
     rgba(255, 255, 255, 1)
   );
   background-attachment: fixed;
