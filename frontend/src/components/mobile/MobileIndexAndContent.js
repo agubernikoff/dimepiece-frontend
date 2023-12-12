@@ -182,34 +182,31 @@ function MobileIndexAndContent({ contentType }) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5, ease: "backInOut" }}
             >
-              <div className="mobile-descriptor">
-                <p
-                  style={{
-                    fontFamily: "swall-diatype-bold",
-                    fontSize: "1.4rem",
-                    marginBottom: "5%",
-                  }}
-                  className="section-title-home"
-                >
-                  {primaryFilter === "All"
-                    ? contentType === "shop"
-                      ? "SHOP ALL"
-                      : "LATEST STORIES"
-                    : primaryFilter.toUpperCase()}
-                </p>
-                <p>{descriptor}</p>
-              </div>
+              {(contentType === "shop" && mappedWatches.length > 0) ||
+              (contentType === "stories" && mappedStories.length > 0) ? (
+                <div className="mobile-descriptor">
+                  <p
+                    style={{
+                      fontFamily: "swall-diatype-bold",
+                      fontSize: "1.4rem",
+                      marginBottom: "5%",
+                    }}
+                    className="section-title-home"
+                  >
+                    {primaryFilter === "All"
+                      ? contentType === "shop"
+                        ? "SHOP ALL"
+                        : "LATEST STORIES"
+                      : primaryFilter.toUpperCase()}
+                  </p>
+                  <p>{descriptor}</p>
+                </div>
+              ) : (
+                <NoResults />
+              )}
               {content[0] ? (
                 <div className="mobile-content-mapped">
-                  {contentType === "shop" ? (
-                    mappedWatches.length > 0 ? (
-                      mappedWatches
-                    ) : (
-                      <NoResults />
-                    )
-                  ) : (
-                    mappedStories
-                  )}
+                  {contentType === "shop" ? mappedWatches : mappedStories}
                 </div>
               ) : null}
             </motion.div>
