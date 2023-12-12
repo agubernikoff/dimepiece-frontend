@@ -194,7 +194,7 @@ export default defineType({
           {title: 'Gold', value: 'gold'},
           {title: 'Steel', value: 'steel'},
           {title: 'Gem-Set', value: 'gemSet'},
-          {title: 'Leather Strap', value: 'leatherStrap'},
+          {title: 'On A Strap', value: 'onAStrap'},
           {title: 'Colored Dial', value: 'coloredDial'},
         ],
       },

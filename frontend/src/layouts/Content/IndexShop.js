@@ -31,7 +31,7 @@ function IndexShop({ brandTitles, isMobile }) {
       />
       <IndexSubSection
         title={"styles"}
-        options={["Gold", "Steel", "Gem-Set", "Leather Strap", "Colored Dial"]}
+        options={["Gold", "Steel", "Gem-Set", "On A Strap", "Colored Dial"]}
         includeAll={false}
         urlPrefix={"shop"}
         useUSP={true}
