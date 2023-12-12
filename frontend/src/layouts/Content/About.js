@@ -23,7 +23,7 @@ function About() {
   const ref = useRef();
 
   const mappedPress = [...press]
-    .sort((a, b) => a.datePublished - b.datePublished)
+    .sort((a, b) => b.datePublished - a.datePublished)
     .map((p) => <PressCard key={p._id} article={p} />);
 
   const sendEmail = (e) => {

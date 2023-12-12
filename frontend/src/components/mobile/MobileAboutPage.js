@@ -34,7 +34,7 @@ function MobileAboutPage() {
   }, []);
 
   const mappedPress = [...press]
-    .sort((a, b) => a.datePublished - b.datePublished)
+    .sort((a, b) => b.datePublished - a.datePublished)
     .map((p) => <MobilePressCard key={p._id} article={p} />);
 
   const sendEmail = (e) => {
