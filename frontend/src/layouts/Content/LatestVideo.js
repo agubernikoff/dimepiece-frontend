@@ -8,7 +8,7 @@ function LatestVideo() {
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/x-QTGuocDvs?si=cxHrmSrVoDvBsoZR"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=kZ0XxdQOq8F89sda"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
