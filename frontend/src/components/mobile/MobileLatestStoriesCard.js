@@ -21,8 +21,24 @@ function MobileLatestStoriesCard({ story }) {
           dispatch(cartActions.hideSearch());
         }}
       />
-      <p className="mobile-latest-story-card-title">{story.title}</p>
-      <p className="mobile-most-discussed-preview">
+      <p
+        onClick={() => {
+          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+          dispatch(articleActions.setIsArticleLoaded(false));
+          dispatch(cartActions.hideSearch());
+        }}
+        className="mobile-latest-story-card-title"
+      >
+        {story.title}
+      </p>
+      <p
+        onClick={() => {
+          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+          dispatch(articleActions.setIsArticleLoaded(false));
+          dispatch(cartActions.hideSearch());
+        }}
+        className="mobile-most-discussed-preview"
+      >
         {story.previewDescription}
       </p>
     </div>
