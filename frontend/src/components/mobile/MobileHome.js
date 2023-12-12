@@ -19,7 +19,7 @@ function MobileHome() {
     >
       <MobileStories />
       <MobileLatestWatches />
-      <LatestVideo />
+      {/* <LatestVideo /> */}
       <MobileBrynnsPick />
       <MobileDialDimepiece />
       <MobileNewsletter />
