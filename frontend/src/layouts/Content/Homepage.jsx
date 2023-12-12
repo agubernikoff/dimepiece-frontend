@@ -23,7 +23,7 @@ function Homepage() {
       <FeaturedArticle />
       <LatestsStories />
       <WatchPreview />
-      {/* <LatestVideo /> */}
+      <LatestVideo />
       <BrynnsPick />
       <div className="three-column-homepage-container">
         <DialDimepiece />
