@@ -22,7 +22,9 @@ function About() {
   const dispatch = useDispatch();
   const ref = useRef();
 
-  const mappedPress = press.map((p) => <PressCard key={p._id} article={p} />);
+  const mappedPress = press
+    .sort((a, b) => a.datePublished - b.datePublished)
+    .map((p) => <PressCard key={p._id} article={p} />);
 
   const sendEmail = (e) => {
     e.preventDefault();
