@@ -21,7 +21,7 @@ function About() {
   const press = useSelector((state) => state.about.press);
   const dispatch = useDispatch();
   const ref = useRef();
-
+  console.log(press);
   const mappedPress = [...press]
     .sort((a, b) => b.datePublished - a.datePublished)
     .map((p) => <PressCard key={p._id} article={p} />);
