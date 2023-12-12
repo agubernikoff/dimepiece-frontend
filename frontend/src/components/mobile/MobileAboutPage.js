@@ -178,7 +178,7 @@ function MobileAboutPage() {
           </div>
           <div>
             <p
-              style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
+              // style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
               className="about-brynn-portrait-title"
             >
               SAY HELLO
@@ -201,7 +201,7 @@ function MobileAboutPage() {
           </div>
           <div className="newsletter">
             <p
-              style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
+              // style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
               className="about-brynn-portrait-title"
             >
               NEWSLETTER
