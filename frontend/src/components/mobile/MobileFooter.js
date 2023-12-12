@@ -164,9 +164,7 @@ function Footer() {
             name="email"
             onFocus={() => dispatch(cartActions.hideSearch())}
           ></input>
-          <button type="submit" style={{ textDecoration: "underline" }}>
-            Join
-          </button>
+          <button type="submit">Join</button>
         </form>
       </div>
       <div className="mobile-footer-bottom-container">
