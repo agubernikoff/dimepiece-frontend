@@ -70,7 +70,7 @@ function MobileWatchPage() {
     shopifyClient.checkout
       .removeLineItems(checkoutId, lineItemsToRemove)
       .then((checkout) => {
-        console.log(checkout);
+        // console.log(checkout);
         dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
       });
     dispatch(cartActions.removeFromCart(watch._id));
@@ -88,7 +88,7 @@ function MobileWatchPage() {
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
-          console.log(checkoutUrl);
+          // console.log(checkoutUrl);
           dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
         });
       window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");

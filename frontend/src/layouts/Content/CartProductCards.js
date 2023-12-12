@@ -25,7 +25,7 @@ function CartProductCards({ watch }) {
     shopifyClient.checkout
       .removeLineItems(checkoutId, lineItemsToRemove)
       .then((checkout) => {
-        console.log(checkout);
+        // console.log(checkout);
         dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
       });
     dispatch(cartActions.removeFromCart(watch._id));

@@ -77,9 +77,8 @@ function FetchAndSet() {
                   headers: { "Content-Type": "application/json" },
                   credentials: "include",
                   body: JSON.stringify({ checkoutId: checkout.id }),
-                })
-                  .then((r) => r.json())
-                  .then((data) => console.log("new ", data));
+                }).then((r) => r.json());
+                // .then((data) => console.log("new ", data));
               });
           });
         } else {
@@ -94,9 +93,8 @@ function FetchAndSet() {
               headers: { "Content-Type": "application/json" },
               credentials: "include",
               body: JSON.stringify({ checkoutId: checkout.id }),
-            })
-              .then((r) => r.json())
-              .then((data) => console.log("new ", data));
+            }).then((r) => r.json());
+            // .then((data) => console.log("new ", data));
           });
         }
       });

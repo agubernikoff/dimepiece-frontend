@@ -53,7 +53,7 @@ function Watch() {
     shopifyClient.checkout
       .addLineItems(checkoutId, lineItemsToAdd)
       .then((checkout) => {
-        console.log(checkout);
+        // console.log(checkout);
         dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
       });
     dispatch(cartActions.addToCart(watch));
@@ -69,7 +69,7 @@ function Watch() {
     shopifyClient.checkout
       .removeLineItems(checkoutId, lineItemsToRemove)
       .then((checkout) => {
-        console.log(checkout);
+        // console.log(checkout);
         dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
       });
     dispatch(cartActions.removeFromCart(watch._id));
@@ -87,7 +87,7 @@ function Watch() {
       shopifyClient.checkout
         .addLineItems(checkoutId, lineItemsToAdd)
         .then((checkout) => {
-          console.log(checkout);
+          // console.log(checkout);
           dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
           window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
         });
