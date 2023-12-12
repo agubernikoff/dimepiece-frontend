@@ -22,7 +22,7 @@ function About() {
   const dispatch = useDispatch();
   const ref = useRef();
 
-  const mappedPress = press
+  const mappedPress = [...press]
     .sort((a, b) => a.datePublished - b.datePublished)
     .map((p) => <PressCard key={p._id} article={p} />);
 
