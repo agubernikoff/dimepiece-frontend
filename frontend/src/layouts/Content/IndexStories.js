@@ -31,38 +31,42 @@ function IndexStories({ categories, stories, brynnsPick, isMobile }) {
         urlPrefix={"stories"}
         isMobile={isMobile}
       />
-      <div className="stories-page-index-list">
-        <p
-          className="stories-page-index-category-header"
-          style={isMobile ? null : { fontFamily: "swall-diatype-bold" }}
-        >
-          FEATURED
-        </p>
-        <ol>{isMobile ? null : mappedFeaturedTitles}</ol>
-      </div>
-      <div className="stories-page-index-list">
-        <p
-          className="stories-page-index-category-header"
-          style={isMobile ? null : { fontFamily: "swall-diatype-bold" }}
-        >
-          {"BRYNN'S PICK"}
-        </p>
-        {brynnsPick && !isMobile ? (
-          <p
-            className="stories-page-index-brynns-pick"
-            onClick={() => {
-              nav(
-                `/shop/${brynnsPick.brand.replaceAll(" ", "-")}/${
-                  brynnsPick._id
-                }`
-              );
-              dispatch(cartActions.hideSearch());
-            }}
-          >
-            {brynnsPick.featuredHeadline}
-          </p>
-        ) : null}
-      </div>
+      {isMobile ? null : (
+        <>
+          <div className="stories-page-index-list">
+            <p
+              className="stories-page-index-category-header"
+              style={{ fontFamily: "swall-diatype-bold" }}
+            >
+              {"FEATURED"}
+            </p>
+            <ol>{mappedFeaturedTitles}</ol>
+          </div>
+          <div className="stories-page-index-list">
+            <p
+              className="stories-page-index-category-header"
+              style={{ fontFamily: "swall-diatype-bold" }}
+            >
+              {"BRYNN'S PICK"}
+            </p>
+            {brynnsPick && !isMobile ? (
+              <p
+                className="stories-page-index-brynns-pick"
+                onClick={() => {
+                  nav(
+                    `/shop/${brynnsPick.brand.replaceAll(" ", "-")}/${
+                      brynnsPick._id
+                    }`
+                  );
+                  dispatch(cartActions.hideSearch());
+                }}
+              >
+                {brynnsPick.featuredHeadline}
+              </p>
+            ) : null}
+          </div>
+        </>
+      )}
     </>
   );
 }
