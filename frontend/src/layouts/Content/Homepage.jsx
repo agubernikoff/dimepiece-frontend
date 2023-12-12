@@ -8,6 +8,7 @@ import BrynnsBasics from "../../components/products/BrynnsBasics";
 import DialDimepiece from "../../components/stories/DialDimepiece";
 import Newsletter from "./Newsletter";
 import { motion } from "framer-motion";
+import LatestVideo from "./LatestVideo";
 
 function Homepage() {
   return (
@@ -22,6 +23,7 @@ function Homepage() {
       <FeaturedArticle />
       <LatestsStories />
       <WatchPreview />
+      <LatestVideo />
       <BrynnsPick />
       <div className="three-column-homepage-container">
         <DialDimepiece />

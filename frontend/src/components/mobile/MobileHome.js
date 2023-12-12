@@ -5,6 +5,7 @@ import MobileStories from "./MobileStories";
 import MobileLatestWatches from "./MobileLatestWatches";
 import { motion } from "framer-motion";
 import MobileNewsletter from "./MobileNewsletter";
+import LatestVideo from "../../layouts/Content/LatestVideo";
 
 function MobileHome() {
   return (
@@ -18,6 +19,7 @@ function MobileHome() {
     >
       <MobileStories />
       <MobileLatestWatches />
+      <LatestVideo />
       <MobileBrynnsPick />
       <MobileDialDimepiece />
       <MobileNewsletter />
