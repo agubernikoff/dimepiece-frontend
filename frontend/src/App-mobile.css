@@ -350,7 +350,7 @@ strong {
 .mobile-newsletter .newsletter-input-container > button {
   font-size: 14px;
   font-family: "swall-diatype";
-  font-weight: regular;
+  font-weight: 400;
 }
 .mobile-newsletter .newsletter-input-container {
   padding: 0;
