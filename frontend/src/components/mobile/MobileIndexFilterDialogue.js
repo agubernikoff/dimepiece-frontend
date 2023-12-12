@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import IndexShop from "../../layouts/Content/IndexShop";
@@ -12,6 +12,11 @@ function MobileIndexFilterDialogue({ closeDialogue, titles, contentType }) {
   );
   const urlPrefix = useSelector((state) => state.mobileFilter.urlPrefix);
   const [searchParams, setSearchParams] = useSearchParams();
+  const existingPrimaryFilter = useRef();
+  useEffect(() => {
+    existingPrimaryFilter.current = primaryFilter;
+    return () => (existingPrimaryFilter.current = null);
+  }, []);
   return (
     <motion.div
       initial={{ y: "-100%" }}
@@ -34,11 +39,12 @@ function MobileIndexFilterDialogue({ closeDialogue, titles, contentType }) {
           className="stories-page-index-category-header"
           onClick={() => {
             closeDialogue();
-            nav(
-              `/${urlPrefix}/${primaryFilter}${
-                searchParams ? `?${searchParams}` : null
-              }`
-            );
+            if (primaryFilter)
+              nav(
+                `/${urlPrefix}/${primaryFilter}${
+                  searchParams ? `?${searchParams}` : null
+                }`
+              );
           }}
         >
           CLOSE

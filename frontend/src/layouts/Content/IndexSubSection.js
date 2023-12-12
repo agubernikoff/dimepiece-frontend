@@ -107,7 +107,7 @@ function IndexSubSection({
         searchParams.delete(title);
         setSearchParams(searchParams);
       }
-    } else if (title === "brands" && isMobile) {
+    } else if ((title === "brands" || title === "categories") && isMobile) {
       dispatch(mobileFilterActions.setPrimaryFilter("All"));
     } else nav(`/${urlPrefix}/All${searchParams ? `?${searchParams}` : null}`);
   }
