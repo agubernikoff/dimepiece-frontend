@@ -74,7 +74,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     name: "__session",
     genid: function (req) {
-      console.log("session id created");
+      // console.log("session id created");
       return uuidv4();
     },
     resave: false,
@@ -95,7 +95,7 @@ app.get("/test", (req, res) => {
 });
 app.get("/checkoutId", (req, res) => {
   // functions.logger.log(req.session);
-  console.log(req.session);
+  // console.log(req.session);
   if (req.session.checkoutId) res.json({ checkoutId: req.session.checkoutId });
   else res.json({ checkoutId: "" });
 });
