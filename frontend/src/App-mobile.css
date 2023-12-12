@@ -185,7 +185,7 @@ strong {
 /* LATEST VIDEO */
 
 .mobile-latest-video {
-  margin-bottom: 7% !important;
+  margin-bottom: 20% !important;
   width: 90%;
   margin: auto;
 }
@@ -193,7 +193,7 @@ strong {
 /* Stories */
 
 .mobile-stories {
-  margin-bottom: 8%;
+  margin-bottom: 20%;
   min-height: 100vh;
   width: 90%;
   margin-left: auto;
@@ -230,7 +230,7 @@ strong {
 
 .mobile-watches {
   margin-top: 2%;
-  margin-bottom: 15%;
+  margin-bottom: 20%;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -250,7 +250,7 @@ strong {
 /* Brynn's Pick */
 
 .mobile-featured-watch {
-  margin-bottom: 10%;
+  margin-bottom: 20%;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -303,6 +303,7 @@ strong {
 
 .mobile-dial-dimepiece-cards-container {
   margin-top: 4%;
+  margin-bottom: 20%;
 }
 .mobile-dial-dimepiece-card:first-of-type {
   margin-top: 10%;
