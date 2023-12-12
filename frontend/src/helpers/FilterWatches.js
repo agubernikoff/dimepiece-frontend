@@ -11,7 +11,7 @@ export function filterWatches(
   if (brand)
     filteredWatches = filteredWatches.filter((w) => {
       if (brand === "All") return true;
-      return w.brand.toUppercase() === brand.toUppercase();
+      return w.brand.toUpperCase() === brand.toUpperCase();
     });
 
   switch (filterBy) {
