@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function LatestVideo() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    window
+      .matchMedia("(max-width:700px)")
+      .addEventListener("change", (e) => setIsMobile(e.matches));
+    if (window.matchMedia("(max-width:700px)").matches) setIsMobile(true);
+  }, []);
   return (
-    <div className="latest-video">
+    <div className={isMobile ? "mobile-latest-video" : "latest-video"}>
       <p className="section-title-home">LATEST VIDEO</p>
       <div className="video-container">
         <iframe
-          width="560"
-          height="315"
           src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=kZ0XxdQOq8F89sda"
           title="YouTube video player"
           frameBorder="0"

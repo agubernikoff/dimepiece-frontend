@@ -181,6 +181,15 @@ strong {
 .mobile-index-and-content {
   min-height: 100vh;
 }
+
+/* LATEST VIDEO */
+
+.mobile-latest-video {
+  margin-bottom: 7% !important;
+  width: 90%;
+  margin: auto;
+}
+
 /* Stories */
 
 .mobile-stories {
