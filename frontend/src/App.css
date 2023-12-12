@@ -341,7 +341,7 @@ instead of tweaking each class */
 }
 .latest-story-card-title {
   margin: 0;
-  font-size: clamp(16px, 1.4vw, 1.8rem);
+  font-size: clamp(32px, 1.8vw, 1.8rem);
   line-height: 110%;
 }
 .most-discussed {

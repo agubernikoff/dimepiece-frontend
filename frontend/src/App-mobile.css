@@ -382,9 +382,13 @@ strong {
   border-bottom: 1px solid #bfbfbf;
   position: relative;
 }
+.mobile-index .index-link {
+  font-size: 12px !important;
+}
 .mobile-index .stories-page-index-category-header {
   font-size: 12px;
   margin: 4% 0;
+  font-family: "swall-diatype-bold";
 }
 .mobile-index-filter-dialogue {
   position: absolute;
