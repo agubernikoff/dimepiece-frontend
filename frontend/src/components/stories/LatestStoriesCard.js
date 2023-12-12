@@ -40,7 +40,7 @@ function LatestStoriesCard({ story, mostDiscussed }) {
         <div className="latest-story-card-bottom-right">
           <p
             style={
-              mostDiscussed ? { fontSize: "clamp(28px, 1.8vw, 1.8rem)" } : null
+              mostDiscussed ? { fontSize: "clamp(42px, 1.8vw, 1.8rem)" } : null
             }
             className="latest-story-card-title"
           >
