@@ -11,6 +11,12 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],"redirects": [
+            {
+              "source": "www.dimepiece.co",
+              "destination": "dimepiece.co",
+              "type": 301
+            }
+          ]
   }
 }
