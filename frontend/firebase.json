@@ -13,8 +13,8 @@
       }
     ],"redirects": [
       {
-        "source": "www.dimepiece.co",
-        "destination": "dimepiece.co",
+        "source": "www.dimepiece.co/*",
+        "destination": "https://dimepiece.co/:splat",
         "type": 301
       }
     ]
