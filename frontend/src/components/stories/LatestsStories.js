@@ -7,9 +7,7 @@ function LatestsStories() {
   const featured = useSelector((state) => state.article.featured);
   const mapped = featured
     ? [...stories]
-        .filter(
-          (story) => story._id !== featured._id && story.mostDiscussed !== true
-        )
+        .filter((story) => story._id !== featured._id)
         .slice(0, 8)
         .map((story) => <LatestStoriesCard key={story._id} story={story} />)
     : null;
