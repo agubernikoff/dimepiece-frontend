@@ -7,7 +7,7 @@ function BrynnsBasics() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "product" && brynnsBasics == true && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id][0..9]`
+        `*[_type == "product" && brynnsBasics == true && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]|order(_createdAt desc)[0..3]`
       )
       .then((response) => setBrynnsBasics(response));
   }, []);
