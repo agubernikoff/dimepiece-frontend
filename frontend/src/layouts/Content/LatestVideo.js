@@ -14,7 +14,7 @@ function LatestVideo() {
       <p className="section-title-home">LATEST VIDEO</p>
       <div className="video-container">
         <iframe
-          src="https://www.youtube.com/embed/watch?v=jvGz5X6TtHo&ab_channel=Dimepiece"
+          src="https://youtu.be/jvGz5X6TtHo?si=VUVq9u97wicnJSzJ"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
