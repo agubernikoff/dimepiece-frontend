@@ -14,7 +14,7 @@ function LatestVideo() {
       <p className="section-title-home">LATEST VIDEO</p>
       <div className="video-container">
         <iframe
-          src="https://youtu.be/embed/jvGz5X6TtHo?si=VUVq9u97wicnJSzJ"
+          src="https://www.youtube.com/embed/jvGz5X6TtHo?si=VUVq9u97wicnJSzJ"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
