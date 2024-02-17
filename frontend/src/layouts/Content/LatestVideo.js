@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 function LatestVideo() {
   const [isMobile, setIsMobile] = useState(false);
-  var url = url.replace("watch?v=", "v/");
 
   useEffect(() => {
     window
@@ -15,7 +14,7 @@ function LatestVideo() {
       <p className="section-title-home">LATEST VIDEO</p>
       <div className="video-container">
         <iframe
-          src="https://www.youtube.com/watch?v=jvGz5X6TtHo&ab_channel=Dimepiece"
+          src="https://www.youtube.com/watch?v=jvGz5X6TtHo&ab_channel=Dimepiece&output=embed"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
