@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function LatestVideo() {
   const [isMobile, setIsMobile] = useState(false);
+  var url = url.replace("watch?v=", "v/");
 
   useEffect(() => {
     window
