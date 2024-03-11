@@ -9,8 +9,10 @@ import DialDimepiece from "../../components/stories/DialDimepiece";
 import Newsletter from "./Newsletter";
 import { motion } from "framer-motion";
 import LatestVideo from "./LatestVideo";
+import { testLog } from "../firebase/Firebase";
 
 function Homepage() {
+  testLog();
   return (
     <motion.div
       className="homepage"
