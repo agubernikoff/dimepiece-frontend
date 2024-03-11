@@ -30,6 +30,7 @@ import MobileSearchResults from "./components/mobile/MobileSearchResults";
 import Index from "./layouts/Content/Index";
 import FetchAndSet from "./layouts/Content/FetchAndSet";
 import { useState } from "react";
+import Firebase from "./firebase/Firebase";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -96,6 +97,7 @@ function App() {
         </div>
       }
     >
+      <Firebase />
       <FetchAndSet />
       {isMobile ? <MobileHeader /> : <Header />}
       <AnimatePresence>
