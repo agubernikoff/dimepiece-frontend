@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { cartActions } from "../../redux/cart-slice";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import useMeasure from "react-use-measure";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function Search({ hideSearch }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,6 +15,7 @@ function Search({ hideSearch }) {
   const [searchText, setSearchText] = useState("");
   const searchResults = useSelector((state) => state.cart.searchResults);
   const globalSearchText = useSelector((state) => state.cart.searchText);
+  const analytics = getAnalytics();
 
   useEffect(() => {
     input.current.focus();
@@ -50,6 +52,9 @@ function Search({ hideSearch }) {
       key={w._id}
       className="suggestion-arrow-container"
       onClick={() => {
+        logEvent(analytics, "search", {
+          search_term: searchText,
+        });
         nav(`/shop/${w.brand}/${w._id}`);
         hideSearch();
       }}
@@ -64,6 +69,9 @@ function Search({ hideSearch }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (searchText) {
+      logEvent(analytics, "search", {
+        search_term: searchText,
+      });
       nav(`/search?search=${searchText}`);
       hideSearch();
     }
