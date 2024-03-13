@@ -10,6 +10,7 @@ import MobileIndexFilterDialogue from "./MobileIndexFilterDialogue";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 import NoResults from "../../layouts/Content/NoResults";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function MobileIndexAndContent({ contentType }) {
   const isDialogueOpen = useSelector(
@@ -129,6 +130,14 @@ function MobileIndexAndContent({ contentType }) {
   function closeDialogue() {
     dispatch(mobileFilterActions.setIsDialogueOpen(false));
   }
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: contentType,
+    });
+  }, [window.location.href]);
 
   return (
     <motion.div

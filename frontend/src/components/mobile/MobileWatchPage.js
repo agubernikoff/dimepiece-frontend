@@ -6,6 +6,7 @@ import { shopifyClient } from "../../shopify/ShopifyClient.js";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import { motion } from "framer-motion";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function MobileWatchPage() {
   const [watch, setWatch] = useState();
@@ -94,6 +95,14 @@ function MobileWatchPage() {
       window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: watch.title,
+    });
+  }, [window.location.href]);
 
   return (
     <motion.div

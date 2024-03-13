@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function MobileNewsletter() {
   const dispatch = useDispatch();
@@ -38,6 +39,15 @@ function MobileNewsletter() {
       setTimeout(() => ref.current.classList.remove("failure"), 1500);
     }
   };
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: "Newsletter",
+    });
+  }, [window.location.href]);
+
   return (
     <motion.div
       className="mobile-newsletter-page"

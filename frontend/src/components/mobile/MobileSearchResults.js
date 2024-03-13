@@ -1,3 +1,4 @@
+import { getAnalytics, logEvent } from "firebase/analytics";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -20,6 +21,15 @@ function MobileSearchResults() {
     if (searchTermFromParams)
       dispatch(cartActions.setSearchResults(searchTermFromParams));
   }, [watches]);
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: "Search Results",
+    });
+  }, [window.location.href]);
+
   return (
     <div className="mobile-stories">
       <div className="mobile-stories-page-content">

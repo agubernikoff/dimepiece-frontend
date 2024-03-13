@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function MobileAboutPage() {
   const [about, setAbout] = useState();
@@ -69,6 +70,14 @@ function MobileAboutPage() {
       setTimeout(() => ref.current.classList.remove("failure"), 1500);
     }
   };
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: "About",
+    });
+  }, [window.location.href]);
 
   return (
     <motion.div
