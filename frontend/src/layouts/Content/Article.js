@@ -62,7 +62,7 @@ function Article() {
   useEffect(() => {
     logEvent(analytics, "page_view", {
       page_location: window.location.href,
-      page_title: article.title,
+      page_title: "Article Page",
     });
   }, [window.location.href]);
 

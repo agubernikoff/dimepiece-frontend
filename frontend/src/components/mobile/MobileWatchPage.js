@@ -100,7 +100,7 @@ function MobileWatchPage() {
   useEffect(() => {
     logEvent(analytics, "page_view", {
       page_location: window.location.href,
-      page_title: watch.title,
+      page_title: "Watch Page",
     });
   }, [window.location.href]);
 
@@ -119,7 +119,7 @@ function MobileWatchPage() {
           <div className="mobile-product-description-container">
             <div className="watch-preview-card-details">
               <p>{watch.brand.toUpperCase()}</p>
-              <p>{watch.title}</p>
+              {/* <p>{watch.title}</p> */}
               <p>
                 {watch.store.priceRange.maxVariantPrice.toLocaleString(
                   "en-US",
