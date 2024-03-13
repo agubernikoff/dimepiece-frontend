@@ -21,7 +21,7 @@ function MobileLatestWatchesCard({ watch }) {
       onClick={() => {
         logEvent(analytics, "select_content", {
           content_type: "Watch",
-          content_id: watch.title,
+          content_id: `${watch.title}`,
         });
         nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
         dispatch(cartActions.hideSearch());

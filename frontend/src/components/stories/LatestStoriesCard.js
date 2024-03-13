@@ -19,7 +19,7 @@ function LatestStoriesCard({ story, mostDiscussed }) {
       onClick={() => {
         logEvent(analytics, "select_content", {
           content_type: "Article",
-          content_id: story.title,
+          content_id: `${story.title}`,
         });
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
         dispatch(articleActions.setIsArticleLoaded(false));

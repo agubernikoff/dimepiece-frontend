@@ -53,7 +53,7 @@ function Search({ hideSearch }) {
       className="suggestion-arrow-container"
       onClick={() => {
         logEvent(analytics, "search", {
-          search_term: searchText,
+          search_term: `${searchText}`,
         });
         nav(`/shop/${w.brand}/${w._id}`);
         hideSearch();
@@ -70,7 +70,7 @@ function Search({ hideSearch }) {
     e.preventDefault();
     if (searchText) {
       logEvent(analytics, "search", {
-        search_term: searchText,
+        search_term: `${searchText}`,
       });
       nav(`/search?search=${searchText}`);
       hideSearch();
