@@ -8,6 +8,7 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 function MobileNewsletter() {
   const dispatch = useDispatch();
   const ref = useRef();
+  const analytics = getAnalytics();
   const sendEmail = (e) => {
     e.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,6 +24,9 @@ function MobileNewsletter() {
           (result) => {
             // Add success message or further actions here
             if (result.text === "OK") {
+              logEvent(analytics, "newsletter_signup", {
+                location: "Newsletter",
+              });
               ref.current.classList.add("success");
               setTimeout(() => ref.current.classList.remove("success"), 1000);
               e.target.reset();
@@ -40,7 +44,6 @@ function MobileNewsletter() {
     }
   };
 
-  const analytics = getAnalytics();
   useEffect(() => {
     logEvent(analytics, "page_view", {
       page_location: window.location.href,

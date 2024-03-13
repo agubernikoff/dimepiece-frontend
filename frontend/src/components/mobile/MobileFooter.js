@@ -4,6 +4,7 @@ import emailjs from "emailjs-com";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 import { cartActions } from "../../redux/cart-slice.js";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function Footer() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function Footer() {
     }),
   });
   const ref = useRef();
+  const analytics = getAnalytics();
   const sendEmail = (e) => {
     e.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,6 +39,9 @@ function Footer() {
           (result) => {
             // Add success message or further actions here
             if (result.text === "OK") {
+              logEvent(analytics, "newsletter_signup", {
+                location: "Footer",
+              });
               ref.current.classList.add("success");
               setTimeout(() => ref.current.classList.remove("success"), 1000);
               e.target.reset();

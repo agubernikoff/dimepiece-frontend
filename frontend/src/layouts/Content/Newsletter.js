@@ -2,11 +2,13 @@ import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function Newsletter() {
   const dispatch = useDispatch();
   const inputContainer = useRef();
   const btn = useRef();
+  const analytics = getAnalytics();
   const sendEmail = (e) => {
     e.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,6 +25,9 @@ function Newsletter() {
           (result) => {
             // Add success message or further actions here
             if (result.text === "OK") {
+              logEvent(analytics, "newsletter_signup", {
+                location: "Newsletter",
+              });
               inputContainer.current.classList.add("success");
               btn.current.innerHTML = "Thank You!";
               btn.current.style.textDecoration = "none";
