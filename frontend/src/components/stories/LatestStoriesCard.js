@@ -1,3 +1,4 @@
+import { getAnalytics, logEvent } from "firebase/analytics";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,11 +11,16 @@ function LatestStoriesCard({ story, mostDiscussed }) {
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
   const nav = useNavigate();
   const dispatch = useDispatch();
+  const analytics = getAnalytics();
 
   return (
     <div
       className={mostDiscussed ? "most-discussed-card" : "latest-story-card"}
       onClick={() => {
+        logEvent(analytics, "select_content", {
+          content_type: "Article",
+          content_id: story.title,
+        });
         nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
         dispatch(articleActions.setIsArticleLoaded(false));
         dispatch(cartActions.hideSearch());

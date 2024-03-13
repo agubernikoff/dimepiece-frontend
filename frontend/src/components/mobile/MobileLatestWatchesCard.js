@@ -1,3 +1,4 @@
+import { getAnalytics, logEvent } from "firebase/analytics";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +13,16 @@ function MobileLatestWatchesCard({ watch }) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   };
+  const analytics = getAnalytics();
+
   return (
     <div
       className="mobile-watch-preview-card"
       onClick={() => {
+        logEvent(analytics, "select_content", {
+          content_type: "Watch",
+          content_id: watch.title,
+        });
         nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
         dispatch(cartActions.hideSearch());
       }}
