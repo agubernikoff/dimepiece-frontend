@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { articleActions } from "../../redux/article-slice";
 import SanityEmailLink from "../../sanity/SanityEmailLink";
 import SanityExternalLink from "../../sanity/SanityExternalLink";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function Article() {
   const dispatch = useDispatch();
@@ -56,6 +57,15 @@ function Article() {
           child.firstChild.style.display = "none";
       });
   }, [articleContentContainer, article]);
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: article.title,
+    });
+  }, [window.location.href]);
+
   return (
     <motion.div
       className="article"

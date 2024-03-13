@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FeaturedArticle from "./FeaturedArticle";
 import WatchPreview from "../../components/products/WatchPreview";
 import LatestsStories from "../../components/stories/LatestsStories";
@@ -9,8 +9,17 @@ import DialDimepiece from "../../components/stories/DialDimepiece";
 import Newsletter from "./Newsletter";
 import { motion } from "framer-motion";
 import LatestVideo from "./LatestVideo";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function Homepage() {
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: "Homepage",
+    });
+  }, [window.location.href]);
+
   return (
     <motion.div
       className="homepage"

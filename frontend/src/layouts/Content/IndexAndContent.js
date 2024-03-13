@@ -9,6 +9,7 @@ import Watch from "./Watch";
 import { scrollToTop } from "../../helpers/ScrollToTop";
 import NoResults from "./NoResults";
 import { useSelector } from "react-redux";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function IndexAndContent({ contentType }) {
   const [category, setCategory] = useState();
@@ -57,6 +58,14 @@ function IndexAndContent({ contentType }) {
     caseSizeFilter,
     stylesFilter
   ).map((w) => <WatchPreviewCard key={w._id} watch={w} />);
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: URLParam.id ? URLParam.id : contentType,
+    });
+  }, [window.location.href]);
 
   return (
     <motion.div

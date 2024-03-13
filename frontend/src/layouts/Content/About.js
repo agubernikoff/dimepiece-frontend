@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
@@ -15,6 +15,7 @@ import foundwell from "../../assets/foundwell.png";
 import hodinkee from "../../assets/hodinkee.png";
 import jcrew from "../../assets/jcrew.png";
 import watchesandwonders from "../../assets/watchesandwonders.png";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function About() {
   const about = useSelector((state) => state.about.about);
@@ -58,6 +59,14 @@ function About() {
       setTimeout(() => ref.current.classList.remove("failure"), 1500);
     }
   };
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: "About",
+    });
+  }, [window.location.href]);
 
   return (
     <motion.div

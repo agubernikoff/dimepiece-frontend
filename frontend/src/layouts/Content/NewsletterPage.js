@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Newsletter from "./Newsletter";
 import { motion } from "framer-motion";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function NewsletterPage() {
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: "Newsletter",
+    });
+  }, [window.location.href]);
   return (
     <motion.div
       className="newsletter-page"

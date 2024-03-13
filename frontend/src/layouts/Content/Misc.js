@@ -3,6 +3,7 @@ import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import SanityEmailLink from "../../sanity/SanityEmailLink";
 import { motion } from "framer-motion";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function Misc({ title }) {
   const [misc, setMisc] = useState();
@@ -14,6 +15,14 @@ function Misc({ title }) {
   }, [title]);
 
   const isMobile = window.innerWidth <= 768;
+
+  const analytics = getAnalytics();
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_location: window.location.href,
+      page_title: title,
+    });
+  }, [window.location.href]);
 
   return (
     <motion.div
