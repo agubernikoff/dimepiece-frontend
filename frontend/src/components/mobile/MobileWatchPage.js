@@ -11,6 +11,7 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 function MobileWatchPage() {
   const [watch, setWatch] = useState();
   const URLParam = useParams();
+  const analytics = getAnalytics();
 
   const options = {
     style: "currency",
@@ -24,7 +25,13 @@ function MobileWatchPage() {
       .fetch(
         `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant"]._id][0]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
       )
-      .then((response) => setWatch(response));
+      .then((response) => {
+        setWatch(response);
+        logEvent(analytics, "page_view", {
+          page_location: window.location.href,
+          page_title: response.title,
+        });
+      });
   }, [URLParam.title]);
 
   const mappedImages =
@@ -95,14 +102,6 @@ function MobileWatchPage() {
       window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
-
-  const analytics = getAnalytics();
-  useEffect(() => {
-    logEvent(analytics, "page_view", {
-      page_location: window.location.href,
-      page_title: "Watch Page",
-    });
-  }, [window.location.href]);
 
   return (
     <motion.div

@@ -23,6 +23,7 @@ function Article() {
   });
 
   const URLParam = useParams();
+  const analytics = getAnalytics();
 
   useEffect(() => {
     client
@@ -32,6 +33,10 @@ function Article() {
       .then((response) => {
         setArticle(response);
         dispatch(articleActions.setIsArticleLoaded(true));
+        logEvent(analytics, "page_view", {
+          page_location: window.location.href,
+          page_title: response.title,
+        });
       });
   }, [URLParam.title]);
 
@@ -57,14 +62,6 @@ function Article() {
           child.firstChild.style.display = "none";
       });
   }, [articleContentContainer, article]);
-
-  const analytics = getAnalytics();
-  useEffect(() => {
-    logEvent(analytics, "page_view", {
-      page_location: window.location.href,
-      page_title: "Article Page",
-    });
-  }, [window.location.href]);
 
   return (
     <motion.div

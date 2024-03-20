@@ -23,13 +23,20 @@ function MobileStoryPage() {
   });
 
   const URLParam = useParams();
+  const analytics = getAnalytics();
 
   useEffect(() => {
     client
       .fetch(
         `*[_type == "articles" && _id == "${URLParam.id}"][0]{...,body[]{...,_type == "module.images" => {...,modules[]{...,image{asset->{url}}}}},coverImage{asset->{url}}}`
       )
-      .then((response) => setArticle(response));
+      .then((response) => {
+        setArticle(response);
+        logEvent(analytics, "page_view", {
+          page_location: window.location.href,
+          page_title: response.title,
+        });
+      });
     dispatch(articleActions.setIsArticleLoaded(true));
   }, [URLParam.title]);
 
@@ -55,14 +62,6 @@ function MobileStoryPage() {
           child.firstChild.style.display = "none";
       });
   }, [articleContentContainer, article]);
-
-  const analytics = getAnalytics();
-  useEffect(() => {
-    logEvent(analytics, "page_view", {
-      page_location: window.location.href,
-      page_title: "Article Page",
-    });
-  }, [window.location.href]);
 
   return (
     <motion.div

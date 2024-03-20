@@ -135,7 +135,7 @@ function MobileIndexAndContent({ contentType }) {
   useEffect(() => {
     logEvent(analytics, "page_view", {
       page_location: window.location.href,
-      page_title: contentType,
+      page_title: capitalizeWords(contentType),
     });
   }, [window.location.href]);
 

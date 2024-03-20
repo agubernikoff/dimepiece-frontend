@@ -22,7 +22,7 @@ function Watch() {
         `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant"]._id][0]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
       )
       .then((response) => setWatch(response));
-  }, [URLParam.title]);
+  }, [URLParam.id]);
 
   const mappedImages =
     watch && watch.productImages

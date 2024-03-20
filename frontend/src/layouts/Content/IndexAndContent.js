@@ -10,6 +10,7 @@ import { scrollToTop } from "../../helpers/ScrollToTop";
 import NoResults from "./NoResults";
 import { useSelector } from "react-redux";
 import { getAnalytics, logEvent } from "firebase/analytics";
+import { client } from "../../sanity/SanityClient";
 
 function IndexAndContent({ contentType }) {
   const [category, setCategory] = useState();
@@ -61,11 +62,23 @@ function IndexAndContent({ contentType }) {
 
   const analytics = getAnalytics();
   useEffect(() => {
-    logEvent(analytics, "page_view", {
-      page_location: window.location.href,
-      page_title: URLParam.id ? URLParam.id : contentType,
-    });
-  }, [window.location.href]);
+    if (!URLParam.id)
+      logEvent(analytics, "page_view", {
+        page_location: window.location.href,
+        page_title: capitalizeWords(contentType),
+      });
+    else if (window.location.href.includes("shopify"))
+      client
+        .fetch(
+          `*[_type == "product" && _id == "${URLParam.id}" && store.variants[0]._ref in *[_type == "productVariant"]._id][0]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
+        )
+        .then((response) => {
+          logEvent(analytics, "page_view", {
+            page_location: window.location.href,
+            page_title: `${response.brand} ${response.title}`,
+          });
+        });
+  }, [URLParam.id]);
 
   return (
     <motion.div
