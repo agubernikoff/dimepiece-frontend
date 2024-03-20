@@ -9,6 +9,8 @@ const articleSlice = createSlice({
     types: [],
     categories: [],
     featured: null,
+    searchResults: [],
+    searchText: null,
   },
   reducers: {
     setFeatured(state, action) {
@@ -26,6 +28,19 @@ const articleSlice = createSlice({
     setTypes(state, action) {
       state.types = action.payload;
       state.categories = action.payload.map((t) => t.title);
+    },
+    setSearchResults(state, action) {
+      const searchText = action.payload;
+      state.searchText = searchText;
+      const filtered = state.stories.filter((w) =>
+        w.title.toUpperCase().includes(searchText.toUpperCase())
+      );
+
+      if (!searchText || searchText.length < 3) state.searchResults = [];
+      else state.searchResults = filtered;
+    },
+    setSearchText(state, action) {
+      state.searchText = action.payload;
     },
   },
 });

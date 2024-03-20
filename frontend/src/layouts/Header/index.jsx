@@ -9,6 +9,7 @@ import {
 import logo from "../../assets/logo_purple.png";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
+import { articleActions } from "../../redux/article-slice";
 import Search from "./Search";
 
 function Header() {
@@ -24,6 +25,7 @@ function Header() {
   useEffect(() => {
     if (searchTerm) {
       dispatch(cartActions.setSearchText(searchTerm));
+      dispatch(articleActions.setSearchText(searchTerm));
     }
   }, []);
 
@@ -100,6 +102,7 @@ function Header() {
                 toggleSearch();
                 if (!searchTerm) {
                   dispatch(cartActions.setSearchResults(""));
+                  dispatch(articleActions.setSearchResults(""));
                 }
               }}
             >
