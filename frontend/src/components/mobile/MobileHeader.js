@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 import MobileSearch from "./MobileSearch";
+import { articleActions } from "../../redux/article-slice";
 
 function MobileHeader() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -174,6 +175,7 @@ function MobileHeader() {
                 toggleSearch();
                 if (!searchTerm) {
                   dispatch(cartActions.setSearchResults(""));
+                  dispatch(articleActions.setSearchResults(""));
                 }
                 hideMenu();
               }}

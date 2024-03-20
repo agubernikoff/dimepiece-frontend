@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { cartActions } from "../../redux/cart-slice";
+import { articleActions } from "../../redux/article-slice";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import useMeasure from "react-use-measure";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 function MobileSearch({ hideSearch }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -11,14 +13,26 @@ function MobileSearch({ hideSearch }) {
   const input = useRef();
   const nav = useNavigate();
   const dispatch = useDispatch();
+  const analytics = getAnalytics();
   const [searchText, setSearchText] = useState("");
-  const searchResults = useSelector((state) => state.cart.searchResults);
-  const globalSearchText = useSelector((state) => state.cart.searchText);
+  const searchProductResults = useSelector((state) => state.cart.searchResults);
+  const globalProductSearchText = useSelector((state) => state.cart.searchText);
+  const searchArticleResults = useSelector(
+    (state) => state.article.searchResults
+  );
+  const globalArticleSearchText = useSelector(
+    (state) => state.article.searchText
+  );
 
   useEffect(() => {
     input.current.focus();
-    if (searchTermFromParams && globalSearchText)
+    if (
+      searchTermFromParams &&
+      globalProductSearchText &&
+      globalArticleSearchText
+    ) {
       setSearchText(searchTermFromParams);
+    }
   }, []);
 
   useEffect(() => {
@@ -28,11 +42,14 @@ function MobileSearch({ hideSearch }) {
     }
   }, [searchText]);
 
-  const mappedSuggestions = searchResults.map((w) => (
+  const mappedProductSuggestions = searchProductResults.map((w) => (
     <div
       key={w._id}
       className="suggestion-arrow-container"
       onClick={() => {
+        logEvent(analytics, "search", {
+          search_term: `${searchText}`,
+        });
         nav(`/shop/${w.brand}/${w._id}`);
         hideSearch();
       }}
@@ -44,9 +61,27 @@ function MobileSearch({ hideSearch }) {
     </div>
   ));
 
+  const mappedArticleSuggestions = searchArticleResults.slice(0, 3).map((a) => (
+    <div
+      key={a._id}
+      className="suggestion-arrow-container"
+      onClick={() => {
+        nav(`/stories/${a.category.replaceAll(" ", "-")}/${a._id}`);
+        hideSearch();
+      }}
+    >
+      <p className="suggestion">
+        {`${a.title.toUpperCase()}`}, {a.author.toUpperCase()}
+      </p>
+    </div>
+  ));
+
   function handleSubmit(e) {
     e.preventDefault();
     if (searchText) {
+      logEvent(analytics, "search", {
+        search_term: `${searchText}`,
+      });
       nav(`/search?search=${searchText}`);
       hideSearch();
     }
@@ -59,7 +94,7 @@ function MobileSearch({ hideSearch }) {
 
   useEffect(() => {
     if (!originalHeight.current && height > 0) originalHeight.current = height;
-    if (searchResults) animate(scope.current, { height });
+    if (searchProductResults) animate(scope.current, { height });
   }, [height]);
 
   function removeSuggestions() {
@@ -92,6 +127,7 @@ function MobileSearch({ hideSearch }) {
             ref={input}
             onChange={(e) => {
               dispatch(cartActions.setSearchResults(e.target.value));
+              dispatch(articleActions.setSearchResults(e.target.value));
               setSearchText(e.target.value);
             }}
             value={searchText.toUpperCase()}
@@ -99,7 +135,8 @@ function MobileSearch({ hideSearch }) {
           <button>{String.fromCharCode(8594)}</button>
         </form>
         <AnimatePresence>
-          {searchResults.length > 0 ? (
+          {searchProductResults.length > 0 ||
+          searchArticleResults.length > 0 ? (
             <motion.div
               initial={{ y: "-50%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -110,8 +147,20 @@ function MobileSearch({ hideSearch }) {
               className="suggestions-container"
               ref={suggestionsContainer}
             >
-              <p className="suggestion-title">SUGGESTIONS</p>
-              <div>{mappedSuggestions}</div>
+              {searchProductResults.length > 0 ? (
+                <>
+                  <p className="suggestion-title">SUGGESTED PRODUCTS</p>
+                  <div style={{ marginBottom: "1.5rem" }}>
+                    {mappedProductSuggestions}
+                  </div>{" "}
+                </>
+              ) : null}
+              {searchArticleResults.length > 0 ? (
+                <>
+                  <p className="suggestion-title">SUGGESTED ARTICLES</p>
+                  <div>{mappedArticleSuggestions}</div>
+                </>
+              ) : null}
             </motion.div>
           ) : null}
         </AnimatePresence>
