@@ -385,6 +385,9 @@ instead of tweaking each class */
   margin-top: 3%;
   cursor: pointer;
 }
+.search-results .watch-preview-card {
+  margin-top: -2%;
+}
 
 .watch-preview-card-details > p {
   font-size: var(--base-text-size);

@@ -55,11 +55,7 @@ function App() {
     if (displayIndex) setDisplayIndex(false);
   }
   function toggleDisplayIndex() {
-    if (
-      !isMobile &&
-      (location.pathname.includes("shop") ||
-        location.pathname.includes("search"))
-    ) {
+    if (!isMobile && location.pathname.includes("shop")) {
       setDisplayIndex("shop");
     } else if (
       !isMobile &&
@@ -73,10 +69,7 @@ function App() {
   }
   useEffect(() => {
     if (!isMobile) {
-      if (
-        location.pathname.includes("shop") ||
-        location.pathname.includes("search")
-      ) {
+      if (location.pathname.includes("shop")) {
         setDisplayIndex("shop");
       } else if (
         location.pathname.includes("stories") &&
