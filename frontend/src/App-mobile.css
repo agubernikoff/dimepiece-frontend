@@ -452,6 +452,9 @@ strong {
   margin-bottom: 5%;
   font-size: 32px;
 }
+.search-results .mobile-latest-story-card {
+  width: 60%;
+}
 /* .mobile-content-mapped .mobile-most-discussed-preview {
   display: none;
 } */

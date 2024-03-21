@@ -58,7 +58,9 @@ function MobileSearchResults() {
                 SUGGESTED STORIES
               </p>
             ) : null}
-            <div className="mobile-content-mapped">{mappedArticles}</div>
+            <div className="mobile-content-mapped search-results">
+              {mappedArticles}
+            </div>
           </>
         ) : (
           <NoResults />
