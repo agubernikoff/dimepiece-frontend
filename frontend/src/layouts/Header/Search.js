@@ -86,9 +86,7 @@ function Search({ hideSearch }) {
         hideSearch();
       }}
     >
-      <p className="suggestion">
-        {`${a.title.toUpperCase()}`}, {a.author.toUpperCase()}
-      </p>
+      <p className="suggestion">{`${a.title.toUpperCase()}`}</p>
     </div>
   ));
 
