@@ -724,6 +724,7 @@ instead of tweaking each class */
   row-gap: 3em;
   margin: auto;
   width: 90%;
+  margin-bottom: 3%;
 }
 .stories-page .latest-story-card-title {
   font-size: 1.5em;
