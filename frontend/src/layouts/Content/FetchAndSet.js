@@ -9,11 +9,11 @@ import { shopifyClient } from "../../shopify/ShopifyClient";
 function FetchAndSet() {
   const dispatch = useDispatch();
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{...,asset->{url}}} | order(datePublished desc)[0]`
-      )
-      .then((response) => dispatch(articleActions.setFeatured(response)));
+    // client
+    //   .fetch(
+    //     `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{...,asset->{url}}} | order(datePublished desc)[0]`
+    //   )
+    //   .then((response) => dispatch(articleActions.setFeatured(response)));
     client
       .fetch(`*[_type == "product" && isFeatured == true][0]`)
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
@@ -21,7 +21,14 @@ function FetchAndSet() {
       .fetch(
         `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,previewDescription,author,mostDiscussed, coverImage{asset->{url}}} | order(datePublished desc)`
       )
-      .then((response) => dispatch(articleActions.setStories(response)));
+      .then((response) => {
+        dispatch(articleActions.setStories(response));
+        dispatch(
+          articleActions.setFeatured(
+            response.find((article) => article.isFeatured)
+          )
+        );
+      });
     client
       .fetch(`*[_type == "categories"]{_id,descriptor,title}`)
       .then((response) => dispatch(articleActions.setTypes(response)));
