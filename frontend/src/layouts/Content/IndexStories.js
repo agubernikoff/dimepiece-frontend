@@ -10,6 +10,7 @@ function IndexStories({ categories, stories, brynnsPick, isMobile }) {
 
   const mappedFeaturedTitles = [...stories]
     .filter((s) => s.isFeatured)
+    .slice(0, 4)
     .map((fs, i) => (
       <li
         key={i}
