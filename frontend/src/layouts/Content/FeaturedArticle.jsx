@@ -24,7 +24,7 @@ function FeaturedArticle() {
           <img
             className="featured-story-img"
             alt={featured.title}
-            src={featured.coverImage.asset.url}
+            src={`${featured.coverImage.asset.url}?auto=format&q=60`}
             style={
               featured && featured.coverImage.hotspot
                 ? {
