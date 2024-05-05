@@ -116,7 +116,7 @@ function Article() {
           <img
             loading="lazy"
             className="article-cover-img"
-            src={article.coverImage.asset.url}
+            src={`${article.coverImage.asset.url}?auto=format&q=60`}
             alt={article.title}
           />
           <div className="article-sanity-content" ref={articleContentContainer}>

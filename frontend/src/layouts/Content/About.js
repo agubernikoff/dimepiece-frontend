@@ -97,7 +97,7 @@ function About() {
               <div className="about-brynn-portrait">
                 <img
                   alt="Brynn Wallner Portrait"
-                  src={about.brynnPortrait.asset.url}
+                  src={`${about.brynnPortrait.asset.url}?auto=format&q=60`}
                 />
                 <PortableText
                   value={about.text3Body}

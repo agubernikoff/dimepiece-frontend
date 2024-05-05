@@ -47,7 +47,7 @@ function SanityArticleImage({ value }) {
         }
       >
         <img
-          src={m.image.asset.url}
+          src={`${m.image.asset.url}?auto=format&q=60`}
           alt={value.alt || " "}
           loading="lazy"
           style={{

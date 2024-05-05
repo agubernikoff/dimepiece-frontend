@@ -5,7 +5,7 @@ function MobilePressCard({ article }) {
     <div className="mobile-about-dimepiece-press">
       <img
         alt={article.title}
-        src={article.image.asset.url}
+        src={`${article.image.asset.url}?auto=format&q=60`}
         onClick={() => {
           if (article.link)
             window.open(`${article.link}`, "_blank", "noopener,noreferrer");

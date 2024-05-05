@@ -46,7 +46,7 @@ function BrynnsPick() {
           <div className="featured-watch-image">
             <img
               loading="lazy"
-              src={featured.brynnPickImage.asset.url}
+              src={`${featured.brynnPickImage.asset.url}?auto=format&q=60`}
               onClick={() => {
                 nav(
                   `/shop/${featured.brand.replaceAll(" ", "-")}/${featured._id}`

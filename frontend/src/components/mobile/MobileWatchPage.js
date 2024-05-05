@@ -41,7 +41,7 @@ function MobileWatchPage() {
             className="product-image"
             loading="lazy"
             key={i._key}
-            src={i.asset.url}
+            src={`${i.asset.url}?auto=format&q=60`}
             alt={watch.title}
           />
         ))

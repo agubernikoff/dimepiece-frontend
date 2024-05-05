@@ -20,7 +20,7 @@ function MobileDialDimepieceCard({ story }) {
       <div className="mobile-dial-dimepiece-card-left">
         <img
           loading="lazy"
-          src={story.coverImage.asset.url}
+          src={`${story.coverImage.asset.url}?auto=format&q=60`}
           alt={story.title}
         />
       </div>

@@ -38,7 +38,7 @@ function MobileBrynnsPick() {
               dispatch(cartActions.hideSearch());
             }}
             loading="lazy"
-            src={featured.brynnPickImage.asset.url}
+            src={`${featured.brynnPickImage.asset.url}?auto=format&q=60`}
           />
         </div>
         <div className="mobile-featured-watch-details">

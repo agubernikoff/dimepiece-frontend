@@ -36,7 +36,7 @@ function CartProductCards({ watch }) {
       <div className="cart-product-card-img-container">
         <img
           alt={`${watch.brand} ${watch.title}`}
-          src={watch.brynnPickImage.asset.url}
+          src={`${watch.brynnPickImage.asset.url}?auto=format&q=60`}
           onClick={() => {
             nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
             dispatch(cartActions.toggleDisplayCart());

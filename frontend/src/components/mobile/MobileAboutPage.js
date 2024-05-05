@@ -108,7 +108,7 @@ function MobileAboutPage() {
 
               <img
                 alt="Brynn Wallner Portrait"
-                src={about.brynnPortrait.asset.url}
+                src={`${about.brynnPortrait.asset.url}?auto=format&q=60`}
                 style={{
                   backgroundImage: `url(${about.brynnPortrait.asset.url}?blur=50)`,
                   backgroundPosition: "center",

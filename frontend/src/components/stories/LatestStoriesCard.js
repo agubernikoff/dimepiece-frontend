@@ -30,7 +30,7 @@ function LatestStoriesCard({ story, mostDiscussed }) {
         <img
           loading="lazy"
           className=""
-          src={story.coverImage.asset.url}
+          src={`${story.coverImage.asset.url}?auto=format&q=60`}
           alt={story.title}
         />
       </div>
