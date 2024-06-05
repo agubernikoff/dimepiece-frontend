@@ -106,7 +106,7 @@ export default defineType({
       type: 'boolean',
     },
     {
-      title: "Brynn's Pick Image - Grey (Required if Brynn's Pick)",
+      title: "Brynn's Pick Image - Grey (Required)",
       name: 'brynnPickImage',
       type: 'image',
       validation: (Rule) =>
