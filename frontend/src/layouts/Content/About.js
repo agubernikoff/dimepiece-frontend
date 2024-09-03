@@ -34,10 +34,10 @@ function About() {
     if (emailPattern.test(e.target.email.value)) {
       emailjs
         .sendForm(
-          "service_571yygo",
-          "template_84i2kjw",
+          "dimepiece",
+          "template_hfmoirr",
           e.target,
-          "WPUweZAoXmamBd_kZ"
+          "q5PPM5-H0N3HywCI-"
         )
         .then(
           (result) => {
