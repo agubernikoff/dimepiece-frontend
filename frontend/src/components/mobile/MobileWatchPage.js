@@ -178,7 +178,7 @@ function MobileWatchPage() {
               dispatch(cartActions.addToCart(watch));
               dispatch(cartActions.showCart());
               window.open(
-                `${data?.cartLinesAdd?.cart.checkoutUrl}`,
+                `${data?.cartCreate?.cart.checkoutUrl}`,
                 "_blank",
                 "noopener,noreferrer"
               );
