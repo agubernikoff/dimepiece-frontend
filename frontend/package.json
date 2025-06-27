@@ -25,6 +25,7 @@
     "@sanity/client": "^6.6.0",
     "@sanity/image-url": "^1.0.2",
     "@shopify/shopify-api": "^8.0.2",
+    "@shopify/storefront-api-client": "^1.0.8",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -42,7 +43,6 @@
     "react-use-measure": "^2.1.1",
     "react-youtube": "^10.1.0",
     "redux-saga": "^1.2.3",
-    "shopify-buy": "^2.21.1",
     "web-vitals": "^2.1.4"
   },
   "eslintConfig": {

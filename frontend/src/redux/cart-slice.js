@@ -14,6 +14,7 @@ const cartSlice = createSlice({
     cart: [],
     searchText: null,
     searchResults: [],
+    lines: [],
   },
   reducers: {
     toggleDisplayCart(state) {
@@ -93,6 +94,9 @@ const cartSlice = createSlice({
     },
     setSearchText(state, action) {
       state.searchText = action.payload;
+    },
+    setLines(state, action) {
+      state.lines = action.payload;
     },
   },
 });

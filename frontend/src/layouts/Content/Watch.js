@@ -41,38 +41,58 @@ function Watch() {
   const checkoutId = useSelector((state) => state.cart.checkoutId);
   const checkoutUrl = useSelector((state) => state.cart.checkoutUrl);
   const cart = useSelector((state) => state.cart.cart);
+  const lines = useSelector((state) => state.cart.lines);
   const inCart = watch && cart.find((w) => w._id === watch._id) ? true : false;
 
   function addToCart() {
     const lineItemsToAdd = [
       {
-        variantId: `${watch.store.variants[0].store.gid}`,
+        merchandiseId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];
-    shopifyClient.checkout
-      .addLineItems(checkoutId, lineItemsToAdd)
-      .then((checkout) => {
-        // console.log(checkout);
-        dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
+    shopifyClient
+      .request(cartLinesAdd, {
+        variables: { cartId: checkoutId, lines: lineItemsToAdd },
+      })
+      .then(({ data }) => {
+        if (data?.cartLinesAdd?.cart) {
+          dispatch(
+            cartActions.setCheckoutTotal(
+              data.cartLinesAdd.cart.cost.subtotalAmount.amount
+            )
+          );
+          dispatch(cartActions.setLines(data.cartLinesAdd.cart.lines.edges));
+          dispatch(cartActions.addToCart(watch));
+          dispatch(cartActions.showCart());
+        }
       });
-    dispatch(cartActions.addToCart(watch));
-    dispatch(cartActions.showCart());
   }
 
   function removeFromCart() {
-    const lineItemsToRemove = [
-      `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0].store.id
-      }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`,
-    ];
-    shopifyClient.checkout
-      .removeLineItems(checkoutId, lineItemsToRemove)
-      .then((checkout) => {
-        // console.log(checkout);
-        dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
+    shopifyClient
+      .request(cartLinesRemove, {
+        variables: {
+          cartId: checkoutId,
+          lineIds: [
+            lines.find(
+              (line) =>
+                line.node.merchandise.id === watch.store.variants[0].store.gid
+            ).node.id,
+          ],
+        },
+      })
+      .then(({ data }) => {
+        if (data?.cartLinesRemove?.cart) {
+          dispatch(
+            cartActions.setCheckoutTotal(
+              data.cartLinesRemove.cart.cost.subtotalAmount.amount
+            )
+          );
+          dispatch(cartActions.setLines(data.cartLinesRemove.cart.lines.edges));
+          dispatch(cartActions.removeFromCart(watch._id));
+        }
       });
-    dispatch(cartActions.removeFromCart(watch._id));
   }
 
   function buyNow() {
@@ -84,12 +104,26 @@ function Watch() {
     ];
     if (!inCart) {
       dispatch(cartActions.addToCart(watch));
-      shopifyClient.checkout
-        .addLineItems(checkoutId, lineItemsToAdd)
-        .then((checkout) => {
-          // console.log(checkout);
-          dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
-          window.open(`${checkout.webUrl}`, "_blank", "noopener,noreferrer");
+      shopifyClient
+        .request(cartLinesAdd, {
+          variables: { cartId: checkoutId, lines: lineItemsToAdd },
+        })
+        .then(({ data }) => {
+          if (data?.cartLinesAdd?.cart) {
+            dispatch(
+              cartActions.setCheckoutTotal(
+                data.cartLinesAdd.cart.cost.subtotalAmount.amount
+              )
+            );
+            dispatch(cartActions.setLines(data.cartLinesAdd.cart.lines.edges));
+            dispatch(cartActions.addToCart(watch));
+            dispatch(cartActions.showCart());
+            window.open(
+              `${data?.cartLinesAdd?.cart.checkoutUrl}`,
+              "_blank",
+              "noopener,noreferrer"
+            );
+          }
         });
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
@@ -187,3 +221,72 @@ function Watch() {
 }
 
 export default Watch;
+
+const cartLinesAdd = `
+    mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+      cartLinesAdd(cartId: $cartId, lines: $lines) {
+        cart {
+          checkoutUrl
+          lines(first: 10) {
+            edges {
+              node {
+                id
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    title
+                  }
+                }
+              }
+            }
+          }
+          cost {
+            subtotalAmount {
+              amount
+            }
+          }
+        } 
+        userErrors {
+          field
+          message
+        }
+        warnings {
+          code
+          message
+        }
+      }
+    }
+  `;
+
+const cartLinesRemove = `mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart {
+        lines(first: 10) {
+          edges {
+            node {
+              id
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+                }
+              }
+            }
+          }
+        }
+        cost {
+          subtotalAmount {
+            amount
+          }
+        }
+      } 
+      userErrors {
+        field
+        message
+      }
+      warnings {
+        code
+        message
+      }
+    }
+  }`;

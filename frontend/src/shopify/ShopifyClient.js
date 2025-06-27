@@ -1,6 +1,7 @@
-import Client from "shopify-buy";
+import { createStorefrontApiClient } from "@shopify/storefront-api-client";
 
-export const shopifyClient = Client.buildClient({
-  domain: "dimepiece-watches.myshopify.com",
-  storefrontAccessToken: "65fae332c0dee66229832aa42c865311",
+export const shopifyClient = createStorefrontApiClient({
+  storeDomain: "dimepiece-watches.myshopify.com",
+  publicAccessToken: "9de6cf51cf6f30c9870f6c637e66fdd1",
+  apiVersion: "2025-01",
 });

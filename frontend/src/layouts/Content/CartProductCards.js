@@ -14,21 +14,34 @@ function CartProductCards({ watch }) {
     maximumFractionDigits: 0,
   };
 
+  const lines = useSelector((state) => state.cart.lines);
   const checkoutId = useSelector((state) => state.cart.checkoutId);
 
   function removeFromCart() {
-    const lineItemsToRemove = [
-      `gid://shopify/CheckoutLineItem/${
-        watch.store.variants[0].store.id
-      }0?checkout=${checkoutId.split("/")[4].split("?")[0]}`,
-    ];
-    shopifyClient.checkout
-      .removeLineItems(checkoutId, lineItemsToRemove)
-      .then((checkout) => {
-        // console.log(checkout);
-        dispatch(cartActions.setCheckoutTotal(checkout.subtotalPrice.amount));
+    shopifyClient
+      .request(cartLinesRemove, {
+        variables: {
+          cartId: checkoutId,
+          lineIds: [
+            lines.find(
+              (line) =>
+                line.node.merchandise.id === watch.store.variants[0].store.gid
+            ).node.id,
+          ],
+        },
+      })
+      .then(({ data }) => {
+        console.log(data);
+        if (data?.cartLinesRemove?.cart) {
+          dispatch(
+            cartActions.setCheckoutTotal(
+              data.cartLinesRemove.cart.cost.subtotalAmount.amount
+            )
+          );
+          dispatch(cartActions.setLines(data.cartLinesRemove.cart.lines.edges));
+          dispatch(cartActions.removeFromCart(watch._id));
+        }
       });
-    dispatch(cartActions.removeFromCart(watch._id));
   }
 
   return (
@@ -36,7 +49,7 @@ function CartProductCards({ watch }) {
       <div className="cart-product-card-img-container">
         <img
           alt={`${watch.brand} ${watch.title}`}
-          src={`${watch.brynnPickImage.asset.url}?auto=format&q=60`}
+          src={`${watch.productImages[0].asset.url}?auto=format&q=60`}
           onClick={() => {
             nav(`/shop/${watch.brand.replaceAll(" ", "-")}/${watch._id}`);
             dispatch(cartActions.toggleDisplayCart());
@@ -72,3 +85,36 @@ function CartProductCards({ watch }) {
 }
 
 export default CartProductCards;
+
+const cartLinesRemove = `mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+  cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+    cart {
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            merchandise {
+              ... on ProductVariant {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+    } 
+    userErrors {
+      field
+      message
+    }
+    warnings {
+      code
+      message
+    }
+  }
+}`;

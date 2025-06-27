@@ -51,6 +51,60 @@ function FetchAndSet() {
       .fetch(`*[_type == "dimepiecePress"]{...,image{asset->{url}}}`)
       .then((response) => dispatch(aboutActions.setPress(response)));
 
+    const createCartMutation = `mutation createCart($cartInput: CartInput) {
+        cartCreate(input: $cartInput) {
+          cart {
+            id
+            checkoutUrl
+            lines(first: 10) {
+              edges {
+                node {
+                  id
+                  merchandise {
+                    ... on ProductVariant {
+                      id
+                      title
+                    }
+                  }
+                }
+              }
+            }
+            cost {
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+            }
+            # any other cart object fields
+          }
+        }
+      }`;
+    const CART_QUERY = `query cart($id: ID!){
+        cart(id: $id){
+          id
+          checkoutUrl
+          lines(first: 10) {
+            edges {
+              node {
+                id
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    title
+                  }
+                }
+              }
+            }
+          }
+          cost {
+            subtotalAmount {
+              amount
+              currencyCode
+            }
+          }
+          # any other cart object fields
+        }
+      }`;
     // cart
     fetch("https://dimepiece-api.web.app/checkoutId", {
       credentials: "include",
@@ -58,51 +112,67 @@ function FetchAndSet() {
       .then((r) => r.json())
       .then((data) => {
         if (data.checkoutId) {
-          shopifyClient.checkout.fetch(data.checkoutId).then((checkout) => {
-            if (!checkout.completedAt) {
-              dispatch(cartActions.setCheckoutId(checkout.id));
-              dispatch(
-                cartActions.setCheckoutTotal(checkout.subtotalPrice.amount)
-              );
-              dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
-              dispatch(
-                cartActions.addToCartFromLineItems(
-                  checkout.lineItems.map(
-                    (lineItem) => lineItem.variant.id.split("/")[4]
-                  )
-                )
-              );
-            } else
-              shopifyClient.checkout.create().then((checkout) => {
-                dispatch(cartActions.setCheckoutId(checkout.id));
+          shopifyClient
+            .request(CART_QUERY, { variables: { id: data.checkoutId } })
+            .then(({ data, errors }) => {
+              if (data.cart) {
+                dispatch(cartActions.setCheckoutId(data.cart.id));
                 dispatch(
-                  cartActions.setCheckoutTotal(checkout.subtotalPrice.amount)
+                  cartActions.setCheckoutTotal(
+                    data.cart.cost.subtotalAmount.amount
+                  )
                 );
-                dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
-                fetch("https://dimepiece-api.web.app/checkoutId", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  credentials: "include",
-                  body: JSON.stringify({ checkoutId: checkout.id }),
-                }).then((r) => r.json());
-                // .then((data) => console.log("new ", data));
-              });
-          });
+                dispatch(cartActions.setCheckoutUrl(data.cart.checkoutUrl));
+                dispatch(
+                  cartActions.addToCartFromLineItems(
+                    data?.cart?.lines?.edges?.map(
+                      (lineItem) => lineItem.node.merchandise.id.split("/")[4]
+                    )
+                  )
+                );
+                dispatch(cartActions.setLines(data.cart.lines.edges));
+              } else
+                shopifyClient.request(createCartMutation).then(({ data }) => {
+                  dispatch(cartActions.setCheckoutId(data.cartCreate.cart.id));
+                  dispatch(
+                    cartActions.setCheckoutTotal(
+                      data.cartCreate.cart.cost.subtotalAmount.amount
+                    )
+                  );
+                  dispatch(
+                    cartActions.setCheckoutUrl(data.cartCreate.cart.checkoutUrl)
+                  );
+                  fetch("https://dimepiece-api.web.app/checkoutId", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    credentials: "include",
+                    body: JSON.stringify({
+                      checkoutId: data.cartCreate.cart.id,
+                    }),
+                  });
+                });
+            });
         } else {
-          shopifyClient.checkout.create().then((checkout) => {
-            dispatch(cartActions.setCheckoutId(checkout.id));
+          shopifyClient.request(createCartMutation).then(({ data }) => {
+            dispatch(cartActions.setCheckoutId(data.cartCreate.cart.id));
             dispatch(
-              cartActions.setCheckoutTotal(checkout.subtotalPrice.amount)
+              cartActions.setCheckoutTotal(
+                data.cartCreate.cart.cost.subtotalAmount.amount
+              )
             );
-            dispatch(cartActions.setCheckoutUrl(checkout.webUrl));
+            dispatch(
+              cartActions.setCheckoutUrl(data.cartCreate.cart.checkoutUrl)
+            );
             fetch("https://dimepiece-api.web.app/checkoutId", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               credentials: "include",
-              body: JSON.stringify({ checkoutId: checkout.id }),
-            }).then((r) => r.json());
-            // .then((data) => console.log("new ", data));
+              body: JSON.stringify({
+                checkoutId: data.cartCreate.cart.id,
+              }),
+            });
           });
+          // .then((data) => console.log("new ", data));
         }
       });
   }, []);
