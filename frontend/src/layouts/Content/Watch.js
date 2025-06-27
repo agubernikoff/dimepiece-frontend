@@ -132,7 +132,7 @@ function Watch() {
   function buyNow() {
     const lineItemsToAdd = [
       {
-        variantId: `${watch.store.variants[0].store.gid}`,
+        merchandiseId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];
@@ -175,7 +175,7 @@ function Watch() {
             variables: { cartId: checkoutId, lines: lineItemsToAdd },
           })
           .then(({ data }) => {
-            console.log(data.cartLinesAdd.cart);
+            console.log(data);
             if (data?.cartLinesAdd?.cart) {
               dispatch(
                 cartActions.setCheckoutTotal(

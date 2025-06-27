@@ -142,7 +142,7 @@ function MobileWatchPage() {
   function buyNow() {
     const lineItemsToAdd = [
       {
-        variantId: `${watch.store.variants[0].store.gid}`,
+        merchandiseId: `${watch.store.variants[0].store.gid}`,
         quantity: 1,
       },
     ];
