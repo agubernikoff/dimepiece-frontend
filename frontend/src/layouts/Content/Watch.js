@@ -45,6 +45,7 @@ function Watch() {
   const inCart = watch && cart.find((w) => w._id === watch._id) ? true : false;
 
   function addToCart() {
+    console.log(shopifyClient.getHeaders());
     const lineItemsToAdd = [
       {
         merchandiseId: `${watch.store.variants[0].store.gid}`,
@@ -167,6 +168,11 @@ function Watch() {
                 .then((d) => console.log(d));
               dispatch(cartActions.addToCart(watch));
               dispatch(cartActions.showCart());
+              window.open(
+                `${data?.cartLinesAdd?.cart.checkoutUrl}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
             }
           });
       else

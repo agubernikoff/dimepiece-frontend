@@ -177,6 +177,11 @@ function MobileWatchPage() {
                 .then((d) => console.log(d));
               dispatch(cartActions.addToCart(watch));
               dispatch(cartActions.showCart());
+              window.open(
+                `${data?.cartLinesAdd?.cart.checkoutUrl}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
             }
           });
       else
