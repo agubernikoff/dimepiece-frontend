@@ -51,22 +51,56 @@ function Watch() {
         quantity: 1,
       },
     ];
-    shopifyClient
-      .request(cartLinesAdd, {
-        variables: { cartId: checkoutId, lines: lineItemsToAdd },
-      })
-      .then(({ data }) => {
-        if (data?.cartLinesAdd?.cart) {
-          dispatch(
-            cartActions.setCheckoutTotal(
-              data.cartLinesAdd.cart.cost.subtotalAmount.amount
-            )
-          );
-          dispatch(cartActions.setLines(data.cartLinesAdd.cart.lines.edges));
-          dispatch(cartActions.addToCart(watch));
-          dispatch(cartActions.showCart());
-        }
-      });
+    if (!checkoutId)
+      shopifyClient
+        .request(createCartMutation, {
+          variables: { cartInput: { lines: lineItemsToAdd } },
+        })
+        .then(({ data }) => {
+          console.log(data.cartCreate.cart);
+          if (data?.cartCreate?.cart) {
+            dispatch(cartActions.setCheckoutId(data.cartCreate.cart.id));
+            dispatch(
+              cartActions.setCheckoutTotal(
+                data.cartCreate.cart.cost.subtotalAmount.amount
+              )
+            );
+            dispatch(cartActions.setLines(data.cartCreate.cart.lines.edges));
+            dispatch(
+              cartActions.setCheckoutUrl(data.cartCreate.cart.checkoutUrl)
+            );
+            fetch("https://dimepiece-api.web.app/checkoutId", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify({
+                checkoutId: data.cartCreate.cart.id,
+              }),
+            })
+              .then((d) => d.json())
+              .then((d) => console.log(d));
+            dispatch(cartActions.addToCart(watch));
+            dispatch(cartActions.showCart());
+          }
+        });
+    else
+      shopifyClient
+        .request(cartLinesAdd, {
+          variables: { cartId: checkoutId, lines: lineItemsToAdd },
+        })
+        .then(({ data }) => {
+          console.log(data.cartLinesAdd.cart);
+          if (data?.cartLinesAdd?.cart) {
+            dispatch(
+              cartActions.setCheckoutTotal(
+                data.cartLinesAdd.cart.cost.subtotalAmount.amount
+              )
+            );
+            dispatch(cartActions.setLines(data.cartLinesAdd.cart.lines.edges));
+            dispatch(cartActions.addToCart(watch));
+            dispatch(cartActions.showCart());
+          }
+        });
   }
 
   function removeFromCart() {
@@ -103,28 +137,63 @@ function Watch() {
       },
     ];
     if (!inCart) {
-      dispatch(cartActions.addToCart(watch));
-      shopifyClient
-        .request(cartLinesAdd, {
-          variables: { cartId: checkoutId, lines: lineItemsToAdd },
-        })
-        .then(({ data }) => {
-          if (data?.cartLinesAdd?.cart) {
-            dispatch(
-              cartActions.setCheckoutTotal(
-                data.cartLinesAdd.cart.cost.subtotalAmount.amount
-              )
-            );
-            dispatch(cartActions.setLines(data.cartLinesAdd.cart.lines.edges));
-            dispatch(cartActions.addToCart(watch));
-            dispatch(cartActions.showCart());
-            window.open(
-              `${data?.cartLinesAdd?.cart.checkoutUrl}`,
-              "_blank",
-              "noopener,noreferrer"
-            );
-          }
-        });
+      if (!checkoutId)
+        shopifyClient
+          .request(createCartMutation, {
+            variables: { cartInput: { lines: lineItemsToAdd } },
+          })
+          .then(({ data }) => {
+            console.log(data.cartCreate.cart);
+            if (data?.cartCreate?.cart) {
+              dispatch(cartActions.setCheckoutId(data.cartCreate.cart.id));
+              dispatch(
+                cartActions.setCheckoutTotal(
+                  data.cartCreate.cart.cost.subtotalAmount.amount
+                )
+              );
+              dispatch(cartActions.setLines(data.cartCreate.cart.lines.edges));
+              dispatch(
+                cartActions.setCheckoutUrl(data.cartCreate.cart.checkoutUrl)
+              );
+              fetch("https://dimepiece-api.web.app/checkoutId", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({
+                  checkoutId: data.cartCreate.cart.id,
+                }),
+              })
+                .then((d) => d.json())
+                .then((d) => console.log(d));
+              dispatch(cartActions.addToCart(watch));
+              dispatch(cartActions.showCart());
+            }
+          });
+      else
+        shopifyClient
+          .request(cartLinesAdd, {
+            variables: { cartId: checkoutId, lines: lineItemsToAdd },
+          })
+          .then(({ data }) => {
+            console.log(data.cartLinesAdd.cart);
+            if (data?.cartLinesAdd?.cart) {
+              dispatch(
+                cartActions.setCheckoutTotal(
+                  data.cartLinesAdd.cart.cost.subtotalAmount.amount
+                )
+              );
+              dispatch(
+                cartActions.setLines(data.cartLinesAdd.cart.lines.edges)
+              );
+              dispatch(cartActions.addToCart(watch));
+              dispatch(cartActions.showCart());
+              window.open(
+                `${data?.cartLinesAdd?.cart.checkoutUrl}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
+            }
+          });
     } else window.open(`${checkoutUrl}`, "_blank", "noopener,noreferrer");
   }
   if (watch)
@@ -221,6 +290,41 @@ function Watch() {
 }
 
 export default Watch;
+
+const createCartMutation = `mutation createCart($cartInput: CartInput) {
+  cartCreate(input: $cartInput) {
+    cart {
+      id
+      checkoutUrl
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            merchandise {
+              ... on ProductVariant {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+    } 
+    userErrors {
+      field
+      message
+    }
+    warnings {
+      code
+      message
+    }
+  }
+}`;
 
 const cartLinesAdd = `
     mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
