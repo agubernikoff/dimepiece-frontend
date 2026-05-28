@@ -25,7 +25,7 @@
     "@sanity/client": "^6.6.0",
     "@sanity/image-url": "^1.0.2",
     "@shopify/shopify-api": "^8.0.2",
-    "@shopify/storefront-api-client": "^1.0.8",
+    "@shopify/storefront-api-client": "^1.0.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

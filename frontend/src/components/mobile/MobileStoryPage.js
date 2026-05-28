@@ -58,7 +58,7 @@ function MobileStoryPage() {
   useEffect(() => {
     if (article.title)
       [...articleContentContainer.current.children].forEach((child) => {
-        if (child.firstChild.localName == "br")
+        if (child.firstChild && child.firstChild.localName == "br")
           child.firstChild.style.display = "none";
       });
   }, [articleContentContainer, article]);
