@@ -9,11 +9,6 @@ import { shopifyClient } from "../../shopify/ShopifyClient";
 function FetchAndSet() {
   const dispatch = useDispatch();
   useEffect(() => {
-    // client
-    //   .fetch(
-    //     `*[_type == "articles" && isFeatured == true]{_id,title,datePublished,category,_createdAt,previewDescription,coverImage{...,asset->{url}}} | order(datePublished desc)[0]`
-    //   )
-    //   .then((response) => dispatch(articleActions.setFeatured(response)));
     client
       .fetch(`*[_type == "product" && isFeatured == true][0]`)
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
@@ -22,6 +17,7 @@ function FetchAndSet() {
         `*[_type == "articles"]{_id,slug,title,isFeatured,category,datePublished,previewDescription,author,mostDiscussed, coverImage{asset->{url}}} | order(datePublished desc)`,
       )
       .then((response) => {
+        console.log("first article slug:", response[0]?.slug);
         dispatch(articleActions.setStories(response));
         dispatch(
           articleActions.setFeatured(
@@ -51,34 +47,6 @@ function FetchAndSet() {
       .fetch(`*[_type == "dimepiecePress"]{...,image{asset->{url}}}`)
       .then((response) => dispatch(aboutActions.setPress(response)));
 
-    const createCartMutation = `mutation createCart($cartInput: CartInput) {
-        cartCreate(input: $cartInput) {
-          cart {
-            id
-            checkoutUrl
-            lines(first: 10) {
-              edges {
-                node {
-                  id
-                  merchandise {
-                    ... on ProductVariant {
-                      id
-                      title
-                    }
-                  }
-                }
-              }
-            }
-            cost {
-              subtotalAmount {
-                amount
-                currencyCode
-              }
-            }
-            # any other cart object fields
-          }
-        }
-      }`;
     const CART_QUERY = `query cart($id: ID!){
         cart(id: $id){
           id
@@ -102,10 +70,8 @@ function FetchAndSet() {
               currencyCode
             }
           }
-          # any other cart object fields
         }
       }`;
-    // cart
     fetch("https://dimepiece-api.web.app/checkoutId", {
       credentials: "include",
     })
@@ -133,48 +99,7 @@ function FetchAndSet() {
                 );
                 dispatch(cartActions.setLines(data.cart.lines.edges));
               }
-              // else
-              //   shopifyClient.request(createCartMutation).then(({ data }) => {
-              //     dispatch(cartActions.setCheckoutId(data.cartCreate.cart.id));
-              //     dispatch(
-              //       cartActions.setCheckoutTotal(
-              //         data.cartCreate.cart.cost.subtotalAmount.amount
-              //       )
-              //     );
-              //     dispatch(
-              //       cartActions.setCheckoutUrl(data.cartCreate.cart.checkoutUrl)
-              //     );
-              //     fetch("https://dimepiece-api.web.app/checkoutId", {
-              //       method: "POST",
-              //       headers: { "Content-Type": "application/json" },
-              //       credentials: "include",
-              //       body: JSON.stringify({
-              //         checkoutId: data.cartCreate.cart.id,
-              //       }),
-              //     });
-              //   });
             });
-        } else {
-          // shopifyClient.request(createCartMutation).then(({ data }) => {
-          //   dispatch(cartActions.setCheckoutId(data.cartCreate.cart.id));
-          //   dispatch(
-          //     cartActions.setCheckoutTotal(
-          //       data.cartCreate.cart.cost.subtotalAmount.amount
-          //     )
-          //   );
-          //   dispatch(
-          //     cartActions.setCheckoutUrl(data.cartCreate.cart.checkoutUrl)
-          //   );
-          //   fetch("https://dimepiece-api.web.app/checkoutId", {
-          //     method: "POST",
-          //     headers: { "Content-Type": "application/json" },
-          //     credentials: "include",
-          //     body: JSON.stringify({
-          //       checkoutId: data.cartCreate.cart.id,
-          //     }),
-          //   });
-          // });
-          // .then((data) => console.log("new ", data));
         }
       });
   }, []);
