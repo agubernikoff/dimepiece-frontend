@@ -21,7 +21,9 @@ function LatestStoriesCard({ story, mostDiscussed }) {
           content_type: "Article",
           content_id: `${story.title}`,
         });
-        nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        nav(
+          `/stories/${story.category.replaceAll(" ", "-")}/${story.slug.current}`,
+        );
         dispatch(articleActions.setIsArticleLoaded(false));
         dispatch(cartActions.hideSearch());
       }}
@@ -62,8 +64,8 @@ function LatestStoriesCard({ story, mostDiscussed }) {
                 onClick={() => {
                   nav(
                     `/stories/${story.category.replaceAll(" ", "-")}/${
-                      story._id
-                    }`
+                      story.slug.current
+                    }`,
                   );
                   dispatch(cartActions.hideSearch());
                 }}

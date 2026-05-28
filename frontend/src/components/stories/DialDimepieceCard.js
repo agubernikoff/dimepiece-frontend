@@ -12,7 +12,9 @@ function DialDimepieceCard({ story }) {
     <div
       className="dial-dimepiece-card"
       onClick={() => {
-        nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        nav(
+          `/stories/${story.category.replaceAll(" ", "-")}/${story.slug.current}`,
+        );
         dispatch(articleActions.setIsArticleLoaded(false));
         dispatch(cartActions.hideSearch());
       }}
@@ -30,7 +32,9 @@ function DialDimepieceCard({ story }) {
         <button
           className="most-discussed-preview-button"
           onClick={() => {
-            nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+            nav(
+              `/stories/${story.category.replaceAll(" ", "-")}/${story.slug.current}`,
+            );
             dispatch(cartActions.hideSearch());
           }}
         >

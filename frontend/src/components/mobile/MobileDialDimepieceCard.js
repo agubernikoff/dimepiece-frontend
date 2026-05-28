@@ -12,7 +12,9 @@ function MobileDialDimepieceCard({ story }) {
     <div
       className="mobile-dial-dimepiece-card"
       onClick={() => {
-        nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+        nav(
+          `/stories/${story.category.replaceAll(" ", "-")}/${story.slug.current}`,
+        );
         dispatch(articleActions.setIsArticleLoaded(false));
         dispatch(cartActions.hideSearch());
       }}

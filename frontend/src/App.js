@@ -137,7 +137,7 @@ function App() {
               }
             />
             <Route
-              path="/stories/:category/:id"
+              path="/stories/:category/:slug"
               element={isMobile ? <MobileStoryPage /> : <Article />}
             />
             <Route

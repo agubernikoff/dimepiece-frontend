@@ -19,14 +19,14 @@ function FetchAndSet() {
       .then((response) => dispatch(articleActions.setBrynnsPick(response)));
     client
       .fetch(
-        `*[_type == "articles"]{_id,title,isFeatured,category,datePublished,previewDescription,author,mostDiscussed, coverImage{asset->{url}}} | order(datePublished desc)`
+        `*[_type == "articles"]{_id,slug,title,isFeatured,category,datePublished,previewDescription,author,mostDiscussed, coverImage{asset->{url}}} | order(datePublished desc)`,
       )
       .then((response) => {
         dispatch(articleActions.setStories(response));
         dispatch(
           articleActions.setFeatured(
-            response.find((article) => article.isFeatured)
-          )
+            response.find((article) => article.isFeatured),
+          ),
         );
       });
     client
@@ -37,14 +37,14 @@ function FetchAndSet() {
       .then((response) => dispatch(cartActions.setBrands(response)));
     client
       .fetch(
-        `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`
+        `*[_type == "product" && store.variants[0]._ref in *[_type == "productVariant" && store.inventory.isAvailable]._id]{...,store{...,variants[]{_type == 'reference' => @->}},productImages[]{_key,asset->{url}},brynnPickImage{asset->{url}}}`,
       )
       .then((response) => {
         dispatch(cartActions.setWatches(response.filter((w) => w.brand)));
       });
     client
       .fetch(
-        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}},text1[]{...,modules[]{...,image{asset->{url}}}},text2[]{...,modules[]{...,image{asset->{url}}}}}`
+        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}},text1[]{...,modules[]{...,image{asset->{url}}}},text2[]{...,modules[]{...,image{asset->{url}}}}}`,
       )
       .then((response) => dispatch(aboutActions.setAbout(response)));
     client
@@ -120,16 +120,16 @@ function FetchAndSet() {
                 dispatch(cartActions.setCheckoutId(data.cart.id));
                 dispatch(
                   cartActions.setCheckoutTotal(
-                    data.cart.cost.subtotalAmount.amount
-                  )
+                    data.cart.cost.subtotalAmount.amount,
+                  ),
                 );
                 dispatch(cartActions.setCheckoutUrl(data.cart.checkoutUrl));
                 dispatch(
                   cartActions.addToCartFromLineItems(
                     data?.cart?.lines?.edges?.map(
-                      (lineItem) => lineItem.node.merchandise.id.split("/")[4]
-                    )
-                  )
+                      (lineItem) => lineItem.node.merchandise.id.split("/")[4],
+                    ),
+                  ),
                 );
                 dispatch(cartActions.setLines(data.cart.lines.edges));
               }

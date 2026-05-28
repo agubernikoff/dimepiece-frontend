@@ -15,7 +15,9 @@ function IndexStories({ categories, stories, brynnsPick, isMobile }) {
       <li
         key={i}
         onClick={() => {
-          nav(`/stories/${fs.category.replaceAll(" ", "-")}/${fs._id}`);
+          nav(
+            `/stories/${fs.category.replaceAll(" ", "-")}/${fs.slug.current}`,
+          );
           dispatch(cartActions.hideSearch());
         }}
       >
@@ -57,7 +59,7 @@ function IndexStories({ categories, stories, brynnsPick, isMobile }) {
                   nav(
                     `/shop/${brynnsPick.brand.replaceAll(" ", "-")}/${
                       brynnsPick._id
-                    }`
+                    }`,
                   );
                   dispatch(cartActions.hideSearch());
                 }}

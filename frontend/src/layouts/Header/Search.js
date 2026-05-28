@@ -18,10 +18,10 @@ function Search({ hideSearch }) {
   const searchProductResults = useSelector((state) => state.cart.searchResults);
   const globalProductSearchText = useSelector((state) => state.cart.searchText);
   const searchArticleResults = useSelector(
-    (state) => state.article.searchResults
+    (state) => state.article.searchResults,
   );
   const globalArticleSearchText = useSelector(
-    (state) => state.article.searchText
+    (state) => state.article.searchText,
   );
 
   useEffect(() => {
@@ -82,7 +82,7 @@ function Search({ hideSearch }) {
       key={a._id}
       className="suggestion-arrow-container"
       onClick={() => {
-        nav(`/stories/${a.category.replaceAll(" ", "-")}/${a._id}`);
+        nav(`/stories/${a.category.replaceAll(" ", "-")}/${a.slug.current}`);
         hideSearch();
       }}
     >

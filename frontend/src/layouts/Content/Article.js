@@ -28,7 +28,7 @@ function Article() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "articles" && _id == "${URLParam.id}"][0]{...,body[]{...,_type == "module.images" => {...,modules[]{...,image{asset->{url}}}}},coverImage{asset->{url}}}`
+        `*[_type == "articles" && slug.current == "${URLParam.slug}"][0]{...,body[]{...,_type == "module.images" => {...,modules[]{...,image{asset->{url}}}}},coverImage{asset->{url}}}`,
       )
       .then((response) => {
         setArticle(response);
@@ -38,7 +38,7 @@ function Article() {
           page_title: response.title,
         });
       });
-  }, [URLParam.title]);
+  }, [URLParam.slug]);
 
   const dateObject = article.datePublished
     ? new Date(article.datePublished)

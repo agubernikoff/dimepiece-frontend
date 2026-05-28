@@ -13,7 +13,7 @@ function FeaturedArticle() {
       className="featured-story"
       onClick={() => {
         nav(
-          `/stories/${featured.category.replaceAll(" ", "-")}/${featured._id}`
+          `/stories/${featured.category.replaceAll(" ", "-")}/${featured.slug.current}`,
         );
         dispatch(articleActions.setIsArticleLoaded(false));
         dispatch(cartActions.hideSearch());

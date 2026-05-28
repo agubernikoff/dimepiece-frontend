@@ -22,7 +22,9 @@ function MobileLatestStoriesCard({ story }) {
             content_type: "Article",
             content_id: `${story.title}`,
           });
-          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+          nav(
+            `/stories/${story.category.replaceAll(" ", "-")}/${story.slug.current}`,
+          );
           dispatch(articleActions.setIsArticleLoaded(false));
           dispatch(cartActions.hideSearch());
         }}
@@ -33,7 +35,9 @@ function MobileLatestStoriesCard({ story }) {
             content_type: "Article",
             content_id: story.title,
           });
-          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+          nav(
+            `/stories/${story.category.replaceAll(" ", "-")}/${story.slug.current}`,
+          );
           dispatch(articleActions.setIsArticleLoaded(false));
           dispatch(cartActions.hideSearch());
         }}
@@ -43,7 +47,9 @@ function MobileLatestStoriesCard({ story }) {
       </p>
       <p
         onClick={() => {
-          nav(`/stories/${story.category.replaceAll(" ", "-")}/${story._id}`);
+          nav(
+            `/stories/${story.category.replaceAll(" ", "-")}/${story.slug.current}`,
+          );
           dispatch(articleActions.setIsArticleLoaded(false));
           dispatch(cartActions.hideSearch());
         }}
