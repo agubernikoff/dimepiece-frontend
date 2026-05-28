@@ -10,6 +10,12 @@ export default {
       type: 'string',
     },
     {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {source: 'title', maxLength: 96},
+    },
+    {
       title: 'Author',
       name: 'author',
       type: 'string',
