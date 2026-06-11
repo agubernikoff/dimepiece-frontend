@@ -130,7 +130,7 @@ function MobileHeader() {
                       SHOP
                     </NavLink>
                   </motion.li>
-                  <motion.li>
+                  {/* <motion.li>
                     <NavLink
                       to="/newsletter"
                       onClick={() => {
@@ -139,7 +139,7 @@ function MobileHeader() {
                     >
                       NEWSLETTER
                     </NavLink>
-                  </motion.li>
+                  </motion.li> */}
                   <motion.li>
                     <NavLink
                       to="/about"

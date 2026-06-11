@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import emailjs from "emailjs-com";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { mobileFilterActions } from "../../redux/mobile-filter-slice";
 import { cartActions } from "../../redux/cart-slice.js";
-import { getAnalytics, logEvent } from "firebase/analytics";
 
 function Footer() {
   const dispatch = useDispatch();
@@ -22,42 +20,6 @@ function Footer() {
       hour12: false,
     }),
   });
-  const ref = useRef();
-  const analytics = getAnalytics();
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailPattern.test(e.target.email.value)) {
-      emailjs
-        .sendForm(
-          "dimepiece",
-          "template_hfmoirr",
-          e.target,
-          "q5PPM5-H0N3HywCI-"
-        )
-        .then(
-          (result) => {
-            // Add success message or further actions here
-            if (result.text === "OK") {
-              logEvent(analytics, "newsletter_signup", {
-                location: "Footer",
-              });
-              ref.current.classList.add("success");
-              setTimeout(() => ref.current.classList.remove("success"), 1000);
-              e.target.reset();
-            }
-          },
-          (error) => {
-            // Add error handling here
-            ref.current.classList.add("failure");
-            setTimeout(() => ref.current.classList.remove("failure"), 1500);
-          }
-        );
-    } else {
-      ref.current.classList.add("failure");
-      setTimeout(() => ref.current.classList.remove("failure"), 1500);
-    }
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,12 +37,12 @@ function Footer() {
           hour12: false,
         }),
       });
-    }, 1000); // Update every second
+    }, 1000);
 
     return () => {
-      clearInterval(interval); // Cleanup the interval on component unmount
+      clearInterval(interval);
     };
-  }, []); // Empty dependency array ensures the effect runs only once after initial render
+  }, []);
 
   return (
     <div className="mobile-footer">
@@ -113,13 +75,14 @@ function Footer() {
           >
             About
           </NavLink>
-          <NavLink
-            onClick={() => dispatch(cartActions.hideSearch())}
+          <a
+            href="https://dimepiece.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="navbar-link"
-            to="/newsletter"
           >
             Newsletter
-          </NavLink>
+          </a>
         </div>
         <div className="mobile-footer-column">
           <p className="mobile-bold">
@@ -155,23 +118,7 @@ function Footer() {
           </NavLink>
         </div>
       </div>
-      <div className="mobile-footer-newsletter-container">
-        <p style={{ fontFamily: "swall-diatype-bold" }} className="mobile-bold">
-          NEWSLETTER
-        </p>
-        <form
-          className="mobile-footer-newsletter-input-container"
-          onSubmit={sendEmail}
-          ref={ref}
-        >
-          <input
-            placeholder="Email Address"
-            name="email"
-            onFocus={() => dispatch(cartActions.hideSearch())}
-          ></input>
-          <button type="submit">Join</button>
-        </form>
-      </div>
+
       <div className="mobile-footer-bottom-container">
         <div className="mobile-footer-column">
           <p>© DIMEPIECE LLC 2023,</p>

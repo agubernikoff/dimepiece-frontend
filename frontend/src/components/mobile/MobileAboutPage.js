@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/SanityClient";
 import { PortableText } from "@portabletext/react";
 import MobilePressCard from "./MobilePressCard";
@@ -13,20 +13,16 @@ import hodinkee from "../../assets/hodinkee.png";
 import jcrew from "../../assets/jcrew.png";
 import watchesandwonders from "../../assets/watchesandwonders.png";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
-import { useDispatch } from "react-redux";
-import { cartActions } from "../../redux/cart-slice";
 import { getAnalytics, logEvent } from "firebase/analytics";
 
 function MobileAboutPage() {
   const [about, setAbout] = useState();
   const [press, setPress] = useState([]);
-  const dispatch = useDispatch();
-  const ref = useRef();
+
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}},text1[]{...,modules[]{...,image{asset->{url}}}},text2[]{...,modules[]{...,image{asset->{url}}}}}`
+        `*[_type == "about"][0]{...,brynnPortrait{asset->{url}},brands[]{asset->{url}},text1[]{...,modules[]{...,image{asset->{url}}}},text2[]{...,modules[]{...,image{asset->{url}}}}}`,
       )
       .then((response) => setAbout(response));
     client
@@ -37,39 +33,6 @@ function MobileAboutPage() {
   const mappedPress = [...press]
     .sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished))
     .map((p) => <MobilePressCard key={p._id} article={p} />);
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (emailPattern.test(e.target.email.value)) {
-      emailjs
-        .sendForm(
-          "dimepiece",
-          "template_hfmoirr",
-          e.target,
-          "q5PPM5-H0N3HywCI-"
-        )
-        .then(
-          (result) => {
-            // Add success message or further actions here
-            if (result.text === "OK") {
-              ref.current.classList.add("success");
-              setTimeout(() => ref.current.classList.remove("success"), 1000);
-              e.target.reset();
-            }
-          },
-          (error) => {
-            // Add error handling here
-            ref.current.classList.add("failure");
-            setTimeout(() => ref.current.classList.remove("failure"), 1500);
-          }
-        );
-    } else {
-      ref.current.classList.add("failure");
-      setTimeout(() => ref.current.classList.remove("failure"), 1500);
-    }
-  };
 
   const analytics = getAnalytics();
   useEffect(() => {
@@ -105,7 +68,6 @@ function MobileAboutPage() {
             </div>
             <div>
               <p className="about-header-title">{about.text3Header}</p>
-
               <img
                 alt="Brynn Wallner Portrait"
                 src={`${about.brynnPortrait.asset.url}?auto=format&q=60`}
@@ -141,7 +103,7 @@ function MobileAboutPage() {
                 <img src={ap} alt="AP" />
               </div>
               <div className="slide">
-                <img src={breda} alt="ebay" />
+                <img src={breda} alt="breda" />
               </div>
               <div className="slide">
                 <img src={ebay} alt="ebay" />
@@ -162,7 +124,7 @@ function MobileAboutPage() {
                 <img src={ap} alt="AP" />
               </div>
               <div className="slide">
-                <img src={breda} alt="ebay" />
+                <img src={breda} alt="breda" />
               </div>
               <div className="slide">
                 <img src={ebay} alt="ebay" />
@@ -186,12 +148,7 @@ function MobileAboutPage() {
             {mappedPress}
           </div>
           <div>
-            <p
-              // style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
-              className="about-brynn-portrait-title"
-            >
-              SAY HELLO
-            </p>
+            <p className="about-brynn-portrait-title">SAY HELLO</p>
             <div className="about-say-hello">
               <p>
                 e. <a href={`mailto:hello@dimepiece.co`}>hello@dimepiece.co</a>
@@ -209,24 +166,16 @@ function MobileAboutPage() {
             </div>
           </div>
           <div className="newsletter">
-            <p
-              // style={{ fontFamily: "swall-diatype-bold", fontSize: "1.4rem" }}
-              className="about-brynn-portrait-title"
-            >
-              NEWSLETTER
-            </p>
-            <form
-              className="newsletter-input-container"
-              onSubmit={sendEmail}
-              ref={ref}
-            >
-              <input
-                placeholder="Email Address"
-                name="email"
-                onFocus={() => dispatch(cartActions.hideSearch())}
-              ></input>
-              <button type="submit">Join</button>
-            </form>
+            <p className="about-brynn-portrait-title">NEWSLETTER</p>
+            <iframe
+              src="https://dimepiece.substack.com/embed"
+              width="100%"
+              height="320"
+              style={{ border: "1px solid #EEE", background: "white" }}
+              frameBorder="0"
+              scrolling="no"
+              title="Newsletter signup"
+            />
           </div>
         </>
       ) : null}

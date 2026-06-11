@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/cart-slice";
 import PressCard from "./PressCard";
@@ -21,44 +20,10 @@ function About() {
   const about = useSelector((state) => state.about.about);
   const press = useSelector((state) => state.about.press);
   const dispatch = useDispatch();
-  const ref = useRef();
 
   const mappedPress = [...press]
     .sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished))
     .map((p) => <PressCard key={p._id} article={p} />);
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (emailPattern.test(e.target.email.value)) {
-      emailjs
-        .sendForm(
-          "dimepiece",
-          "template_hfmoirr",
-          e.target,
-          "q5PPM5-H0N3HywCI-"
-        )
-        .then(
-          (result) => {
-            // Add success message or further actions here
-            if (result.text === "OK") {
-              ref.current.classList.add("success");
-              setTimeout(() => ref.current.classList.remove("success"), 1000);
-              e.target.reset();
-            }
-          },
-          (error) => {
-            // Add error handling here
-            ref.current.classList.add("failure");
-            setTimeout(() => ref.current.classList.remove("failure"), 1500);
-          }
-        );
-    } else {
-      ref.current.classList.add("failure");
-      setTimeout(() => ref.current.classList.remove("failure"), 1500);
-    }
-  };
 
   const analytics = getAnalytics();
   useEffect(() => {
@@ -124,7 +89,7 @@ function About() {
                 <img src={ap} alt="AP" />
               </div>
               <div className="slide">
-                <img src={breda} alt="ebay" />
+                <img src={breda} alt="breda" />
               </div>
               <div className="slide">
                 <img src={ebay} alt="ebay" />
@@ -145,7 +110,7 @@ function About() {
                 <img src={ap} alt="AP" />
               </div>
               <div className="slide">
-                <img src={breda} alt="ebay" />
+                <img src={breda} alt="breda" />
               </div>
               <div className="slide">
                 <img src={ebay} alt="ebay" />
@@ -186,18 +151,15 @@ function About() {
           </div>
           <div className="newsletter">
             <p className="section-title-home">STAY IN THE KNOW</p>
-            <form
-              className="newsletter-input-container"
-              onSubmit={sendEmail}
-              ref={ref}
-            >
-              <input
-                placeholder="Email Address"
-                name="email"
-                onFocus={() => dispatch(cartActions.hideSearch())}
-              ></input>
-              <button type="submit">Join</button>
-            </form>
+            <iframe
+              src="https://dimepiece.substack.com/embed"
+              width="480"
+              height="320"
+              style={{ border: "1px solid #EEE", background: "white" }}
+              frameBorder="0"
+              scrolling="no"
+              title="Newsletter signup"
+            />
           </div>
         </>
       ) : null}

@@ -1,48 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
-import { useDispatch } from "react-redux";
-import { cartActions } from "../../redux/cart-slice";
 import { getAnalytics, logEvent } from "firebase/analytics";
 
 function MobileNewsletter() {
-  const dispatch = useDispatch();
-  const ref = useRef();
   const analytics = getAnalytics();
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailPattern.test(e.target.email.value)) {
-      emailjs
-        .sendForm(
-          "dimepiece",
-          "template_hfmoirr",
-          e.target,
-          "q5PPM5-H0N3HywCI-"
-        )
-        .then(
-          (result) => {
-            // Add success message or further actions here
-            if (result.text === "OK") {
-              logEvent(analytics, "newsletter_signup", {
-                location: "Newsletter",
-              });
-              ref.current.classList.add("success");
-              setTimeout(() => ref.current.classList.remove("success"), 1000);
-              e.target.reset();
-            }
-          },
-          (error) => {
-            // Add error handling here
-            ref.current.classList.add("failure");
-            setTimeout(() => ref.current.classList.remove("failure"), 1500);
-          }
-        );
-    } else {
-      ref.current.classList.add("failure");
-      setTimeout(() => ref.current.classList.remove("failure"), 1500);
-    }
-  };
 
   useEffect(() => {
     logEvent(analytics, "page_view", {
@@ -67,22 +28,19 @@ function MobileNewsletter() {
         >
           NEWSLETTER
         </p>
-        <p>
+        {/* <p>
           Sign up for the Dimepiece Newsletter to stay up to date on all our
           latest stories, products, and offerings.
-        </p>
-        <form
-          className="newsletter-input-container"
-          onSubmit={sendEmail}
-          ref={ref}
-        >
-          <input
-            placeholder="Email Address"
-            name="email"
-            onFocus={() => dispatch(cartActions.hideSearch())}
-          ></input>
-          <button type="submit">Join</button>
-        </form>
+        </p> */}
+        <iframe
+          src="https://dimepiece.substack.com/embed"
+          width="100%"
+          height="320"
+          style={{ border: "1px solid #EEE", background: "white" }}
+          frameBorder="0"
+          scrolling="no"
+          title="Newsletter signup"
+        />
       </div>
     </motion.div>
   );

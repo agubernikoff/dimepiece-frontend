@@ -97,13 +97,14 @@ function Footer() {
           >
             About
           </NavLink>
-          <NavLink
-            onClick={() => dispatch(cartActions.hideSearch())}
+          <a
+            href="https://dimepiece.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="navbar-link"
-            to="/newsletter"
           >
             Newsletter
-          </NavLink>
+          </a>
         </div>
         <div className="footer-left-column">
           <p>

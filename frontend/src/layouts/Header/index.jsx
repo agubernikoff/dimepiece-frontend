@@ -86,13 +86,13 @@ function Header() {
           </div>
           <div className="navbar-right">
             <motion.div style={{ originY: "0px" }} layout="position">
-              <NavLink
+              {/* <NavLink
                 onClick={hideSearch}
                 to="/newsletter"
                 className="navbar-link"
               >
                 NEWSLETTER
-              </NavLink>
+              </NavLink> */}
             </motion.div>
             <motion.p
               style={{ originY: "0px" }}
